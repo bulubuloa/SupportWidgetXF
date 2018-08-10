@@ -1,0 +1,25 @@
+﻿<Properties StartupConfiguration="{28B3524B-A109-4549-A6F9-C6CD5C301D8B}|Default">
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SupportWidgetXF" expanded="True">
+            <Node name="New Folder" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget FirstBuild="True" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.iOS FirstBuild="True" />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS FirstBuild="True" />
+</Properties>
