@@ -193,7 +193,7 @@ namespace SupportWidgetXF.iOS.Renderers
 
                 ShowSubviewAt(r, tableView, () =>
                 {
-                    tableView.Layer.MasksToBounds = false;
+                    tableView.Layer.MasksToBounds = !supportAutoComplete.HasShadow;
                 });
             }
             else

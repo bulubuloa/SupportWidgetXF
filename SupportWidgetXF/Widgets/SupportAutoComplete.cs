@@ -52,7 +52,7 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(PlaceholderProperty, value); }
         }
 
-        public static readonly BindableProperty PaddingInsideProperty = BindableProperty.Create("PaddingInside", typeof(double), typeof(SupportAutoComplete), 0d);
+        public static readonly BindableProperty PaddingInsideProperty = BindableProperty.Create("PaddingInside", typeof(double), typeof(SupportAutoComplete), 5d);
         public double PaddingInside
         {
             get { return (double)GetValue(PaddingInsideProperty); }
@@ -113,6 +113,13 @@ namespace SupportWidgetXF.Widgets
         {
             get => (bool)GetValue(IsValidProperty);
             set => SetValue(IsValidProperty, value);
+        }
+
+        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create("HasShadow", typeof(bool), typeof(SupportAutoComplete), true);
+        public bool HasShadow
+        {
+            get => (bool)GetValue(HasShadowProperty);
+            set => SetValue(HasShadowProperty, value);
         }
 
         public static readonly BindableProperty NextViewProperty = BindableProperty.Create("NextView", typeof(View), typeof(SupportAutoComplete), null);
