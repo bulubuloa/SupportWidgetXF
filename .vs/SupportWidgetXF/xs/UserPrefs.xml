@@ -1,25 +1,59 @@
-﻿<Properties StartupConfiguration="{28B3524B-A109-4549-A6F9-C6CD5C301D8B}|Default">
-  <MonoDevelop.Ide.Workbench>
+﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
+    <Files>
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoCompleteAsync.cs" Line="19" Column="2" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="185" Column="10" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="45" Column="67" />
+      <File FileName="SupportWidgetXF/Behaviors/EventToCommandBehavior.cs" Line="39" Column="56" />
+      <File FileName="SupportWidgetXF/Behaviors/BehaviorsEventConverter.cs" Line="7" Column="59" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="47" Column="37" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Behaviors/BindableBehavior.cs" Line="4" Column="36" NotebookId="1" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="69" Column="49" NotebookId="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
-            <Node name="New Folder" selected="True" />
+            <Node name="DemoAPP" expanded="True">
+              <Node name="DemoWidget" expanded="True">
+                <Node name="Dependencies" expanded="True">
+                  <Node name="PackageDependencies" expanded="True" />
+                </Node>
+                <Node name="ViewModels" expanded="True">
+                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
+                </Node>
+                <Node name="Views" expanded="True" />
+                <Node name="App.xaml" expanded="True" />
+                <Node name="MainPage.xaml" expanded="True" />
+              </Node>
+              <Node name="DemoWidget.iOS" expanded="True">
+                <Node name="Resources" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="Library" expanded="True">
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Behaviors" expanded="True" />
+                <Node name="Widgets" expanded="True" />
+              </Node>
+              <Node name="SupportWidgetXF.Android" expanded="True" />
+              <Node name="SupportWidgetXF.iOS" expanded="True">
+                <Node name="Renderers" expanded="True">
+                  <Node name="DropCombo" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget FirstBuild="True" />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.iOS FirstBuild="True" />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" FirstBuild="True" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF FirstBuild="True" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS FirstBuild="True" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>

@@ -2,7 +2,9 @@
 
 using Foundation;
 using SupportWidgetXF.Models.Widgets;
+using SupportWidgetXF.Widgets;
 using UIKit;
+using Xamarin.Forms.Platform.iOS;
 
 namespace SupportWidgetXF.iOS.Renderers.DropCombo
 {
@@ -25,11 +27,14 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
         private Action ActionClick;
 
-        public void BindDataToCell(IAutoDropItem dropItem,  Action action)
+        public void BindDataToCell(IAutoDropItem dropItem,  Action action, SupportAutoComplete _ConfigStyle)
         {
             try
             {
                 txtTitle.Text = dropItem.IF_GetTitle();
+                txtSeperator.BackgroundColor = _ConfigStyle.SeperatorColor.ToUIColor();
+                NsHeightSeperator.Constant = _ConfigStyle.SeperatorHeight;
+                txtTitle.TextColor = _ConfigStyle.TextColor.ToUIColor();
 
                 if (ActionClick == null)
                 {

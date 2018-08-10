@@ -147,13 +147,23 @@
     <Reference Include="Xamarin.iOS" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="3.0.0.482510" />
+    <PackageReference Include="Xamarin.Forms">
+      <Version>3.1.0.697729</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DemoWidget\DemoWidget.csproj">
       <Project>{F74774E9-912D-4673-8A0B-F5E08626C4E5}</Project>
       <Name>DemoWidget</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SupportWidgetXF.iOS\SupportWidgetXF.iOS.csproj">
+      <Project>{A2AA602C-302A-492B-99AB-FFC9CD300FE4}</Project>
+      <Name>SupportWidgetXF.iOS</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\dc%403x.png" />
+    <BundleResource Include="Resources\marvel%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

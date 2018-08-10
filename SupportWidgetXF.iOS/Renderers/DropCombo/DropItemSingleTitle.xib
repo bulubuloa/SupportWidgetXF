@@ -64,6 +64,7 @@
                 <outlet property="txtTitle" destination="129" id="name-outlet-129"/>
                 <outlet property="txtSeperator" destination="130" id="name-outlet-130"/>
                 <outlet property="bttClick" destination="223" id="name-outlet-223"/>
+                <outlet property="NsHeightSeperator" destination="142" id="name-outlet-142"/>
             </connections>
         </tableViewCell>
     </objects>

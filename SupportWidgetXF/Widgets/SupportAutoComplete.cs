@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Runtime.CompilerServices;
+using System.Linq;
+using System.Threading;
+using System.Threading.Tasks;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -20,6 +22,13 @@ namespace SupportWidgetXF.Widgets
         {
             get { return (IEnumerable<IAutoDropItem>)GetValue(ItemsSourceProperty); }
             set { SetValue(ItemsSourceProperty, value); }
+        }
+
+        public static readonly BindableProperty ItemsSourceOriginalProperty = BindableProperty.Create("ItemsSourceOriginal", typeof(IEnumerable<IAutoDropItem>), typeof(SupportAutoComplete), null);
+        public IEnumerable<IAutoDropItem> ItemsSourceOriginal
+        {
+            get { return (IEnumerable<IAutoDropItem>)GetValue(ItemsSourceOriginalProperty); }
+            set { SetValue(ItemsSourceOriginalProperty, value); }
         }
 
         public static readonly BindableProperty ItemSelecetedEventProperty = BindableProperty.Create("ItemSelecetedEvent", typeof(Action<int>), typeof(SupportAutoComplete));
@@ -69,6 +78,34 @@ namespace SupportWidgetXF.Widgets
         {
             get => (Color)GetValue(InvalidCornerColorProperty);
             set => SetValue(InvalidCornerColorProperty, value);
+        }
+
+        public static readonly BindableProperty SeperatorColorProperty = BindableProperty.Create("SeperatorColor", typeof(Color), typeof(SupportAutoComplete), Color.FromHex("#f1f1f1"));
+        public Color SeperatorColor
+        {
+            get => (Color)GetValue(SeperatorColorProperty);
+            set => SetValue(SeperatorColorProperty, value);
+        }
+
+        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(SupportAutoComplete), Color.Black);
+        public Color TextColor
+        {
+            get => (Color)GetValue(TextColorProperty);
+            set => SetValue(TextColorProperty, value);
+        }
+
+        public static readonly BindableProperty DescriptionTextColorProperty = BindableProperty.Create("DescriptionTextColor", typeof(Color), typeof(SupportAutoComplete), Color.DarkGray);
+        public Color DescriptionTextColor
+        {
+            get => (Color)GetValue(DescriptionTextColorProperty);
+            set => SetValue(DescriptionTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty SeperatorHeightProperty = BindableProperty.Create("SeperatorHeight", typeof(int), typeof(SupportAutoComplete), 1);
+        public int SeperatorHeight
+        {
+            get => (int)GetValue(SeperatorHeightProperty);
+            set => SetValue(SeperatorHeightProperty, value);
         }
 
         public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool), typeof(SupportAutoComplete), true);
@@ -140,10 +177,37 @@ namespace SupportWidgetXF.Widgets
         public event EventHandler<TextChangedEventArgs> TextChangeFinished;
         public void SendTextChangeFinished(string finishText)
         {
-            TextChangeFinished?.Invoke(this, new TextChangedEventArgs(finishText, finishText));
+            if (TextChangeFinished != null)
+                TextChangeFinished?.Invoke(this, new TextChangedEventArgs(finishText, finishText));
+            else
+                RunFilterAutocomplete(finishText);
         }
 
-        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        private CancellationTokenSource tokenSearch;
+        private void RunFilterAutocomplete(string text)
+        {
+            ItemsSourceOriginal = null;
+
+            if (tokenSearch != null)
+                tokenSearch.Cancel();
+            tokenSearch = new CancellationTokenSource();
+
+            if (text != null)
+            {
+                //Task.Run(() =>
+                //{
+                //    var key = text.ToLower();
+                //    var result = ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
+                //    ItemsSourceOriginal = result;
+                //}, tokenSearch.Token);
+
+                var key = text.ToLower();
+                var result = ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
+                ItemsSourceOriginal = result;
+            }
+        }
+
+        protected override void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
             if (propertyName == IsValidProperty.PropertyName)
@@ -160,6 +224,7 @@ namespace SupportWidgetXF.Widgets
 
         public SupportAutoComplete()
         {
+
         }
     }
 }

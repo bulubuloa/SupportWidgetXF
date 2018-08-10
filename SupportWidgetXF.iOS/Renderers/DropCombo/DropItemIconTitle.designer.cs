@@ -13,8 +13,61 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
     [Register ("DropItemIconTitle")]
     partial class DropItemIconTitle
     {
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIButton bttClick { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIImageView imgIcon { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint NsHeightSeperator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtSeperator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UILabel txtTitle { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.UIView ViewMain { get; set; }
+
         void ReleaseDesignerOutlets ()
         {
+            if (bttClick != null) {
+                bttClick.Dispose ();
+                bttClick = null;
+            }
+
+            if (imgIcon != null) {
+                imgIcon.Dispose ();
+                imgIcon = null;
+            }
+
+            if (NsHeightSeperator != null) {
+                NsHeightSeperator.Dispose ();
+                NsHeightSeperator = null;
+            }
+
+            if (txtSeperator != null) {
+                txtSeperator.Dispose ();
+                txtSeperator = null;
+            }
+
+            if (txtTitle != null) {
+                txtTitle.Dispose ();
+                txtTitle = null;
+            }
+
+            if (ViewMain != null) {
+                ViewMain.Dispose ();
+                ViewMain = null;
+            }
         }
     }
 }

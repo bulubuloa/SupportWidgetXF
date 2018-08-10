@@ -21,7 +21,7 @@ namespace SupportWidgetXF.iOS.Renderers
         private SupportAutoComplete supportAutoComplete;
         private UITableView tableView;
         private UITextField textField;
-        private int HeightOfRow = 35;
+        private int HeightOfRow = 40;
         private bool IsShowDropList = false;
         private DropItemSource dropSource;
 
@@ -29,9 +29,9 @@ namespace SupportWidgetXF.iOS.Renderers
         private void NotifyAdapterChanged()
         {
             SupportItemList.Clear();
-            if (supportAutoComplete.ItemsSource != null)
+            if (supportAutoComplete.ItemsSourceOriginal != null)
             {
-                SupportItemList.AddRange(supportAutoComplete.ItemsSource.ToList());
+                SupportItemList.AddRange(supportAutoComplete.ItemsSourceOriginal.ToList());
             }
             tableView.ReloadData();
         }
@@ -59,7 +59,7 @@ namespace SupportWidgetXF.iOS.Renderers
                     textField.LeftView = new UIView(new CGRect(0, 0, supportAutoComplete.PaddingInside, 0));
                     textField.LeftViewMode = UITextFieldViewMode.Always;
                     textField.Text = supportAutoComplete.Text;
-                    textField.EditingChanged += Wrapper_EditingChanged; ;
+                    textField.EditingChanged +=  Wrapper_EditingChanged; ;
                     textField.ShouldEndEditing += Wrapper_ShouldEndEditing;
                     textField.ShouldBeginEditing += Wrapper_ShouldBeginEditing;
                     textField.ShouldReturn += (textField) =>
@@ -78,7 +78,7 @@ namespace SupportWidgetXF.iOS.Renderers
                     //tableView.Layer.BorderColor = supportAutoComplete.CornerColor.ToCGColor();
 
                     //dropSource = new DropItemSource(SupportItemList, HeightOfRow, this, UIFont.FromName(supportAutoComplete.FontFamily, (nfloat)supportAutoComplete.FontSize));
-                    dropSource = new DropItemSource(SupportItemList);
+                    dropSource = new DropItemSource(SupportItemList,supportAutoComplete,HeightOfRow);
                     tableView.Source = dropSource;
 
                     NotifyAdapterChanged();
@@ -98,21 +98,23 @@ namespace SupportWidgetXF.iOS.Renderers
         protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
             base.OnElementPropertyChanged(sender, e);
-            if (e.PropertyName.Equals(nameof(SupportAutoComplete.CurrentCornerColor)))
+            if (e.PropertyName.Equals(SupportAutoComplete.CurrentCornerColorProperty.PropertyName))
             {
                 textField.Layer.BorderColor = supportAutoComplete.CurrentCornerColor.ToCGColor();
             }
-            else if (e.PropertyName.Equals(nameof(SupportAutoComplete.Text)))
+            else if (e.PropertyName.Equals(SupportViewBase.TextProperty.PropertyName))
             {
                 if (textField != null)
                 {
                     textField.Text = supportAutoComplete.Text;
                 }
             }
-            //else if (e.PropertyName.Equals(nameof(SupportButton.MenuItemsSource)))
-            //{
-            //    NotifyAdapterChanged();
-            //}
+            else if (e.PropertyName.Equals(SupportAutoComplete.ItemsSourceOriginalProperty.PropertyName))
+            {
+                NotifyAdapterChanged();
+                IsShowDropList = SupportItemList.Count ==  0;
+                ShowData();
+            }
         }
 
         protected override void Dispose(bool disposing)
@@ -127,11 +129,12 @@ namespace SupportWidgetXF.iOS.Renderers
             var textFieldInput = sender as UITextField;
             if (!string.IsNullOrEmpty(textFieldInput.Text) && textFieldInput.Text.Length > 1)
             {
-                SearchAndSync(textFieldInput.Text);
+                supportAutoComplete.SendTextChangeFinished(textFieldInput.Text);
             }
             else
             {
-                HideData();
+                supportAutoComplete.SendTextChangeFinished(null);
+                //HideData();
             }
         }
 
@@ -150,32 +153,6 @@ namespace SupportWidgetXF.iOS.Renderers
             ResetCornerColor();
             supportAutoComplete.SendAutocompleteFocused(false);
             return true;
-        }
-
-        private CancellationTokenSource tokenSearch;
-        private void SearchAndSync(string content)
-        {
-            if (tokenSearch != null)
-                tokenSearch.Cancel();
-            tokenSearch = new CancellationTokenSource();
-
-            Task.Run(() =>
-            {
-                SupportItemList.Clear();
-                var key = content.ToLower();
-                var result = supportAutoComplete.ItemsSource.Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key) ).Take(30).ToList();
-                SupportItemList.AddRange(result);
-
-                IsShowDropList = false;
-
-                InvokeOnMainThread(delegate
-                {
-                    tableView.ReloadData();
-                    supportAutoComplete.Text = textField.Text;
-                    ShowData();
-                });
-
-            }, tokenSearch.Token);
         }
 
         private void ShowData()

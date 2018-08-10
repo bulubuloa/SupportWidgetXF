@@ -1,11 +1,8 @@
-﻿using System;
-
+﻿
 using Android.App;
 using Android.Content.PM;
-using Android.Runtime;
-using Android.Views;
-using Android.Widget;
 using Android.OS;
+using SupportWidgetXF.Android;
 
 namespace DemoWidget.Droid
 {
@@ -20,8 +17,8 @@ namespace DemoWidget.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
+            SupportWidgetXFSetup.Initialize(this);
             LoadApplication(new App());
         }
     }
 }
-

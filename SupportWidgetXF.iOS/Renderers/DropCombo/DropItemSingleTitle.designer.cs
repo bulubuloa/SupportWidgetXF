@@ -19,6 +19,10 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint NsHeightSeperator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UILabel txtSeperator { get; set; }
 
         [Outlet]
@@ -34,6 +38,11 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
             if (bttClick != null) {
                 bttClick.Dispose ();
                 bttClick = null;
+            }
+
+            if (NsHeightSeperator != null) {
+                NsHeightSeperator.Dispose ();
+                NsHeightSeperator = null;
             }
 
             if (txtSeperator != null) {

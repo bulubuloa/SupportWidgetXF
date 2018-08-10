@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using SupportWidgetXF.iOS;
 using UIKit;
 
 namespace DemoWidget.iOS
@@ -23,6 +24,7 @@ namespace DemoWidget.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
+            SupportWidgetXFSetup.Initialize();
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

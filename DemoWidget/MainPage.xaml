@@ -1,7 +1,43 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" xmlns:local="clr-namespace:DemoWidget" x:Class="DemoWidget.MainPage">
-    <StackLayout>
-        <!-- Place new controls here -->
-        <Label Text="Welcome to Xamarin.Forms!" HorizontalOptions="Center" VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage x:Class="DemoWidget.MainPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:DemoWidget">
+    <ScrollView>
+        <StackLayout Margin="10,40,10,10" Orientation="Vertical">
+            <Button x:Name="bttAutocomplete"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Auto Complete" />
+            <Button x:Name="bttBar"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Bar Chart" />
+            <Button x:Name="bttCandle"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Candle Stick Chart" />
+            <Button x:Name="bttCombined"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Combined Chart" />
+            <Button x:Name="bttPie"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Pie Chart" />
+            <Button x:Name="bttRadar"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Radar Chart" />
+            <Button x:Name="bttScatter"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Scatter Chart" />
+            <Button x:Name="bttBuble"
+                    HeightRequest="40"
+                    HorizontalOptions="FillAndExpand"
+                    Text="Bubble Chart" />
+
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

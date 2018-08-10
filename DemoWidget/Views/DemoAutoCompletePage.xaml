@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="DemoWidget.Views.DemoAutoCompletePage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:SupportWidgetXF.Behaviors;assembly=SupportWidgetXF"
+             xmlns:widget="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <behaviors:BehaviorsEventConverter x:Key="BehaviorsEventConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical"
+                     Padding="10">
+            <Label Text="Single title"/>
+            <widget:SupportAutoComplete HeightRequest="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        CornerColor="Green"
+                                        CornerRadius="5"
+                                        CornerWidth="1"
+                                        DropMode="SingleTitle"
+                                        ItemsSource="{Binding ItemDemo}"
+                                        Placeholder="type here" />
+
+            <Label Text="Title with description" Margin="0,20,0,0"/>
+            <widget:SupportAutoComplete HeightRequest="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        CornerColor="Green"
+                                        CornerRadius="5"
+                                        CornerWidth="1"
+                                        DropMode="TitleWithDescription"
+                                        ItemsSource="{Binding ItemDemo}"
+                                        Placeholder="type here" />
+
+            <Label Text="Title with Icon" Margin="0,20,0,0"/>
+            <widget:SupportAutoComplete HeightRequest="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        CornerColor="Green"
+                                        CornerRadius="5"
+                                        CornerWidth="1"
+                                        DropMode="IconAndTitle"
+                                        ItemsSource="{Binding ItemDemo}"
+                                        Placeholder="type here" />
+
+            <Label Text="Title with Icon with description" Margin="0,20,0,0"/>
+            <widget:SupportAutoComplete HeightRequest="40"
+                                        HorizontalOptions="FillAndExpand"
+                                        CornerColor="Green"
+                                        CornerRadius="5"
+                                        CornerWidth="1"
+                                        DropMode="FullTextAndIcon"
+                                        ItemsSource="{Binding ItemDemo}"
+                                        Placeholder="type here" />
+
+             <Label Text="Title with Icon with description with data from api" Margin="0,20,0,0"/>
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                
+                <widget:SupportAutoCompleteAsync HeightRequest="40"
+                                                 HorizontalOptions="FillAndExpand"
+                                                 CornerColor="Green"
+                                                 CornerRadius="5"
+                                                 CornerWidth="1"
+                                                 DropMode="FullTextAndIcon"
+                                                 ItemsSource="{Binding ItemDemoAsync}"
+                                                 Placeholder="type here">
+                    <widget:SupportAutoCompleteAsync.Behaviors>
+                        <behaviors:EventToCommandBehavior Command="{Binding AutocompleteTextChanged}"
+                                                          EventArgsConverter="{StaticResource BehaviorsEventConverter}"
+                                                          EventName="TextChangeFinished" />
+                    </widget:SupportAutoCompleteAsync.Behaviors>
+                </widget:SupportAutoCompleteAsync>
+               
+                <ActivityIndicator IsRunning="{Binding IsSearching}" IsVisible="{Binding IsSearching}" IsEnabled="true" HeightRequest="40" WidthRequest="40" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand"/>
+            </Grid>
+
+            <Button Command="{Binding AddItemToSourceCommand}" Text="Add Item" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

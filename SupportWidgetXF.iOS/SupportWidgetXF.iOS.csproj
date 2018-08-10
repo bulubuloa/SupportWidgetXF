@@ -87,6 +87,8 @@
     </Compile>
     <Compile Include="Renderers\DropCombo\DropItemSource.cs" />
     <Compile Include="Renderers\UIViewExtensions.cs" />
+    <Compile Include="SupportWidgetXFSetup.cs" />
+    <Compile Include="Renderers\SupportAutoCompleteAsyncRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

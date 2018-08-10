@@ -1,18 +1,80 @@
-﻿<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1" />
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" />
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder" />
-        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" customClass="DropItemTitleDescription" id="cxk-wN-pdQ" rowHeight="44">
-            <rect key="frame" x="0.0" y="0.0" width="320" height="44" />
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES" />
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" customClass="DropItemTitleDescription" id="cxk-wN-pdQ" rowHeight="400" reuseIdentifier="DropItemTitleDescriptionID">
+            <rect key="frame" x="0.0" y="0.0" width="615" height="400"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
-                <rect key="frame" x="0.0" y="0.0" width="320" height="43" />
-                <autoresizingMask key="autoresizingMask" />
+                <rect key="frame" x="0.0" y="0.0" width="615" height="399"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" id="189" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="0.0" y="0.0" width="615" height="399.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="424" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" misplaced="YES">
+                                <rect key="frame" x="5" y="5" width="605" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="469" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                                <rect key="frame" x="23" y="124" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="521" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="210" y="333" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                                <constraints>
+                                    <constraint id="1381" firstItem="521" firstAttribute="height" constant="1"/>
+                                </constraints>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="566" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="615" height="399.5"/>
+                            </button>
+                        </subviews>
+                        <constraints>
+                            <constraint id="620" firstItem="424" firstAttribute="top" secondItem="189" secondAttribute="top" constant="5"/>
+                            <constraint id="643" firstItem="424" firstAttribute="leading" secondItem="189" secondAttribute="leading" constant="5"/>
+                            <constraint id="666" firstItem="189" firstAttribute="trailing" secondItem="424" secondAttribute="trailing" constant="5"/>
+                            <constraint id="1002" firstItem="469" firstAttribute="top" secondItem="424" secondAttribute="bottom" constant="2"/>
+                            <constraint id="1073" firstItem="469" firstAttribute="leading" secondItem="424" secondAttribute="leading"/>
+                            <constraint id="1096" firstItem="424" firstAttribute="trailing" secondItem="469" secondAttribute="trailing"/>
+                            <constraint id="1119" firstItem="189" firstAttribute="bottom" secondItem="469" secondAttribute="bottom" constant="5"/>
+                            <constraint id="1246" firstItem="521" firstAttribute="leading" secondItem="189" secondAttribute="leading"/>
+                            <constraint id="1269" firstItem="189" firstAttribute="trailing" secondItem="521" secondAttribute="trailing"/>
+                            <constraint id="1292" firstItem="189" firstAttribute="bottom" secondItem="521" secondAttribute="bottom"/>
+                            <constraint id="1426" firstItem="566" firstAttribute="top" secondItem="189" secondAttribute="top"/>
+                            <constraint id="1449" firstItem="189" firstAttribute="trailing" secondItem="566" secondAttribute="trailing"/>
+                            <constraint id="1472" firstItem="566" firstAttribute="leading" secondItem="189" secondAttribute="leading"/>
+                            <constraint id="1495" firstItem="189" firstAttribute="bottom" secondItem="566" secondAttribute="bottom"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint id="212" firstItem="189" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
+                    <constraint id="235" firstItem="189" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
+                    <constraint id="258" firstItem="YTl-1W-gDM" firstAttribute="bottom" secondItem="189" secondAttribute="bottom"/>
+                    <constraint id="281" firstItem="YTl-1W-gDM" firstAttribute="trailing" secondItem="189" secondAttribute="trailing"/>
+                </constraints>
             </tableViewCellContentView>
+            <connections>
+                <outlet property="ViewMain" destination="189" id="name-outlet-189"/>
+                <outlet property="txtTitle" destination="424" id="name-outlet-424"/>
+                <outlet property="txtDescription" destination="469" id="name-outlet-469"/>
+                <outlet property="txtSeperator" destination="521" id="name-outlet-521"/>
+                <outlet property="bttClick" destination="566" id="name-outlet-566"/>
+                <outlet property="NsHeightSeperator" destination="1381" id="name-outlet-1381"/>
+            </connections>
         </tableViewCell>
     </objects>
 </document>

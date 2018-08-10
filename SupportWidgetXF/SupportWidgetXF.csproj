@@ -11,5 +11,6 @@
     <Folder Include="Widgets\" />
     <Folder Include="Models\" />
     <Folder Include="Models\Widgets\" />
+    <Folder Include="Behaviors\" />
   </ItemGroup>
 </Project>
