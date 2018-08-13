@@ -27,4 +27,4 @@ SupportAutocomplete with 4 row templates (Single Title, Title With Description, 
 
 | SupportAutoComplete |ScreenShot  | 
 |--|--|
-| SupportAutocomplete with 4 row templates (Single Title, Title With Description, Icon with Title, FullText with Icon and Autocomplete source from API) |  |
+| SupportAutocomplete with 4 row templates (Single Title, Title With Description, Icon with Title, FullText with Icon and Autocomplete source from API) | ![Alt Text](https://media.giphy.com/media/vFKqnCdLPNOKc/giphy.gif) |
