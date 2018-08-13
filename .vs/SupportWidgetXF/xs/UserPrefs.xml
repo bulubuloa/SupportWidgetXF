@@ -1,15 +1,19 @@
-﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapter.cs">
+﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs">
     <Files>
       <File FileName="SupportWidgetXF/Widgets/SupportAutoCompleteAsync.cs" Line="19" Column="2" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="115" Column="14" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="183" Column="2" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapterAsync.cs" Line="69" Column="63" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapter.cs" Line="89" Column="50" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="183" Column="44" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="241" Column="2" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="163" Column="73" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapterAsync.cs" Line="33" Column="25" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="215" Column="73" />
+      <File FileName="SupportWidgetXF/Widgets/Interface/IDropItemSelected.cs" Line="9" Column="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="200" Column="57" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemSource.cs" Line="78" Column="36" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="22" Column="131" NotebookId="1" />
       <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="127" Column="21" NotebookId="1" />
-      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="82" Column="73" NotebookId="1" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="89" Column="15" NotebookId="1" />
       <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/InstantAutoComplete.cs" Line="8" Column="22" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapter.cs" Line="47" Column="10" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,23 +26,22 @@
                 </Node>
                 <Node name="ViewModels" expanded="True" />
                 <Node name="Views" expanded="True" />
-                <Node name="App.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True" />
               </Node>
               <Node name="DemoWidget.Android" expanded="True">
                 <Node name="Resources" expanded="True" />
               </Node>
+              <Node name="DemoWidget.iOS" selected="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
                 <Node name="Behaviors" expanded="True" />
-                <Node name="Widgets" expanded="True" />
+                <Node name="Widgets" expanded="True">
+                  <Node name="Interface" expanded="True" />
+                </Node>
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
                 <Node name="Renderers" expanded="True">
-                  <Node name="DropCombo" expanded="True">
-                    <Node name="DropItemAdapter.cs" selected="True" />
-                  </Node>
+                  <Node name="DropCombo" expanded="True" />
                 </Node>
                 <Node name="Resources" expanded="True">
                   <Node name="layout" expanded="True" />
@@ -61,7 +64,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.10.1_WXGA_Tablet_API_23" />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C0041B67-9F3B-4226-B498-C7DE8A8062AA" />
 </Properties>

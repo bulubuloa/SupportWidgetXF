@@ -7,6 +7,7 @@ using SupportWidgetXF.iOS.Renderers;
 using SupportWidgetXF.iOS.Renderers.DropCombo;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
+using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.iOS;
@@ -14,7 +15,7 @@ using Xamarin.Forms.Platform.iOS;
 [assembly: ExportRenderer(typeof(SupportAutoCompleteAsync), typeof(SupportAutoCompleteAsyncRenderer))]
 namespace SupportWidgetXF.iOS.Renderers
 {
-    public class SupportAutoCompleteAsyncRenderer : ViewRenderer<SupportAutoCompleteAsync, UIView>
+    public class SupportAutoCompleteAsyncRenderer : ViewRenderer<SupportAutoCompleteAsync, UIView>,IDropItemSelected
     {
         private SupportAutoCompleteAsync supportAutoComplete;
         private UITableView tableView;
@@ -76,7 +77,7 @@ namespace SupportWidgetXF.iOS.Renderers
                     //tableView.Layer.BorderColor = supportAutoComplete.CornerColor.ToCGColor();
 
                     //dropSource = new DropItemSource(SupportItemList, HeightOfRow, this, UIFont.FromName(supportAutoComplete.FontFamily, (nfloat)supportAutoComplete.FontSize));
-                    dropSource = new DropItemSource(SupportItemList, supportAutoComplete, HeightOfRow);
+                    dropSource = new DropItemSource(SupportItemList, supportAutoComplete, HeightOfRow,this);
                     tableView.Source = dropSource;
 
                     NotifyAdapterChanged();
@@ -228,6 +229,14 @@ namespace SupportWidgetXF.iOS.Renderers
             supportAutoComplete.CurrentCornerColor = supportAutoComplete.CornerColor;
             supportAutoComplete.IsValid = true;
             textField.Layer.BorderColor = supportAutoComplete.CurrentCornerColor.ToCGColor();
+        }
+
+        public void IF_ItemSelectd(int position)
+        {
+            HideData();
+            textField.Text = SupportItemList[position].IF_GetTitle();
+            if (supportAutoComplete.ItemSelecetedEvent != null)
+                supportAutoComplete.ItemSelecetedEvent.Invoke(position);
         }
     }
 }

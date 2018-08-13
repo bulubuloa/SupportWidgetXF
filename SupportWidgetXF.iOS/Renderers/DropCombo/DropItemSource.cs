@@ -4,6 +4,7 @@ using Foundation;
 using ObjCRuntime;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
+using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 
 namespace SupportWidgetXF.iOS.Renderers.DropCombo
@@ -13,12 +14,14 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
         private List<IAutoDropItem> ItemsList;
         private int HeightOfRow;
         private SupportAutoComplete ConfigStyle;
+        private IDropItemSelected IDropItemSelected;
 
-        public DropItemSource(List<IAutoDropItem> _ItemsList, SupportAutoComplete _ConfigStyle, int _HeightOfRow)
+        public DropItemSource(List<IAutoDropItem> _ItemsList, SupportAutoComplete _ConfigStyle, int _HeightOfRow,IDropItemSelected dropItemSelected)
         {
             ItemsList = _ItemsList;
             ConfigStyle = _ConfigStyle;
             HeightOfRow = _HeightOfRow;
+            IDropItemSelected = dropItemSelected;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -31,7 +34,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 var viewChild = NSBundle.MainBundle.LoadNib("DropItemTitleDescription", cellChild, null);
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemTitleDescription;
                 cellChild.BindDataToCell(item, delegate {
-
+                    IDropItemSelected.IF_ItemSelectd(indexPath.Row);
                 }, ConfigStyle);
                 return cellChild;
             }
@@ -42,7 +45,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 var viewChild = NSBundle.MainBundle.LoadNib("DropItemIconTitle", cellChild, null);
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemIconTitle;
                 cellChild.BindDataToCell(item, delegate {
-
+                    IDropItemSelected.IF_ItemSelectd(indexPath.Row);
                 }, ConfigStyle);
                 return cellChild;
             }
@@ -53,7 +56,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 var viewChild = NSBundle.MainBundle.LoadNib("DropItemFullTextIcon", cellChild, null);
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemFullTextIcon;
                 cellChild.BindDataToCell(item, delegate {
-
+                    IDropItemSelected.IF_ItemSelectd(indexPath.Row);
                 }, ConfigStyle);
                 return cellChild;
             }
@@ -64,7 +67,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 var viewChild = NSBundle.MainBundle.LoadNib("DropItemSingleTitle", cellChild, null);
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemSingleTitle;
                 cellChild.BindDataToCell(item, delegate {
-
+                    IDropItemSelected.IF_ItemSelectd(indexPath.Row);
                 }, ConfigStyle);
                 return cellChild;
             }

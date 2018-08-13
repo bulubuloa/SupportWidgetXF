@@ -5,6 +5,7 @@ using Android.Views;
 using Android.Widget;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
+using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms.Platform.Android;
 
 namespace SupportWidgetXF.Droid.Renderers.DropCombo
@@ -14,13 +15,15 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         public List<IAutoDropItem> originalData, items;
         private Context mContext;
         private SupportAutoComplete ConfigStyle;
+        private IDropItemSelected IDropItemSelected;
 
-        public DropItemAdapterAsync(Context context, List<IAutoDropItem> storeDataLst, SupportAutoComplete _ConfigStyle) : base(context,0)
+        public DropItemAdapterAsync(Context context, List<IAutoDropItem> storeDataLst, SupportAutoComplete _ConfigStyle, IDropItemSelected dropItemSelected) : base(context,0)
         {
             originalData = storeDataLst;
             items = storeDataLst;
             mContext = context;
             ConfigStyle = _ConfigStyle;
+            IDropItemSelected = dropItemSelected;
         }
 
         public override int Count => items.Count;
@@ -34,6 +37,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         {
             TextView txtTitle = null, txtDescription = null, txtSeperator = null;
             ImageView imgIcon = null;
+            Button bttClick;
             IAutoDropItem item = items[position];
 
             if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
@@ -58,6 +62,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             }
             txtTitle = convertView.FindViewById<TextView>(Resource.Id.txtTitle);
             txtSeperator = convertView.FindViewById<TextView>(Resource.Id.txtSeperator);
+            bttClick = convertView.FindViewById<Button>(Resource.Id.bttClick);
 
             txtTitle.Text = item.IF_GetTitle();
             if(txtDescription!=null)
@@ -66,6 +71,11 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
                 txtDescription.SetTextColor(ConfigStyle.DescriptionTextColor.ToAndroid());
             }
             txtSeperator.SetBackgroundColor(ConfigStyle.SeperatorColor.ToAndroid());
+
+            bttClick.Click += (sender, e) => 
+            {
+                IDropItemSelected.IF_ItemSelectd(position);
+            };
 
             try
             {

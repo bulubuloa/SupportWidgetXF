@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics.Drawables;
@@ -11,17 +12,19 @@ using SupportWidgetXF.Droid.Renderers;
 using SupportWidgetXF.Droid.Renderers.DropCombo;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
+using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(SupportAutoCompleteAsync), typeof(SupportAutoCompleteAsyncRenderer))]
 namespace SupportWidgetXF.Droid.Renderers
 {
-    public class SupportAutoCompleteAsyncRenderer : ViewRenderer<SupportAutoCompleteAsync, InstantAutoComplete>
+    public class SupportAutoCompleteAsyncRenderer : ViewRenderer<SupportAutoCompleteAsync, InstantAutoComplete>, IDropItemSelected
     {
         private SupportAutoCompleteAsync supportAutoComplete;
         private GradientDrawable gradientDrawable;
         private InstantAutoComplete autoCompleteTextView;
+        private bool FlagSetText = false;
 
         private DropItemAdapterAsync dropItemAdapter;
         private List<IAutoDropItem> SupportItemList = new List<IAutoDropItem>();
@@ -69,11 +72,8 @@ namespace SupportWidgetXF.Droid.Renderers
                 autoCompleteTextView.RequestFocusFromTouch();
                 autoCompleteTextView.Hint = supportAutoComplete.Placeholder;
                 autoCompleteTextView.InitlizeReturnKey(supportAutoComplete.ReturnType);
-                autoCompleteTextView.ItemSelected += _autoComplete_ItemSelected;
                 autoCompleteTextView.FocusChange += _autoComplete_FocusChange;
-                autoCompleteTextView.ItemClick += _autoComplete_ItemClick;
                 autoCompleteTextView.TextChanged += _autoComplete_TextChanged;
-                autoCompleteTextView.BeforeTextChanged += _autoComplete_BeforeTextChanged;
                 autoCompleteTextView.EditorAction += (sender, ev) =>
                 {
                     supportAutoComplete.RunReturnAction();
@@ -90,44 +90,33 @@ namespace SupportWidgetXF.Droid.Renderers
             }
         }
 
-        void _autoComplete_BeforeTextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        private CancellationTokenSource tokenSearch;
+        private void RunFilterAutocomplete(string text)
         {
-            //if (!string.IsNullOrEmpty(e.Text.ToString()) && e.Text.ToString().Length > 1)
-            //{
-            //    SearchAndSync(e.Text.ToString());
-            //}
+            if (tokenSearch != null)
+                tokenSearch.Cancel();
+            tokenSearch = new CancellationTokenSource();
+            Task.Delay(1000).ContinueWith(delegate {
+                if (!string.IsNullOrEmpty(text) && text.Length > 1)
+                {
+                    supportAutoComplete.SendTextChangeFinished(text);
+                }
+                else
+                {
+                    supportAutoComplete.SendTextChangeFinished(null);
+                }
+            },tokenSearch.Token);
         }
-
 
         void _autoComplete_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
-            if (!string.IsNullOrEmpty(e.Text.ToString()) && e.Text.ToString().Length  > 1)
+            if (FlagSetText)
             {
-                supportAutoComplete.SendTextChangeFinished(e.Text.ToString());
+                FlagSetText = false;
             }
             else
-            {
-                supportAutoComplete.SendTextChangeFinished(null);
-                //HideData();
-            }
+                RunFilterAutocomplete(e.Text.ToString());
         }
-
-
-        void _autoComplete_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            supportAutoComplete.Text = autoCompleteTextView.Text;
-            if (supportAutoComplete.ItemSelecetedEvent != null)
-                supportAutoComplete.ItemSelecetedEvent.Invoke(e.Position);
-        }
-
-
-        void _autoComplete_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            supportAutoComplete.Text = autoCompleteTextView.Text;
-            if (supportAutoComplete.ItemSelecetedEvent != null)
-                supportAutoComplete.ItemSelecetedEvent.Invoke(e.Position);
-        }
-
 
         void _autoComplete_FocusChange(object sender, FocusChangeEventArgs e)
         {
@@ -158,6 +147,7 @@ namespace SupportWidgetXF.Droid.Renderers
             {
                 if (autoCompleteTextView != null)
                 {
+                    FlagSetText = true;
                     autoCompleteTextView.Text = supportAutoComplete.Text;
                 }
             }
@@ -180,7 +170,7 @@ namespace SupportWidgetXF.Droid.Renderers
 
         private void RefreshhAdapter()
         {
-            dropItemAdapter = new DropItemAdapterAsync(Context, SupportItemList, supportAutoComplete);
+            dropItemAdapter = new DropItemAdapterAsync(Context, SupportItemList, supportAutoComplete,this);
             autoCompleteTextView.Adapter = null;
             autoCompleteTextView.Adapter = dropItemAdapter;
         }
@@ -196,6 +186,26 @@ namespace SupportWidgetXF.Droid.Renderers
             {
                 autoCompleteTextView.SetBackground(gradientDrawable);
             }
+        }
+
+        public void IF_ItemSelectd(int position)
+        {
+            FlagSetText = true;
+            var text = dropItemAdapter.originalData[position].IF_GetTitle();
+            supportAutoComplete.Text = text;
+            autoCompleteTextView.Text = text;
+
+            Task.Delay(50).ContinueWith(delegate
+            {
+                SupportWidgetXFSetup.Activity.RunOnUiThread(delegate
+                {
+                    autoCompleteTextView.SetSelection(text.Length);
+                    autoCompleteTextView.DismissDropDown();
+                });
+            });
+
+            if (supportAutoComplete.ItemSelecetedEvent != null)
+                supportAutoComplete.ItemSelecetedEvent.Invoke(position);
         }
     }
 }

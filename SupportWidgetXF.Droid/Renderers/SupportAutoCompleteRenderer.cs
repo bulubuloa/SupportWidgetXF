@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading;
+using System.Threading.Tasks;
 using Android.Content;
 using Android.Graphics.Drawables;
 using Android.OS;
@@ -11,18 +12,18 @@ using SupportWidgetXF.Droid.Renderers;
 using SupportWidgetXF.Droid.Renderers.DropCombo;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
+using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
 
 [assembly: ExportRenderer(typeof(SupportAutoComplete), typeof(SupportAutoCompleteRenderer))]
 namespace SupportWidgetXF.Droid.Renderers
 {
-    public class SupportAutoCompleteRenderer : ViewRenderer<SupportAutoComplete, AutoCompleteTextView>
+    public class SupportAutoCompleteRenderer : ViewRenderer<SupportAutoComplete, AutoCompleteTextView>,IDropItemSelected
     {
         private SupportAutoComplete supportAutoComplete;
         private GradientDrawable gradientDrawable;
         private AutoCompleteTextView autoCompleteTextView;
-        private Context _context;
 
         private DropItemAdapter dropItemAdapter;
         private List<IAutoDropItem> SupportItemList = new List<IAutoDropItem>();
@@ -38,7 +39,6 @@ namespace SupportWidgetXF.Droid.Renderers
 
         public SupportAutoCompleteRenderer(Context context) : base(context)
         {
-            _context = context;
         }
 
 
@@ -71,11 +71,7 @@ namespace SupportWidgetXF.Droid.Renderers
                 autoCompleteTextView.RequestFocusFromTouch();
                 autoCompleteTextView.Hint = supportAutoComplete.Placeholder;
                 autoCompleteTextView.InitlizeReturnKey(supportAutoComplete.ReturnType);
-                autoCompleteTextView.ItemSelected += _autoComplete_ItemSelected;
                 autoCompleteTextView.FocusChange += _autoComplete_FocusChange;
-                autoCompleteTextView.ItemClick += _autoComplete_ItemClick;
-                autoCompleteTextView.TextChanged += _autoComplete_TextChanged;
-                autoCompleteTextView.BeforeTextChanged += _autoComplete_BeforeTextChanged;
                 autoCompleteTextView.EditorAction += (sender, ev) =>
                 {
                     supportAutoComplete.RunReturnAction();
@@ -90,38 +86,6 @@ namespace SupportWidgetXF.Droid.Renderers
                 SetNativeControl(autoCompleteTextView);
             }
         }
-
-       
-        void _autoComplete_BeforeTextChanged(object sender, Android.Text.TextChangedEventArgs e)
-        {
-            //if (!string.IsNullOrEmpty(e.Text.ToString()) && e.Text.ToString().Length > 1)
-            //{
-            //    SearchAndSync(e.Text.ToString());
-            //}
-        }
-
-
-        void _autoComplete_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
-        {
-
-        }
-
-
-        void _autoComplete_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
-        {
-            supportAutoComplete.Text = autoCompleteTextView.Text;
-            if (supportAutoComplete.ItemSelecetedEvent != null)
-                supportAutoComplete.ItemSelecetedEvent.Invoke(e.Position);
-        }
-
-
-        void _autoComplete_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
-        {
-            supportAutoComplete.Text = autoCompleteTextView.Text;
-            if (supportAutoComplete.ItemSelecetedEvent != null)
-                supportAutoComplete.ItemSelecetedEvent.Invoke(e.Position);
-        }
-
 
         void _autoComplete_FocusChange(object sender, FocusChangeEventArgs e)
         {
@@ -163,7 +127,7 @@ namespace SupportWidgetXF.Droid.Renderers
 
         private void RefreshhAdapter()
         {
-            dropItemAdapter = new DropItemAdapter(Context,SupportItemList,supportAutoComplete);
+            dropItemAdapter = new DropItemAdapter(Context,SupportItemList,supportAutoComplete,this);
             autoCompleteTextView.Adapter = dropItemAdapter;
         }
 
@@ -178,6 +142,25 @@ namespace SupportWidgetXF.Droid.Renderers
             {
                 autoCompleteTextView.SetBackground(gradientDrawable);
             }
+        }
+
+        public void IF_ItemSelectd(int position)
+        {
+            var text = dropItemAdapter.items[position].IF_GetTitle();
+            supportAutoComplete.Text = text;
+            autoCompleteTextView.Text = text;
+           
+            Task.Delay(50).ContinueWith(delegate
+            {
+                SupportWidgetXFSetup.Activity.RunOnUiThread(delegate
+                {
+                    autoCompleteTextView.SetSelection(text.Length);
+                    autoCompleteTextView.DismissDropDown();
+                });
+            });
+
+            if (supportAutoComplete.ItemSelecetedEvent != null)
+                supportAutoComplete.ItemSelecetedEvent.Invoke(position);
         }
     }
 }
