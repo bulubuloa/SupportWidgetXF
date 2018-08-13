@@ -66,14 +66,14 @@ namespace SupportWidgetXF.Droid.Renderers
                 autoCompleteTextView.SetTextColor(supportAutoComplete.TextColor.ToAndroid());
                 autoCompleteTextView.TextAlignment = Android.Views.TextAlignment.Center;
                 // _autoComplete.Typeface = SpecAndroid.CreateTypeface(Context, _dropDownView.FontFamily.Split('#')[0]);
-               // autoCompleteTextView.RequestFocusFromTouch();
+                autoCompleteTextView.RequestFocusFromTouch();
                 autoCompleteTextView.Hint = supportAutoComplete.Placeholder;
                 autoCompleteTextView.InitlizeReturnKey(supportAutoComplete.ReturnType);
                 autoCompleteTextView.ItemSelected += _autoComplete_ItemSelected;
-               // autoCompleteTextView.FocusChange += _autoComplete_FocusChange;
+                autoCompleteTextView.FocusChange += _autoComplete_FocusChange;
                 autoCompleteTextView.ItemClick += _autoComplete_ItemClick;
                 autoCompleteTextView.TextChanged += _autoComplete_TextChanged;
-               // autoCompleteTextView.BeforeTextChanged += _autoComplete_BeforeTextChanged;
+                autoCompleteTextView.BeforeTextChanged += _autoComplete_BeforeTextChanged;
                 autoCompleteTextView.EditorAction += (sender, ev) =>
                 {
                     supportAutoComplete.RunReturnAction();
@@ -166,7 +166,7 @@ namespace SupportWidgetXF.Droid.Renderers
                 NotifyAdapterChanged();
                 RefreshhAdapter();
 
-                Task.Delay(500).ContinueWith(delegate
+                Task.Delay(100).ContinueWith(delegate
                 {
                     SupportWidgetXFSetup.Activity.RunOnUiThread(delegate
                     {
