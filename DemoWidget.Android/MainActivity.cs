@@ -2,7 +2,7 @@
 using Android.App;
 using Android.Content.PM;
 using Android.OS;
-using SupportWidgetXF.Android;
+using SupportWidgetXF.Droid;
 
 namespace DemoWidget.Droid
 {

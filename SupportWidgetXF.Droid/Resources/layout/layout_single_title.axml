@@ -1,18 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
     <TextView
         android:id="@+id/txtTitle"
         android:layout_centerVertical="true"
-        android:padding="5"
-        android:textSize="13sp"
+        android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:paddingBottom="7dp"
+        android:paddingLeft="5dp"
+        android:paddingRight="5dp"
+        android:paddingTop="7dp"
+        android:textSize="13sp" />
     <TextView
-        android:layout_alignParentBottom="true"
         android:id="@+id/txtSeperator"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
 </RelativeLayout>

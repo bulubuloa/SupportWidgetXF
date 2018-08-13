@@ -13,11 +13,11 @@ using Object = Java.Lang.Object;
 
 namespace SupportWidgetXF.Droid.Renderers.DropCombo
 {
-    public class ChemicalFilter : Filter
+    public class ChemicalFilterAsync : Filter
     {
-       private DropItemAdapter dropItemAdapter;
+        private DropItemAdapterAsync dropItemAdapter;
 
-        public ChemicalFilter(DropItemAdapter dropItemAdapter)
+        public ChemicalFilterAsync(DropItemAdapterAsync dropItemAdapter)
         {
             this.dropItemAdapter = dropItemAdapter;
         }
@@ -26,18 +26,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         {
             var returnObj = new FilterResults();
             var results = new List<IAutoDropItem>();
-
-            if (dropItemAdapter.originalData == null)
-                dropItemAdapter.originalData = dropItemAdapter.items;
-
-            if (constraint == null) 
-                return returnObj;
-
-            if (dropItemAdapter.originalData != null && dropItemAdapter.originalData.Any())
-            {
-                var key = constraint.ToString().ToLower();
-                results.AddRange(dropItemAdapter.originalData.Where(drop => drop.IF_GetTitle().ToLower().Contains(key) || drop.IF_GetDescription().ToLower().Contains(key)));
-            }
+            results.AddRange(dropItemAdapter.originalData);
 
             returnObj.Values = FromArray(results.Select(r => r.ToJavaObject()).ToArray());
             returnObj.Count = results.Count;
@@ -59,19 +48,20 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         }
     }
 
-    public class DropItemAdapter : ArrayAdapter, IFilterable
+    public class DropItemAdapterAsync : ArrayAdapter
     {
         public List<IAutoDropItem> originalData, items;
         private Context mContext;
         private SupportAutoComplete ConfigStyle;
         public Filter Filter { get; private set; }
 
-        public DropItemAdapter(Context context, List<IAutoDropItem> storeDataLst, SupportAutoComplete _ConfigStyle) : base(context,0)
+        public DropItemAdapterAsync(Context context, List<IAutoDropItem> storeDataLst, SupportAutoComplete _ConfigStyle) : base(context,0)
         {
             originalData = storeDataLst;
+            items = storeDataLst;
             mContext = context;
             ConfigStyle = _ConfigStyle;
-            Filter = new ChemicalFilter(this);
+            Filter = new ChemicalFilterAsync(this);
             items = new List<IAutoDropItem>();
         }
 

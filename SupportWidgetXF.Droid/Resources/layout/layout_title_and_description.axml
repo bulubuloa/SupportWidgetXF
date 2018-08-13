@@ -1,30 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    android:background="@android:color/white"
+    android:layout_height="match_parent"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical">
     <LinearLayout
-        android:padding="5dp"
+        android:layout_centerVertical="true"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:layout_centerVertical="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="5dp">
         <TextView
             android:id="@+id/txtTitle"
             android:layout_gravity="center_vertical"
-            android:layout_height="25dp"
-            android:layout_width="25dp" />
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:layout_width="match_parent" />
         <TextView
             android:id="@+id/txtDescription"
             android:layout_gravity="center_vertical"
-            android:padding="5"
-            android:textSize="13sp"
+            android:layout_height="wrap_content"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:textSize="11sp" />
     </LinearLayout>
     <TextView
-        android:layout_alignParentBottom="true"
         android:id="@+id/txtSeperator"
-        android:layout_width="match_parent"
-        android:layout_height="1dp" />
+        android:layout_alignParentBottom="true"
+        android:layout_height="1dp"
+        android:layout_width="match_parent" />
 </RelativeLayout>

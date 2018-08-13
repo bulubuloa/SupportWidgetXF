@@ -26,7 +26,7 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(CornerColorProperty, value); }
         }
 
-        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(SupportViewBase), 0d);
+        public static readonly BindableProperty FontSizeProperty = BindableProperty.Create("FontSize", typeof(double), typeof(SupportViewBase), 13d);
         public double FontSize
         {
             get { return (double)GetValue(FontSizeProperty); }

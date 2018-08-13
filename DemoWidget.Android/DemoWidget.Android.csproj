@@ -94,6 +94,8 @@
     <AndroidResource Include="Resources\mipmap-xxhdpi\launcher_foreground.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\Icon.png" />
     <AndroidResource Include="Resources\mipmap-xxxhdpi\launcher_foreground.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\dc.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\marvel.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\drawable\" />
@@ -106,6 +108,10 @@
     <ProjectReference Include="..\DemoWidget\DemoWidget.csproj">
       <Project>{F74774E9-912D-4673-8A0B-F5E08626C4E5}</Project>
       <Name>DemoWidget</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SupportWidgetXF.Droid\SupportWidgetXF.Droid.csproj">
+      <Project>{4DC62E1E-F071-4147-9EFD-78D5D06D5E0A}</Project>
+      <Name>SupportWidgetXF.Droid</Name>
     </ProjectReference>
   </ItemGroup>
  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

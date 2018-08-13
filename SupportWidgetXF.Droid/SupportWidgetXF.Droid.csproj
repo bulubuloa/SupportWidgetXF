@@ -113,6 +113,11 @@
     <Compile Include="Renderers\SupportAutoCompleteRenderer.cs" />
     <Compile Include="Renderers\ViewExtensions.cs" />
     <Compile Include="Renderers\DropCombo\DropItemAdapter.cs" />
+    <Compile Include="ObjectExtensions.cs" />
+    <Compile Include="SupportWidgetXFSetup.cs" />
+    <Compile Include="Renderers\SupportAutoCompleteAsyncRenderer.cs" />
+    <Compile Include="Renderers\DropCombo\DropItemAdapterAsync.cs" />
+    <Compile Include="Renderers\DropCombo\InstantAutoComplete.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
