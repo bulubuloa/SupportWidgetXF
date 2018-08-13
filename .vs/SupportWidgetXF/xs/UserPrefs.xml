@@ -1,19 +1,20 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget.Android/MainActivity.cs">
     <Files>
       <File FileName="SupportWidgetXF/Widgets/SupportAutoCompleteAsync.cs" Line="19" Column="2" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="241" Column="2" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="236" Column="24" />
       <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="163" Column="73" />
       <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapterAsync.cs" Line="33" Column="25" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="215" Column="73" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="213" Column="24" />
       <File FileName="SupportWidgetXF/Widgets/Interface/IDropItemSelected.cs" Line="9" Column="1" />
       <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="200" Column="57" />
       <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemSource.cs" Line="78" Column="36" />
       <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="22" Column="131" NotebookId="1" />
       <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="127" Column="21" NotebookId="1" />
-      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="89" Column="15" NotebookId="1" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="5" Column="95" NotebookId="1" />
       <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/InstantAutoComplete.cs" Line="8" Column="22" NotebookId="1" />
       <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/DropItemAdapter.cs" Line="47" Column="10" NotebookId="1" />
+      <File FileName="DemoWidget.Android/MainActivity.cs" Line="20" Column="33" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -29,8 +30,8 @@
               </Node>
               <Node name="DemoWidget.Android" expanded="True">
                 <Node name="Resources" expanded="True" />
+                <Node name="MainActivity.cs" selected="True" />
               </Node>
-              <Node name="DemoWidget.iOS" selected="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
