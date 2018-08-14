@@ -28,7 +28,7 @@ Setup for Android project (add to MainActivity before LoadApplication)
 	</tr>
 	<tr>
 		<td>
-			<b>SupportAutocomplete</b> with 4 row templates: support binding Itemsource, border color, etc..
+			<b>SupportAutocomplete</b> with 4 row templates: support binding Itemsource, etc..
 			<ul>
 				<li>Single Title</li>
 				<li>Title With Description</li>
