@@ -118,6 +118,8 @@
     <Compile Include="Renderers\SupportAutoCompleteAsyncRenderer.cs" />
     <Compile Include="Renderers\DropCombo\DropItemAdapterAsync.cs" />
     <Compile Include="Renderers\DropCombo\InstantAutoComplete.cs" />
+    <Compile Include="Renderers\SupportEntryRenderer.cs" />
+    <Compile Include="Renderers\SupportActionMenuRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

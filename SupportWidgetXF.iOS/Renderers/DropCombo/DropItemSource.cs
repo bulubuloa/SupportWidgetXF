@@ -13,10 +13,10 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
     {
         private List<IAutoDropItem> ItemsList;
         private int HeightOfRow;
-        private SupportAutoComplete ConfigStyle;
+        private SupportViewDrop ConfigStyle;
         private IDropItemSelected IDropItemSelected;
 
-        public DropItemSource(List<IAutoDropItem> _ItemsList, SupportAutoComplete _ConfigStyle, int _HeightOfRow,IDropItemSelected dropItemSelected)
+        public DropItemSource(List<IAutoDropItem> _ItemsList, SupportViewDrop _ConfigStyle, int _HeightOfRow,IDropItemSelected dropItemSelected)
         {
             ItemsList = _ItemsList;
             ConfigStyle = _ConfigStyle;

@@ -25,5 +25,10 @@ namespace SupportWidgetXF.Models.Widgets
         {
             return Title;
         }
+
+        public Action IF_GetAction()
+        {
+            return null;
+        }
     }
 }

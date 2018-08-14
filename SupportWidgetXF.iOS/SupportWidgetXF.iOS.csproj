@@ -64,6 +64,7 @@
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
     <Folder Include="Renderers\DropCombo\" />
+    <Folder Include="Renderers\Exporters\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MyClass.cs" />
@@ -88,7 +89,11 @@
     <Compile Include="Renderers\DropCombo\DropItemSource.cs" />
     <Compile Include="Renderers\UIViewExtensions.cs" />
     <Compile Include="SupportWidgetXFSetup.cs" />
-    <Compile Include="Renderers\SupportAutoCompleteAsyncRenderer.cs" />
+    <Compile Include="Renderers\SupportEntryRenderer.cs" />
+    <Compile Include="Renderers\SupportActionMenuRenderer.cs" />
+    <Compile Include="Renderers\SupportDropListRenderer.cs" />
+    <Compile Include="iFontExtend.cs" />
+    <Compile Include="Renderers\SupportDropRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

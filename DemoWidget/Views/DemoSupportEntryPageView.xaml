@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="DemoWidget.Views.DemoSupportEntryPageView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:widget="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="10">
+            <widget:SupportEntry HeightRequest="50"
+                                 HorizontalOptions="FillAndExpand"
+                                 CornerRadius="5"
+                                 CornerWidth="1"
+                                 DrawableInside="dc"
+                                 DrawableInsideAligment="Right"
+                                 PlaceholderColor="Silver"
+                                 TextColor="Green"
+                                 Placeholder="type here"
+                                 FocusEntryCornerColor="Purple"
+                                 EntryCornerColor="Teal" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

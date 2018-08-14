@@ -6,5 +6,6 @@ namespace SupportWidgetXF.Models.Widgets
         string IF_GetTitle();
         string IF_GetDescription();
         string IF_GetIcon();
+        Action IF_GetAction();
     }
 }

@@ -27,7 +27,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
         private Action ActionClick;
 
-        public void BindDataToCell(IAutoDropItem dropItem, Action action, SupportAutoComplete _ConfigStyle)
+        public void BindDataToCell(IAutoDropItem dropItem, Action action, SupportViewDrop _ConfigStyle)
         {
             try
             {

@@ -164,6 +164,7 @@
   <ItemGroup>
     <BundleResource Include="Resources\dc%403x.png" />
     <BundleResource Include="Resources\marvel%403x.png" />
+    <BundleResource Include="Resources\icn_droplist%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

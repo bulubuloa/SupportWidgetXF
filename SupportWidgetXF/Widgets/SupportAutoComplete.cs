@@ -1,43 +1,12 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using System.Threading.Tasks;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
 {
-    public class SupportAutoComplete : SupportViewBase
+    public class SupportAutoComplete : SupportViewDrop
     {
-        public static readonly BindableProperty DropModeProperty = BindableProperty.Create("DropMode", typeof(SupportAutoCompleteDropMode), typeof(SupportAutoComplete), SupportAutoCompleteDropMode.SingleTitle);
-        public SupportAutoCompleteDropMode DropMode
-        {
-            get { return (SupportAutoCompleteDropMode)GetValue(DropModeProperty); }
-            set { SetValue(DropModeProperty, value); }
-        }
-
-        public static readonly BindableProperty ItemsSourceProperty = BindableProperty.Create("ItemsSource", typeof(IEnumerable<IAutoDropItem>), typeof(SupportAutoComplete), null);
-        public IEnumerable<IAutoDropItem> ItemsSource
-        {
-            get { return (IEnumerable<IAutoDropItem>)GetValue(ItemsSourceProperty); }
-            set { SetValue(ItemsSourceProperty, value); }
-        }
-
-        public static readonly BindableProperty ItemsSourceOriginalProperty = BindableProperty.Create("ItemsSourceOriginal", typeof(IEnumerable<IAutoDropItem>), typeof(SupportAutoComplete), null);
-        public IEnumerable<IAutoDropItem> ItemsSourceOriginal
-        {
-            get { return (IEnumerable<IAutoDropItem>)GetValue(ItemsSourceOriginalProperty); }
-            set { SetValue(ItemsSourceOriginalProperty, value); }
-        }
-
-        public static readonly BindableProperty ItemSelecetedEventProperty = BindableProperty.Create("ItemSelecetedEvent", typeof(Action<int>), typeof(SupportAutoComplete));
-        public Action<int> ItemSelecetedEvent
-        {
-            get { return (Action<int>)GetValue(ItemSelecetedEventProperty); }
-            set { SetValue(ItemSelecetedEventProperty, value); }
-        }
-
         public static readonly BindableProperty SetItemSelectionProperty = BindableProperty.Create("SetItemSelection", typeof(Action<int>), typeof(SupportAutoComplete));
         public Action<int> SetItemSelection
         {
@@ -80,46 +49,11 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(InvalidCornerColorProperty, value);
         }
 
-        public static readonly BindableProperty SeperatorColorProperty = BindableProperty.Create("SeperatorColor", typeof(Color), typeof(SupportAutoComplete), Color.FromHex("#f1f1f1"));
-        public Color SeperatorColor
-        {
-            get => (Color)GetValue(SeperatorColorProperty);
-            set => SetValue(SeperatorColorProperty, value);
-        }
-
-        public static readonly BindableProperty TextColorProperty = BindableProperty.Create("TextColor", typeof(Color), typeof(SupportAutoComplete), Color.Black);
-        public Color TextColor
-        {
-            get => (Color)GetValue(TextColorProperty);
-            set => SetValue(TextColorProperty, value);
-        }
-
-        public static readonly BindableProperty DescriptionTextColorProperty = BindableProperty.Create("DescriptionTextColor", typeof(Color), typeof(SupportAutoComplete), Color.DarkGray);
-        public Color DescriptionTextColor
-        {
-            get => (Color)GetValue(DescriptionTextColorProperty);
-            set => SetValue(DescriptionTextColorProperty, value);
-        }
-
-        public static readonly BindableProperty SeperatorHeightProperty = BindableProperty.Create("SeperatorHeight", typeof(int), typeof(SupportAutoComplete), 1);
-        public int SeperatorHeight
-        {
-            get => (int)GetValue(SeperatorHeightProperty);
-            set => SetValue(SeperatorHeightProperty, value);
-        }
-
         public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool), typeof(SupportAutoComplete), true);
         public bool IsValid
         {
             get => (bool)GetValue(IsValidProperty);
             set => SetValue(IsValidProperty, value);
-        }
-
-        public static readonly BindableProperty HasShadowProperty = BindableProperty.Create("HasShadow", typeof(bool), typeof(SupportAutoComplete), true);
-        public bool HasShadow
-        {
-            get => (bool)GetValue(HasShadowProperty);
-            set => SetValue(HasShadowProperty, value);
         }
 
         public static readonly BindableProperty NextViewProperty = BindableProperty.Create("NextView", typeof(View), typeof(SupportAutoComplete), null);
@@ -136,10 +70,17 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(ReturnTypeProperty, value);
         }
 
+        public static readonly BindableProperty IsWrapSourceProperty = BindableProperty.Create("IsWrapSource", typeof(bool), typeof(SupportAutoComplete), false);
+        public bool IsWrapSource
+        {
+            get => (bool)GetValue(IsWrapSourceProperty);
+            set => SetValue(IsWrapSourceProperty, value);
+        }
+
         public event EventHandler TextInputCompleted;
         public void InvokeCompleted()
         {
-            if (this.TextInputCompleted != null) 
+            if (this.TextInputCompleted != null)
                 this.TextInputCompleted.Invoke(this, null);
         }
 
@@ -184,54 +125,51 @@ namespace SupportWidgetXF.Widgets
         public event EventHandler<TextChangedEventArgs> TextChangeFinished;
         public void SendTextChangeFinished(string finishText)
         {
-            if (TextChangeFinished != null)
-                TextChangeFinished?.Invoke(this, new TextChangedEventArgs(finishText, finishText));
+            if (IsWrapSource)
+            {
+                if (TextChangeFinished != null)
+                    TextChangeFinished?.Invoke(this, new TextChangedEventArgs(finishText, finishText));
+            }
             else
+            {
                 RunFilterAutocomplete(finishText);
+            }
         }
 
-        private CancellationTokenSource tokenSearch;
         private void RunFilterAutocomplete(string text)
         {
-            ItemsSourceOriginal = null;
+            ItemsSourceDisplay = null;
 
-            if (tokenSearch != null)
-                tokenSearch.Cancel();
-            tokenSearch = new CancellationTokenSource();
-
-            if (text != null)
+            if (text != null && ItemsSource != null)
             {
-                //Task.Run(() =>
-                //{
-                //    var key = text.ToLower();
-                //    var result = ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
-                //    ItemsSourceOriginal = result;
-                //}, tokenSearch.Token);
-
                 var key = text.ToLower();
                 var result = ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
-                ItemsSourceOriginal = result;
+                ItemsSourceDisplay = result;
             }
         }
 
         protected override void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-            if (propertyName == IsValidProperty.PropertyName)
+            if (propertyName.Equals(IsValidProperty.PropertyName))
             {
                 if (!IsValid)
                     CurrentCornerColor = InvalidCornerColor;
             }
-            else if (propertyName == TextProperty.PropertyName)
+            else if (propertyName.Equals(TextProperty.PropertyName))
             {
                 if (!IsFocus)
                     SendTextChangeFinished(Text);
             }
-        }
-
-        public SupportAutoComplete()
-        {
-
+            else if (propertyName.Equals(ItemsSourceProperty.PropertyName))
+            {
+                if (IsWrapSource)
+                {
+                    var result = ItemsSource.ToList();
+                    ItemsSourceDisplay = null;
+                    ItemsSourceDisplay = result;
+                }
+            }
         }
     }
 }

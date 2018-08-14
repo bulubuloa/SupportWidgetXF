@@ -17,6 +17,10 @@ namespace DemoWidget
             bttAutocomplete.Clicked += async (sender, e) => {
                 await Navigation.PushAsync(new DemoAutoCompletePage());
             };
+
+            bttSupportEntry.Clicked += async (sender, e) => {
+                await Navigation.PushAsync(new DemoSupportEntryPageView());
+            };
         }
     }
 }

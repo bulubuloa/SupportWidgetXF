@@ -14,4 +14,19 @@ namespace SupportWidgetXF.Models.Widgets
     {
         SingleTitle, TitleWithDescription, IconAndTitle, FullTextAndIcon
     }
+
+    public enum SupportEntryVerticalTextAligment
+    {
+        Top, Center, Bottom
+    }
+
+    public enum SupportEntryDrawableInsideAligment
+    {
+        Left, Right
+    }
+
+    public enum SupportEntryCorner
+    {
+        None, UnderLine, Border
+    }
 }

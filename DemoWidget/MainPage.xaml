@@ -9,10 +9,10 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Text="Auto Complete" />
-            <Button x:Name="bttBar"
+            <Button x:Name="bttSupportEntry"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Text="Bar Chart" />
+                    Text="Support Entry" />
             <Button x:Name="bttCandle"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"

@@ -13,5 +13,9 @@
     <Folder Include="Models\Widgets\" />
     <Folder Include="Behaviors\" />
     <Folder Include="Widgets\Interface\" />
+    <Folder Include="DependencyService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Widgets\SupportAutoCompleteAsync.cs" />
   </ItemGroup>
 </Project>

@@ -11,26 +11,35 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="10">
+            <widget:SupportDropList HeightRequest="40"
+                                    HorizontalOptions="FillAndExpand"
+                                    CornerColor="Green"
+                                    CornerRadius="5"
+                                    CornerWidth="1"
+                                    DropMode="FullTextAndIcon"
+                                    ItemsSource="{Binding ItemDemo}"
+                                    Text="Select character" />
+
             <Label Margin="0,20,0,0" Text="Title with Icon with description with data from api" />
             <Grid>
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-
-                <widget:SupportAutoCompleteAsync HeightRequest="40"
-                                                 HorizontalOptions="FillAndExpand"
-                                                 CornerColor="Green"
-                                                 CornerRadius="5"
-                                                 CornerWidth="1"
-                                                 DropMode="FullTextAndIcon"
-                                                 ItemsSource="{Binding ItemDemoAsync}"
-                                                 Placeholder="type here">
-                    <widget:SupportAutoCompleteAsync.Behaviors>
+                <widget:SupportAutoComplete HeightRequest="40"
+                                            HorizontalOptions="FillAndExpand"
+                                            CornerColor="Green"
+                                            CornerRadius="5"
+                                            CornerWidth="1"
+                                            DropMode="FullTextAndIcon"
+                                            IsWrapSource="true"
+                                            ItemsSource="{Binding ItemDemoAsync}"
+                                            Placeholder="type here">
+                    <widget:SupportAutoComplete.Behaviors>
                         <behaviors:EventToCommandBehavior Command="{Binding AutocompleteTextChanged}"
                                                           EventArgsConverter="{StaticResource BehaviorsEventConverter}"
                                                           EventName="TextChangeFinished" />
-                    </widget:SupportAutoCompleteAsync.Behaviors>
-                </widget:SupportAutoCompleteAsync>
+                    </widget:SupportAutoComplete.Behaviors>
+                </widget:SupportAutoComplete>
 
                 <ActivityIndicator WidthRequest="40"
                                    HeightRequest="40"

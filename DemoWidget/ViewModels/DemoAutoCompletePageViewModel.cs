@@ -30,6 +30,11 @@ namespace DemoWidget.ViewModels
             return YouDefineTitle;
         }
 
+        public Action IF_GetAction()
+        {
+            return null;
+        }
+
         public YourClass(string _title)
         {
             YouDefineTitle = _title;

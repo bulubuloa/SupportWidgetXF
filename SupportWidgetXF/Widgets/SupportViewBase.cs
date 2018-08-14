@@ -1,4 +1,5 @@
 ﻿using System;
+using SupportWidgetXF.DependencyService;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
@@ -33,12 +34,12 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(FontSizeProperty, value); }
         }
 
-        //public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create("FontFamily", typeof(string), typeof(SupportViewBase), DependencyService.Get<IFont>().IF_GetDefaultFontFamily());
-        //public string FontFamily
-        //{
-        //    get { return (string)GetValue(FontFamilyProperty); }
-        //    set { SetValue(FontFamilyProperty, value); }
-        //}
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create("FontFamily", typeof(string), typeof(SupportViewBase), Xamarin.Forms.DependencyService.Get<IFont>().IF_GetDefaultFontFamily());
+        public string FontFamily
+        {
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
+        }
 
         public static readonly BindableProperty IsFocusProperty = BindableProperty.Create("IsFocus", typeof(bool), typeof(SupportViewBase), false);
         public bool IsFocus
