@@ -302,6 +302,7 @@ namespace DemoWidget.Droid
 			global::SupportWidgetXF.Droid.Resource.Attribute.state_above_anchor = global::DemoWidget.Droid.Resource.Attribute.state_above_anchor;
 			global::SupportWidgetXF.Droid.Resource.Attribute.state_collapsed = global::DemoWidget.Droid.Resource.Attribute.state_collapsed;
 			global::SupportWidgetXF.Droid.Resource.Attribute.state_collapsible = global::DemoWidget.Droid.Resource.Attribute.state_collapsible;
+			global::SupportWidgetXF.Droid.Resource.Attribute.state_validate_pass = global::DemoWidget.Droid.Resource.Attribute.state_validate_pass;
 			global::SupportWidgetXF.Droid.Resource.Attribute.statusBarBackground = global::DemoWidget.Droid.Resource.Attribute.statusBarBackground;
 			global::SupportWidgetXF.Droid.Resource.Attribute.statusBarScrim = global::DemoWidget.Droid.Resource.Attribute.statusBarScrim;
 			global::SupportWidgetXF.Droid.Resource.Attribute.subMenuArrow = global::DemoWidget.Droid.Resource.Attribute.subMenuArrow;
@@ -2116,6 +2117,8 @@ namespace DemoWidget.Droid
 			global::SupportWidgetXF.Droid.Resource.Styleable.Toolbar_titleMargins = global::DemoWidget.Droid.Resource.Styleable.Toolbar_titleMargins;
 			global::SupportWidgetXF.Droid.Resource.Styleable.Toolbar_titleTextAppearance = global::DemoWidget.Droid.Resource.Styleable.Toolbar_titleTextAppearance;
 			global::SupportWidgetXF.Droid.Resource.Styleable.Toolbar_titleTextColor = global::DemoWidget.Droid.Resource.Styleable.Toolbar_titleTextColor;
+			global::SupportWidgetXF.Droid.Resource.Styleable.ValidateState = global::DemoWidget.Droid.Resource.Styleable.ValidateState;
+			global::SupportWidgetXF.Droid.Resource.Styleable.ValidateState_state_validate_pass = global::DemoWidget.Droid.Resource.Styleable.ValidateState_state_validate_pass;
 			global::SupportWidgetXF.Droid.Resource.Styleable.View = global::DemoWidget.Droid.Resource.Styleable.View;
 			global::SupportWidgetXF.Droid.Resource.Styleable.View_android_focusable = global::DemoWidget.Droid.Resource.Styleable.View_android_focusable;
 			global::SupportWidgetXF.Droid.Resource.Styleable.View_android_theme = global::DemoWidget.Droid.Resource.Styleable.View_android_theme;
@@ -3076,6 +3079,9 @@ namespace DemoWidget.Droid
 			
 			// aapt resource value: 0x7f01011a
 			public const int state_collapsible = 2130772250;
+			
+			// aapt resource value: 0x7f010173
+			public const int state_validate_pass = 2130772339;
 			
 			// aapt resource value: 0x7f010132
 			public const int statusBarBackground = 2130772274;
@@ -9582,6 +9588,12 @@ namespace DemoWidget.Droid
 			
 			// aapt resource value: 27
 			public const int Toolbar_titleTextColor = 27;
+			
+			public static int[] ValidateState = new int[] {
+					2130772339};
+			
+			// aapt resource value: 0
+			public const int ValidateState_state_validate_pass = 0;
 			
 			public static int[] View = new int[] {
 					16842752,

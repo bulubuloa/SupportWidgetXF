@@ -11,15 +11,6 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="10">
-            <widget:SupportDropList HeightRequest="40"
-                                    HorizontalOptions="FillAndExpand"
-                                    CornerColor="Green"
-                                    CornerRadius="5"
-                                    CornerWidth="1"
-                                    DropMode="FullTextAndIcon"
-                                    ItemsSource="{Binding ItemDemo}"
-                                    Text="Select character" />
-
             <Label Margin="0,20,0,0" Text="Title with Icon with description with data from api" />
             <Grid>
                 <Grid.RowDefinitions>
@@ -37,7 +28,7 @@
                     <widget:SupportAutoComplete.Behaviors>
                         <behaviors:EventToCommandBehavior Command="{Binding AutocompleteTextChanged}"
                                                           EventArgsConverter="{StaticResource BehaviorsEventConverter}"
-                                                          EventName="TextChangeFinished" />
+                                                          EventName="OnTextChanged" />
                     </widget:SupportAutoComplete.Behaviors>
                 </widget:SupportAutoComplete>
 
@@ -55,29 +46,11 @@
             <widget:SupportAutoComplete HeightRequest="40"
                                         HorizontalOptions="FillAndExpand"
                                         CornerColor="Green"
+                                        FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
+                                        IsValid="{Binding IsValidSingle}"
                                         DropMode="SingleTitle"
-                                        ItemsSource="{Binding ItemDemo}"
-                                        Placeholder="type here" />
-
-            <Label Margin="0,20,0,0" Text="Title with description" />
-            <widget:SupportAutoComplete HeightRequest="40"
-                                        HorizontalOptions="FillAndExpand"
-                                        CornerColor="Green"
-                                        CornerRadius="5"
-                                        CornerWidth="1"
-                                        DropMode="TitleWithDescription"
-                                        ItemsSource="{Binding ItemDemo}"
-                                        Placeholder="type here" />
-
-            <Label Margin="0,20,0,0" Text="Title with Icon" />
-            <widget:SupportAutoComplete HeightRequest="40"
-                                        HorizontalOptions="FillAndExpand"
-                                        CornerColor="Green"
-                                        CornerRadius="5"
-                                        CornerWidth="1"
-                                        DropMode="IconAndTitle"
                                         ItemsSource="{Binding ItemDemo}"
                                         Placeholder="type here" />
 
@@ -85,6 +58,7 @@
             <widget:SupportAutoComplete HeightRequest="40"
                                         HorizontalOptions="FillAndExpand"
                                         CornerColor="Green"
+                                        FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
                                         DropMode="FullTextAndIcon"

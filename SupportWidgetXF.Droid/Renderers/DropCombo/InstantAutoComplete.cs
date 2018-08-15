@@ -35,6 +35,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         {
         }
 
+
         public override bool EnoughToFilter()
         {
             return true;

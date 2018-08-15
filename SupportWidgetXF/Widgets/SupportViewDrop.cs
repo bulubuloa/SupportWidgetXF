@@ -28,13 +28,6 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(ItemsSourceDisplayProperty, value); }
         }
 
-        public static readonly BindableProperty ItemSelecetedEventProperty = BindableProperty.Create("ItemSelecetedEvent", typeof(Action<int>), typeof(SupportViewDrop));
-        public Action<int> ItemSelecetedEvent
-        {
-            get { return (Action<int>)GetValue(ItemSelecetedEventProperty); }
-            set { SetValue(ItemSelecetedEventProperty, value); }
-        }
-
         public static readonly BindableProperty HasShadowProperty = BindableProperty.Create("HasShadow", typeof(bool), typeof(SupportViewDrop), false);
         public bool HasShadow
         {

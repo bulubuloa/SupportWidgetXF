@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Linq;
+using System.Runtime.CompilerServices;
+using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -7,12 +9,9 @@ namespace SupportWidgetXF.Widgets
 {
     public class SupportAutoComplete : SupportViewDrop
     {
-        public static readonly BindableProperty SetItemSelectionProperty = BindableProperty.Create("SetItemSelection", typeof(Action<int>), typeof(SupportAutoComplete));
-        public Action<int> SetItemSelection
-        {
-            get { return (Action<int>)GetValue(SetItemSelectionProperty); }
-            set { SetValue(SetItemSelectionProperty, value); }
-        }
+        /*
+         * Properties
+         */
 
         public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create("Placeholder", typeof(string), typeof(SupportAutoComplete), "");
         public string Placeholder
@@ -77,63 +76,46 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(IsWrapSourceProperty, value);
         }
 
-        public event EventHandler TextInputCompleted;
-        public void InvokeCompleted()
-        {
-            if (this.TextInputCompleted != null)
-                this.TextInputCompleted.Invoke(this, null);
-        }
+        /*
+         * Function
+         */
 
-        public void OnInputCompleted()
-        {
-            NextView?.Focus();
-        }
 
-        public void RunReturnAction()
-        {
-            var type = ReturnType;
-            switch (type)
-            {
-                case SupportEntryReturnType.Go:
-                    InvokeCompleted();
-                    break;
-                case SupportEntryReturnType.Next:
-                    OnInputCompleted();
-                    break;
-                case SupportEntryReturnType.Send:
-                    InvokeCompleted();
-                    break;
-                case SupportEntryReturnType.Search:
-                    InvokeCompleted();
-                    break;
-                case SupportEntryReturnType.Done:
-                    InvokeCompleted();
-                    break;
-                default:
-                    InvokeCompleted();
-                    break;
-            }
-        }
+        /*
+         * Event
+         */
+        public event EventHandler<TextChangedEventArgs> OnTextChanged;
+        public event EventHandler OnReturnKeyClicked;
+        public event EventHandler<IntegerEventArgs> OnItemSelected;
+        public event EventHandler<FocusEventArgs> OnTextFocused;
 
-        public event EventHandler<FocusEventArgs> AutocompleteFocused;
-        public void SendAutocompleteFocused(bool _IsFocus)
-        {
-            IsFocus = _IsFocus;
-            AutocompleteFocused?.Invoke(this, new FocusEventArgs(this, IsFocus));
-        }
-
-        public event EventHandler<TextChangedEventArgs> TextChangeFinished;
-        public void SendTextChangeFinished(string finishText)
+        public void SendOnTextChanged(string text)
         {
             if (IsWrapSource)
             {
-                if (TextChangeFinished != null)
-                    TextChangeFinished?.Invoke(this, new TextChangedEventArgs(finishText, finishText));
+                OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
             }
             else
             {
-                RunFilterAutocomplete(finishText);
+                RunFilterAutocomplete(text);
             }
+        }
+
+        public void SendOnReturnKeyClicked()
+        {
+            NextView?.Focus();
+            OnReturnKeyClicked?.Invoke(this,null);
+        }
+
+        public void SendOnItemSelected(int position)
+        {
+            OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
+        }
+
+        public void SendOnTextFocused(bool hasFocus)
+        {
+            IsFocus = hasFocus;
+            OnTextFocused?.Invoke(this, new FocusEventArgs(this,hasFocus));
         }
 
         private void RunFilterAutocomplete(string text)
@@ -148,7 +130,7 @@ namespace SupportWidgetXF.Widgets
             }
         }
 
-        protected override void OnPropertyChanged([System.Runtime.CompilerServices.CallerMemberName] string propertyName = null)
+        protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
             if (propertyName.Equals(IsValidProperty.PropertyName))
@@ -159,7 +141,7 @@ namespace SupportWidgetXF.Widgets
             else if (propertyName.Equals(TextProperty.PropertyName))
             {
                 if (!IsFocus)
-                    SendTextChangeFinished(Text);
+                    SendOnTextChanged(Text);
             }
             else if (propertyName.Equals(ItemsSourceProperty.PropertyName))
             {

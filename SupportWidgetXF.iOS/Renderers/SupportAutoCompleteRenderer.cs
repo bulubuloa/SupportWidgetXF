@@ -13,10 +13,6 @@ namespace SupportWidgetXF.iOS.Renderers
 {
     public class SupportAutoCompleteRenderer : SupportDropRenderer<SupportAutoComplete>
     {
-        public SupportAutoCompleteRenderer()
-        {
-        }
-
         public override void OnInitializeTextField()
         {
             base.OnInitializeTextField();
@@ -30,7 +26,7 @@ namespace SupportWidgetXF.iOS.Renderers
             textField.ShouldBeginEditing += Wrapper_ShouldBeginEditing;
             textField.ShouldReturn += (textField) =>
             {
-                SupportView.RunReturnAction();
+                SupportView.SendOnReturnKeyClicked();
                 return true;
             };
             textField.InitlizeReturnKey(SupportView.ReturnType);
@@ -41,11 +37,11 @@ namespace SupportWidgetXF.iOS.Renderers
             var textFieldInput = sender as UITextField;
             if (!string.IsNullOrEmpty(textFieldInput.Text) && textFieldInput.Text.Length > 1)
             {
-                SupportView.SendTextChangeFinished(textFieldInput.Text);
+                SupportView.SendOnTextChanged(textFieldInput.Text);
             }
             else
             {
-                SupportView.SendTextChangeFinished(null);
+                SupportView.SendOnTextChanged(null);
             }
         }
 
@@ -54,7 +50,7 @@ namespace SupportWidgetXF.iOS.Renderers
             SupportView.IsValid = true;
             SupportView.CurrentCornerColor = SupportView.FocusCornerColor != Color.Default ? SupportView.FocusCornerColor : SupportView.CornerColor;
             textFieldInput.Layer.BorderColor = SupportView.CurrentCornerColor.ToCGColor();
-            SupportView.SendAutocompleteFocused(true);
+            SupportView.SendOnTextFocused(true);
             return true;
         }
 
@@ -62,7 +58,7 @@ namespace SupportWidgetXF.iOS.Renderers
         {
             HideData();
             ResetCornerColor();
-            SupportView.SendAutocompleteFocused(false);
+            SupportView.SendOnTextFocused(false);
             return true;
         }
 

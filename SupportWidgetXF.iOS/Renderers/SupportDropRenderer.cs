@@ -43,8 +43,6 @@ namespace SupportWidgetXF.iOS.Renderers
         {
             ShowData();
             textField.Text = SupportItemList[position].IF_GetTitle();
-            if (SupportView.ItemSelecetedEvent != null)
-                SupportView.ItemSelecetedEvent.Invoke(position);
         }
 
         public virtual void OnInitializeTextField()

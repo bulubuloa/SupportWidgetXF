@@ -1,32 +1,19 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/Views/DemoAutoCompletePage.xaml">
     <Files>
-      <File FileName="SupportWidgetXF/Widgets/SupportViewBase.cs" Line="24" Column="33" />
-      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="13" Column="10" />
-      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="87" Column="39" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="6" Column="1" />
-      <File FileName="SupportWidgetXF/Widgets/SupportActionMenu.cs" Line="26" Column="10" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="24" Column="10" />
-      <File FileName="SupportWidgetXF.iOS/iFontExtend.cs" Line="8" Column="2" />
-      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="21" Column="16" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteAsyncRenderer.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="58" Column="43" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportEntryRenderer.cs" Line="15" Column="38" NotebookId="1" />
-      <File FileName="DemoWidget/Views/DemoSupportEntryPageView.xaml" Line="22" Column="1" NotebookId="1" />
-      <File FileName="DemoWidget/Views/DemoSupportEntryPageView.xaml.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="DemoWidget/MainPage.xaml" Line="43" Column="15" NotebookId="1" />
-      <File FileName="DemoWidget/MainPage.xaml.cs" Line="13" Column="26" NotebookId="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs" Line="67" Column="48" NotebookId="1" />
-      <File FileName="SupportWidgetXF/Models/ObjectEventArgs.cs" Line="13" Column="2" NotebookId="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportActionMenuRenderer.cs" Line="22" Column="35" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemSource.cs" Line="32" Column="105" NotebookId="1" />
-      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="8" Column="33" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemFullTextIcon.cs" Line="47" Column="39" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemIconTitle.cs" Line="45" Column="39" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemSingleTitle.cs" Line="30" Column="91" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemTitleDescription.cs" Line="56" Column="2" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="30" Column="81" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs" Line="37" Column="49" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="10" Column="49" />
+      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="66" Column="2" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="78" Column="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="56" Column="50" />
+      <File FileName="DemoWidget/Views/DemoSupportEntryPageView.xaml" Line="22" Column="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="19" Column="9" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Resources/values/attrs.xml" Line="6" Column="13" NotebookId="1" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="48" Column="60" NotebookId="1" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="5" Column="30" NotebookId="1" />
+      <File FileName="DemoWidget.iOS/Main.cs" Line="21" Column="1" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="41" Column="9" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="73" Column="10" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -38,9 +25,16 @@
                   <Node name="PackageDependencies" expanded="True" />
                 </Node>
                 <Node name="ViewModels" expanded="True" />
-                <Node name="Views" expanded="True" />
+                <Node name="Views" expanded="True">
+                  <Node name="DemoAutoCompletePage.xaml" selected="True" />
+                </Node>
                 <Node name="App.xaml" expanded="True" />
                 <Node name="MainPage.xaml" expanded="True" />
+              </Node>
+              <Node name="DemoWidget.Android" expanded="True">
+                <Node name="Resources" expanded="True">
+                  <Node name="values" expanded="True" />
+                </Node>
               </Node>
               <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
@@ -56,12 +50,16 @@
                 </Node>
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True" />
+                <Node name="Renderers" expanded="True">
+                  <Node name="DropCombo" expanded="True" />
+                </Node>
+                <Node name="Resources" expanded="True">
+                  <Node name="values" expanded="True" />
+                </Node>
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
                   <Node name="DropCombo" expanded="True" />
-                  <Node name="SupportDropRenderer.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -73,16 +71,11 @@
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" relfile="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" line="73" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" relfile="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" line="78" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" relfile="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" line="106" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" relfile="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" line="117" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" relfile="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" line="82" column="1" />
+      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" relfile="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" line="116" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>

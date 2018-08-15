@@ -89,10 +89,34 @@ namespace DemoWidget.ViewModels
             }
         }
 
+        private bool _IsValidSingle;
+        public bool IsValidSingle
+        {
+            get => _IsValidSingle;
+            set
+            {
+                _IsValidSingle = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private int _ItemSelectedPosition;
+        public int ItemSelectedPosition
+        {
+            get => _ItemSelectedPosition;
+            set
+            {   
+                _ItemSelectedPosition = value;
+                OnPropertyChanged();
+            }
+        }
+
         public ICommand AddItemToSourceCommand => new Command(OnAddItemToSourceCommand);
         private void OnAddItemToSourceCommand()
         {
-            ItemDemo.Add(new YourClass("Ben Affleck", "BatMan - DC Universe", "dc"));
+            //ItemDemo.Add(new YourClass("Ben Affleck", "BatMan - DC Universe", "dc"));
+            //IsValidSingle = false;
+            ItemSelectedPosition = 1;
         }
 
         private CancellationTokenSource tokenSearch;

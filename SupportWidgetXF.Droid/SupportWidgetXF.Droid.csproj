@@ -115,11 +115,13 @@
     <Compile Include="Renderers\DropCombo\DropItemAdapter.cs" />
     <Compile Include="ObjectExtensions.cs" />
     <Compile Include="SupportWidgetXFSetup.cs" />
-    <Compile Include="Renderers\SupportAutoCompleteAsyncRenderer.cs" />
     <Compile Include="Renderers\DropCombo\DropItemAdapterAsync.cs" />
     <Compile Include="Renderers\DropCombo\InstantAutoComplete.cs" />
     <Compile Include="Renderers\SupportEntryRenderer.cs" />
     <Compile Include="Renderers\SupportActionMenuRenderer.cs" />
+    <Compile Include="iFontExtend.cs" />
+    <Compile Include="SpecAndroid.cs" />
+    <Compile Include="Renderers\SupportDropRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -131,6 +133,7 @@
     <AndroidResource Include="Resources\layout\layout_title_and_description.axml" />
     <AndroidResource Include="Resources\layout\layout_title_and_icon.axml" />
     <AndroidResource Include="Resources\layout\layout_full_text_and_icon.axml" />
+    <AndroidResource Include="Resources\values\attrs.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

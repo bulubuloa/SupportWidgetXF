@@ -887,6 +887,9 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f010105
 			public static int state_collapsible = 2130772229;
 			
+			// aapt resource value: 0x7f010155
+			public static int state_validate_pass = 2130772309;
+			
 			// aapt resource value: 0x7f01011d
 			public static int statusBarBackground = 2130772253;
 			
@@ -6942,6 +6945,12 @@ namespace SupportWidgetXF.Droid
 			
 			// aapt resource value: 27
 			public static int Toolbar_titleTextColor = 27;
+			
+			public static int[] ValidateState = new int[] {
+					2130772309};
+			
+			// aapt resource value: 0
+			public static int ValidateState_state_validate_pass = 0;
 			
 			public static int[] View = new int[] {
 					16842752,
