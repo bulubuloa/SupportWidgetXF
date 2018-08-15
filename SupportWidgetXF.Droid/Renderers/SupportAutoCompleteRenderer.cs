@@ -15,8 +15,6 @@ namespace SupportWidgetXF.Droid.Renderers
 {
     public class SupportAutoCompleteRenderer : SupportDropRenderer<SupportAutoComplete,AutoCompleteTextView>
     {
-        private StateListDrawable stateListDrawable;
-
         public SupportAutoCompleteRenderer(Context context) : base(context)
         {
         }
@@ -24,27 +22,10 @@ namespace SupportWidgetXF.Droid.Renderers
         protected override void OnInitializeBorderView()
         {
             base.OnInitializeBorderView();
-
-            stateListDrawable = new StateListDrawable();
-
-            var selected = new GradientDrawable();
-            selected.SetStroke((int)SupportView.CornerWidth, SupportView.FocusCornerColor.ToAndroid());
-            selected.SetShape(ShapeType.Rectangle);
-            selected.SetCornerRadius((float)SupportView.CornerRadius);
-
-            var unSelected = new GradientDrawable();
-            unSelected.SetStroke((int)SupportView.CornerWidth, SupportView.CornerColor.ToAndroid());
-            unSelected.SetShape(ShapeType.Rectangle);
-            unSelected.SetCornerRadius((float)SupportView.CornerRadius);
-
-            var validSelected = new GradientDrawable();
-            validSelected.SetStroke((int)SupportView.CornerWidth, SupportView.InvalidCornerColor.ToAndroid());
-            validSelected.SetShape(ShapeType.Rectangle);
-            validSelected.SetCornerRadius((float)SupportView.CornerRadius);
-
-            stateListDrawable.AddState(new int[] { Android.Resource.Attribute.StateFocused }, selected);
-            stateListDrawable.AddState(new int[] { SupportWidgetXF.Droid.Resource.Attribute.state_validate_pass }, unSelected);
-            stateListDrawable.AddState(new int[] { }, unSelected);
+            gradientDrawable = new GradientDrawable();
+            gradientDrawable.SetStroke((int)SupportView.CornerWidth, SupportView.CornerColor.ToAndroid());
+            gradientDrawable.SetShape(ShapeType.Rectangle);
+            gradientDrawable.SetCornerRadius((float)SupportView.CornerRadius);
         }
 
         protected override void OnInitializeOriginalView()
@@ -54,11 +35,11 @@ namespace SupportWidgetXF.Droid.Renderers
             OriginalView.SetSingleLine(true);
             if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
             {
-                OriginalView.SetBackgroundDrawable(stateListDrawable);
+                OriginalView.SetBackgroundDrawable(gradientDrawable);
             }
             else
             {
-                OriginalView.SetBackground(stateListDrawable);
+                OriginalView.SetBackground(gradientDrawable);
             }
             OriginalView.SetPadding((int)SupportView.PaddingInside, 0, (int)SupportView.PaddingInside, 0);
             OriginalView.TextSize = (float)SupportView.FontSize;
@@ -66,16 +47,23 @@ namespace SupportWidgetXF.Droid.Renderers
             OriginalView.TextAlignment = Android.Views.TextAlignment.Center;
             OriginalView.Typeface = SpecAndroid.CreateTypeface(Context, SupportView.FontFamily.Split('#')[0]);
             OriginalView.Hint = SupportView.Placeholder;
+            OriginalView.RequestFocusFromTouch();
+            OriginalView.FocusChange += OriginalView_FocusChange;
             OriginalView.InitlizeReturnKey(SupportView.ReturnType);
             OriginalView.EditorAction += (sender, ev) =>
             {
-                SupportView.RunReturnAction();
+                SupportView.SendOnReturnKeyClicked();
             };
         }
-
-        protected override void RefreshhAdapter()
+       
+        void OriginalView_FocusChange(object sender, FocusChangeEventArgs e)
         {
-            base.RefreshhAdapter();
+            SupportView.SendOnTextFocused(e.HasFocus);
+        }
+
+        protected override void OnInitializeAdapter()
+        {
+            base.OnInitializeAdapter();
             dropItemAdapter = new DropItemAdapter(Context, SupportItemList, SupportView, this);
             OriginalView.Adapter = dropItemAdapter;
         }
@@ -85,38 +73,34 @@ namespace SupportWidgetXF.Droid.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(nameof(SupportAutoComplete.CurrentCornerColor)))
             {
-                SetBorderColor();
+                gradientDrawable.SetStroke((int)SupportView.CornerWidth, SupportView.CurrentCornerColor.ToAndroid());
+                if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
+                {
+                    OriginalView.SetBackgroundDrawable(gradientDrawable);
+                }
+                else
+                {
+                    OriginalView.SetBackground(gradientDrawable);
+                }
             }
             else if (e.PropertyName.Equals(nameof(SupportViewBase.Text)))
             {
                 if (OriginalView != null)
                 {
-                    OriginalView.Text = SupportView.Text;
+                    OriginalView.SetText(SupportView.Text, false);
                 }
             }
-        }
-
-        private void SetBorderColor()
-        {
-            //gradientDrawable.SetStroke(1, supportAutoComplete.CurrentCornerColor.ToAndroid());
-            //if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
-            //{
-            //    autoCompleteTextView.SetBackgroundDrawable(gradientDrawable);
-            //}
-            //else
-            //{
-            //    autoCompleteTextView.SetBackground(gradientDrawable);
-            //}
         }
 
         public override void IF_ItemSelectd(int position)
         {
             base.IF_ItemSelectd(position);
-            var text = SupportItemList[position].IF_GetTitle();
-            SupportView.Text = text;
-            OriginalView.Text = text;
 
-            Task.Delay(50).ContinueWith(delegate
+            var text = ((DropItemAdapter)dropItemAdapter).items[position].IF_GetTitle();
+            OriginalView.SetText(text,false);
+            SupportView.Text = text;
+
+            Task.Delay(10).ContinueWith(delegate
             {
                 SupportWidgetXFSetup.Activity.RunOnUiThread(delegate
                 {
@@ -124,9 +108,6 @@ namespace SupportWidgetXF.Droid.Renderers
                     OriginalView.DismissDropDown();
                 });
             });
-
-            if (SupportView.ItemSelecetedEvent != null)
-                SupportView.ItemSelecetedEvent.Invoke(position);
         }
     }
 }

@@ -21,17 +21,17 @@ namespace SupportWidgetXF.iOS.Renderers
         protected UITableView tableView;
         protected UITextField textField;
         protected bool FlagShow = false;
+
         protected List<IAutoDropItem> SupportItemList = new List<IAutoDropItem>();
         protected DropItemSource dropSource;
 
-        public virtual void NotifyAdapterChanged()
+        public virtual void SyncItemSource()
         {
             SupportItemList.Clear();
-            if (SupportView.ItemsSourceDisplay != null)
+            if (SupportView.ItemsSource != null)
             {
-                SupportItemList.AddRange(SupportView.ItemsSourceDisplay.ToList());
+                SupportItemList.AddRange(SupportView.ItemsSource.ToList());
             }
-            tableView.ReloadData();
         }
 
         public virtual void OnInitialize()
@@ -42,7 +42,8 @@ namespace SupportWidgetXF.iOS.Renderers
         public virtual void IF_ItemSelectd(int position)
         {
             ShowData();
-            textField.Text = SupportItemList[position].IF_GetTitle();
+            var text = SupportItemList[position].IF_GetTitle();
+            SupportView.Text = text;
         }
 
         public virtual void OnInitializeTextField()
@@ -62,9 +63,12 @@ namespace SupportWidgetXF.iOS.Renderers
             tableView.AutoresizingMask = UIViewAutoresizing.All;
             tableView.Frame = textField.Frame;
             tableView.SeparatorColor = UIColor.Clear;
+        }
+
+        public virtual void OnInitializeTableSource()
+        {
             dropSource = new DropItemSource(SupportItemList, SupportView, HeightOfRow, this);
             tableView.Source = dropSource;
-            NotifyAdapterChanged();
         }
 
         public virtual void ShowData()
@@ -103,11 +107,6 @@ namespace SupportWidgetXF.iOS.Renderers
             else return GetCurrentWindow(view.Superview);
         }
 
-        public virtual void FinishInitialize()
-        {
-            
-        }
-
         public virtual void ShowSubviewAt(CGRect rect, UIView subView, Action didFinishAnimation)
         {
             float height = HeightOfRow * SupportItemList.Count();
@@ -134,8 +133,8 @@ namespace SupportWidgetXF.iOS.Renderers
                 {
                     OnInitializeTextField();
                     OnInitializeTableView();
+                    OnInitializeTableSource();
                     SetNativeControl(textField);
-                    FinishInitialize();
                 }
             }
         }
@@ -150,9 +149,9 @@ namespace SupportWidgetXF.iOS.Renderers
                     textField.Text = SupportView.Text;
                 }
             }
-            else if (e.PropertyName.Equals(SupportViewDrop.ItemsSourceDisplayProperty.PropertyName))
+            else if (e.PropertyName.Equals(SupportViewDrop.ItemsSourceProperty.PropertyName))
             {
-                NotifyAdapterChanged();
+                SyncItemSource();
             }
         }
 

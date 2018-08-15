@@ -111,12 +111,24 @@ namespace DemoWidget.ViewModels
             }
         }
 
+        private string _TextIt;
+        public string TextIt
+        {
+            get => _TextIt;
+            set
+            {
+                _TextIt = value;
+                OnPropertyChanged();
+            }
+        }
+
+
         public ICommand AddItemToSourceCommand => new Command(OnAddItemToSourceCommand);
         private void OnAddItemToSourceCommand()
         {
             //ItemDemo.Add(new YourClass("Ben Affleck", "BatMan - DC Universe", "dc"));
             //IsValidSingle = false;
-            ItemSelectedPosition = 1;
+            TextIt = "man";
         }
 
         private CancellationTokenSource tokenSearch;

@@ -122,6 +122,7 @@
     <Compile Include="iFontExtend.cs" />
     <Compile Include="SpecAndroid.cs" />
     <Compile Include="Renderers\SupportDropRenderer.cs" />
+    <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

@@ -68,14 +68,6 @@ namespace SupportWidgetXF.Widgets
             get => (SupportEntryReturnType)GetValue(ReturnTypeProperty);
             set => SetValue(ReturnTypeProperty, value);
         }
-
-        public static readonly BindableProperty IsWrapSourceProperty = BindableProperty.Create("IsWrapSource", typeof(bool), typeof(SupportAutoComplete), false);
-        public bool IsWrapSource
-        {
-            get => (bool)GetValue(IsWrapSourceProperty);
-            set => SetValue(IsWrapSourceProperty, value);
-        }
-
         /*
          * Function
          */
@@ -91,14 +83,7 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnTextChanged(string text)
         {
-            if (IsWrapSource)
-            {
-                OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
-            }
-            else
-            {
-                RunFilterAutocomplete(text);
-            }
+            OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
         }
 
         public void SendOnReturnKeyClicked()
@@ -115,19 +100,8 @@ namespace SupportWidgetXF.Widgets
         public void SendOnTextFocused(bool hasFocus)
         {
             IsFocus = hasFocus;
+            CurrentCornerColor = IsFocus ? FocusCornerColor : CornerColor;
             OnTextFocused?.Invoke(this, new FocusEventArgs(this,hasFocus));
-        }
-
-        private void RunFilterAutocomplete(string text)
-        {
-            ItemsSourceDisplay = null;
-
-            if (text != null && ItemsSource != null)
-            {
-                var key = text.ToLower();
-                var result = ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
-                ItemsSourceDisplay = result;
-            }
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -142,15 +116,6 @@ namespace SupportWidgetXF.Widgets
             {
                 if (!IsFocus)
                     SendOnTextChanged(Text);
-            }
-            else if (propertyName.Equals(ItemsSourceProperty.PropertyName))
-            {
-                if (IsWrapSource)
-                {
-                    var result = ItemsSource.ToList();
-                    ItemsSourceDisplay = null;
-                    ItemsSourceDisplay = result;
-                }
             }
         }
     }

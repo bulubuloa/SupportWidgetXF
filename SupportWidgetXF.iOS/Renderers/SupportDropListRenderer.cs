@@ -24,7 +24,6 @@ namespace SupportWidgetXF.iOS.Renderers
                 if (SupportView.ItemsSourceDisplay == null)
                 {
                     SupportView.OnDropListTouch();
-                    NotifyAdapterChanged();
                 }
                 ShowData(); 
             }));

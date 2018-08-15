@@ -16,21 +16,21 @@
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
-                <widget:SupportAutoComplete HeightRequest="40"
+                <widget:SupportSearchResultList HeightRequest="40"
                                             HorizontalOptions="FillAndExpand"
                                             CornerColor="Green"
+                                            FocusCornerColor="Purple"
                                             CornerRadius="5"
                                             CornerWidth="1"
                                             DropMode="FullTextAndIcon"
-                                            IsWrapSource="true"
                                             ItemsSource="{Binding ItemDemoAsync}"
                                             Placeholder="type here">
-                    <widget:SupportAutoComplete.Behaviors>
+                    <widget:SupportSearchResultList.Behaviors>
                         <behaviors:EventToCommandBehavior Command="{Binding AutocompleteTextChanged}"
                                                           EventArgsConverter="{StaticResource BehaviorsEventConverter}"
                                                           EventName="OnTextChanged" />
-                    </widget:SupportAutoComplete.Behaviors>
-                </widget:SupportAutoComplete>
+                    </widget:SupportSearchResultList.Behaviors>
+                </widget:SupportSearchResultList>
 
                 <ActivityIndicator WidthRequest="40"
                                    HeightRequest="40"
@@ -49,6 +49,7 @@
                                         FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
+                                        x:Name="singleTitle"
                                         IsValid="{Binding IsValidSingle}"
                                         DropMode="SingleTitle"
                                         ItemsSource="{Binding ItemDemo}"
@@ -61,12 +62,14 @@
                                         FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
+                                        Text="{Binding TextIt}"
                                         DropMode="FullTextAndIcon"
                                         ItemsSource="{Binding ItemDemo}"
                                         Placeholder="type here" />
 
 
             <Button Command="{Binding AddItemToSourceCommand}" Text="Add Item" />
+            <Button x:Name="dkm" Text="Add Item" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

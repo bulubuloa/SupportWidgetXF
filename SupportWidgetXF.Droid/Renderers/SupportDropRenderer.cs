@@ -16,6 +16,7 @@ namespace SupportWidgetXF.Droid.Renderers
     {
         protected TSupport SupportView;
         protected TOrignal OriginalView;
+        protected GradientDrawable gradientDrawable;
         protected ArrayAdapter dropItemAdapter;
         protected List<IAutoDropItem> SupportItemList = new List<IAutoDropItem>();
 
@@ -24,17 +25,22 @@ namespace SupportWidgetXF.Droid.Renderers
             
         }
 
-        protected virtual void RefreshhAdapter()
+        protected virtual void OnInitializeAdapter()
         {
+            
         }
 
-        protected virtual void NotifyAdapterChanged()
+        protected virtual void SyncItemSource()
         {
             SupportItemList.Clear();
             if (SupportView.ItemsSource != null)
             {
                 SupportItemList.AddRange(SupportView.ItemsSource.ToList());
             }
+        }
+
+        protected virtual void NotifyAdapterChanged()
+        {
             if (dropItemAdapter != null)
                 dropItemAdapter.NotifyDataSetChanged();
         }
@@ -57,8 +63,9 @@ namespace SupportWidgetXF.Droid.Renderers
                 SupportView = e.NewElement as TSupport;
                 OnInitializeBorderView();
                 OnInitializeOriginalView();
+                SyncItemSource();
+                OnInitializeAdapter();
                 NotifyAdapterChanged();
-                RefreshhAdapter();
                 SetNativeControl(OriginalView);
             }
         }
@@ -68,7 +75,8 @@ namespace SupportWidgetXF.Droid.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(nameof(SupportViewDrop.ItemsSource)))
             {
-                RefreshhAdapter();
+                SyncItemSource();
+                NotifyAdapterChanged();
             }
         }
 

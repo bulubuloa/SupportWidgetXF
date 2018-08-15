@@ -94,6 +94,7 @@
     <Compile Include="Renderers\SupportDropListRenderer.cs" />
     <Compile Include="iFontExtend.cs" />
     <Compile Include="Renderers\SupportDropRenderer.cs" />
+    <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

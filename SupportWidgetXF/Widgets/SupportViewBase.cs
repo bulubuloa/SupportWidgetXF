@@ -48,7 +48,7 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(IsFocusProperty, value); }
         }
 
-        public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(SupportViewBase), "");
+        public static readonly BindableProperty TextProperty = BindableProperty.Create("Text", typeof(string), typeof(SupportViewBase), "",BindingMode.TwoWay);
         public string Text
         {
             get { return (string)GetValue(TextProperty); }
