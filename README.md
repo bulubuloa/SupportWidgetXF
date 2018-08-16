@@ -20,11 +20,23 @@ Setup for Android project (add to MainActivity before LoadApplication)
  - SupportActionMenu
  - SupportBindableStackLayout
  - SupportSearchView
-
-
-### SupportAutoComplete
-SupportAutocomplete with 4 row templates (Single Title, Title With Description, Icon with Title, FullText with Icon and Autocomplete source from API)
-
-| SupportAutoComplete |ScreenShot  | 
-|--|--|
-| SupportAutocomplete with 4 row templates:- Single Title - Title With Description - Icon with Title - FullText with Icon - Autocomplete source from API | ![Alt Text](https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_autocomplete.gif) |
+  
+<table>
+	<tr>
+		<td>Controls</td>
+		<td>Screenshots</td>
+	</tr>
+	<tr>
+		<td>
+			<b>SupportAutocomplete</b> with 4 row templates: support binding Itemsource, etc..
+			<ul>
+				<li>Single Title</li>
+				<li>Title With Description</li>
+				<li>Icon with Title</li>
+				<lip>FullText with Icon</li>
+				<li>Autocomplete source from API</li>
+			</ul>
+		</td>
+		<td><img src="https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_autocomplete.gif" width="324" height="639" /></td>
+	</tr>
+</table>
