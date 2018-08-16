@@ -95,6 +95,7 @@
     <Compile Include="iFontExtend.cs" />
     <Compile Include="Renderers\SupportDropRenderer.cs" />
     <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
+    <Compile Include="Renderers\DropCombo\SupportCheckBoxiOS.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

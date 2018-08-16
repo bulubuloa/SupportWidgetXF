@@ -1,9 +1,7 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/DropCombo/SupportCheckBoxiOS.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="37" Column="23" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="155" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="110" Column="10" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/SupportCheckBoxiOS.cs" Line="5" Column="36" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,22 +12,14 @@
                 <Node name="Dependencies" expanded="True">
                   <Node name="PackageDependencies" expanded="True" />
                 </Node>
-                <Node name="ViewModels" expanded="True">
-                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
-                </Node>
-                <Node name="Views" expanded="True">
-                  <Node name="DemoAutoCompletePage.xaml" expanded="True" />
-                  <Node name="DemoDropListPageView.xaml" expanded="True" />
-                </Node>
-                <Node name="App.xaml" expanded="True" />
-                <Node name="MainPage.xaml" expanded="True" />
+                <Node name="ViewModels" expanded="True" />
+                <Node name="Views" expanded="True" />
               </Node>
               <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
                 <Node name="Behaviors" expanded="True" />
-                <Node name="DependencyService" expanded="True" />
                 <Node name="Models" expanded="True">
                   <Node name="Widgets" expanded="True" />
                 </Node>
@@ -45,7 +35,9 @@
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
-                  <Node name="DropCombo" expanded="True" />
+                  <Node name="DropCombo" expanded="True">
+                    <Node name="SupportCheckBoxiOS.cs" selected="True" />
+                  </Node>
                 </Node>
               </Node>
             </Node>
@@ -63,6 +55,4 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>
