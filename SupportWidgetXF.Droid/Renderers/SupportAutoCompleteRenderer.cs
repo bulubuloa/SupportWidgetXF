@@ -19,15 +19,6 @@ namespace SupportWidgetXF.Droid.Renderers
         {
         }
 
-        protected override void OnInitializeBorderView()
-        {
-            base.OnInitializeBorderView();
-            gradientDrawable = new GradientDrawable();
-            gradientDrawable.SetStroke((int)SupportView.CornerWidth, SupportView.CornerColor.ToAndroid());
-            gradientDrawable.SetShape(ShapeType.Rectangle);
-            gradientDrawable.SetCornerRadius((float)SupportView.CornerRadius);
-        }
-
         protected override void OnInitializeOriginalView()
         {
             base.OnInitializeOriginalView();

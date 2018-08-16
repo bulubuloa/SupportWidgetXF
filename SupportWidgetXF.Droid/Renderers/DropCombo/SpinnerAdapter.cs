@@ -1,29 +1,28 @@
 ﻿using System;
 using System.Collections.Generic;
 using Android.Content;
+using Android.Graphics.Drawables;
+using Android.OS;
 using Android.Views;
 using Android.Widget;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
-using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms.Platform.Android;
 
 namespace SupportWidgetXF.Droid.Renderers.DropCombo
 {
-    public class DropItemAdapterAsync : ArrayAdapter
+    public class SpinnerAdapter : ArrayAdapter
     {
         public List<IAutoDropItem> originalData, items;
         private Context mContext;
         private SupportViewDrop ConfigStyle;
-        private IDropItemSelected IDropItemSelected;
 
-        public DropItemAdapterAsync(Context context, List<IAutoDropItem> storeDataLst, SupportViewDrop _ConfigStyle, IDropItemSelected dropItemSelected) : base(context,0)
+        public SpinnerAdapter(Context context, List<IAutoDropItem> storeDataLst, SupportViewDrop _ConfigStyle) : base(context, 0)
         {
             originalData = storeDataLst;
             items = storeDataLst;
             mContext = context;
             ConfigStyle = _ConfigStyle;
-            IDropItemSelected = dropItemSelected;
         }
 
         public override int Count => items.Count;
@@ -71,11 +70,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
                 txtDescription.SetTextColor(ConfigStyle.DescriptionTextColor.ToAndroid());
             }
             txtSeperator.SetBackgroundColor(ConfigStyle.SeperatorColor.ToAndroid());
-
-            bttClick.Click += (sender, e) =>
-            {
-                IDropItemSelected.IF_ItemSelectd(position);
-            };
+            bttClick.Visibility = ViewStates.Gone;
 
             try
             {
@@ -98,9 +93,14 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
         public override View GetView(int position, View convertView, ViewGroup parent)
         {
             TextView txtTitle = null, txtDescription = null, txtSeperator = null;
-            ImageView imgIcon = null;
+            ImageView imgIcon = null, sort_down = null;
             Button bttClick;
             IAutoDropItem item = items[position];
+
+            var gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LeftRight,new int[]{Android.Graphics.Color.White,Android.Graphics.Color.White});
+            gradientDrawable.SetStroke((int)ConfigStyle.CornerWidth, ConfigStyle.CornerColor.ToAndroid());
+            gradientDrawable.SetShape(ShapeType.Rectangle);
+            gradientDrawable.SetCornerRadius((float)ConfigStyle.CornerRadius);
 
             if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
             {
@@ -125,19 +125,18 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             txtTitle = convertView.FindViewById<TextView>(Resource.Id.txtTitle);
             txtSeperator = convertView.FindViewById<TextView>(Resource.Id.txtSeperator);
             bttClick = convertView.FindViewById<Button>(Resource.Id.bttClick);
+            sort_down = convertView.FindViewById<ImageView>(Resource.Id.sortDown);
 
             txtTitle.Text = item.IF_GetTitle();
-            if(txtDescription!=null)
+            if (txtDescription != null)
             {
                 txtDescription.Text = item.IF_GetDescription();
                 txtDescription.SetTextColor(ConfigStyle.DescriptionTextColor.ToAndroid());
             }
-            txtSeperator.SetBackgroundColor(ConfigStyle.SeperatorColor.ToAndroid());
+            txtSeperator.SetBackgroundColor(Android.Graphics.Color.Transparent);
 
-            bttClick.Click += (sender, e) => 
-            {
-                IDropItemSelected.IF_ItemSelectd(position);
-            };
+            bttClick.Visibility = ViewStates.Gone;
+            sort_down.Visibility = ViewStates.Visible;
 
             try
             {
@@ -153,6 +152,14 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+            if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
+            {
+                convertView.SetBackgroundDrawable(gradientDrawable);
+            }
+            else
+            {
+                convertView.SetBackground(gradientDrawable);
             }
             return convertView;
         }

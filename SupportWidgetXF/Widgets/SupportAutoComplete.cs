@@ -12,7 +12,6 @@ namespace SupportWidgetXF.Widgets
         /*
          * Properties
          */
-
         public static readonly BindableProperty PlaceholderProperty = BindableProperty.Create("Placeholder", typeof(string), typeof(SupportAutoComplete), "");
         public string Placeholder
         {

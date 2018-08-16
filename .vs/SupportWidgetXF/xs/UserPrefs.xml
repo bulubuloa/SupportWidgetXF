@@ -1,14 +1,9 @@
-﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportSearchResultListRenderer.cs">
+﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="15" Column="18" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="60" Column="10" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" Line="25" Column="17" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="80" Column="26" NotebookId="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="20" Column="10" NotebookId="1" />
-      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="122" Column="2" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="1" Column="1" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportSearchResultListRenderer.cs" Line="14" Column="49" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="37" Column="23" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="155" Column="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="110" Column="10" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -19,13 +14,17 @@
                 <Node name="Dependencies" expanded="True">
                   <Node name="PackageDependencies" expanded="True" />
                 </Node>
-                <Node name="ViewModels" expanded="True" />
+                <Node name="ViewModels" expanded="True">
+                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
+                </Node>
                 <Node name="Views" expanded="True">
                   <Node name="DemoAutoCompletePage.xaml" expanded="True" />
+                  <Node name="DemoDropListPageView.xaml" expanded="True" />
                 </Node>
                 <Node name="App.xaml" expanded="True" />
                 <Node name="MainPage.xaml" expanded="True" />
               </Node>
+              <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
@@ -37,13 +36,16 @@
                 <Node name="Widgets" expanded="True" />
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True" />
-                <Node name="Resources" expanded="True" />
+                <Node name="Renderers" expanded="True">
+                  <Node name="DropCombo" expanded="True" />
+                </Node>
+                <Node name="Resources" expanded="True">
+                  <Node name="layout" expanded="True" />
+                </Node>
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
                   <Node name="DropCombo" expanded="True" />
-                  <Node name="SupportSearchResultListRenderer.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -54,10 +56,13 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" relfile="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" line="155" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>

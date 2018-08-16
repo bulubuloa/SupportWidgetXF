@@ -123,6 +123,8 @@
     <Compile Include="SpecAndroid.cs" />
     <Compile Include="Renderers\SupportDropRenderer.cs" />
     <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
+    <Compile Include="Renderers\SupportDropListRenderer.cs" />
+    <Compile Include="Renderers\DropCombo\SpinnerAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -135,6 +137,7 @@
     <AndroidResource Include="Resources\layout\layout_title_and_icon.axml" />
     <AndroidResource Include="Resources\layout\layout_full_text_and_icon.axml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\sort_down.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

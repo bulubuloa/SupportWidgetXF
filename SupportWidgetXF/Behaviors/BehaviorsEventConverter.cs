@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using SupportWidgetXF.Models;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Behaviors
@@ -11,6 +12,21 @@ namespace SupportWidgetXF.Behaviors
             if (value is TextChangedEventArgs)
             {
                 var textChanged = value as TextChangedEventArgs;
+                return textChanged;
+            }
+            else if (value is IntegerEventArgs)
+            {
+                var textChanged = value as IntegerEventArgs;
+                return textChanged;
+            }
+            else if (value is MultiIntegerEventArgs)
+            {
+                var textChanged = value as MultiIntegerEventArgs;
+                return textChanged;
+            }
+            else if (value is ObjectEventArgs)
+            {
+                var textChanged = value as ObjectEventArgs;
                 return textChanged;
             }
             throw new NotImplementedException();

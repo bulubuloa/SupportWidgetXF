@@ -9,11 +9,10 @@ namespace SupportWidgetXF.Widgets
 {
     public class SupportDropList : SupportViewDrop
     {
-        public SupportDropList()
-        {
-        }
-
-        public static readonly BindableProperty ItemSelectedPositionProperty = BindableProperty.Create("ItemSelectedPosition", typeof(int), typeof(SupportDropList), 0);
+        /*
+         * Properties
+         */
+        public static readonly BindableProperty ItemSelectedPositionProperty = BindableProperty.Create("ItemSelectedPosition", typeof(int), typeof(SupportDropList), 0,BindingMode.TwoWay);
         public int ItemSelectedPosition
         {
             get { return (int)GetValue(ItemSelectedPositionProperty); }
@@ -34,31 +33,31 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(IsAllowMultiSelectProperty, value); }
         }
 
-        public event EventHandler<IntegerEventArgs> ItemSelected;
-        public void SendItemSelected(int position)
+        /*
+         * Function
+         */
+
+
+        /*
+         * Event
+         */
+        public event EventHandler<IntegerEventArgs> OnItemSelected;
+        public event EventHandler<MultiIntegerEventArgs> OnMultiItemSelected;
+
+        public void SendOnItemSelected(int position)
         {
-            ItemSelected?.Invoke(this, new IntegerEventArgs(position));
+            ItemSelectedPosition = position;
+            OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
         }
 
-        public event EventHandler<MultiIntegerEventArgs> MultiItemSelected;
-        public void SendMultiItemSelected(IEnumerable<int> position)
+        public void SendOnMultiItemSelected(IEnumerable<int> position)
         {
-            MultiItemSelected?.Invoke(this, new MultiIntegerEventArgs(position));
-        }
-
-        public void OnDropListTouch()
-        {
-            ItemsSourceDisplay = ItemsSource;
+            OnMultiItemSelected?.Invoke(this, new MultiIntegerEventArgs(position));
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-            if (propertyName.Equals(ItemsSourceProperty.PropertyName))
-            {
-                SendItemSelected(ItemSelectedPosition);
-                SendMultiItemSelected(MultiItemSelectedPosition);
-            }
         }
     }
 }

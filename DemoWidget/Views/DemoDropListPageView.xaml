@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="DemoWidget.Views.DemoDropListPageView"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:behaviors="clr-namespace:SupportWidgetXF.Behaviors;assembly=SupportWidgetXF"
+             xmlns:widget="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <behaviors:BehaviorsEventConverter x:Key="BehaviorsEventConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="10">
+            <Label Margin="0,20,0,0" Text="DropList" />
+            <widget:SupportDropList HeightRequest="40"
+                                    HorizontalOptions="FillAndExpand"
+                                    CornerColor="Green"
+                                    CornerRadius="5"
+                                    CornerWidth="1"
+                                    DropMode="FullTextAndIcon"
+                                    ItemSelectedPosition="{Binding ItemSelectedPosition}"
+                                    ItemsSource="{Binding ItemDemo}">
+                <widget:SupportDropList.Behaviors>
+                    <behaviors:EventToCommandBehavior Command="{Binding TestOnItemSelected}"
+                                                      EventArgsConverter="{StaticResource BehaviorsEventConverter}"
+                                                      EventName="OnItemSelected" />
+                </widget:SupportDropList.Behaviors>
+            </widget:SupportDropList>
+
+            <Button Command="{Binding SetPositionCommand}" Text="Set Position" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

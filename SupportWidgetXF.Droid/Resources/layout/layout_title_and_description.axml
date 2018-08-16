@@ -29,6 +29,15 @@
         android:layout_alignParentBottom="true"
         android:layout_height="1dp"
         android:layout_width="match_parent" />
+    <ImageView
+        android:layout_marginRight="5dp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:id="@+id/sortDown"
+        android:src="@drawable/sort_down"
+        android:layout_centerVertical="true"
+        android:layout_height="11dp"
+        android:layout_width="11dp" />
     <Button
         android:layout_alignRight="@+id/layoutContent"
         android:layout_alignBottom="@+id/layoutContent"

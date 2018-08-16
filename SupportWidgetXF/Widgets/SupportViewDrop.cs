@@ -21,13 +21,6 @@ namespace SupportWidgetXF.Widgets
             set { SetValue(ItemsSourceProperty, value); }
         }
 
-        public static readonly BindableProperty ItemsSourceDisplayProperty = BindableProperty.Create("ItemsSourceDisplay", typeof(IEnumerable<IAutoDropItem>), typeof(SupportAutoComplete), null);
-        public IEnumerable<IAutoDropItem> ItemsSourceDisplay
-        {
-            get { return (IEnumerable<IAutoDropItem>)GetValue(ItemsSourceDisplayProperty); }
-            set { SetValue(ItemsSourceDisplayProperty, value); }
-        }
-
         public static readonly BindableProperty HasShadowProperty = BindableProperty.Create("HasShadow", typeof(bool), typeof(SupportViewDrop), false);
         public bool HasShadow
         {

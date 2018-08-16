@@ -13,10 +13,10 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Text="Support Entry" />
-            <Button x:Name="bttCandle"
+            <Button x:Name="bttDropList"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Text="Candle Stick Chart" />
+                    Text="Drop List" />
             <Button x:Name="bttCombined"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"

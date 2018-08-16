@@ -4,6 +4,7 @@ using System.Collections.ObjectModel;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -100,17 +101,7 @@ namespace DemoWidget.ViewModels
             }
         }
 
-        private int _ItemSelectedPosition;
-        public int ItemSelectedPosition
-        {
-            get => _ItemSelectedPosition;
-            set
-            {   
-                _ItemSelectedPosition = value;
-                OnPropertyChanged();
-            }
-        }
-
+       
         private string _TextIt;
         public string TextIt
         {
@@ -137,11 +128,12 @@ namespace DemoWidget.ViewModels
         {
             if (tokenSearch != null)
                 tokenSearch.Cancel();
-                tokenSearch = new CancellationTokenSource();
-        
+            tokenSearch = new CancellationTokenSource();
+
 
             IsSearching = true;
-            Task.Delay(2000).ContinueWith(delegate {
+            Task.Delay(2000).ContinueWith(delegate
+            {
                 //get something from API
 
                 var newResult = new List<IAutoDropItem>();
@@ -154,7 +146,31 @@ namespace DemoWidget.ViewModels
                 //plz set result by new source to refresh autocomplete
                 ItemDemoAsync = newResult;
                 IsSearching = false;
-            },tokenSearch.Token);
+            }, tokenSearch.Token);
+        }
+
+
+        public ICommand TestOnItemSelected => new Command<IntegerEventArgs>(OnTestOnItemSelected);
+        private void OnTestOnItemSelected(IntegerEventArgs eventArgs)
+        {
+            
+        }
+
+        private int _ItemSelectedPosition;
+        public int ItemSelectedPosition
+        {
+            get => _ItemSelectedPosition;
+            set
+            {
+                _ItemSelectedPosition = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public ICommand SetPositionCommand => new Command(OnSetPositionCommand);
+        private void OnSetPositionCommand()
+        {
+            ItemSelectedPosition = 1;
         }
 
         public DemoAutoCompletePageViewModel()

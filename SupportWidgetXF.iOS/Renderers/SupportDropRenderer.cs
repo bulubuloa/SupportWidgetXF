@@ -123,6 +123,11 @@ namespace SupportWidgetXF.iOS.Renderers
             }, didFinishAnimation);
         }
 
+        protected virtual void OnSetNativeControl()
+        {
+            SetNativeControl(textField);
+        }
+
         protected override void OnElementChanged(ElementChangedEventArgs<TSupport> e)
         {
             base.OnElementChanged(e);
@@ -133,8 +138,9 @@ namespace SupportWidgetXF.iOS.Renderers
                 {
                     OnInitializeTextField();
                     OnInitializeTableView();
+                    SyncItemSource();
                     OnInitializeTableSource();
-                    SetNativeControl(textField);
+                    OnSetNativeControl();
                 }
             }
         }

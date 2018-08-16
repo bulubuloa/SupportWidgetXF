@@ -111,6 +111,9 @@
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemIconTitle.xib" />
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemFullTextIcon.xib" />
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\sort_down%403x.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
 </Project>

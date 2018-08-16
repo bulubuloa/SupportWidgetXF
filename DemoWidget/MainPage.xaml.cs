@@ -21,6 +21,10 @@ namespace DemoWidget
             bttSupportEntry.Clicked += async (sender, e) => {
                 await Navigation.PushAsync(new DemoSupportEntryPageView());
             };
+
+            bttDropList.Clicked += async (sender, e) => {
+                await Navigation.PushAsync(new DemoDropListPageView());
+            };
         }
     }
 }

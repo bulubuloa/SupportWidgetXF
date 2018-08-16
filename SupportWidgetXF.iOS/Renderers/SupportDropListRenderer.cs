@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel;
 using CoreGraphics;
 using SupportWidgetXF.iOS.Renderers;
 using SupportWidgetXF.Widgets;
@@ -10,27 +11,19 @@ namespace SupportWidgetXF.iOS.Renderers
 {
     public class SupportDropListRenderer : SupportDropRenderer<SupportDropList>
     {
-        private UIView coverView;
-
-        public SupportDropListRenderer()
-        {
-        }
+        private UIView coverView, tapView;
 
         public override void OnInitializeTextField()
         {
             base.OnInitializeTextField();
 
-            textField.AddGestureRecognizer(new UITapGestureRecognizer(() => {
-                if (SupportView.ItemsSourceDisplay == null)
-                {
-                    SupportView.OnDropListTouch();
-                }
-                ShowData(); 
-            }));
+            tapView = new UIView();
+            tapView.Frame = this.Bounds;
+            tapView.AddGestureRecognizer(new UITapGestureRecognizer(() => { ShowData(); }));
 
             var arrow = new UIImageView();
             arrow.ContentMode = UIViewContentMode.ScaleAspectFit;
-            arrow.Image = UIImage.FromBundle("icn_droplist").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+            arrow.Image = UIImage.FromBundle("sort_down").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
             arrow.Frame = new CGRect(4, 4, 12, 12);
             var contentRight = new UIView(new CGRect(0, 0, 20, 20));
             contentRight.AddSubview(arrow);
@@ -39,6 +32,28 @@ namespace SupportWidgetXF.iOS.Renderers
             textField.LeftView = new UIView(new CGRect(0, 0, 5, 5));
             textField.LeftViewMode = UITextFieldViewMode.Always;
             textField.Enabled = false;
+            textField.UserInteractionEnabled = false;
+
+            tapView.AddSubview(textField);
+        }
+
+        public override CGRect Frame
+        {
+            get => base.Frame;
+            set
+            {
+                base.Frame = value;
+                if (textField != null && tapView != null && value != CGRect.Empty)
+                {
+                    textField.Frame = new CGRect(0, 0, value.Size.Width, value.Size.Height);
+                    this.LayoutSubviews();
+                }
+            }
+        }
+
+        protected override void OnSetNativeControl()
+        {
+            SetNativeControl(tapView);
         }
 
         public override void HideData()
@@ -46,6 +61,12 @@ namespace SupportWidgetXF.iOS.Renderers
             base.HideData();  
             if(coverView!=null)
                 coverView.RemoveFromSuperview();
+        }
+
+        public override void IF_ItemSelectd(int position)
+        {
+            base.IF_ItemSelectd(position);
+            SupportView.SendOnItemSelected(position);
         }
 
         public override void ShowSubviewAt(CGRect rect, UIView subView, Action didFinishAnimation)
@@ -72,6 +93,20 @@ namespace SupportWidgetXF.iOS.Renderers
                 subView.SetShadow(2f, 2, 0.8f);
                 GetCurrentWindow(this).AddSubview(subView);
             }, didFinishAnimation);
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName.Equals(SupportDropList.ItemSelectedPositionProperty.PropertyName))
+            {
+                var position = SupportView.ItemSelectedPosition;
+                if(position>=0 && position<SupportItemList.Count)
+                {
+                    FlagShow = true;
+                    IF_ItemSelectd(position);
+                }
+            }
         }
     }
 }
