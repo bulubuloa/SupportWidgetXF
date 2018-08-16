@@ -14,7 +14,7 @@ namespace SupportWidgetXF.iOS.Renderers
 {
     public class SupportAutoCompleteRenderer : SupportDropRenderer<SupportAutoComplete>
     {
-        private void RunFilterAutocomplete(string text)
+        protected virtual void RunFilterAutocomplete(string text)
         {
             SupportItemList.Clear();
             if (text != null && text.Length > 1 && SupportView.ItemsSource != null)
@@ -56,20 +56,20 @@ namespace SupportWidgetXF.iOS.Renderers
             textField.InitlizeReturnKey(SupportView.ReturnType);
         }
 
-        void Wrapper_EditingChanged(object sender, EventArgs e)
+        protected virtual void Wrapper_EditingChanged(object sender, EventArgs e)
         {
             var textFieldInput = sender as UITextField;
             SupportView.SendOnTextChanged(textFieldInput.Text);
             RunFilterAutocomplete(textFieldInput.Text);
         }
 
-        bool Wrapper_ShouldBeginEditing(UITextField textFieldInput)
+        protected virtual bool Wrapper_ShouldBeginEditing(UITextField textFieldInput)
         {
             SupportView.SendOnTextFocused(true);
             return true;
         }
 
-        bool Wrapper_ShouldEndEditing(UITextField textFieldInput)
+        protected virtual bool Wrapper_ShouldEndEditing(UITextField textFieldInput)
         {
             HideData();
             SupportView.SendOnTextFocused(false);

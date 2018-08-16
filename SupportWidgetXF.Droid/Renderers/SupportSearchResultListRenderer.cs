@@ -17,8 +17,9 @@ namespace SupportWidgetXF.Droid.Renderers
         {
         }
 
-        void OriginalView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        protected virtual void OriginalView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
+            //dm cam sua cho nay
             if (FlagSetText)
                 FlagSetText = false;
             else
@@ -41,7 +42,7 @@ namespace SupportWidgetXF.Droid.Renderers
         public override void IF_ItemSelectd(int position)
         {
             FlagSetText = true;
-            SupportView.IsFocus = false;
+            SupportView.IsFocus = true;
 
             var text = ((DropItemAdapterAsync)dropItemAdapter).items[position].IF_GetTitle();
             SupportView.Text = text;

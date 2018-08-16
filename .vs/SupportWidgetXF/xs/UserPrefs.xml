@@ -1,12 +1,14 @@
-﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs">
+﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportSearchResultListRenderer.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="83" Column="24" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="15" Column="18" />
       <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="60" Column="10" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportSearchResultListRenderer.cs" Line="14" Column="49" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" Line="25" Column="36" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" Line="25" Column="17" />
       <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="80" Column="26" NotebookId="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="110" Column="16" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportAutoCompleteRenderer.cs" Line="20" Column="10" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="122" Column="2" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportSearchResultListRenderer.cs" Line="14" Column="49" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -35,14 +37,13 @@
                 <Node name="Widgets" expanded="True" />
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="SupportSearchResultListRenderer.cs" selected="True" />
-                </Node>
+                <Node name="Renderers" expanded="True" />
                 <Node name="Resources" expanded="True" />
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
                   <Node name="DropCombo" expanded="True" />
+                  <Node name="SupportSearchResultListRenderer.cs" selected="True" />
                 </Node>
               </Node>
             </Node>
@@ -53,11 +54,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" relfile="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" line="43" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" relfile="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" line="21" column="1" />
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" relfile="SupportWidgetXF.Droid/Renderers/SupportSearchResultListRenderer.cs" line="25" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
