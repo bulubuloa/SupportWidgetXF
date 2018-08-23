@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.CompilerServices;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
@@ -12,7 +13,7 @@ namespace SupportWidgetXF.Widgets
         /*
          * Properties
          */
-        public static readonly BindableProperty ItemSelectedPositionProperty = BindableProperty.Create("ItemSelectedPosition", typeof(int), typeof(SupportDropList), 0,BindingMode.TwoWay);
+        public static readonly BindableProperty ItemSelectedPositionProperty = BindableProperty.Create("ItemSelectedPosition", typeof(int), typeof(SupportDropList), 0, BindingMode.TwoWay);
         public int ItemSelectedPosition
         {
             get { return (int)GetValue(ItemSelectedPositionProperty); }
@@ -46,7 +47,7 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnItemSelected(int position)
         {
-            ItemSelectedPosition = position;
+            ChangeSelectionValue(position);
             OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
         }
 
@@ -58,6 +59,27 @@ namespace SupportWidgetXF.Widgets
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
+        }
+
+        /*
+         * Private process
+         */
+        private void ChangeSelectionValue(int position)
+        {
+            var items = ItemsSource.ToList();
+
+            if (IsAllowMultiSelect)
+            {
+                var item = items[position];
+                item.IF_SetChecked(item.IF_GetChecked() ? false : true);
+                RefreshList = new Refresh();
+                Text = String.Join(",", items.Where(obj => obj.IF_GetChecked()).Select(obj => obj.IF_GetTitle()));
+            }
+            else
+            {
+                ItemSelectedPosition = position;
+                Text = items[position].IF_GetTitle();
+            }
         }
     }
 }

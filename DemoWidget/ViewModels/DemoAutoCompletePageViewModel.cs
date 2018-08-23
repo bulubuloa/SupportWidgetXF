@@ -15,6 +15,7 @@ namespace DemoWidget.ViewModels
         public string YouDefineTitle { set; get; }
         public string YouDefineDescription { set; get; }
         public string YouDefineIcon { set; get; }
+        public bool YouChecked { set; get; }
 
         public string IF_GetDescription()
         {
@@ -36,15 +37,27 @@ namespace DemoWidget.ViewModels
             return null;
         }
 
+        public bool IF_GetChecked()
+        {
+            return YouChecked;
+        }
+
+        public void IF_SetChecked(bool _Checked)
+        {
+            YouChecked = _Checked;
+        }
+
         public YourClass(string _title)
         {
             YouDefineTitle = _title;
+            YouChecked = false;
         }
 
         public YourClass(string _title, string _des)
         {
             YouDefineTitle = _title;
             YouDefineDescription = _des;
+            YouChecked = false;
         }
 
         public YourClass(string _title, string _des, string _icon)
@@ -52,6 +65,7 @@ namespace DemoWidget.ViewModels
             YouDefineTitle = _title;
             YouDefineDescription = _des;
             YouDefineIcon = _icon;
+            YouChecked = false;
         }
     }
 

@@ -34,6 +34,12 @@ namespace SupportWidgetXF.iOS.Renderers
             }
         }
 
+        public virtual void NotifyAdapterChanged()
+        {
+            if (tableView != null)
+                tableView.ReloadData();
+        }
+
         public virtual void OnInitialize()
         {
 
@@ -158,6 +164,10 @@ namespace SupportWidgetXF.iOS.Renderers
             else if (e.PropertyName.Equals(SupportViewDrop.ItemsSourceProperty.PropertyName))
             {
                 SyncItemSource();
+            }
+            else if (e.PropertyName.Equals(SupportViewDrop.RefreshListProperty.PropertyName))
+            {
+                NotifyAdapterChanged();
             }
         }
 

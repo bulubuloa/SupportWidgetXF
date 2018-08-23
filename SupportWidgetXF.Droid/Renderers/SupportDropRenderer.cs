@@ -81,6 +81,10 @@ namespace SupportWidgetXF.Droid.Renderers
                 SyncItemSource();
                 NotifyAdapterChanged();
             }
+            else if (e.PropertyName.Equals(nameof(SupportViewDrop.RefreshList)))
+            {
+                NotifyAdapterChanged();
+            }
         }
 
         public virtual void IF_ItemSelectd(int position)

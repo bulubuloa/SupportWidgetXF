@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using CoreGraphics;
 using SupportWidgetXF.iOS.Renderers;
+using SupportWidgetXF.iOS.Renderers.DropCombo;
 using SupportWidgetXF.Widgets;
 using UIKit;
 using Xamarin.Forms;
@@ -37,6 +38,12 @@ namespace SupportWidgetXF.iOS.Renderers
             tapView.AddSubview(textField);
         }
 
+        public override void OnInitializeTableSource()
+        {
+            dropSource = new DropItemSource(SupportItemList, SupportView, HeightOfRow, this,SupportView.IsAllowMultiSelect);
+            tableView.Source = dropSource;
+        }
+
         public override CGRect Frame
         {
             get => base.Frame;
@@ -65,7 +72,8 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public override void IF_ItemSelectd(int position)
         {
-            base.IF_ItemSelectd(position);
+            if(!SupportView.IsAllowMultiSelect)
+                base.IF_ItemSelectd(position);
             SupportView.SendOnItemSelected(position);
         }
 

@@ -45,15 +45,18 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
             PropertyChanged += (sender, e) =>
             {
-                if (Checked)
+                if(e.PropertyName.Equals("IsCheck"))
                 {
-                    Font = UIFont.BoldSystemFontOfSize(13f);
-                    SetImage(UIImage.FromBundle("checkbox_selected").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);
-                }
-                else
-                {
-                    Font = UIFont.SystemFontOfSize(13f);
-                    SetImage(UIImage.FromBundle("checkbox_empty").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);
+                    if (Checked)
+                    {
+                        Font = UIFont.BoldSystemFontOfSize(13f);
+                        SetImage(UIImage.FromBundle("checkbox_selected").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);
+                    }
+                    else
+                    {
+                        Font = UIFont.SystemFontOfSize(13f);
+                        SetImage(UIImage.FromBundle("checkbox_empty").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);
+                    }
                 }
             };
 

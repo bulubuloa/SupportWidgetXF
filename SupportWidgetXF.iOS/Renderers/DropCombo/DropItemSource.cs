@@ -15,6 +15,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
         private int HeightOfRow;
         private SupportViewDrop ConfigStyle;
         private IDropItemSelected IDropItemSelected;
+        private bool IsShowCheckbox = false;
 
         public DropItemSource(List<IAutoDropItem> _ItemsList, SupportViewDrop _ConfigStyle, int _HeightOfRow,IDropItemSelected dropItemSelected)
         {
@@ -22,6 +23,15 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
             ConfigStyle = _ConfigStyle;
             HeightOfRow = _HeightOfRow;
             IDropItemSelected = dropItemSelected;
+        }
+
+        public DropItemSource(List<IAutoDropItem> _ItemsList, SupportViewDrop _ConfigStyle, int _HeightOfRow, IDropItemSelected dropItemSelected, bool _IsShowCheckbox)
+        {
+            ItemsList = _ItemsList;
+            ConfigStyle = _ConfigStyle;
+            HeightOfRow = _HeightOfRow;
+            IDropItemSelected = dropItemSelected;
+            IsShowCheckbox = _IsShowCheckbox;
         }
 
         public override UITableViewCell GetCell(UITableView tableView, NSIndexPath indexPath)
@@ -57,7 +67,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemFullTextIcon;
                 cellChild.BindDataToCell(item, delegate {
                     IDropItemSelected.IF_ItemSelectd(indexPath.Row);
-                }, ConfigStyle);
+                }, ConfigStyle, IsShowCheckbox);
                 return cellChild;
             }
             else

@@ -30,5 +30,15 @@ namespace SupportWidgetXF.Models.Widgets
         {
             return null;
         }
+
+        public bool IF_GetChecked()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void IF_SetChecked(bool _Checked)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

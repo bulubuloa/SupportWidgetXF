@@ -5,6 +5,11 @@ using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
 {
+    public class Refresh
+    {
+
+    }
+
     public class SupportViewDrop : SupportViewBase
     {
         public static readonly BindableProperty DropModeProperty = BindableProperty.Create("DropMode", typeof(SupportAutoCompleteDropMode), typeof(SupportViewDrop), SupportAutoCompleteDropMode.SingleTitle);
@@ -54,6 +59,13 @@ namespace SupportWidgetXF.Widgets
         {
             get => (Color)GetValue(DescriptionTextColorProperty);
             set => SetValue(DescriptionTextColorProperty, value);
+        }
+
+        public static readonly BindableProperty RefreshListProperty = BindableProperty.Create("RefreshList", typeof(Refresh), typeof(SupportViewDrop), null);
+        public Refresh RefreshList
+        {
+            get => (Refresh)GetValue(RefreshListProperty);
+            set => SetValue(RefreshListProperty, value);
         }
     }
 }

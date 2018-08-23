@@ -19,11 +19,23 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
+        SupportWidgetXF.iOS.Renderers.DropCombo.SupportCheckBoxiOS cbxCheckBox { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.UIImageView imgIcon { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
         UIKit.NSLayoutConstraint NsHeightSeperator { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint NSSizeOfCheckbox { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        UIKit.NSLayoutConstraint NSSpaceBetWeen { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -48,6 +60,11 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 bttClick = null;
             }
 
+            if (cbxCheckBox != null) {
+                cbxCheckBox.Dispose ();
+                cbxCheckBox = null;
+            }
+
             if (imgIcon != null) {
                 imgIcon.Dispose ();
                 imgIcon = null;
@@ -56,6 +73,16 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
             if (NsHeightSeperator != null) {
                 NsHeightSeperator.Dispose ();
                 NsHeightSeperator = null;
+            }
+
+            if (NSSizeOfCheckbox != null) {
+                NSSizeOfCheckbox.Dispose ();
+                NSSizeOfCheckbox = null;
+            }
+
+            if (NSSpaceBetWeen != null) {
+                NSSpaceBetWeen.Dispose ();
+                NSSpaceBetWeen = null;
             }
 
             if (txtDescription != null) {
