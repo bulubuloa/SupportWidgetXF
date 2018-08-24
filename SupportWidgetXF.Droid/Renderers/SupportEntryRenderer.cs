@@ -41,6 +41,7 @@ namespace SupportWidgetXF.Droid.Renderers
                     InitlizeReturnKey();
 
                     Control.Gravity = Android.Views.GravityFlags.CenterVertical;
+                    Control.TextAlignment = Android.Views.TextAlignment.Center;
                     Control.EditorAction += (object sender, TextView.EditorActionEventArgs args) =>
                     {
                         SwitchReturnAction();
@@ -153,7 +154,7 @@ namespace SupportWidgetXF.Droid.Renderers
                 }
 
                 Control.Gravity = Android.Views.GravityFlags.CenterVertical;
-                Control.SetPadding(5, 3, 0, 0);
+                Control.SetPadding(10, 0, 10, 0);
             }
             catch (Exception ex)
             {

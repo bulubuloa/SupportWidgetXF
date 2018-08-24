@@ -1,13 +1,8 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="16" Column="49" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/SpinnerMultiSelectAdapter.cs" Line="116" Column="13" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="37" Column="14" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="13" Column="51" NotebookId="1" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/SpinnerAdapter.cs" Line="173" Column="1" NotebookId="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="171" Column="14" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs" Line="18" Column="27" />
+      <File FileName="SupportWidgetXF/Widgets/SupportEntry.cs" Line="23" Column="9" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -15,24 +10,21 @@
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="DemoAPP" expanded="True">
               <Node name="DemoWidget" expanded="True">
-                <Node name="ViewModels" expanded="True">
-                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
-                </Node>
-                <Node name="Views" expanded="True">
-                  <Node name="DemoDropListPageView.xaml" expanded="True" />
-                </Node>
+                <Node name="ViewModels" expanded="True" />
+                <Node name="Views" expanded="True" />
               </Node>
               <Node name="DemoWidget.Android" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Widgets" expanded="True" />
+              </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
                 <Node name="Renderers" expanded="True">
-                  <Node name="DropCombo" expanded="True" />
+                  <Node name="SupportEntryRenderer.cs" selected="True" />
                 </Node>
               </Node>
-              <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Renderers" expanded="True" />
-              </Node>
+              <Node name="SupportWidgetXF.iOS" expanded="True" />
             </Node>
           </Node>
         </State>
