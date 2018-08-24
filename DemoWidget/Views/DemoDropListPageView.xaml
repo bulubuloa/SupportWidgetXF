@@ -18,7 +18,7 @@
                                     CornerRadius="5"
                                     CornerWidth="1"
                                     DropMode="FullTextAndIcon"
-                                    IsAllowMultiSelect="false"
+                                    IsAllowMultiSelect="true"
                                     ItemSelectedPosition="{Binding ItemSelectedPosition}"
                                     ItemsSource="{Binding ItemDemo}">
                 <widget:SupportDropList.Behaviors>

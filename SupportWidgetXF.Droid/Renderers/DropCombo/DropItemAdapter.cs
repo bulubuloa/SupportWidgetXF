@@ -90,6 +90,8 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             TextView txtTitle = null, txtDescription = null, txtSeperator = null;
             ImageView imgIcon = null;
             Button bttClick;
+            CheckBox checkBox = null;
+
             IAutoDropItem item = items[position];
 
             if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
@@ -112,9 +114,12 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             {
                 convertView = LayoutInflater.From(mContext).Inflate(Resource.Layout.layout_single_title, parent, false);
             }
+
             txtTitle = convertView.FindViewById<TextView>(Resource.Id.txtTitle);
             txtSeperator = convertView.FindViewById<TextView>(Resource.Id.txtSeperator);
             bttClick = convertView.FindViewById<Button>(Resource.Id.bttClick);
+
+           
 
             txtTitle.Text = item.IF_GetTitle();
             if(txtDescription!=null)

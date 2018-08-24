@@ -1,25 +1,13 @@
-﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF/Models/Widgets/AutoDropItem.cs">
+﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="47" Column="1" />
-      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="45" Column="68" />
-      <File FileName="DemoWidget/Views/DemoDropListPageView.xaml" Line="18" Column="53" />
-      <File FileName="DemoWidget/MainPage.xaml.cs" Line="30" Column="2" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="166" Column="10" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="73" Column="14" />
-      <File FileName="SupportWidgetXF/Widgets/SupportEntry.cs" Line="81" Column="49" />
-      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/SpinnerAdapter.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/SupportCheckBoxiOS.cs" Line="46" Column="46" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemFullTextIcon.xib" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemFullTextIcon.cs" Line="58" Column="22" />
-      <File FileName="SupportWidgetXF/Models/Widgets/IAutoDropItem.cs" Line="14" Column="2" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/DropItemSource.cs" Line="58" Column="53" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="70" Column="49" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="50" Column="21" />
-      <File FileName="DemoWidget/Views/DemoDropListPageView.xaml.cs" Line="13" Column="45" />
-      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="33" Column="55" />
-      <File FileName="SupportWidgetXF/Widgets/SupportViewBase.cs" Line="7" Column="18" />
-      <File FileName="SupportWidgetXF/Models/Widgets/AutoDropItem.cs" Line="16" Column="32" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="16" Column="49" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/SpinnerMultiSelectAdapter.cs" Line="116" Column="13" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="37" Column="14" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="1" Column="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="13" Column="51" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/DropCombo/SpinnerAdapter.cs" Line="173" Column="1" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="171" Column="14" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -27,29 +15,23 @@
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="DemoAPP" expanded="True">
               <Node name="DemoWidget" expanded="True">
-                <Node name="ViewModels" expanded="True" />
-                <Node name="Views" expanded="True" />
+                <Node name="ViewModels" expanded="True">
+                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
+                </Node>
+                <Node name="Views" expanded="True">
+                  <Node name="DemoDropListPageView.xaml" expanded="True" />
+                </Node>
               </Node>
+              <Node name="DemoWidget.Android" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Models" expanded="True">
-                  <Node name="Widgets" expanded="True">
-                    <Node name="AutoDropItem.cs" selected="True" />
-                  </Node>
-                </Node>
-                <Node name="Widgets" expanded="True" />
-              </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
                 <Node name="Renderers" expanded="True">
                   <Node name="DropCombo" expanded="True" />
                 </Node>
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="DropCombo" expanded="True" />
-                </Node>
-                <Node name="Resources" expanded="True" />
+                <Node name="Renderers" expanded="True" />
               </Node>
             </Node>
           </Node>
@@ -63,6 +45,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>

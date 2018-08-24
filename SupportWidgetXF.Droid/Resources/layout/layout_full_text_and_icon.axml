@@ -4,7 +4,16 @@
     android:layout_height="match_parent"
     android:layout_width="match_parent"
     android:orientation="vertical">
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:visibility="gone"
+        android:layout_marginLeft="5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_height="25dp"
+        android:layout_width="25dp"/>
     <RelativeLayout
+        android:layout_toRightOf="@+id/checkBox"
         android:id="@+id/layoutContent"
         android:layout_centerVertical="true"
         android:layout_height="wrap_content"

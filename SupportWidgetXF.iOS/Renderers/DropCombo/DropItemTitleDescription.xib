@@ -1,79 +1,93 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7026.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" customClass="DropItemTitleDescription" id="cxk-wN-pdQ" rowHeight="400" reuseIdentifier="DropItemTitleDescriptionID">
+        <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="DropItemTitleDescriptionID" rowHeight="400" id="cxk-wN-pdQ" customClass="DropItemTitleDescription">
             <rect key="frame" x="0.0" y="0.0" width="615" height="400"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
                 <rect key="frame" x="0.0" y="0.0" width="615" height="399"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <view contentMode="scaleToFill" id="189" translatesAutoresizingMaskIntoConstraints="NO">
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="189">
                         <rect key="frame" x="0.0" y="0.0" width="615" height="399.5"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="424" translatesAutoresizingMaskIntoConstraints="NO" ambiguous="YES" misplaced="YES">
-                                <rect key="frame" x="5" y="5" width="605" height="20.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3172" customClass="SupportCheckBoxiOS" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="11" y="64" width="36" height="36"/>
+                                <constraints>
+                                    <constraint id="3369" firstAttribute="width" secondItem="3172" secondAttribute="height" multiplier="1:1"/>
+                                    <constraint id="3468" firstAttribute="width" constant="25"/>
+                                </constraints>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="424" text="title">
+                                <rect key="frame" x="65" y="5" width="545" height="20"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="469" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES" ambiguous="YES">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="469" text="description">
                                 <rect key="frame" x="23" y="124" width="42" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="11"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="521" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="521">
                                 <rect key="frame" x="210" y="333" width="42" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="1" id="1381"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
-                                <constraints>
-                                    <constraint id="1381" firstItem="521" firstAttribute="height" constant="1"/>
-                                </constraints>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="566" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="0.0" y="0.0" width="615" height="399.5"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="566" misplaced="YES">
+                                <rect key="frame" x="352" y="0.0" width="263" height="400"/>
                             </button>
                         </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint id="620" firstItem="424" firstAttribute="top" secondItem="189" secondAttribute="top" constant="5"/>
-                            <constraint id="643" firstItem="424" firstAttribute="leading" secondItem="189" secondAttribute="leading" constant="5"/>
-                            <constraint id="666" firstItem="189" firstAttribute="trailing" secondItem="424" secondAttribute="trailing" constant="5"/>
-                            <constraint id="1002" firstItem="469" firstAttribute="top" secondItem="424" secondAttribute="bottom" constant="2"/>
-                            <constraint id="1073" firstItem="469" firstAttribute="leading" secondItem="424" secondAttribute="leading"/>
-                            <constraint id="1096" firstItem="424" firstAttribute="trailing" secondItem="469" secondAttribute="trailing"/>
-                            <constraint id="1119" firstItem="189" firstAttribute="bottom" secondItem="469" secondAttribute="bottom" constant="5"/>
-                            <constraint id="1246" firstItem="521" firstAttribute="leading" secondItem="189" secondAttribute="leading"/>
-                            <constraint id="1269" firstItem="189" firstAttribute="trailing" secondItem="521" secondAttribute="trailing"/>
-                            <constraint id="1292" firstItem="189" firstAttribute="bottom" secondItem="521" secondAttribute="bottom"/>
-                            <constraint id="1426" firstItem="566" firstAttribute="top" secondItem="189" secondAttribute="top"/>
-                            <constraint id="1449" firstItem="189" firstAttribute="trailing" secondItem="566" secondAttribute="trailing"/>
-                            <constraint id="1472" firstItem="566" firstAttribute="leading" secondItem="189" secondAttribute="leading"/>
-                            <constraint id="1495" firstItem="189" firstAttribute="bottom" secondItem="566" secondAttribute="bottom"/>
+                            <constraint firstItem="424" firstAttribute="top" secondItem="189" secondAttribute="top" constant="5" id="620"/>
+                            <constraint firstAttribute="trailing" secondItem="424" secondAttribute="trailing" constant="5" id="666"/>
+                            <constraint firstItem="469" firstAttribute="top" secondItem="424" secondAttribute="bottom" constant="2" id="1002"/>
+                            <constraint firstItem="469" firstAttribute="leading" secondItem="424" secondAttribute="leading" id="1073"/>
+                            <constraint firstItem="424" firstAttribute="trailing" secondItem="469" secondAttribute="trailing" id="1096"/>
+                            <constraint firstAttribute="bottom" secondItem="469" secondAttribute="bottom" constant="5" id="1119"/>
+                            <constraint firstItem="521" firstAttribute="leading" secondItem="189" secondAttribute="leading" id="1246"/>
+                            <constraint firstAttribute="trailing" secondItem="521" secondAttribute="trailing" id="1269"/>
+                            <constraint firstAttribute="bottom" secondItem="521" secondAttribute="bottom" id="1292"/>
+                            <constraint firstItem="566" firstAttribute="top" secondItem="189" secondAttribute="top" id="1426"/>
+                            <constraint firstAttribute="trailing" secondItem="566" secondAttribute="trailing" id="1449"/>
+                            <constraint firstItem="566" firstAttribute="leading" secondItem="189" secondAttribute="leading" id="1472"/>
+                            <constraint firstAttribute="bottom" secondItem="566" secondAttribute="bottom" id="1495"/>
+                            <constraint id="4013" firstItem="424" firstAttribute="leading" secondItem="3172" secondAttribute="trailing" constant="5"/>
+                            <constraint id="4112" firstAttribute="centerY" secondItem="3172" secondAttribute="centerY"/>
+                            <constraint id="4211" firstItem="3172" firstAttribute="leading" secondItem="189" secondAttribute="leading" constant="5"/>
                         </constraints>
                     </view>
                 </subviews>
                 <constraints>
-                    <constraint id="212" firstItem="189" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
-                    <constraint id="235" firstItem="189" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
-                    <constraint id="258" firstItem="YTl-1W-gDM" firstAttribute="bottom" secondItem="189" secondAttribute="bottom"/>
-                    <constraint id="281" firstItem="YTl-1W-gDM" firstAttribute="trailing" secondItem="189" secondAttribute="trailing"/>
+                    <constraint firstItem="189" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top" id="212"/>
+                    <constraint firstItem="189" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading" id="235"/>
+                    <constraint firstAttribute="bottom" secondItem="189" secondAttribute="bottom" id="258"/>
+                    <constraint firstAttribute="trailing" secondItem="189" secondAttribute="trailing" id="281"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
+                <outlet property="NsHeightSeperator" destination="1381" id="name-outlet-1381"/>
                 <outlet property="ViewMain" destination="189" id="name-outlet-189"/>
-                <outlet property="txtTitle" destination="424" id="name-outlet-424"/>
+                <outlet property="bttClick" destination="566" id="name-outlet-566"/>
                 <outlet property="txtDescription" destination="469" id="name-outlet-469"/>
                 <outlet property="txtSeperator" destination="521" id="name-outlet-521"/>
-                <outlet property="bttClick" destination="566" id="name-outlet-566"/>
-                <outlet property="NsHeightSeperator" destination="1381" id="name-outlet-1381"/>
+                <outlet property="txtTitle" destination="424" id="name-outlet-424"/>
+                <outlet property="cbxCheckBox" destination="3172" id="name-outlet-3172"/>
+                <outlet property="NSSpaceBetWeen" destination="4013" id="name-outlet-4013"/>
+                <outlet property="NSSizeOfCheckbox" destination="3468" id="name-outlet-3468"/>
             </connections>
         </tableViewCell>
     </objects>

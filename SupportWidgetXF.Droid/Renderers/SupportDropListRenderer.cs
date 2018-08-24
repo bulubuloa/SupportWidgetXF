@@ -19,6 +19,13 @@ namespace SupportWidgetXF.Droid.Renderers
         {
         }
 
+        public override void IF_ItemSelectd(int position)
+        {
+            if (!SupportView.IsAllowMultiSelect)
+                base.IF_ItemSelectd(position);
+            SupportView.SendOnItemSelected(position);
+        }
+
         protected virtual void OriginalView_ItemSelected(object sender, AdapterView.ItemSelectedEventArgs e)
         {
             SupportView.SendOnItemSelected(e.Position);
@@ -48,7 +55,10 @@ namespace SupportWidgetXF.Droid.Renderers
         protected override void OnInitializeAdapter()
         {
             base.OnInitializeAdapter();
-            dropItemAdapter = new SpinnerAdapter(Context, SupportItemList, SupportView);
+            if(SupportView.IsAllowMultiSelect)
+                dropItemAdapter = new SpinnerMultiSelectAdapter(Context, SupportItemList, SupportView,this);
+            else
+                dropItemAdapter = new SpinnerAdapter(Context, SupportItemList, SupportView);
             OriginalView.Adapter = dropItemAdapter;
         }
 

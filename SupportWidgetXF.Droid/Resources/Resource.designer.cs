@@ -2779,8 +2779,8 @@ namespace SupportWidgetXF.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f0800a5
-			public static int action0 = 2131230885;
+			// aapt resource value: 0x7f0800a6
+			public static int action0 = 2131230886;
 			
 			// aapt resource value: 0x7f080064
 			public static int action_bar = 2131230820;
@@ -2803,17 +2803,17 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080041
 			public static int action_bar_title = 2131230785;
 			
-			// aapt resource value: 0x7f0800a2
-			public static int action_container = 2131230882;
+			// aapt resource value: 0x7f0800a3
+			public static int action_container = 2131230883;
 			
 			// aapt resource value: 0x7f080065
 			public static int action_context_bar = 2131230821;
 			
-			// aapt resource value: 0x7f0800a9
-			public static int action_divider = 2131230889;
+			// aapt resource value: 0x7f0800aa
+			public static int action_divider = 2131230890;
 			
-			// aapt resource value: 0x7f0800a3
-			public static int action_image = 2131230883;
+			// aapt resource value: 0x7f0800a4
+			public static int action_image = 2131230884;
 			
 			// aapt resource value: 0x7f080003
 			public static int action_menu_divider = 2131230723;
@@ -2830,11 +2830,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080043
 			public static int action_mode_close_button = 2131230787;
 			
-			// aapt resource value: 0x7f0800a4
-			public static int action_text = 2131230884;
+			// aapt resource value: 0x7f0800a5
+			public static int action_text = 2131230885;
 			
-			// aapt resource value: 0x7f0800b2
-			public static int actions = 2131230898;
+			// aapt resource value: 0x7f0800b3
+			public static int actions = 2131230899;
 			
 			// aapt resource value: 0x7f080044
 			public static int activity_chooser_view_content = 2131230788;
@@ -2860,14 +2860,14 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080028
 			public static int bottom = 2131230760;
 			
-			// aapt resource value: 0x7f080087
-			public static int bttClick = 2131230855;
+			// aapt resource value: 0x7f080088
+			public static int bttClick = 2131230856;
 			
 			// aapt resource value: 0x7f08004b
 			public static int buttonPanel = 2131230795;
 			
-			// aapt resource value: 0x7f0800a6
-			public static int cancel_action = 2131230886;
+			// aapt resource value: 0x7f0800a7
+			public static int cancel_action = 2131230887;
 			
 			// aapt resource value: 0x7f080030
 			public static int center = 2131230768;
@@ -2878,11 +2878,14 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080032
 			public static int center_vertical = 2131230770;
 			
+			// aapt resource value: 0x7f080081
+			public static int checkBox = 2131230849;
+			
 			// aapt resource value: 0x7f08005b
 			public static int checkbox = 2131230811;
 			
-			// aapt resource value: 0x7f0800ae
-			public static int chronometer = 2131230894;
+			// aapt resource value: 0x7f0800af
+			public static int chronometer = 2131230895;
 			
 			// aapt resource value: 0x7f080039
 			public static int clip_horizontal = 2131230777;
@@ -2938,8 +2941,8 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080021
 			public static int end = 2131230753;
 			
-			// aapt resource value: 0x7f0800b8
-			public static int end_padder = 2131230904;
+			// aapt resource value: 0x7f0800b9
+			public static int end_padder = 2131230905;
 			
 			// aapt resource value: 0x7f08002a
 			public static int enterAlways = 2131230762;
@@ -2977,8 +2980,8 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080049
 			public static int icon = 2131230793;
 			
-			// aapt resource value: 0x7f0800b3
-			public static int icon_group = 2131230899;
+			// aapt resource value: 0x7f0800b4
+			public static int icon_group = 2131230900;
 			
 			// aapt resource value: 0x7f080025
 			public static int ifRoom = 2131230757;
@@ -2986,11 +2989,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080046
 			public static int image = 2131230790;
 			
-			// aapt resource value: 0x7f080082
-			public static int imgIcon = 2131230850;
+			// aapt resource value: 0x7f080083
+			public static int imgIcon = 2131230851;
 			
-			// aapt resource value: 0x7f0800af
-			public static int info = 2131230895;
+			// aapt resource value: 0x7f0800b0
+			public static int info = 2131230896;
 			
 			// aapt resource value: 0x7f080000
 			public static int item_touch_helper_previous_elevation = 2131230720;
@@ -2998,17 +3001,17 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080074
 			public static int largeLabel = 2131230836;
 			
-			// aapt resource value: 0x7f080081
-			public static int layoutContent = 2131230849;
+			// aapt resource value: 0x7f080082
+			public static int layoutContent = 2131230850;
 			
 			// aapt resource value: 0x7f080034
 			public static int left = 2131230772;
 			
-			// aapt resource value: 0x7f0800b4
-			public static int line1 = 2131230900;
+			// aapt resource value: 0x7f0800b5
+			public static int line1 = 2131230901;
 			
-			// aapt resource value: 0x7f0800b6
-			public static int line3 = 2131230902;
+			// aapt resource value: 0x7f0800b7
+			public static int line3 = 2131230903;
 			
 			// aapt resource value: 0x7f08000f
 			public static int listMode = 2131230735;
@@ -3016,11 +3019,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080048
 			public static int list_item = 2131230792;
 			
-			// aapt resource value: 0x7f0800ba
-			public static int masked = 2131230906;
+			// aapt resource value: 0x7f0800bb
+			public static int masked = 2131230907;
 			
-			// aapt resource value: 0x7f0800a8
-			public static int media_actions = 2131230888;
+			// aapt resource value: 0x7f0800a9
+			public static int media_actions = 2131230889;
 			
 			// aapt resource value: 0x7f080022
 			public static int middle = 2131230754;
@@ -3028,80 +3031,80 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f08003e
 			public static int mini = 2131230782;
 			
-			// aapt resource value: 0x7f080094
-			public static int mr_art = 2131230868;
-			
-			// aapt resource value: 0x7f080089
-			public static int mr_chooser_list = 2131230857;
-			
-			// aapt resource value: 0x7f08008c
-			public static int mr_chooser_route_desc = 2131230860;
+			// aapt resource value: 0x7f080095
+			public static int mr_art = 2131230869;
 			
 			// aapt resource value: 0x7f08008a
-			public static int mr_chooser_route_icon = 2131230858;
-			
-			// aapt resource value: 0x7f08008b
-			public static int mr_chooser_route_name = 2131230859;
-			
-			// aapt resource value: 0x7f080088
-			public static int mr_chooser_title = 2131230856;
-			
-			// aapt resource value: 0x7f080091
-			public static int mr_close = 2131230865;
-			
-			// aapt resource value: 0x7f080097
-			public static int mr_control_divider = 2131230871;
-			
-			// aapt resource value: 0x7f08009d
-			public static int mr_control_playback_ctrl = 2131230877;
-			
-			// aapt resource value: 0x7f0800a0
-			public static int mr_control_subtitle = 2131230880;
-			
-			// aapt resource value: 0x7f08009f
-			public static int mr_control_title = 2131230879;
-			
-			// aapt resource value: 0x7f08009e
-			public static int mr_control_title_container = 2131230878;
-			
-			// aapt resource value: 0x7f080092
-			public static int mr_custom_control = 2131230866;
-			
-			// aapt resource value: 0x7f080093
-			public static int mr_default_control = 2131230867;
-			
-			// aapt resource value: 0x7f08008e
-			public static int mr_dialog_area = 2131230862;
+			public static int mr_chooser_list = 2131230858;
 			
 			// aapt resource value: 0x7f08008d
-			public static int mr_expandable_area = 2131230861;
+			public static int mr_chooser_route_desc = 2131230861;
 			
-			// aapt resource value: 0x7f0800a1
-			public static int mr_group_expand_collapse = 2131230881;
+			// aapt resource value: 0x7f08008b
+			public static int mr_chooser_route_icon = 2131230859;
 			
-			// aapt resource value: 0x7f080095
-			public static int mr_media_main_control = 2131230869;
+			// aapt resource value: 0x7f08008c
+			public static int mr_chooser_route_name = 2131230860;
 			
-			// aapt resource value: 0x7f080090
-			public static int mr_name = 2131230864;
+			// aapt resource value: 0x7f080089
+			public static int mr_chooser_title = 2131230857;
 			
-			// aapt resource value: 0x7f080096
-			public static int mr_playback_control = 2131230870;
-			
-			// aapt resource value: 0x7f08008f
-			public static int mr_title_bar = 2131230863;
+			// aapt resource value: 0x7f080092
+			public static int mr_close = 2131230866;
 			
 			// aapt resource value: 0x7f080098
-			public static int mr_volume_control = 2131230872;
+			public static int mr_control_divider = 2131230872;
+			
+			// aapt resource value: 0x7f08009e
+			public static int mr_control_playback_ctrl = 2131230878;
+			
+			// aapt resource value: 0x7f0800a1
+			public static int mr_control_subtitle = 2131230881;
+			
+			// aapt resource value: 0x7f0800a0
+			public static int mr_control_title = 2131230880;
+			
+			// aapt resource value: 0x7f08009f
+			public static int mr_control_title_container = 2131230879;
+			
+			// aapt resource value: 0x7f080093
+			public static int mr_custom_control = 2131230867;
+			
+			// aapt resource value: 0x7f080094
+			public static int mr_default_control = 2131230868;
+			
+			// aapt resource value: 0x7f08008f
+			public static int mr_dialog_area = 2131230863;
+			
+			// aapt resource value: 0x7f08008e
+			public static int mr_expandable_area = 2131230862;
+			
+			// aapt resource value: 0x7f0800a2
+			public static int mr_group_expand_collapse = 2131230882;
+			
+			// aapt resource value: 0x7f080096
+			public static int mr_media_main_control = 2131230870;
+			
+			// aapt resource value: 0x7f080091
+			public static int mr_name = 2131230865;
+			
+			// aapt resource value: 0x7f080097
+			public static int mr_playback_control = 2131230871;
+			
+			// aapt resource value: 0x7f080090
+			public static int mr_title_bar = 2131230864;
 			
 			// aapt resource value: 0x7f080099
-			public static int mr_volume_group_list = 2131230873;
+			public static int mr_volume_control = 2131230873;
 			
-			// aapt resource value: 0x7f08009b
-			public static int mr_volume_item_icon = 2131230875;
+			// aapt resource value: 0x7f08009a
+			public static int mr_volume_group_list = 2131230874;
 			
 			// aapt resource value: 0x7f08009c
-			public static int mr_volume_slider = 2131230876;
+			public static int mr_volume_item_icon = 2131230876;
+			
+			// aapt resource value: 0x7f08009d
+			public static int mr_volume_slider = 2131230877;
 			
 			// aapt resource value: 0x7f080019
 			public static int multiply = 2131230745;
@@ -3118,14 +3121,14 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080010
 			public static int normal = 2131230736;
 			
-			// aapt resource value: 0x7f0800b1
-			public static int notification_background = 2131230897;
+			// aapt resource value: 0x7f0800b2
+			public static int notification_background = 2131230898;
+			
+			// aapt resource value: 0x7f0800ac
+			public static int notification_main_column = 2131230892;
 			
 			// aapt resource value: 0x7f0800ab
-			public static int notification_main_column = 2131230891;
-			
-			// aapt resource value: 0x7f0800aa
-			public static int notification_main_column_container = 2131230890;
+			public static int notification_main_column_container = 2131230891;
 			
 			// aapt resource value: 0x7f080037
 			public static int parallax = 2131230775;
@@ -3148,11 +3151,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080035
 			public static int right = 2131230773;
 			
-			// aapt resource value: 0x7f0800b0
-			public static int right_icon = 2131230896;
+			// aapt resource value: 0x7f0800b1
+			public static int right_icon = 2131230897;
 			
-			// aapt resource value: 0x7f0800ac
-			public static int right_side = 2131230892;
+			// aapt resource value: 0x7f0800ad
+			public static int right_side = 2131230893;
 			
 			// aapt resource value: 0x7f08001a
 			public static int screen = 2131230746;
@@ -3229,8 +3232,8 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f08002e
 			public static int snap = 2131230766;
 			
-			// aapt resource value: 0x7f080085
-			public static int sortDown = 2131230853;
+			// aapt resource value: 0x7f080086
+			public static int sortDown = 2131230854;
 			
 			// aapt resource value: 0x7f08004c
 			public static int spacer = 2131230796;
@@ -3250,8 +3253,8 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080036
 			public static int start = 2131230774;
 			
-			// aapt resource value: 0x7f0800a7
-			public static int status_bar_latest_event_content = 2131230887;
+			// aapt resource value: 0x7f0800a8
+			public static int status_bar_latest_event_content = 2131230888;
 			
 			// aapt resource value: 0x7f08005e
 			public static int submenuarrow = 2131230814;
@@ -3262,11 +3265,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f080011
 			public static int tabMode = 2131230737;
 			
-			// aapt resource value: 0x7f0800b7
-			public static int text = 2131230903;
+			// aapt resource value: 0x7f0800b8
+			public static int text = 2131230904;
 			
-			// aapt resource value: 0x7f0800b5
-			public static int text2 = 2131230901;
+			// aapt resource value: 0x7f0800b6
+			public static int text2 = 2131230902;
 			
 			// aapt resource value: 0x7f080052
 			public static int textSpacerNoButtons = 2131230802;
@@ -3283,8 +3286,8 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f08000d
 			public static int textinput_error = 2131230733;
 			
-			// aapt resource value: 0x7f0800ad
-			public static int time = 2131230893;
+			// aapt resource value: 0x7f0800ae
+			public static int time = 2131230894;
 			
 			// aapt resource value: 0x7f08004a
 			public static int title = 2131230794;
@@ -3310,14 +3313,14 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f08000b
 			public static int transition_scene_layoutid_cache = 2131230731;
 			
+			// aapt resource value: 0x7f080085
+			public static int txtDescription = 2131230853;
+			
+			// aapt resource value: 0x7f080087
+			public static int txtSeperator = 2131230855;
+			
 			// aapt resource value: 0x7f080084
-			public static int txtDescription = 2131230852;
-			
-			// aapt resource value: 0x7f080086
-			public static int txtSeperator = 2131230854;
-			
-			// aapt resource value: 0x7f080083
-			public static int txtTitle = 2131230851;
+			public static int txtTitle = 2131230852;
 			
 			// aapt resource value: 0x7f080009
 			public static int up = 2131230729;
@@ -3328,11 +3331,11 @@ namespace SupportWidgetXF.Droid
 			// aapt resource value: 0x7f08000e
 			public static int view_offset_helper = 2131230734;
 			
-			// aapt resource value: 0x7f0800b9
-			public static int visible = 2131230905;
+			// aapt resource value: 0x7f0800ba
+			public static int visible = 2131230906;
 			
-			// aapt resource value: 0x7f08009a
-			public static int volume_item_container = 2131230874;
+			// aapt resource value: 0x7f08009b
+			public static int volume_item_container = 2131230875;
 			
 			// aapt resource value: 0x7f080027
 			public static int withText = 2131230759;

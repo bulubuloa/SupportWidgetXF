@@ -9,7 +9,7 @@
     <OutputType>Library</OutputType>
     <RootNamespace>SupportWidgetXF.Droid</RootNamespace>
     <AssemblyName>SupportWidgetXF.Droid</AssemblyName>
-    <TargetFrameworkVersion>v8.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
     <AndroidResgenClass>Resource</AndroidResgenClass>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
@@ -125,6 +125,7 @@
     <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
     <Compile Include="Renderers\SupportDropListRenderer.cs" />
     <Compile Include="Renderers\DropCombo\SpinnerAdapter.cs" />
+    <Compile Include="Renderers\DropCombo\SpinnerMultiSelectAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

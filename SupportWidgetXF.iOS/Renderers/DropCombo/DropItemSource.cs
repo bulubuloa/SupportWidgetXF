@@ -45,7 +45,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemTitleDescription;
                 cellChild.BindDataToCell(item, delegate {
                     IDropItemSelected.IF_ItemSelectd(indexPath.Row);
-                }, ConfigStyle);
+                }, ConfigStyle, IsShowCheckbox);
                 return cellChild;
             }
             else if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.IconAndTitle)
@@ -56,7 +56,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemIconTitle;
                 cellChild.BindDataToCell(item, delegate {
                     IDropItemSelected.IF_ItemSelectd(indexPath.Row);
-                }, ConfigStyle);
+                }, ConfigStyle, IsShowCheckbox);
                 return cellChild;
             }
             else if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.FullTextAndIcon)
@@ -78,7 +78,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as DropItemSingleTitle;
                 cellChild.BindDataToCell(item, delegate {
                     IDropItemSelected.IF_ItemSelectd(indexPath.Row);
-                }, ConfigStyle);
+                }, ConfigStyle, IsShowCheckbox);
                 return cellChild;
             }
         }

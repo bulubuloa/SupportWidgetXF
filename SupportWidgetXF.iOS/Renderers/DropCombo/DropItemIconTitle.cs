@@ -27,7 +27,7 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
 
         private Action ActionClick;
 
-        public void BindDataToCell(IAutoDropItem dropItem, Action action, SupportViewDrop _ConfigStyle)
+        public void BindDataToCell(IAutoDropItem dropItem, Action action, SupportViewDrop _ConfigStyle, bool _ShowCheckBox = false)
         {
             try
             {
@@ -36,6 +36,20 @@ namespace SupportWidgetXF.iOS.Renderers.DropCombo
                 NsHeightSeperator.Constant = _ConfigStyle.SeperatorHeight;
                 imgIcon.Image = UIImage.FromBundle(dropItem.IF_GetIcon()).ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
                 txtTitle.TextColor = _ConfigStyle.TextColor.ToUIColor();
+
+                if (_ShowCheckBox)
+                {
+                    NSSpaceBetWeen.Constant = 5;
+                    NSSizeOfCheckbox.Constant = 25;
+                    cbxCheckBox.Checked = dropItem.IF_GetChecked();
+                    cbxCheckBox.Hidden = false;
+                }
+                else
+                {
+                    NSSpaceBetWeen.Constant = 0;
+                    NSSizeOfCheckbox.Constant = 0;
+                    cbxCheckBox.Hidden = true;
+                }
 
                 if (ActionClick == null)
                 {

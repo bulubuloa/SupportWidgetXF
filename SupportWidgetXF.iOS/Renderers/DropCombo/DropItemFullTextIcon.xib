@@ -46,15 +46,15 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2879">
-                                <rect key="frame" x="0.0" y="0.0" width="633" height="401.5"/>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="3377" customClass="SupportCheckBoxiOS" translatesAutoresizingMaskIntoConstraints="NO">
                                 <rect key="frame" x="5" y="188.5" width="25" height="25"/>
                                 <constraints>
                                     <constraint id="3408" firstAttribute="width" secondItem="3377" secondAttribute="height" multiplier="1:1"/>
                                     <constraint id="3409" firstAttribute="width" constant="25"/>
                                 </constraints>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2879">
+                                <rect key="frame" x="0.0" y="0.0" width="633" height="401.5"/>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

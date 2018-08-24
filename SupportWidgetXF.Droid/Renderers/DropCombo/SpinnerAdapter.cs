@@ -15,14 +15,20 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
     {
         public List<IAutoDropItem> originalData, items;
         private Context mContext;
-        private SupportViewDrop ConfigStyle;
+        private SupportDropList ConfigStyle;
+        private GradientDrawable gradientDrawable;
 
-        public SpinnerAdapter(Context context, List<IAutoDropItem> storeDataLst, SupportViewDrop _ConfigStyle) : base(context, 0)
+        public SpinnerAdapter(Context context, List<IAutoDropItem> storeDataLst, SupportDropList _ConfigStyle) : base(context, 0)
         {
             originalData = storeDataLst;
             items = storeDataLst;
             mContext = context;
             ConfigStyle = _ConfigStyle;
+
+            gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LeftRight, new int[] { Android.Graphics.Color.White, Android.Graphics.Color.White });
+            gradientDrawable.SetStroke((int)ConfigStyle.CornerWidth, ConfigStyle.CornerColor.ToAndroid());
+            gradientDrawable.SetShape(ShapeType.Rectangle);
+            gradientDrawable.SetCornerRadius((float)ConfigStyle.CornerRadius);
         }
 
         public override int Count => items.Count;
@@ -38,6 +44,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             ImageView imgIcon = null;
             Button bttClick;
             IAutoDropItem item = items[position];
+            CheckBox checkBox = null;
 
             if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
             {
@@ -62,6 +69,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             txtTitle = convertView.FindViewById<TextView>(Resource.Id.txtTitle);
             txtSeperator = convertView.FindViewById<TextView>(Resource.Id.txtSeperator);
             bttClick = convertView.FindViewById<Button>(Resource.Id.bttClick);
+            checkBox = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
 
             txtTitle.Text = item.IF_GetTitle();
             if (txtDescription != null)
@@ -71,6 +79,8 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             }
             txtSeperator.SetBackgroundColor(ConfigStyle.SeperatorColor.ToAndroid());
             bttClick.Visibility = ViewStates.Gone;
+
+            checkBox.Visibility = ConfigStyle.IsAllowMultiSelect ? ViewStates.Visible : ViewStates.Gone;
 
             try
             {
@@ -96,11 +106,6 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             ImageView imgIcon = null, sort_down = null;
             Button bttClick;
             IAutoDropItem item = items[position];
-
-            var gradientDrawable = new GradientDrawable(GradientDrawable.Orientation.LeftRight,new int[]{Android.Graphics.Color.White,Android.Graphics.Color.White});
-            gradientDrawable.SetStroke((int)ConfigStyle.CornerWidth, ConfigStyle.CornerColor.ToAndroid());
-            gradientDrawable.SetShape(ShapeType.Rectangle);
-            gradientDrawable.SetCornerRadius((float)ConfigStyle.CornerRadius);
 
             if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
             {
