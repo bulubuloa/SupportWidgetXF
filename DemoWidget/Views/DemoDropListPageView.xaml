@@ -12,7 +12,7 @@
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="10">
             <Label Margin="0,20,0,0" Text="DropList" />
-            <widget:SupportDropList HeightRequest="40"
+            <!--<widget:SupportDropList HeightRequest="40"
                                     HorizontalOptions="FillAndExpand"
                                     CornerColor="Green"
                                     CornerRadius="5"
@@ -26,8 +26,15 @@
                                                       EventArgsConverter="{StaticResource BehaviorsEventConverter}"
                                                       EventName="OnItemSelected" />
                 </widget:SupportDropList.Behaviors>
-            </widget:SupportDropList>
-
+            </widget:SupportDropList>-->
+            <widget:SupportActionMenu
+                Text="XXX"
+                ItemsSource="{Binding ItemDemo}"
+                HeightRequest="40"
+                HorizontalOptions="FillAndExpand">
+                
+            </widget:SupportActionMenu>
+            
             <Button Command="{Binding SetPositionCommand}" Text="Set Position" />
         </StackLayout>
     </ContentPage.Content>

@@ -1,8 +1,28 @@
-﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs">
+﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs" Line="18" Column="27" />
-      <File FileName="SupportWidgetXF/Widgets/SupportEntry.cs" Line="23" Column="9" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportEntryRenderer.cs" Line="30" Column="45" />
+      <File FileName="SupportWidgetXF/Widgets/SupportEntry.cs" Line="17" Column="134" />
+      <File FileName="SupportWidgetXF/Widgets/SupportBindableStackLayout.cs" Line="26" Column="10" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportShadowViewRenderer.cs" Line="39" Column="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportActionMenu.cs" Line="7" Column="2" />
+      <File FileName="SupportWidgetXF.Droid/SupportWidgetXFSetup.cs" Line="15" Column="2" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropListRenderer.cs" Line="35" Column="10" />
+      <File FileName="DemoWidget/Views/DemoSupportEntryPageView.xaml" Line="22" Column="1" />
+      <File FileName="DemoWidget/Views/DemoDropListPageView.xaml" Line="41" Column="15" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="75" Column="15" />
+      <File FileName="DemoWidget.iOS/Main.cs" Line="17" Column="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="13" Column="56" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="19" Column="40" />
+      <File FileName="SupportWidgetXF/Widgets/SupportShadowView.cs" Line="8" Column="20" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportShadowViewRenderer.cs" Line="9" Column="1" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="6" Column="21" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="13" Column="18" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportDropRenderer.cs" Line="48" Column="56" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportAutoCompleteRenderer.cs" Line="15" Column="56" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="48" Column="21" NotebookId="1" />
+      <File FileName="SupportWidgetXF.Droid/Renderers/SupportActionMenuRenderer.cs" Line="53" Column="15" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportActionMenuRenderer.cs" Line="10" Column="6" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,17 +34,21 @@
                 <Node name="Views" expanded="True" />
               </Node>
               <Node name="DemoWidget.Android" expanded="True" />
+              <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
                 <Node name="Widgets" expanded="True" />
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
+                <Node name="Renderers" expanded="True" />
+                <Node name="Resources" expanded="True" />
+              </Node>
+              <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
-                  <Node name="SupportEntryRenderer.cs" selected="True" />
+                  <Node name="SupportDropRenderer.cs" selected="True" />
                 </Node>
               </Node>
-              <Node name="SupportWidgetXF.iOS" expanded="True" />
             </Node>
           </Node>
         </State>

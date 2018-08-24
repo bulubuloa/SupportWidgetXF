@@ -129,7 +129,7 @@ namespace SupportWidgetXF.Droid.Renderers
         private void InitilizeBorderEntry(Android.Graphics.Color color)
         {
             var gd = new GradientDrawable();
-            gd.SetColor(supportEntry.BackgroundColorInside.ToAndroid()); // Changes this drawbale to use a single color instead of a gradient
+            gd.SetColor(supportEntry.BackgroundColorInside.ToAndroid());
             gd.SetCornerRadius((float)supportEntry.CornerRadius);
             gd.SetGradientRadius((float)supportEntry.CornerWidth);
             gd.SetStroke((int)supportEntry.CornerWidth, color);

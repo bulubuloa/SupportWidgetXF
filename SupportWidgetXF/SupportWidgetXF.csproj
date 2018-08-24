@@ -17,5 +17,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Widgets\SupportAutoCompleteAsync.cs" />
+    <Compile Remove="Widgets\SupportActionMenuRenderer.cs" />
   </ItemGroup>
 </Project>

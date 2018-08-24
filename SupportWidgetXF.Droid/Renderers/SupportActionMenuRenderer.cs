@@ -1,12 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.ComponentModel;
 using Android.Content;
 using Android.OS;
-using Android.Support.V7.Widget;
+using Android.Widget;
 using Java.Lang.Reflect;
 using SupportWidgetXF.Droid.Renderers;
-using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
 using Xamarin.Forms;
 using Xamarin.Forms.Platform.Android;
@@ -14,104 +11,84 @@ using Xamarin.Forms.Platform.Android;
 [assembly: ExportRenderer(typeof(SupportActionMenu), typeof(SupportActionMenuRenderer))]
 namespace SupportWidgetXF.Droid.Renderers
 {
-	public class SupportActionMenuRenderer : ButtonRenderer
+    public class SupportActionMenuRenderer : SupportDropRenderer<SupportActionMenu, Android.Widget.Button>
     {
-        private SupportActionMenu supportButton;
         private PopupMenu popupMenu;
-
-        private List<IAutoDropItem> SupportItemList = new List<IAutoDropItem>();
-        private void NotifyAdapterChanged()
-        {
-            SupportItemList.Clear();
-            if (supportButton.MenuItemsSource != null)
-            {
-                SupportItemList.AddRange(supportButton.MenuItemsSource.ToList());
-            }
-        }
 
         public SupportActionMenuRenderer(Context context) : base(context)
         {
         }
 
-        protected override void OnElementChanged(ElementChangedEventArgs<Button> e)
+        protected override void OnElementChanged(ElementChangedEventArgs<SupportActionMenu> e)
         {
             base.OnElementChanged(e);
             if (e.NewElement != null)
             {
                 if (Element is SupportActionMenu)
                 {
-                    supportButton = Element as SupportActionMenu;
-                    if (Control != null)
-                    {
-                        Control.SetAllCaps(false);
-                        Control.SetPadding(0, 0, 0, 0);
-                        Control.TextAlignment = Android.Views.TextAlignment.Center;
-                        NotifyAdapterChanged();
-                        try
-                        {
-                            Control.SetCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
-
-                            if (supportButton.Image != null)
-                            {
-                                var image = Context.GetDrawable(supportButton.Image);
-                                if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)
-                                {
-                                    Control.SetBackgroundDrawable(image);
-                                }
-                                else
-                                {
-                                    Control.SetBackground(image);
-                                }
-                                Control.SetPadding(3, 3, 3, 3);
-                                //Control.SetCompoundDrawablesWithIntrinsicBounds(null,null, image, null);
-                            }
-                        }
-                        catch (Exception ex)
-                        {
-                            Console.WriteLine(ex.StackTrace);
-                        }
-
-                        supportButton.Clicked += SupportButton_Clicked;
-                    }
+                    SupportView = Element as SupportActionMenu;
+                    SyncItemSource();
+                    InitilizeMenu();
                 }
             }
         }
 
-        void SupportButton_Clicked(object sender, EventArgs e)
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
         {
-            InitilizeMenu(Control);
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName.Equals(nameof(SupportActionMenu.ItemsSource)))
+            {
+                SyncItemSource();
+                InitilizeMenu();
+            }
         }
 
-        private void InitilizeMenu(Android.Widget.Button button)
+        protected override void OnInitializeOriginalView()
         {
-            popupMenu = new PopupMenu(SupportWidgetXFSetup.Activity, button);
+            base.OnInitializeOriginalView();
+            OriginalView = new Android.Widget.Button(Context);
+            OriginalView.SetPadding(0, 0, 0, 0);
+            OriginalView.Click += (sender, e) => {
+                OnShowActionMenu();
+            };
+        }
 
-            Field field = popupMenu.Class.GetDeclaredField("mPopup");
-            field.Accessible = true;
-            Java.Lang.Object menuPopupHelper = field.Get(popupMenu);
-            Method setForceIcons = menuPopupHelper.Class.GetDeclaredMethod("setForceShowIcon", Java.Lang.Boolean.Type);
-            setForceIcons.Invoke(menuPopupHelper, true);
-
-            int max = SupportItemList.Count;
-            for (int i = 0; i < max; i++)
+        protected virtual void InitilizeMenu()
+        {
+            if(Control!=null)
             {
-                var item = SupportItemList[i];
-                popupMenu.Menu.Add(Android.Views.Menu.None, i + 1, i + 1, new Java.Lang.String(item.IF_GetTitle()));
-                var itemDone = popupMenu.Menu.GetItem(i);
-                var image = Context.GetDrawable(item.IF_GetIcon());
-                itemDone.SetIcon(image);
-            }
+                popupMenu = new PopupMenu(SupportWidgetXFSetup.Activity, Control);
 
-            popupMenu.MenuItemClick += PopupMenu_MenuItemClick;
-            popupMenu.Show();
+                Field field = popupMenu.Class.GetDeclaredField("mPopup");
+                field.Accessible = true;
+                Java.Lang.Object menuPopupHelper = field.Get(popupMenu);
+                Method setForceIcons = menuPopupHelper.Class.GetDeclaredMethod("setForceShowIcon", Java.Lang.Boolean.Type);
+                setForceIcons.Invoke(menuPopupHelper, true);
+
+                int max = SupportItemList.Count;
+                for (int i = 0; i < max; i++)
+                {
+                    var item = SupportItemList[i];
+                    popupMenu.Menu.Add(Android.Views.Menu.None, i + 1, i + 1, new Java.Lang.String(item.IF_GetTitle()));
+                    var itemDone = popupMenu.Menu.GetItem(i);
+                    var image = Context.GetDrawable(item.IF_GetIcon());
+                    itemDone.SetIcon(image);
+                }
+
+                popupMenu.MenuItemClick += PopupMenu_MenuItemClick;
+            }
+        }
+
+        protected virtual void OnShowActionMenu()
+        {
+            if(popupMenu!=null)
+                popupMenu.Show();
         }
 
         void PopupMenu_MenuItemClick(object sender, PopupMenu.MenuItemClickEventArgs e)
         {
-            if(SupportItemList[e.Item.Order - 1].IF_GetAction()!=null)
-            {
+            if (SupportItemList[e.Item.Order - 1].IF_GetAction()!=null)
                 SupportItemList[e.Item.Order - 1].IF_GetAction()();
-            }
         }
     }
 }

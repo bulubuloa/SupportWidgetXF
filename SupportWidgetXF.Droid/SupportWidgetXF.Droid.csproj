@@ -126,6 +126,7 @@
     <Compile Include="Renderers\SupportDropListRenderer.cs" />
     <Compile Include="Renderers\DropCombo\SpinnerAdapter.cs" />
     <Compile Include="Renderers\DropCombo\SpinnerMultiSelectAdapter.cs" />
+    <Compile Include="Renderers\SupportShadowViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -139,6 +140,8 @@
     <AndroidResource Include="Resources\layout\layout_full_text_and_icon.axml" />
     <AndroidResource Include="Resources\values\attrs.xml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\sort_down.png" />
+    <AndroidResource Include="Resources\drawable\shadowclone.xml" />
+    <AndroidResource Include="Resources\drawable\shadowclonenavigation_bottom.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

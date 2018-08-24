@@ -95,6 +95,7 @@
     <Compile Include="Renderers\SupportDropRenderer.cs" />
     <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
     <Compile Include="Renderers\DropCombo\SupportCheckBoxiOS.cs" />
+    <Compile Include="Renderers\SupportShadowViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
