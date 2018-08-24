@@ -1,3 +1,4 @@
+
 # Xamarin Forms Custom Control
 I create this package to sharing all custom controls renderer i know, it help you get a better result with xamarin
 
@@ -14,8 +15,10 @@ Setup for Android project (add to MainActivity before LoadApplication)
     SupportWidgetXFSetup.Initialize(this);
 ## Support Widget Package
 
- - SupportAutoComplete (Complete)
- - SupportEntry
+ - SupportAutoComplete **(Complete)**
+ - SupportResultList **(Complete)**
+ - SupportDropList **(Complete)**
+ - SupportEntry **(Complete)**
  - SupportButton
  - SupportActionMenu
  - SupportBindableStackLayout
