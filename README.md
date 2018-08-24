@@ -15,7 +15,9 @@ Setup for Android project (add to MainActivity before LoadApplication)
 ## Support Widget Package
 
  - SupportAutoComplete (Complete)
- - SupportEntry
+ - SupportResultList (Complete)
+ - SupportDropList (Complete)
+ - SupportEntry (Complete)
  - SupportButton
  - SupportActionMenu
  - SupportBindableStackLayout
