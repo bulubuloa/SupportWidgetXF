@@ -14,7 +14,7 @@ Setup for Android project (add to MainActivity before LoadApplication)
     SupportWidgetXFSetup.Initialize(this);
 ## Support Widget Package
 
- - SupportAutoComplete (Complete)
+ - SupportAutoComplete <b>(Complete)</b>
  - SupportResultList (Complete)
  - SupportDropList (Complete)
  - SupportEntry (Complete)
