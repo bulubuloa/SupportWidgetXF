@@ -6,6 +6,8 @@
 
   <ItemGroup>
     <PackageReference Include="Xamarin.Forms" Version="3.1.0.697729" />
+    <PackageReference Include="Newtonsoft.Json" Version="11.0.2" />
+    <PackageReference Include="NuGet.Build.Packaging" Version="0.2.0" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Widgets\" />
@@ -14,9 +16,19 @@
     <Folder Include="Behaviors\" />
     <Folder Include="Widgets\Interface\" />
     <Folder Include="DependencyService\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="Controllers\HttpClient\" />
+    <Folder Include="Models\API\" />
+    <Folder Include="Models\EventArgs\" />
+    <Folder Include="Models\API\Request\" />
+    <Folder Include="Models\API\Response\" />
+    <Folder Include="Controllers\Validations\" />
+    <Folder Include="Controllers\Validations\Rules\" />
+    <Folder Include="Controllers\API\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Widgets\SupportAutoCompleteAsync.cs" />
     <Compile Remove="Widgets\SupportActionMenuRenderer.cs" />
+    <Compile Remove="Class1.cs" />
   </ItemGroup>
 </Project>

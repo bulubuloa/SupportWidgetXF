@@ -1,4 +1,5 @@
 ﻿<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.props')" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -64,11 +65,11 @@
     <Folder Include="Renderers\" />
     <Folder Include="Renderers\DropCombo\" />
     <Folder Include="Renderers\Exporters\" />
+    <Folder Include="Renderers\AutoComplete\" />
+    <Folder Include="Renderers\AutoComplete\Multi\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MyClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\SupportAutoCompleteRenderer.cs" />
     <Compile Include="Renderers\DropCombo\DropItemSingleTitle.cs" />
     <Compile Include="Renderers\DropCombo\DropItemSingleTitle.designer.cs">
       <DependentUpon>DropItemSingleTitle.cs</DependentUpon>
@@ -93,9 +94,21 @@
     <Compile Include="Renderers\SupportDropListRenderer.cs" />
     <Compile Include="iFontExtend.cs" />
     <Compile Include="Renderers\SupportDropRenderer.cs" />
-    <Compile Include="Renderers\SupportSearchResultListRenderer.cs" />
     <Compile Include="Renderers\DropCombo\SupportCheckBoxiOS.cs" />
     <Compile Include="Renderers\SupportShadowViewRenderer.cs" />
+    <Compile Include="IFileHelperExtended.cs" />
+    <Compile Include="IPushLocalNotificationExtended.cs" />
+    <Compile Include="Renderers\SupportDatePickerRenderer.cs" />
+    <Compile Include="Renderers\SupportEditorRenderer.cs" />
+    <Compile Include="Renderers\SupportButtonRenderer.cs" />
+    <Compile Include="Renderers\AutoComplete\SupportBaseAutoCompleteRenderer.cs" />
+    <Compile Include="Renderers\AutoComplete\SupportAutoCompleteRenderer.cs" />
+    <Compile Include="Renderers\AutoComplete\SupportAutoCompleteMultiValueRenderer.cs" />
+    <Compile Include="Renderers\AutoComplete\SupportSearchResultListRenderer.cs" />
+    <Compile Include="Renderers\AutoComplete\Multi\CollectionMultiDelegate.cs" />
+    <Compile Include="Renderers\AutoComplete\Multi\CollectionItemMultiCell.cs" />
+    <Compile Include="Renderers\AutoComplete\Multi\CollectionResultSource.cs" />
+    <Compile Include="Renderers\AutoComplete\Multi\CollectionViewLeftFlowLayout.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
@@ -119,4 +132,5 @@
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
+  <Import Project="..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.0\build\NuGet.Build.Packaging.targets')" />
 </Project>

@@ -24,7 +24,7 @@ namespace DemoWidget.iOS
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            SupportWidgetXFSetup.Initialize();
+            SupportWidgetXFSetup.Initialize(this);
             LoadApplication(new App());
 
             return base.FinishedLaunching(app, options);

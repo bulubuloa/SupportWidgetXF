@@ -17,14 +17,14 @@
                     <RowDefinition Height="Auto" />
                 </Grid.RowDefinitions>
                 <widget:SupportSearchResultList HeightRequest="40"
-                                            HorizontalOptions="FillAndExpand"
-                                            CornerColor="Green"
-                                            FocusCornerColor="Purple"
-                                            CornerRadius="5"
-                                            CornerWidth="1"
-                                            DropMode="FullTextAndIcon"
-                                            ItemsSource="{Binding ItemDemoAsync}"
-                                            Placeholder="type here">
+                                                HorizontalOptions="FillAndExpand"
+                                                CornerColor="Green"
+                                                CornerRadius="5"
+                                                CornerWidth="1"
+                                                DropMode="FullTextAndIcon"
+                                                FocusCornerColor="Purple"
+                                                ItemsSource="{Binding ItemDemoAsync}"
+                                                Placeholder="type here">
                     <widget:SupportSearchResultList.Behaviors>
                         <behaviors:EventToCommandBehavior Command="{Binding AutocompleteTextChanged}"
                                                           EventArgsConverter="{StaticResource BehaviorsEventConverter}"
@@ -43,15 +43,15 @@
 
 
             <Label Text="Single title" />
-            <widget:SupportAutoComplete HeightRequest="40"
+            <widget:SupportAutoComplete x:Name="singleTitle"
+                                        HeightRequest="40"
                                         HorizontalOptions="FillAndExpand"
                                         CornerColor="Green"
-                                        FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
-                                        x:Name="singleTitle"
-                                        IsValid="{Binding IsValidSingle}"
                                         DropMode="SingleTitle"
+                                        FocusCornerColor="Purple"
+                                        IsValid="{Binding IsValidSingle}"
                                         ItemsSource="{Binding ItemDemo}"
                                         Placeholder="type here" />
 
@@ -59,14 +59,26 @@
             <widget:SupportAutoComplete HeightRequest="40"
                                         HorizontalOptions="FillAndExpand"
                                         CornerColor="Green"
-                                        FocusCornerColor="Purple"
                                         CornerRadius="5"
                                         CornerWidth="1"
-                                        Text="{Binding TextIt}"
                                         DropMode="FullTextAndIcon"
+                                        FocusCornerColor="Purple"
                                         ItemsSource="{Binding ItemDemo}"
-                                        Placeholder="type here" />
-
+                                        Placeholder="type here"
+                                        Text="{Binding TextIt}" />
+            
+            <Label Margin="0,20,0,0" Text="SupportAutoCompleteMultiValuen" />
+            <widget:SupportAutoCompleteMultiValue x:Name="multi"
+                                                  HeightRequest="40"
+                                                  HorizontalOptions="FillAndExpand"
+                                                  CornerColor="Green"
+                                                  CornerRadius="5"
+                                                  CornerWidth="1"
+                                                  DropMode="SingleTitle"
+                                                  FocusCornerColor="Purple"
+                                                  IsValid="{Binding IsValidSingle}"
+                                                  ItemsSource="{Binding ItemDemo}"
+                                                  Placeholder="type here" />
 
             <Button Command="{Binding AddItemToSourceCommand}" Text="Add Item" />
             <Button x:Name="dkm" Text="Add Item" />
