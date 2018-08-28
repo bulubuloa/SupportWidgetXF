@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using CoreGraphics;
 using Foundation;
 using SupportWidgetXF.iOS.Renderers;
 using SupportWidgetXF.iOS.Renderers.AutoComplete;
@@ -36,7 +37,9 @@ namespace SupportWidgetXF.iOS.Renderers
             ResultView.Axis = UILayoutConstraintAxis.Vertical;
             ResultView.Frame = this.Bounds;
 
-            CollectionResult = new UICollectionView(this.Bounds,new CollectionViewLeftFlowLayout());
+            CollectionResult = new UICollectionView(new CGRect(),new CollectionViewLeftFlowLayout());
+            CollectionResult.BackgroundColor = UIColor.White;
+
             HeightOfCollection = NSLayoutConstraint.Create(CollectionResult, NSLayoutAttribute.Height, NSLayoutRelation.Equal, 1, 0);
             CollectionResult.AddConstraint(HeightOfCollection);
 
