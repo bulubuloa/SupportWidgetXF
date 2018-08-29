@@ -1,7 +1,7 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/Renderers/GalleryPicker/GalleryPickerActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/IFileHelperExtended.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/GalleryPicker/GalleryPickerActivity.cs" Line="29" Column="54" />
+      <File FileName="SupportWidgetXF.Droid/IFileHelperExtended.cs" Line="17" Column="2" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -9,23 +9,12 @@
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="DemoAPP" expanded="True" />
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Controllers" expanded="True" />
-                <Node name="Models" expanded="True" />
-              </Node>
+              <Node name="SupportWidgetXF" expanded="True" />
               <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="AutoComplete" expanded="True" />
-                  <Node name="DropCombo" expanded="True" />
-                  <Node name="GalleryPicker" expanded="True">
-                    <Node name="GalleryPickerActivity.cs" selected="True" />
-                  </Node>
-                </Node>
-                <Node name="Resources" expanded="True">
-                  <Node name="layout" expanded="True" />
-                </Node>
+                <Node name="Renderers" expanded="True" />
+                <Node name="Resources" expanded="True" />
+                <Node name="IFileHelperExtended.cs" selected="True" />
               </Node>
-              <Node name="SupportWidgetXF.iOS" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -38,7 +27,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.E5AZCY489464" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>
