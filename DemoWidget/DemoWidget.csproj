@@ -14,4 +14,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Views\" />
   </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Views\EmptyClass.cs" />
+  </ItemGroup>
 </Project>

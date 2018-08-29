@@ -64,9 +64,9 @@
     <Folder Include="Resources\" />
     <Folder Include="Renderers\" />
     <Folder Include="Renderers\DropCombo\" />
-    <Folder Include="Renderers\Exporters\" />
     <Folder Include="Renderers\AutoComplete\" />
     <Folder Include="Renderers\AutoComplete\Multi\" />
+    <Folder Include="Renderers\GalleryPicker\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +109,8 @@
     <Compile Include="Renderers\AutoComplete\Multi\CollectionItemMultiCell.cs" />
     <Compile Include="Renderers\AutoComplete\Multi\CollectionResultSource.cs" />
     <Compile Include="Renderers\AutoComplete\Multi\CollectionViewLeftFlowLayout.cs" />
+    <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryPickerController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
@@ -129,6 +131,9 @@
     <BundleResource Include="Resources\sort_down%403x.png" />
     <BundleResource Include="Resources\checkbox_empty%402x.png" />
     <BundleResource Include="Resources\checkbox_selected%402x.png" />
+    <BundleResource Include="Resources\arrow_left%403x.png" />
+    <BundleResource Include="Resources\arrow_down%403x.png" />
+    <BundleResource Include="Resources\sort_down_white%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

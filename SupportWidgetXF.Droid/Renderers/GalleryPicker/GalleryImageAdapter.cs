@@ -4,6 +4,9 @@ using Android.Content;
 using Android.Views;
 using Android.Widget;
 using Com.Bumptech.Glide;
+using Com.Bumptech.Glide.Load;
+using Com.Bumptech.Glide.Load.Engine;
+using Com.Bumptech.Glide.Request;
 using SupportWidgetXF.Models;
 
 namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
@@ -12,20 +15,23 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
     {
         private class ViewHolder : Java.Lang.Object
         {
-            public TextView tv_foldern, tv_foldersize;
-            public ImageView iv_image;
+            public ImageView imageView;
+            public CheckBox checkBox;
+            public Button button;
         }
 
-        Context context;
-        ViewHolder viewHolder;
-        List<GalleryDirectory> galleryDirectories;
-        int Position;
+        private Context context;
+        private ViewHolder viewHolder;
+        private List<GalleryDirectory> galleryDirectories;
+        private int Position;
+        private IGalleryPickerSelected IGalleryPickerSelected;
 
-        public GalleryImageAdapter(Context context, List<GalleryDirectory> galleries, int position) : base(context, Resource.Layout.adapter_photosfolder)
+        public GalleryImageAdapter(Context context, List<GalleryDirectory> galleries, int position, IGalleryPickerSelected galleryPickerSelected) : base(context, Resource.Layout.adapter_photosfolder)
         {
             this.galleryDirectories = galleries;
             this.context = context;
             this.Position = position;
+            this.IGalleryPickerSelected = galleryPickerSelected;
         }
 
         public override int Count => galleryDirectories[Position].Images.Count;
@@ -46,12 +52,15 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         {
             if (convertView == null)
             {
-
                 viewHolder = new ViewHolder();
-                convertView = LayoutInflater.From(context).Inflate(Resource.Layout.adapter_photosfolder, parent, false);
-                viewHolder.tv_foldern = convertView.FindViewById<TextView>(Resource.Id.tv_folder);
-                viewHolder.tv_foldersize = convertView.FindViewById<TextView>(Resource.Id.tv_folder2);
-                viewHolder.iv_image = convertView.FindViewById<ImageView>(Resource.Id.iv_image);
+                convertView = LayoutInflater.From(context).Inflate(Resource.Layout.adapter_photosfolder, null);
+                viewHolder.imageView = convertView.FindViewById<ImageView>(Resource.Id.iv_image);
+                viewHolder.checkBox = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
+                viewHolder.button = convertView.FindViewById<Button>(Resource.Id.buttoCheckbox);
+
+                viewHolder.button.Click += (object sender, EventArgs e) => {
+                    IGalleryPickerSelected.IF_ImageSelected(Position, position);
+                };
 
                 convertView.Tag = (viewHolder);
             }
@@ -60,12 +69,17 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 viewHolder = (ViewHolder)convertView.Tag;
             }
 
-            viewHolder.tv_foldern.Visibility = ViewStates.Gone;
-            viewHolder.tv_foldersize.Visibility = ViewStates.Gone;
+            var item = galleryDirectories[Position].Images[position];
 
-
-            Glide.With(context).Load(galleryDirectories[Position].Images[position]).Into(viewHolder.iv_image);
-
+            viewHolder.checkBox.Checked = item.Checked;
+            Glide.With(context).Load(item.Path)
+                 .Apply(RequestOptions
+                        .DiskCacheStrategyOf(DiskCacheStrategy.All)
+                        .SkipMemoryCache(false)
+                        .Format(DecodeFormat.PreferRgb565)
+                        .OptionalCenterCrop())
+                 .Thumbnail(0.1f)
+                 .Into(viewHolder.imageView);
             return convertView;
         }
     }

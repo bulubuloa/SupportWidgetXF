@@ -1,11 +1,7 @@
-﻿
-using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Android;
 using Android.App;
-using Android.Content;
 using Android.Content.PM;
 using Android.Database;
 using Android.OS;
@@ -13,31 +9,66 @@ using Android.Provider;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
-using Android.Views;
 using Android.Widget;
 using SupportWidgetXF.Models;
+using Xamarin.Forms;
 
 namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 {
     [Activity(Label = "GalleryPickerActivity")]
-    public class GalleryPickerActivity : Activity
+    public class GalleryPickerActivity : Activity, IGalleryPickerSelected
     {
-        public static List<GalleryDirectory> al_images = new List<GalleryDirectory>();
-        bool boolean_folder;
-        GalleryDirectoryAdapter obj_adapter;
-        GridView gv_folder;
+        private List<GalleryDirectory> galleryDirectories;
+        private bool FlagDirectory;
+
+        private GridView gridView;
+        private GalleryImageAdapter galleryImageAdapter;
+
+        private Spinner spinner;
+        private GalleryDirectoryAdapter galleryDirectoryAdapter;
+
+        private Android.Widget.Button bttDone;
+        private ImageButton bttBack;
 
         const int REQUEST_PERMISSIONS = 100;
+
+        private List<ImageSet> GetImageSetSelected()
+        {
+            return galleryDirectories.SelectMany(directory => directory.Images).Where(Image => Image.Checked).ToList();
+        }
 
         protected override void OnCreate(Bundle savedInstanceState)
         {
             base.OnCreate(savedInstanceState);
             SetContentView(Resource.Layout.activity_gallery_picker);
-            // Create your application here
-            gv_folder = (GridView)FindViewById(Resource.Id.gv_folder);
-            gv_folder.ItemClick += (sender, e) => {
-               // StartActivity(this,typeof())
+
+            if (ActionBar != null)
+                ActionBar.Hide();
+
+            galleryDirectories = new List<GalleryDirectory>();
+
+            gridView = (GridView)FindViewById(Resource.Id.gridView);
+            spinner = (Spinner)FindViewById(Resource.Id.spinnerGallery);
+            bttBack = (Android.Widget.ImageButton)FindViewById(Resource.Id.bttBack);
+            bttDone = (Android.Widget.Button)FindViewById(Resource.Id.bttDone);
+
+            galleryDirectoryAdapter = new GalleryDirectoryAdapter(this, galleryDirectories);
+            spinner.Adapter = galleryDirectoryAdapter;
+            spinner.ItemSelected += (sender, e) => {
+                galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, spinner.SelectedItemPosition,this);
+                gridView.Adapter = galleryImageAdapter;
             };
+
+            bttBack.Click += (object sender, System.EventArgs e) => {
+                Finish();
+            };
+
+
+            bttDone.Click += (object sender, System.EventArgs e) => {
+                MessagingCenter.Send<GalleryPickerActivity,List<ImageSet>>(this, "ReturnImage", GetImageSetSelected());
+                Finish();
+            };
+
             if ((ContextCompat.CheckSelfPermission(ApplicationContext, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
                 && (ContextCompat.CheckSelfPermission(ApplicationContext,Manifest.Permission.ReadExternalStorage) != Permission.Granted))
             {
@@ -53,7 +84,7 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             }
             else
             {
-                fn_imagespath();
+                FillAllPhotosFromGallery();
             }
         }
 
@@ -68,11 +99,11 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                         {
                             if (grantResults.Length > 0 && grantResults[i] == Permission.Granted)
                             {
-                                fn_imagespath();
+                                FillAllPhotosFromGallery();
                             }
                             else
                             {
-                                Toast.MakeText(this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", ToastLength.Long).S();
+                                Toast.MakeText(this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", ToastLength.Long).Show();
                             }
                         }
                     }
@@ -80,71 +111,92 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             }
         }
 
-        public List<GalleryDirectory> fn_imagespath()
+        public List<GalleryDirectory> FillAllPhotosFromGallery()
         {
-            al_images.Clear();
+            galleryDirectories.Clear();
 
-            int int_position = 0;
+            int PositionDirectory = 0;
             Android.Net.Uri uri;
             ICursor cursor;
-            int column_index_data, column_index_folder_name;
-
+            int columnPhotoIndex, columnDirectoryIndex;
             string absolutePathOfImage = null;
+
+            //Query photos from gallery
             uri = MediaStore.Images.Media.ExternalContentUri;
-
-            string[] projection = { MediaStore.MediaColumns.Data, MediaStore.Images.ImageColumns.BucketDisplayName };
-
+            string[] projection = { MediaStore.Images.Thumbnails.Data, MediaStore.Images.ImageColumns.BucketDisplayName };
             string orderBy = MediaStore.Images.ImageColumns.DateTaken;
             cursor = ApplicationContext.ContentResolver.Query(uri, projection, null, null, orderBy + " DESC");
+            columnPhotoIndex = cursor.GetColumnIndexOrThrow(MediaStore.Images.Thumbnails.Data);
+            columnDirectoryIndex = cursor.GetColumnIndexOrThrow(MediaStore.Images.ImageColumns.BucketDisplayName);
 
-            column_index_data = cursor.GetColumnIndexOrThrow(MediaStore.MediaColumns.Data);
-            column_index_folder_name = cursor.GetColumnIndexOrThrow(MediaStore.Images.ImageColumns.BucketDisplayName);
+            //Loop to add data to collection
             while (cursor.MoveToNext())
             {
-                absolutePathOfImage = cursor.GetString(column_index_data);
-                //Log.e("Column", absolutePathOfImage);
-                //Log.e("Folder", cursor.getString(column_index_folder_name));
+                absolutePathOfImage = cursor.GetString(columnPhotoIndex);
 
-                for (int i = 0; i < al_images.Count; i++)
+                for (int i = 0; i < galleryDirectories.Count; i++)
                 {
-                    if (al_images[i].Name.Equals(cursor.GetString(column_index_folder_name)))
+                    if (galleryDirectories[i].Name.Equals(cursor.GetString(columnDirectoryIndex)))
                     {
-                        boolean_folder = true;
-                        int_position = i;
+                        FlagDirectory = true;
+                        PositionDirectory = i;
                         break;
                     }
                     else
                     {
-                        boolean_folder = false;
+                        FlagDirectory = false;
                     }
                 }
 
 
-                if (boolean_folder)
+                if (FlagDirectory)
                 {
-
-                    List<string> al_path = new List<string>;
-                    al_path.AddRange(al_images[int_position].Images);
-                    al_path.Add(absolutePathOfImage);
-                    al_images[int_position].Images = (al_path);
-
+                    var imageSets = new List<ImageSet>();
+                    imageSets.AddRange(galleryDirectories[PositionDirectory].Images);
+                    imageSets.Add(new ImageSet(){Path = absolutePathOfImage });
+                    galleryDirectories[PositionDirectory].Images = (imageSets);
                 }
                 else
                 {
-                    List<string> al_path = new List<string>();
-                    al_path.Add(absolutePathOfImage);
+                    var imageSets = new List<ImageSet>();
+                    imageSets.Add(new ImageSet() { Path = absolutePathOfImage });
 
-                    GalleryDirectory obj_model = new GalleryDirectory();
-                    obj_model.Name = (cursor.GetString(column_index_folder_name));
-                    obj_model.Images = (al_path);
+                    var galleryDirectory = new GalleryDirectory();
+                    galleryDirectory.Name = (cursor.GetString(columnDirectoryIndex));
+                    galleryDirectory.Images = (imageSets);
 
-                    al_images.Add(obj_model);
+                    galleryDirectories.Add(galleryDirectory);
                 }
             }
 
-            obj_adapter = new GalleryDirectoryAdapter(ApplicationContext, al_images);
-            gv_folder.Adapter = (obj_adapter);
-            return al_images;
+            galleryDirectoryAdapter.NotifyDataSetChanged();
+            return galleryDirectories;
+        }
+
+        public void IF_ImageSelected(int positionDirectory, int positionImage)
+        {
+            try
+            {
+                var item = galleryDirectories[positionDirectory].Images[positionImage];
+                item.Checked = !item.Checked;
+
+                if (galleryImageAdapter != null)
+                    galleryImageAdapter.NotifyDataSetChanged();
+
+                var count = GetImageSetSelected().Count;
+                if(count>0)
+                {
+                    bttDone.Text = "Done (" + count + ")";
+                }
+                else
+                {
+                    bttDone.Text = "Done";
+                }
+            }
+            catch (System.Exception ex)
+            {
+
+            }
         }
     }
 }

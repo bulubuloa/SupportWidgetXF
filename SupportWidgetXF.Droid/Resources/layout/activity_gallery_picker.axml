@@ -1,12 +1,53 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-                android:background="#ffffff"
-                android:layout_height="match_parent"
-                android:layout_width="match_parent">
-    <GridView android:id="@+id/gv_folder"
-              android:layout_height="match_parent"
-              android:layout_marginLeft="10dp"
-              android:layout_marginRight="10dp"
-              android:layout_width="match_parent"
-              android:numColumns="2" />
+﻿<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/topLayout"
+        android:background="#404040"
+        android:layout_width="match_parent"
+        android:layout_height="50dp">
+        <ImageButton
+            android:layout_marginLeft="10dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/arrow_left"
+            android:id="@+id/bttBack"
+            android:background="@android:color/transparent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <Spinner
+            android:layout_centerInParent="true"
+            android:background="@null"
+            android:id="@+id/spinnerGallery"
+            android:layout_gravity="center_vertical|center_horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+    </RelativeLayout>
+    <GridView
+        android:layout_below="@+id/topLayout"
+        android:id="@+id/gridView"
+        android:background="@android:color/white"
+        android:verticalSpacing="2dp"
+        android:horizontalSpacing="2dp"
+        android:numColumns="3"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+    <RelativeLayout
+        android:layout_alignParentBottom="true"
+        android:background="#CC404040"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:textSize="13sp"
+            android:layout_alignParentRight="true"
+            android:layout_margin="5dp"
+            android:id="@+id/bttDone"
+            android:background="@drawable/background_button"
+            android:textColor="@android:color/white"
+            android:text="Done"
+            android:layout_width="wrap_content"
+            android:layout_height="30dp" />
+    </RelativeLayout>
 </RelativeLayout>

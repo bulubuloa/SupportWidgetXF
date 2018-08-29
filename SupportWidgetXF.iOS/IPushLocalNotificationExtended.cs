@@ -1,10 +1,11 @@
 ﻿using System;
 using Foundation;
 using SupportWidgetXF.DependencyService;
+using SupportWidgetXF.iOS;
 using UIKit;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(IPushLocalNotification))]
+[assembly: Dependency(typeof(IPushLocalNotificationExtended))]
 namespace SupportWidgetXF.iOS
 {
     public class IPushLocalNotificationExtended : IPushLocalNotification

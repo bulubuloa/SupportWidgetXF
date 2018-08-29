@@ -17,10 +17,10 @@
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     Text="Drop List" />
-            <Button x:Name="bttCombined"
+            <Button x:Name="bttGallery"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    Text="Combined Chart" />
+                    Text="Gallery Picker" />
             <Button x:Name="bttPie"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"

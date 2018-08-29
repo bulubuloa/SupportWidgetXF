@@ -143,6 +143,9 @@
     <Compile Include="Renderers\GalleryPicker\GalleryDirectoryAdapter.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryImageAdapter.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryPickerActivity.cs" />
+    <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
+    <Compile Include="Renderers\GalleryPicker\IGalleryPickerSelected.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -160,6 +163,11 @@
     <AndroidResource Include="Resources\drawable\shadowclonenavigation_bottom.xml" />
     <AndroidResource Include="Resources\layout\adapter_photosfolder.axml" />
     <AndroidResource Include="Resources\layout\activity_gallery_picker.axml" />
+    <AndroidResource Include="Resources\layout\layout_single_title_normal.axml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_left.png" />
+    <AndroidResource Include="Resources\drawable\background_button.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_down.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\sort_down_white.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

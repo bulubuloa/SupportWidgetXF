@@ -3,9 +3,10 @@ using Android.App;
 using Android.Content;
 using Android.Support.V4.App;
 using SupportWidgetXF.DependencyService;
+using SupportWidgetXF.Droid;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(IPushLocalNotification))]
+[assembly: Dependency(typeof(IPushLocalNotificationExtended))]
 namespace SupportWidgetXF.Droid
 {
     public class IPushLocalNotificationExtended : IPushLocalNotification

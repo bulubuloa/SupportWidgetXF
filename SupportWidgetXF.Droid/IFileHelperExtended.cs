@@ -1,9 +1,10 @@
 ﻿using System;
 using System.IO;
 using SupportWidgetXF.DependencyService;
+using SupportWidgetXF.Droid;
 using Xamarin.Forms;
 
-[assembly: Dependency(typeof(IFileHelper))]
+[assembly: Dependency(typeof(IFileHelperExtended))]
 namespace SupportWidgetXF.Droid
 {
     public class IFileHelperExtended : IFileHelper
