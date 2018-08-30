@@ -9,6 +9,17 @@ using UIKit;
 
 namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 {
+    public class GalleryNative
+    {
+        public PHAssetCollection Collection { set; get; }
+        public List<PhotoSetNative> Images { set; get; }
+
+        public GalleryNative()
+        {
+            Images = new List<PhotoSetNative>();
+        }
+    }
+
     public class PhotoSetNative
     {
         public PHAsset Image { set; get; }
@@ -27,48 +38,62 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         private UICollectionView collectionView;
 
         private GalleryDirectorySource galleryDirectorySource;
-        private List<PHAssetCollection> galleryDirectories = new List<PHAssetCollection>();
+        private List<GalleryNative> galleryDirectories = new List<GalleryNative>();
        
-
         private GalleryCollectionSource galleryCollectionSource;
         private List<PhotoSetNative> assets = new List<PhotoSetNative>();
 
         private UITableView tableView;
         private UIView DialogView, CoverView;
         protected bool FlagShow = false;
-
+        private int CurrentParent = -1;
 
         private void InitializeLayout()
         {
-           // FixView = new UIView(new CGRect(0,20,View.Bounds.Width,View.Bounds.Height-20));
-            FixView = new UIView(new CGRect(0, 0, View.Bounds.Width, View.Bounds.Height));
+            View.BackgroundColor = UIColor.FromRGB(64, 64, 64);
+
+            FixView = new UIView(new CGRect(0,20,View.Bounds.Width,View.Bounds.Height-20));
+
             View.AddSubview(FixView);
 
-            View.BackgroundColor = UIColor.White;
 
             ViewTop = new UIView(new CGRect(0,0, FixView.Bounds.Width,45));
-            ViewTop.BackgroundColor = UIColor.FromRGB(64,64,64);
+            ViewTop.BackgroundColor = UIColor.Clear;
+            ViewTop.Layer.MasksToBounds = false;
+            ViewTop.Layer.ShadowOpacity = 1f;
+            ViewTop.Layer.ShadowOffset = new CGSize(0, 2);
+            ViewTop.Layer.ShadowColor = UIColor.Gray.CGColor;
+            ViewTop.Layer.CornerRadius = 0;
 
             ButttonBack = new UIButton(new CGRect(0, 8, 50, 30));
             ButttonBack.SetImage(UIImage.FromBundle("arrow_left").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal),UIControlState.Normal);
             ViewTop.AddSubview(ButttonBack);
 
             ButtonSpinner = new UIButton(new CGRect((FixView.Frame.Width - 150) / 2, 8, 150, 30));
-            ButtonSpinner.BackgroundColor = UIColor.Black;
+            ButtonSpinner.BackgroundColor = UIColor.Clear;
             ButtonSpinner.Font = UIFont.SystemFontOfSize(13);
             ButtonSpinner.SetTitle("Select album", UIControlState.Normal);
+            ButtonSpinner.Layer.CornerRadius = 3;
+            ButtonSpinner.Layer.BorderColor = UIColor.White.CGColor;
+            ButtonSpinner.Layer.BorderWidth = 1f;
+
+            var arrow = new UIImageView();
+            arrow.ContentMode = UIViewContentMode.ScaleAspectFit;
+            arrow.Image = UIImage.FromBundle("sort_down_white").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
+            arrow.Frame = new CGRect(ButtonSpinner.Frame.X+ButtonSpinner.Frame.Width-15,ButtonSpinner.Frame.Y+8,  12, 12);
+
             ViewTop.AddSubview(ButtonSpinner);
+            ViewTop.AddSubview(arrow);
 
 
-            FixView.AddSubview(ViewTop);
 
             collectionView = new UICollectionView(new CGRect(0, 45, FixView.Bounds.Width, FixView.Bounds.Height - 45), new UICollectionViewFlowLayout());
             collectionView.BackgroundColor = UIColor.White;
             galleryCollectionSource = new GalleryCollectionSource(assets,this);
 
             var NumOfColumns = 3;
-            var Spacing = 5;
-            var SceenWidth = (View.Frame.Width-(Spacing-1)*NumOfColumns) / NumOfColumns;
+            var Spacing = 2;
+            var SceenWidth = (View.Frame.Width-(NumOfColumns - 1)*Spacing) / NumOfColumns;
 
             var layout = new UICollectionViewFlowLayout 
             { 
@@ -85,6 +110,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             collectionView.SetCollectionViewLayout(layout, true);
 
             FixView.AddSubview(collectionView);
+            FixView.AddSubview(ViewTop);
 
             ViewBottom = new UIView(new CGRect(0, FixView.Bounds.Height-45, FixView.Bounds.Width, 45));
             ViewBottom.BackgroundColor = UIColor.FromRGB(64, 64, 64).ColorWithAlpha(0.7f);
@@ -92,6 +118,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             ButtonDone = new UIButton(new CGRect(ViewBottom.Frame.Width - 110,8, 100, 30));
             ButtonDone.Layer.BackgroundColor = UIColor.FromRGB(42, 131, 193).CGColor;
             ButtonDone.Layer.CornerRadius = 12;
+            ButtonDone.SetTitle("Done", UIControlState.Normal);
+
             ViewBottom.AddSubview(ButtonDone);
 
             FixView.AddSubview(ViewBottom);
@@ -186,43 +214,61 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 if (status != PHAuthorizationStatus.Authorized)
                     return;
 
-                var galleryDirectories1 = new List<PHAssetCollection>();
+                var galleryTemp = new List<PHAssetCollection>();
 
                 var allAlbums = PHAssetCollection.FetchAssetCollections(PHAssetCollectionType.Album, PHAssetCollectionSubtype.Any, null).Cast<PHAssetCollection>();
-                galleryDirectories1.AddRange(allAlbums);
-
                 var smartAlbums = PHAssetCollection.FetchAssetCollections(PHAssetCollectionType.SmartAlbum, PHAssetCollectionSubtype.SmartAlbumUserLibrary, null).Cast<PHAssetCollection>();
-                galleryDirectories1.AddRange(smartAlbums);
-                var xxx = galleryDirectories1.OrderBy(obj => obj.LocalizedTitle);
+
+                galleryTemp.AddRange(allAlbums);
+                galleryTemp.AddRange(smartAlbums);
+
+                var gallerySort = galleryTemp.OrderBy(obj => obj.LocalizedTitle);
 
                 NSOperationQueue.MainQueue.AddOperation(() => {
-                    foreach (var item in xxx)
+                    foreach (var itemRaw in gallerySort)
                     {
-                        var items = PHAsset.FetchAssets(item, new PHFetchOptions()).Cast<PHAsset>().ToList();
+                        var sortOptions = new PHFetchOptions();
+                        sortOptions.SortDescriptors = new NSSortDescriptor[] { new NSSortDescriptor("creationDate", false) };
+                        var items = PHAsset.FetchAssets(itemRaw, sortOptions).Cast<PHAsset>().ToList();
+
                         if (items.Count > 0)
-                            galleryDirectories.Add(item);
+                        {
+                            var colec = new GalleryNative()
+                            {
+                                Collection = itemRaw,
+                                Images = items.Select(obj => new PhotoSetNative()
+                                {
+                                    Image = obj
+                                }).ToList()
+                            };
+                            colec.Images.Insert(0, new PhotoSetNative());
+                            galleryDirectories.Add(colec);
+                        }
                     }
 
-                    tableView.ReloadData();    
+                    tableView.ReloadData();
+
+                    if(galleryDirectories.Count>0)
+                    {
+                        CurrentParent = 0;
+                        IF_ItemSelectd(CurrentParent);
+                    }
                 });
             });
         }
 
         public void IF_ItemSelectd(int position)
         {
+            CurrentParent = position;
+
             HideData();
 
             assets.Clear();
             var xx = galleryDirectories[position];
-            ButtonSpinner.SetTitle(xx.LocalizedTitle,UIControlState.Normal);
 
-            var sortOptions = new PHFetchOptions();
-            sortOptions.SortDescriptors = new NSSortDescriptor[] { new NSSortDescriptor("creationDate", false) };
+            ButtonSpinner.SetTitle(xx.Collection.LocalizedTitle,UIControlState.Normal);
 
-            var items = PHAsset.FetchAssets(xx, sortOptions).Cast<PHAsset>().ToList();
-            assets.AddRange(items.Select(obj=> new PhotoSetNative(){
-                Image = obj
-            }));
+            assets.AddRange(xx.Images);
 
             collectionView.ReloadData();
 
@@ -230,9 +276,29 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         public void IF_ImageSelected(int positionDirectory, int positionImage)
         {
-            var item = assets[positionImage];
+            var item = galleryDirectories[CurrentParent].Images[positionImage];
             item.Checked = !item.Checked;
             collectionView.ReloadData();
+
+            var count = GetCurrentSelected().Count;
+            if (count > 0)
+            {
+                ButtonDone.SetTitle("Done (" + count + ")",UIControlState.Normal);
+            }
+            else
+            {
+                ButtonDone.SetTitle("Done", UIControlState.Normal);
+            }
+        }
+
+        public void IF_CameraSelected(int pos)
+        {
+
+        }
+
+        private List<PhotoSetNative> GetCurrentSelected()
+        {
+            return galleryDirectories.SelectMany(directory => directory.Images).Where(Image => Image.Checked).ToList();
         }
     }
 }

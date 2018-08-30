@@ -22,17 +22,30 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var data = assets[indexPath.Row];
-            var cell = (GalleryItemPhotoViewCell)collectionView.DequeueReusableCell("GalleryItemPhotoViewCell", indexPath);
-            if (cell == null)
+            if(data.Image!=null)
             {
-                cell = new GalleryItemPhotoViewCell();
-                var views = NSBundle.MainBundle.LoadNib("GalleryItemPhotoViewCell", cell, null);
-                cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryItemPhotoViewCell;
+                var cell = (GalleryItemPhotoViewCell)collectionView.DequeueReusableCell("GalleryItemPhotoViewCell", indexPath);
+                if (cell == null)
+                {
+                    cell = new GalleryItemPhotoViewCell();
+                    var views = NSBundle.MainBundle.LoadNib("GalleryItemPhotoViewCell", cell, null);
+                    cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryItemPhotoViewCell;
+                }
+                cell.BindDataToCell(data, IGalleryPickerSelected, indexPath.Row);
+                return cell;
             }
-            cell.BindDataToCell(data,delegate {
-                IGalleryPickerSelected.IF_ImageSelected(indexPath.Row, indexPath.Row);
-            });
-            return cell;
+            else
+            {
+                var cell = (GalleryCameraViewCell)collectionView.DequeueReusableCell("GalleryCameraViewCell", indexPath);
+                if (cell == null)
+                {
+                    cell = new GalleryCameraViewCell();
+                    var views = NSBundle.MainBundle.LoadNib("GalleryCameraViewCell", cell, null);
+                    cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryCameraViewCell;
+                }
+                cell.BindDataToCell(IGalleryPickerSelected, indexPath.Row);
+                return cell;
+            }
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)

@@ -125,6 +125,10 @@
     <Compile Include="Renderers\GalleryPickerSupport\PhotoLibraryAccess.cs" />
     <Compile Include="Renderers\GalleryPickerSupport\UIImageExtensions.cs" />
     <Compile Include="Renderers\GalleryPickerSupport\NSDataStream.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryCameraViewCell.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryCameraViewCell.designer.cs">
+      <DependentUpon>GalleryCameraViewCell.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
@@ -142,6 +146,7 @@
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemFullTextIcon.xib" />
     <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryItemPhotoViewCell.xib" />
     <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryDirectoryViewCell.xib" />
+    <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryCameraViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sort_down%403x.png" />
@@ -150,6 +155,7 @@
     <BundleResource Include="Resources\arrow_left%403x.png" />
     <BundleResource Include="Resources\arrow_down%403x.png" />
     <BundleResource Include="Resources\sort_down_white%403x.png" />
+    <BundleResource Include="Resources\camera%402x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

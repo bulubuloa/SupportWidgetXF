@@ -1,12 +1,16 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryCollectionSource.cs">
     <Files>
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="194" Column="93" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryDirectorySource.cs" Line="34" Column="9" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryDirectoryViewCell.cs" Line="67" Column="14" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryItemPhotoViewCell.xib" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryCollectionSource.cs" Line="13" Column="9" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryItemPhotoViewCell.cs" Line="30" Column="10" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="39" Column="10" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="22" Column="5" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/DropCombo/SupportCheckBoxiOS.cs" Line="1" Column="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryDirectoryViewCell.cs" Line="45" Column="18" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/SupportShadowViewRenderer.cs" Line="28" Column="48" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryCameraViewCell.cs" Line="46" Column="2" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryCameraViewCell.xib" />
+      <File FileName="SupportWidgetXF/Widgets/Interface/IGalleryPickerSelected.cs" Line="7" Column="39" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryCollectionSource.cs" Line="24" Column="46" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryItemPhotoViewCell.cs" Line="30" Column="100" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,11 +32,13 @@
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
+                  <Node name="DropCombo" expanded="True" />
                   <Node name="GalleryPicker" expanded="True">
                     <Node name="GalleryCollectionSource.cs" selected="True" />
                   </Node>
                   <Node name="GalleryPickerSupport" expanded="True" />
                 </Node>
+                <Node name="Resources" expanded="True" />
               </Node>
             </Node>
           </Node>

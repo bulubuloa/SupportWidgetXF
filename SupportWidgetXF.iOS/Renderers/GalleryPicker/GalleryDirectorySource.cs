@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Foundation;
 using ObjCRuntime;
 using Photos;
-using SupportWidgetXF.Models;
 using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 
@@ -11,10 +10,10 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 {
     public class GalleryDirectorySource : UITableViewSource
     {
-        private List<PHAssetCollection> galleryDirectories;
+        private List<GalleryNative> galleryDirectories;
         private IDropItemSelected IDropItemSelected;
 
-        public GalleryDirectorySource(List<PHAssetCollection> galleryDirectories,IDropItemSelected IDropItemSelected)
+        public GalleryDirectorySource(List<GalleryNative> galleryDirectories,IDropItemSelected IDropItemSelected)
         {
             this.galleryDirectories = galleryDirectories;
             this.IDropItemSelected = IDropItemSelected;
@@ -26,6 +25,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             cellChild = new GalleryDirectoryViewCell();
             var viewChild = NSBundle.MainBundle.LoadNib("GalleryDirectoryViewCell", cellChild, null);
             cellChild = Runtime.GetNSObject(viewChild.ValueAt(0)) as GalleryDirectoryViewCell;
+            cellChild.Tag = indexPath.Row;
             cellChild.BindDataToCell(galleryDirectories[indexPath.Row], delegate {
                 IDropItemSelected.IF_ItemSelectd(indexPath.Row);
             });

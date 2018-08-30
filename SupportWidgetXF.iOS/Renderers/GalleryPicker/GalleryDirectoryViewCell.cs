@@ -27,16 +27,13 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         private Action ActionClick;
 
-        public void BindDataToCell(PHAssetCollection galleryDirectory, Action action)
+        public void BindDataToCell(GalleryNative galleryDirectory, Action action)
         {
 
-            var sortOptions = new PHFetchOptions();
-            //sortOptions.SortDescriptors = new NSSortDescriptor[] { new NSSortDescriptor("creationDate", true) };
+            var count = galleryDirectory.Images.Count;
 
-            var items = PHAsset.FetchAssets(galleryDirectory, sortOptions).Cast<PHAsset>().ToList();
-
-            txtTitle.Text = galleryDirectory.LocalizedTitle;
-            txtDescription.Text = "(" + items.Count + ")";
+            txtTitle.Text = galleryDirectory.Collection.LocalizedTitle;
+            txtDescription.Text = "(" + count + ")";
             //.BackgroundColor = UIColor.FromRGB(241, 241, 241);
 
             imageView.ClipsToBounds = true;
@@ -48,7 +45,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 {
                     Synchronous = true
                 };
-                PHImageManager.DefaultManager.RequestImageForAsset(items[items.Count-1], imageView.Bounds.Size, PHImageContentMode.AspectFit, options, (requestedImage, _) => {
+                PHImageManager.DefaultManager.RequestImageForAsset(galleryDirectory.Images[0].Image, imageView.Bounds.Size, PHImageContentMode.AspectFit, options, (requestedImage, _) => {
                     imageView.Image = requestedImage;
                 });
             }

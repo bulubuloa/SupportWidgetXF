@@ -2,6 +2,7 @@
 
 using Foundation;
 using Photos;
+using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 
 namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
@@ -26,12 +27,13 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         }
 
         private Action ActionClick;
-        public void BindDataToCell(PhotoSetNative pHAsset, Action action)
+        public void BindDataToCell(PhotoSetNative pHAsset, IGalleryPickerSelected action, int index)
         {
             imgIcon.ClipsToBounds = true;
             imgIcon.ContentMode = UIViewContentMode.ScaleAspectFill;
 
             CheckBox.Checked = pHAsset.Checked;
+            CheckBox.Tag = index;
 
             var options = new PHImageRequestOptions
             {
@@ -44,7 +46,9 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
             if (ActionClick == null)
             {
-                ActionClick = action;
+                ActionClick = delegate {
+                    action.IF_ImageSelected(0,(int)CheckBox.Tag);
+                };
                 CheckBox.TouchUpInside += (sender, e) =>
                 {
                     ActionClick();
