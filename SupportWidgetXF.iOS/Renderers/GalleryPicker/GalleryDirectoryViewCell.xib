@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="541" id="cxk-wN-pdQ" customClass="GalleryDirectoryViewCell" reuseIdentifier="GalleryDirectoryViewCell">
+            <rect key="frame" x="0.0" y="0.0" width="693" height="541"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cxk-wN-pdQ" id="YTl-1W-gDM">
+                <rect key="frame" x="0.0" y="0.0" width="693" height="540"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" id="390" translatesAutoresizingMaskIntoConstraints="NO">
+                        <rect key="frame" x="0.0" y="0.0" width="693" height="540.5"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="767" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="10" width="70" height="525.5"/>
+                                <constraints>
+                                    <constraint id="800" firstAttribute="width" secondItem="767" secondAttribute="height" multiplier="1:1"/>
+                                    <constraint id="960" firstAttribute="height" constant="70"/>
+                                    <constraint id="2669" firstAttribute="width" constant="70"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="993" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="75" y="254" width="613" height="16"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1205" translatesAutoresizingMaskIntoConstraints="NO" misplaced="YES">
+                                <rect key="frame" x="0.0" y="0.0" width="152" height="496"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="1664" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="75" y="276" width="613" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <constraints>
+                            <constraint id="833" firstItem="767" firstAttribute="centerY" secondItem="390" secondAttribute="centerY"/>
+                            <constraint id="850" firstItem="767" firstAttribute="leading" secondItem="390" secondAttribute="leading"/>
+                            <constraint id="867" firstItem="767" firstAttribute="top" secondItem="390" secondAttribute="top" constant="10"/>
+                            <constraint id="884" firstAttribute="bottom" secondItem="767" secondAttribute="bottom" constant="5"/>
+                            <constraint id="1027" firstItem="993" firstAttribute="leading" secondItem="767" secondAttribute="trailing" constant="5"/>
+                            <constraint id="1044" firstAttribute="trailing" secondItem="993" secondAttribute="trailing" constant="5"/>
+                            <constraint id="1222" firstItem="1205" firstAttribute="top" secondItem="390" secondAttribute="top"/>
+                            <constraint id="1239" firstAttribute="trailing" secondItem="1205" secondAttribute="trailing"/>
+                            <constraint id="1305" firstItem="1205" firstAttribute="leading" secondItem="390" secondAttribute="leading"/>
+                            <constraint id="1322" firstAttribute="bottom" secondItem="1205" secondAttribute="bottom"/>
+                            <constraint id="1663" firstItem="767" firstAttribute="centerY" secondItem="993" secondAttribute="bottom" constant="3"/>
+                            <constraint id="1665" firstItem="1664" firstAttribute="top" secondItem="767" secondAttribute="centerY" constant="3"/>
+                            <constraint id="1666" firstItem="1664" firstAttribute="leading" secondItem="993" secondAttribute="leading"/>
+                            <constraint id="1667" firstAttribute="trailing" secondItem="1664" secondAttribute="trailing" constant="5"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint id="423" firstItem="390" firstAttribute="top" secondItem="YTl-1W-gDM" secondAttribute="top"/>
+                    <constraint id="440" firstAttribute="trailing" secondItem="390" secondAttribute="trailing"/>
+                    <constraint id="457" firstItem="390" firstAttribute="leading" secondItem="YTl-1W-gDM" secondAttribute="leading"/>
+                    <constraint id="474" firstAttribute="bottom" secondItem="390" secondAttribute="bottom"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="ViewMain" destination="390" id="name-outlet-390"/>
+                <outlet property="imageView" destination="767" id="name-outlet-767"/>
+                <outlet property="txtTitle" destination="993" id="name-outlet-993"/>
+                <outlet property="bttClick" destination="1205" id="name-outlet-1205"/>
+                <outlet property="txtDescription" destination="1664" id="name-outlet-1664"/>
+            </connections>
+        </tableViewCell>
+    </objects>
+</document>

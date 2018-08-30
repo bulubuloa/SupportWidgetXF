@@ -68,6 +68,9 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 {
                     //picker.ModalPresentationStyle = options?.ModalPresentationStyle == MediaPickerModalPresentationStyle.OverFullScreen  ? UIModalPresentationStyle.OverFullScreen : UIModalPresentationStyle.FullScreen;
                 }
+                openController.ModalTransitionStyle = UIModalTransitionStyle.CoverVertical;
+                openController.ModalPresentationStyle = UIModalPresentationStyle.OverFullScreen;
+                openController.ModalPresentationCapturesStatusBarAppearance = true;
                 viewController.PresentModalViewController(openController, true);
             }
         }

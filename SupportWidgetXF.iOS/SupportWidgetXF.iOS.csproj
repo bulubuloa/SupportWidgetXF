@@ -67,6 +67,7 @@
     <Folder Include="Renderers\AutoComplete\" />
     <Folder Include="Renderers\AutoComplete\Multi\" />
     <Folder Include="Renderers\GalleryPicker\" />
+    <Folder Include="Renderers\GalleryPickerSupport\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -111,6 +112,19 @@
     <Compile Include="Renderers\AutoComplete\Multi\CollectionViewLeftFlowLayout.cs" />
     <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryPickerController.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryItemPhotoViewCell.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryItemPhotoViewCell.designer.cs">
+      <DependentUpon>GalleryItemPhotoViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Renderers\GalleryPicker\GalleryCollectionSource.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryDirectoryViewCell.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryDirectoryViewCell.designer.cs">
+      <DependentUpon>GalleryDirectoryViewCell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Renderers\GalleryPicker\GalleryDirectorySource.cs" />
+    <Compile Include="Renderers\GalleryPickerSupport\PhotoLibraryAccess.cs" />
+    <Compile Include="Renderers\GalleryPickerSupport\UIImageExtensions.cs" />
+    <Compile Include="Renderers\GalleryPickerSupport\NSDataStream.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
@@ -126,6 +140,8 @@
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemTitleDescription.xib" />
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemIconTitle.xib" />
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemFullTextIcon.xib" />
+    <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryItemPhotoViewCell.xib" />
+    <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryDirectoryViewCell.xib" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sort_down%403x.png" />

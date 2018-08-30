@@ -8,6 +8,7 @@ using Com.Bumptech.Glide.Load;
 using Com.Bumptech.Glide.Load.Engine;
 using Com.Bumptech.Glide.Request;
 using SupportWidgetXF.Models;
+using SupportWidgetXF.Widgets.Interface;
 
 namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 {

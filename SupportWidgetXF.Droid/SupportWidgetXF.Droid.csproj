@@ -145,7 +145,6 @@
     <Compile Include="Renderers\GalleryPicker\GalleryPickerActivity.cs" />
     <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
-    <Compile Include="Renderers\GalleryPicker\IGalleryPickerSelected.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

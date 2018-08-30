@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using SupportWidgetXF.Models.Widgets;
 
 namespace SupportWidgetXF.Models
 {
@@ -14,7 +15,7 @@ namespace SupportWidgetXF.Models
         }
     }
 
-    public class GalleryDirectory
+    public class GalleryDirectory : IAutoDropItem
     {
         public string Name { set; get; }
 
@@ -23,6 +24,36 @@ namespace SupportWidgetXF.Models
         public GalleryDirectory()
         {
             Images = new List<ImageSet>();
+        }
+
+        public string IF_GetTitle()
+        {
+            return Name;
+        }
+
+        public string IF_GetDescription()
+        {
+            return Name;
+        }
+
+        public string IF_GetIcon()
+        {
+            return Name;
+        }
+
+        public Action IF_GetAction()
+        {
+            return null;
+        }
+
+        public bool IF_GetChecked()
+        {
+            return false;
+        }
+
+        public void IF_SetChecked(bool _Checked)
+        {
+
         }
     }
 }
