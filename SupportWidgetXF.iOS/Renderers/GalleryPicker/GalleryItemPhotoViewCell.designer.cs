@@ -15,7 +15,11 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
     {
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
-        SupportWidgetXF.iOS.Renderers.DropCombo.SupportCheckBoxiOS CheckBox { get; set; }
+        UIKit.UIButton bttClick { get; set; }
+
+        [Outlet]
+        [GeneratedCode ("iOS Designer", "1.0")]
+        SupportWidgetXF.iOS.Renderers.DropCombo.SupportRadioCheckiOS CheckBox { get; set; }
 
         [Outlet]
         [GeneratedCode ("iOS Designer", "1.0")]
@@ -27,6 +31,11 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         void ReleaseDesignerOutlets ()
         {
+            if (bttClick != null) {
+                bttClick.Dispose ();
+                bttClick = null;
+            }
+
             if (CheckBox != null) {
                 CheckBox.Dispose ();
                 CheckBox = null;

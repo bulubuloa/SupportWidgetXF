@@ -10,7 +10,7 @@ using Xamarin.Forms;
 
 namespace DemoWidget
 {
-    public partial class MainPage : ContentPage, IGalleryPickerResultListener
+    public partial class MainPage : ContentPage
     {
         public MainPage()
         {
@@ -28,14 +28,9 @@ namespace DemoWidget
                 await Navigation.PushAsync(new DemoDropListPageView());
             };
 
-            bttGallery.Clicked += (object sender, EventArgs e) => {
-                DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this);
+            bttGallery.Clicked += async (object sender, EventArgs e) => {
+                await Navigation.PushAsync(new DemoGalleryPickerPage());
             };
-        }
-
-        public void IF_PickedResult(List<ImageSet> result)
-        {
-
         }
     }
 }

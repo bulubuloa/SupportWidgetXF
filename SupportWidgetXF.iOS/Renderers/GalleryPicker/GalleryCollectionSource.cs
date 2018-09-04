@@ -22,30 +22,15 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public override UICollectionViewCell GetCell(UICollectionView collectionView, NSIndexPath indexPath)
         {
             var data = assets[indexPath.Row];
-            if(data.Image!=null)
+            var cell = (GalleryItemPhotoViewCell)collectionView.DequeueReusableCell("GalleryItemPhotoViewCell", indexPath);
+            if (cell == null)
             {
-                var cell = (GalleryItemPhotoViewCell)collectionView.DequeueReusableCell("GalleryItemPhotoViewCell", indexPath);
-                if (cell == null)
-                {
-                    cell = new GalleryItemPhotoViewCell();
-                    var views = NSBundle.MainBundle.LoadNib("GalleryItemPhotoViewCell", cell, null);
-                    cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryItemPhotoViewCell;
-                }
-                cell.BindDataToCell(data, IGalleryPickerSelected, indexPath.Row);
-                return cell;
+                cell = new GalleryItemPhotoViewCell();
+                var views = NSBundle.MainBundle.LoadNib("GalleryItemPhotoViewCell", cell, null);
+                cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryItemPhotoViewCell;
             }
-            else
-            {
-                var cell = (GalleryCameraViewCell)collectionView.DequeueReusableCell("GalleryCameraViewCell", indexPath);
-                if (cell == null)
-                {
-                    cell = new GalleryCameraViewCell();
-                    var views = NSBundle.MainBundle.LoadNib("GalleryCameraViewCell", cell, null);
-                    cell = Runtime.GetNSObject(views.ValueAt(0)) as GalleryCameraViewCell;
-                }
-                cell.BindDataToCell(IGalleryPickerSelected, indexPath.Row);
-                return cell;
-            }
+            cell.BindDataToCell(data, IGalleryPickerSelected, indexPath.Row,data.Image==null);
+            return cell;
         }
 
         public override nint GetItemsCount(UICollectionView collectionView, nint section)

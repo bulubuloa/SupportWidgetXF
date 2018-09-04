@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ContentPage x:Class="DemoWidget.Views.DemoGalleryPickerPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:widget="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF">
+    <ContentPage.Content>
+        <StackLayout Orientation="Vertical" Padding="10">
+            <Button HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding PickerCommand}"
+                    Text="Gallery Picker" />
+            <ListView HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      BackgroundColor="Silver"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding ImageItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout WidthRequest="100"
+                                         HeightRequest="100"
+                                         BackgroundColor="Purple"
+                                         Orientation="Vertical"
+                                         Spacing="0">
+                                
+                                <Image x:Name="Image"
+                                                            Source="{Binding .}"
+                                                            WidthRequest="100"
+                                                            HeightRequest="100"
+                                                            Aspect="AspectFit" />
+                    
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

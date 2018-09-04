@@ -111,6 +111,9 @@
     <Reference Include="Glide">
       <HintPath>..\packages\Glide.Xamarin.4.1.1\lib\MonoAndroid10\Glide.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -167,6 +170,12 @@
     <AndroidResource Include="Resources\drawable\background_button.xml" />
     <AndroidResource Include="Resources\drawable-xxhdpi\arrow_down.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\sort_down_white.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\nonchecked.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\checked.png" />
+    <AndroidResource Include="Resources\values\colors.xml" />
+    <AndroidResource Include="Resources\drawable\selector_check.xml" />
+    <AndroidResource Include="Resources\drawable\border_background.xml" />
+    <AndroidResource Include="Resources\drawable-xhdpi\camera.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

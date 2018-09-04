@@ -1,10 +1,11 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using System.Threading;
-using Foundation;
-using ObjCRuntime;
+using Newtonsoft.Json;
+using Photos;
 using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.iOS.Renderers.GalleryPicker;
+using SupportWidgetXF.Models;
 using UIKit;
 using Xamarin.Forms;
 
@@ -17,14 +18,38 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         public IGalleryPickerExtended()
         {
+            MessagingCenter.Subscribe<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImage", (arg1, arg2) => {
+               
+                var itemResult = new List<ImageSet>();
+
+                var options = new PHContentEditingInputRequestOptions();
+                int Count = 0;
+
+                foreach (var item in arg2)
+                {
+                    var xxx = new ImageSet();
+                    xxx.Checked = item.Checked;
+
+                    item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
+                    {
+                        if(contentEditingInput!=null)
+                        {
+                            xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                            Console.WriteLine(xxx.Path);
+                            itemResult.Add(xxx);
+                        }
+
+                        Count += 1;
+                        //if (Count == arg2.Count)
+                            //galleryPickerResultListener.IF_PickedResult(itemResult);
+                    });
+                }
+            });
         }
 
         public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener)
         {
             galleryPickerResultListener = pickerResultListener;
-            //var myVC = NSBundle.MainBundle.LoadNib("GalleryPickerController", null, null);
-            //var xxx = Runtime.GetNSObject(myVC.ValueAt(0)) as GalleryPickerController;
-
             OpenController(new GalleryPickerController());
         }
 

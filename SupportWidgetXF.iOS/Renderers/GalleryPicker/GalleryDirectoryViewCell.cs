@@ -29,23 +29,25 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         public void BindDataToCell(GalleryNative galleryDirectory, Action action)
         {
-
             var count = galleryDirectory.Images.Count;
 
             txtTitle.Text = galleryDirectory.Collection.LocalizedTitle;
             txtDescription.Text = "(" + count + ")";
-            //.BackgroundColor = UIColor.FromRGB(241, 241, 241);
 
             imageView.ClipsToBounds = true;
             imageView.ContentMode = UIViewContentMode.ScaleAspectFill;
 
             try
             {
+                var sortOptions = new PHFetchOptions();
+                sortOptions.SortDescriptors = new NSSortDescriptor[] { new NSSortDescriptor("creationDate", false) };
+                var items = PHAsset.FetchAssets(galleryDirectory.Collection, sortOptions).Cast<PHAsset>().ToList();
+
                 var options = new PHImageRequestOptions
                 {
                     Synchronous = true
                 };
-                PHImageManager.DefaultManager.RequestImageForAsset(galleryDirectory.Images[0].Image, imageView.Bounds.Size, PHImageContentMode.AspectFit, options, (requestedImage, _) => {
+                PHImageManager.DefaultManager.RequestImageForAsset(items[0], imageView.Bounds.Size, PHImageContentMode.AspectFit, options, (requestedImage, _) => {
                     imageView.Image = requestedImage;
                 });
             }

@@ -48,6 +48,7 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 viewHolder = (ViewHolder)convertView.Tag;
             }
 
+            convertView.SetBackgroundResource(Resource.Drawable.border_background);
             viewHolder.txtTitle.Text = galleryDirectories[position].Name;
             viewHolder.sortDown.Visibility = ViewStates.Visible;
             return convertView;

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SupportWidgetXF.Droid.Renderers.GalleryPicker.GalleryItemSquare 
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:background="@color/material_grey_600"
+    android:background="@android:color/white"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -14,14 +14,25 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:id="@+id/iv_image"/>
+        <Button
+            android:background="@android:color/transparent"
+            android:layout_alignLeft="@+id/iv_image"
+            android:layout_alignRight="@+id/iv_image"
+            android:layout_alignBottom="@+id/iv_image"
+            android:layout_alignTop="@+id/iv_image"
+            android:id="@+id/buttonClick"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
         <CheckBox
+            android:background="@android:color/transparent"
+            android:button="@drawable/selector_check"
             android:id="@+id/checkBox"
             android:layout_margin="5dp"
             android:layout_alignParentRight="true"
             android:layout_alignParentTop="true"
             android:layout_height="25dp"
             android:layout_width="25dp"/>
-        <CheckBox
+        <Button
             android:background="@android:color/transparent"
             android:layout_alignLeft="@+id/checkBox"
             android:layout_alignRight="@+id/checkBox"

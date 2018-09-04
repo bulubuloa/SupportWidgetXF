@@ -18,7 +18,7 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         {
             public ImageView imageView;
             public CheckBox checkBox;
-            public Button button;
+            public Button button, buttonClick;
         }
 
         private Context context;
@@ -58,11 +58,14 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 viewHolder.imageView = convertView.FindViewById<ImageView>(Resource.Id.iv_image);
                 viewHolder.checkBox = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
                 viewHolder.button = convertView.FindViewById<Button>(Resource.Id.buttoCheckbox);
+                viewHolder.buttonClick = convertView.FindViewById<Button>(Resource.Id.buttonClick);
 
                 viewHolder.button.Click += (object sender, EventArgs e) => {
                     IGalleryPickerSelected.IF_ImageSelected(Position, position);
                 };
-
+                viewHolder.buttonClick.Click += (object sender, EventArgs e) => {
+                    IGalleryPickerSelected.IF_CameraSelected(position);
+                };
                 convertView.Tag = (viewHolder);
             }
             else
@@ -72,8 +75,15 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
             var item = galleryDirectories[Position].Images[position];
 
-            viewHolder.checkBox.Checked = item.Checked;
-            Glide.With(context).Load(item.Path)
+            if(string.IsNullOrEmpty(item.Path))
+            {
+                viewHolder.imageView.SetImageResource(Resource.Drawable.camera);
+                viewHolder.checkBox.Visibility = ViewStates.Gone;
+                viewHolder.buttonClick.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            }
+            else
+            {
+                Glide.With(context).Load(item.Path)
                  .Apply(RequestOptions
                         .DiskCacheStrategyOf(DiskCacheStrategy.All)
                         .SkipMemoryCache(false)
@@ -81,6 +91,14 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                         .OptionalCenterCrop())
                  .Thumbnail(0.1f)
                  .Into(viewHolder.imageView);
+                viewHolder.checkBox.Visibility = ViewStates.Visible;
+                viewHolder.checkBox.Checked = item.Checked;
+                if (item.Checked)
+                    viewHolder.buttonClick.SetBackgroundResource(Resource.Color.colorWi);
+                else
+                    viewHolder.buttonClick.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            }
+
             return convertView;
         }
     }

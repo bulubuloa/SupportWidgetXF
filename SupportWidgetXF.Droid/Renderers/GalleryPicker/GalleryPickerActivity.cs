@@ -11,6 +11,7 @@ using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Widget;
 using SupportWidgetXF.Models;
+using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
@@ -129,14 +130,16 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             columnPhotoIndex = cursor.GetColumnIndexOrThrow(MediaStore.Images.Thumbnails.Data);
             columnDirectoryIndex = cursor.GetColumnIndexOrThrow(MediaStore.Images.ImageColumns.BucketDisplayName);
 
+            List<GalleryDirectory> galleriesRaw = new List<GalleryDirectory>();
+
             //Loop to add data to collection
             while (cursor.MoveToNext())
             {
                 absolutePathOfImage = cursor.GetString(columnPhotoIndex);
 
-                for (int i = 0; i < galleryDirectories.Count; i++)
+                for (int i = 0; i < galleriesRaw.Count; i++)
                 {
-                    if (galleryDirectories[i].Name.Equals(cursor.GetString(columnDirectoryIndex)))
+                    if (galleriesRaw[i].Name.Equals(cursor.GetString(columnDirectoryIndex)))
                     {
                         FlagDirectory = true;
                         PositionDirectory = i;
@@ -152,9 +155,10 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 if (FlagDirectory)
                 {
                     var imageSets = new List<ImageSet>();
-                    imageSets.AddRange(galleryDirectories[PositionDirectory].Images);
+                    imageSets.AddRange(galleriesRaw[PositionDirectory].Images);
                     imageSets.Add(new ImageSet(){Path = absolutePathOfImage });
-                    galleryDirectories[PositionDirectory].Images = (imageSets);
+
+                    galleriesRaw[PositionDirectory].Images = (imageSets);
                 }
                 else
                 {
@@ -165,10 +169,12 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                     galleryDirectory.Name = (cursor.GetString(columnDirectoryIndex));
                     galleryDirectory.Images = (imageSets);
 
-                    galleryDirectories.Add(galleryDirectory);
+                    galleriesRaw.Add(galleryDirectory);
                 }
             }
 
+            galleryDirectories.AddRange(galleriesRaw.Where(obj => obj.Images.Count > 0).OrderBy(obj=>obj.Name));
+            galleryDirectories.ForEach(obj => obj.Images.Insert(0, new ImageSet()));
             galleryDirectoryAdapter.NotifyDataSetChanged();
             return galleryDirectories;
         }
@@ -197,6 +203,10 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             {
 
             }
+        }
+
+        public void IF_CameraSelected(int pos)
+        {
         }
     }
 }

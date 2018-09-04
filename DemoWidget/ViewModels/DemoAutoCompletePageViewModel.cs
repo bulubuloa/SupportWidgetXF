@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
@@ -69,7 +71,7 @@ namespace DemoWidget.ViewModels
         }
     }
 
-    public class DemoAutoCompletePageViewModel : BaseViewModel
+    public class DemoAutoCompletePageViewModel : BaseViewModel, IGalleryPickerResultListener
     {
         private List<IAutoDropItem> _ItemDemo;
         public List<IAutoDropItem> ItemDemo
@@ -127,6 +129,11 @@ namespace DemoWidget.ViewModels
             }
         }
 
+        public ICommand PickerCommand => new Command(OnPickerCommand);
+        private void OnPickerCommand()
+        {
+            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this);
+        }
 
         public ICommand AddItemToSourceCommand => new Command(OnAddItemToSourceCommand);
         private void OnAddItemToSourceCommand()
@@ -187,8 +194,75 @@ namespace DemoWidget.ViewModels
             ItemSelectedPosition = 1;
         }
 
+        private ObservableCollection<string> _ImageItemsSet;
+        public ObservableCollection<string> ImageItemsSet
+        {
+            get => _ImageItemsSet;
+            set
+            {
+                _ImageItemsSet = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private ObservableCollection<ImageSource> _ImageItems;
+        public ObservableCollection<ImageSource> ImageItems
+        {
+            get => _ImageItems;
+            set
+            {
+                _ImageItems = value;
+                OnPropertyChanged();
+            }
+        }
+
+        public void IF_PickedResult(List<ImageSet> result)
+        {
+            
+            foreach (var item in result)
+            {
+                Task.Run(() =>
+                {
+                    if (!string.IsNullOrEmpty(item.Path))
+                    {
+                        var xx = ImageSource.FromFile("dc");
+                        DependencyService.Get<IFileHelper>().IF_GetImageSourceFilePath(xx, item.Path);
+                        ImageItems.Add(xx);
+                    }
+                });
+
+                //Task.Run(() =>
+                //{
+                //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
+                //    var imageSource = ImageSource.FromStream(() => stream);
+                //    ImageItems.Add(imageSource);
+
+                //    //stream.Flush();
+                //    //stream.Dispose();
+                //    //Xamarin.Forms.Device.BeginInvokeOnMainThread(delegate {
+                //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
+
+                //    //});
+                //    //using (var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path))
+                //    //{
+                //    //    var imageSource = ImageSource.FromStream(() => stream);
+
+                //    //    ImageItems.Add(ImageSource.FromStream());
+                //    //}
+                //});
+            }
+        }
+
+        //public Task<ImageSource> GetStreamFromSingleImage(string filePath)
+        //{
+        //    Task.FromResult
+        //}
+
         public DemoAutoCompletePageViewModel()
         {
+            ImageItems = new ObservableCollection<ImageSource>();
+            ImageItemsSet = new ObservableCollection<string>();
+
             ItemDemo = new List<IAutoDropItem>();
             ItemDemo.Add(new YourClass("Robert Downey Jr.","Iron Man - Marvel Universe","marvel"));
             ItemDemo.Add(new YourClass("Chris Evans", "Captain America - Marvel Universe", "marvel"));

@@ -25,11 +25,14 @@
                                     <constraint id="272" firstAttribute="width" secondItem="267" secondAttribute="height" multiplier="1:1"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="273" customClass="SupportCheckBoxiOS" translatesAutoresizingMaskIntoConstraints="NO">
-                                <rect key="frame" x="403" y="5" width="25" height="25"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1322" translatesAutoresizingMaskIntoConstraints="NO" hidden="YES">
+                                <rect key="frame" x="0.0" y="0.0" width="428" height="459"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="642" customClass="SupportRadioCheckiOS" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="388" y="0.0" width="40" height="40"/>
                                 <constraints>
-                                    <constraint id="286" firstAttribute="width" secondItem="273" secondAttribute="height" multiplier="1:1"/>
-                                    <constraint id="289" firstAttribute="height" constant="25"/>
+                                    <constraint id="655" firstAttribute="width" secondItem="642" secondAttribute="height" multiplier="1:1"/>
+                                    <constraint id="829" firstAttribute="width" constant="40"/>
                                 </constraints>
                             </button>
                         </subviews>
@@ -38,8 +41,12 @@
                             <constraint id="269" firstAttribute="trailing" secondItem="267" secondAttribute="trailing"/>
                             <constraint id="270" firstItem="267" firstAttribute="centerX" secondItem="261" secondAttribute="centerX"/>
                             <constraint id="271" firstItem="267" firstAttribute="centerY" secondItem="261" secondAttribute="centerY"/>
-                            <constraint id="287" firstItem="267" firstAttribute="trailing" secondItem="273" secondAttribute="trailing"/>
-                            <constraint id="288" firstItem="273" firstAttribute="top" secondItem="267" secondAttribute="top" constant="5"/>
+                            <constraint id="827" firstItem="642" firstAttribute="top" secondItem="267" secondAttribute="top"/>
+                            <constraint id="828" firstItem="267" firstAttribute="trailing" secondItem="642" secondAttribute="trailing"/>
+                            <constraint id="1340" firstItem="1322" firstAttribute="top" secondItem="267" secondAttribute="top"/>
+                            <constraint id="1341" firstItem="267" firstAttribute="trailing" secondItem="1322" secondAttribute="trailing"/>
+                            <constraint id="1342" firstItem="1322" firstAttribute="leading" secondItem="267" secondAttribute="leading"/>
+                            <constraint id="1343" firstItem="267" firstAttribute="bottom" secondItem="1322" secondAttribute="bottom"/>
                         </constraints>
                     </view>
                 </subviews>
@@ -47,7 +54,8 @@
             <connections>
                 <outlet property="ViewMain" destination="261" id="name-outlet-261"/>
                 <outlet property="imgIcon" destination="267" id="name-outlet-267"/>
-                <outlet property="CheckBox" destination="273" id="name-outlet-273"/>
+                <outlet property="CheckBox" destination="642" id="name-outlet-642"/>
+                <outlet property="bttClick" destination="1322" id="name-outlet-1322"/>
             </connections>
             <constraints>
                 <constraint id="263" firstItem="261" firstAttribute="top" secondItem="cZE-iV-UFb" secondAttribute="top"/>

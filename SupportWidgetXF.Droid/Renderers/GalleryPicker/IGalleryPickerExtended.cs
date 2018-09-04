@@ -1,7 +1,10 @@
 ﻿
 using System;
 using System.Collections.Generic;
+using System.IO;
 using Android.Content;
+using Android.Graphics;
+using Java.IO;
 using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.Droid.Renderers.GalleryPicker;
 using SupportWidgetXF.Models;

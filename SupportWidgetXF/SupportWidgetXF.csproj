@@ -25,10 +25,12 @@
     <Folder Include="Controllers\Validations\" />
     <Folder Include="Controllers\Validations\Rules\" />
     <Folder Include="Controllers\API\" />
+    <Folder Include="Widgets\GalleryPicker\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Widgets\SupportAutoCompleteAsync.cs" />
     <Compile Remove="Widgets\SupportActionMenuRenderer.cs" />
     <Compile Remove="Class1.cs" />
+    <Compile Remove="Util.cs" />
   </ItemGroup>
 </Project>
