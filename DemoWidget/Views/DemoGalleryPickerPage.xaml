@@ -14,7 +14,7 @@
                       VerticalOptions="FillAndExpand"
                       BackgroundColor="Silver"
                       HasUnevenRows="true"
-                      ItemsSource="{Binding ImageItems}">
+                      ItemsSource="{Binding ImageItemsSet}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -24,7 +24,7 @@
                                          Orientation="Vertical"
                                          Spacing="0">
                                 
-                                <Image x:Name="Image"
+                                <ffimageloading:CachedImage x:Name="Image"
                                                             Source="{Binding .}"
                                                             WidthRequest="100"
                                                             HeightRequest="100"

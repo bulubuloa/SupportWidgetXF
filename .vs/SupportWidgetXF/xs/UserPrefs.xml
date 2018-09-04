@@ -1,16 +1,18 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget.iOS/Info.plist">
     <Files>
       <File FileName="DemoWidget.iOS/Main.cs" Line="17" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" Line="33" Column="58" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="233" Column="17" />
-      <File FileName="DemoWidget/Views/DemoGalleryPickerPage.xaml" Line="21" Column="60" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" Line="63" Column="13" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="229" Column="17" />
+      <File FileName="DemoWidget/Views/DemoGalleryPickerPage.xaml" Line="26" Column="33" />
       <File FileName="SupportWidgetXF.Droid/Renderers/GalleryPicker/GalleryImageAdapter.cs" Line="1" Column="1" />
       <File FileName="SupportWidgetXF.iOS/IFileHelperExtended.cs" Line="38" Column="9" />
       <File FileName="SupportWidgetXF.Droid/Renderers/GalleryPicker/GalleryPickerActivity.cs" Line="26" Column="57" />
       <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryDirectoryViewCell.cs" Line="47" Column="18" />
       <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryItemPhotoViewCell.cs" Line="93" Column="24" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="132" Column="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="205" Column="27" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/SupportRadioCheckiOS.cs" Line="1" Column="1" />
+      <File FileName="DemoWidget.iOS/Info.plist" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,21 +28,13 @@
                 </Node>
                 <Node name="MainPage.xaml" expanded="True" />
               </Node>
-              <Node name="DemoWidget.Android" expanded="True" />
               <Node name="DemoWidget.iOS" expanded="True">
-                <Node name="Packages" expanded="True" />
-                <Node name="Properties" expanded="True" />
-                <Node name="Resources" expanded="True" />
+                <Node name="Info.plist" selected="True" />
               </Node>
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Dependencies" expanded="True" />
-                <Node name="DependencyService" expanded="True" />
-                <Node name="Models" expanded="True" />
-                <Node name="Widgets" expanded="True">
-                  <Node name="Interface" expanded="True" />
-                </Node>
+                <Node name="Widgets" expanded="True" />
               </Node>
               <Node name="SupportWidgetXF.Droid" expanded="True">
                 <Node name="Renderers" expanded="True">
@@ -49,9 +43,8 @@
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
-                  <Node name="GalleryPicker" expanded="True">
-                    <Node name="GalleryPickerController.cs" selected="True" />
-                  </Node>
+                  <Node name="GalleryPicker" expanded="True" />
+                  <Node name="GalleryPickerSupport" expanded="True" />
                 </Node>
               </Node>
             </Node>
@@ -62,11 +55,14 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" relfile="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" line="46" column="1" />
+      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" relfile="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" line="55" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.E5AZCY489464" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.bacd535954e069cb541d979bfee0213ea979867e" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.bacd535954e069cb541d979bfee0213ea979867e" automaticSigning="False" />
 </Properties>

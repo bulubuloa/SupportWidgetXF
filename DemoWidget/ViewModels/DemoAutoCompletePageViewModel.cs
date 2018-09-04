@@ -221,15 +221,11 @@ namespace DemoWidget.ViewModels
             
             foreach (var item in result)
             {
-                Task.Run(() =>
+                if (!string.IsNullOrEmpty(item.Path))
                 {
-                    if (!string.IsNullOrEmpty(item.Path))
-                    {
-                        var xx = ImageSource.FromFile("dc");
-                        DependencyService.Get<IFileHelper>().IF_GetImageSourceFilePath(xx, item.Path);
-                        ImageItems.Add(xx);
-                    }
-                });
+                    ImageItemsSet.Add(item.Path);
+                }
+               
 
                 //Task.Run(() =>
                 //{

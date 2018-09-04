@@ -29,20 +29,31 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 {
                     var xxx = new ImageSet();
                     xxx.Checked = item.Checked;
+                    xxx.Path = item.Path;
 
-                    item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
+                    if(string.IsNullOrEmpty(xxx.Path))
                     {
-                        if(contentEditingInput!=null)
+                        item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
                         {
-                            xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
-                            Console.WriteLine(xxx.Path);
-                            itemResult.Add(xxx);
-                        }
+                            if (contentEditingInput != null)
+                            {
+                                xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                                itemResult.Add(xxx);
+                            }
+
+                            Count += 1;
+                            if (Count == arg2.Count)
+                                galleryPickerResultListener.IF_PickedResult(itemResult);
+                        });
+                    }
+                    else
+                    {
+                        itemResult.Add(xxx);
 
                         Count += 1;
-                        //if (Count == arg2.Count)
-                            //galleryPickerResultListener.IF_PickedResult(itemResult);
-                    });
+                        if (Count == arg2.Count)
+                            galleryPickerResultListener.IF_PickedResult(itemResult);
+                    }
                 }
             });
         }

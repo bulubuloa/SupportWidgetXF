@@ -273,17 +273,26 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             item.Checked = !item.Checked;
             collectionView.ReloadData();
 
-            item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
+            if(item.Checked)
             {
-                if (contentEditingInput != null)
+                item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
                 {
-                    Console.WriteLine(contentEditingInput.FullSizeImageUrl.ToString());
-                }
-                else
-                {
-                    Console.WriteLine("N/A");
-                }
-            });
+                    if (contentEditingInput != null)
+                    {
+                        item.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                        Console.WriteLine(item.Path);
+                    }
+                    else
+                    {
+                        Console.WriteLine("N/A");
+                    }
+                });
+            }
+            else
+            {
+                item.Path = null;
+            }
+
 
             var count = GetCurrentSelected().Count;
             if (count > 0)
