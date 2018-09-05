@@ -23,13 +23,13 @@
                                          BackgroundColor="Purple"
                                          Orientation="Vertical"
                                          Spacing="0">
-                                
+
                                 <ffimageloading:CachedImage x:Name="Image"
-                                                            Source="{Binding .}"
-                                                            WidthRequest="100"
-                                                            HeightRequest="100"
-                                                            Aspect="AspectFit" />
-                    
+                                       WidthRequest="100"
+                                       HeightRequest="100"
+                                       Aspect="AspectFit"
+                                       Source="{Binding .}" />
+
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>

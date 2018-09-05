@@ -1,7 +1,10 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using Android;
 using Android.App;
+using Android.Content;
 using Android.Content.PM;
 using Android.Database;
 using Android.OS;
@@ -10,6 +13,7 @@ using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
 using Android.Widget;
+using Java.Text;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Widgets.Interface;
 using Xamarin.Forms;
@@ -31,7 +35,8 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         private Android.Widget.Button bttDone;
         private ImageButton bttBack;
 
-        const int REQUEST_PERMISSIONS = 100;
+        const int REQUEST_PERMISSIONS_LIBRARY = 100;
+        const int REQUEST_CAMERA_CAPTURE = 102;
 
         private List<ImageSet> GetImageSetSelected()
         {
@@ -70,22 +75,37 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 Finish();
             };
 
-            if ((ContextCompat.CheckSelfPermission(ApplicationContext, Manifest.Permission.WriteExternalStorage) != Permission.Granted)
-                && (ContextCompat.CheckSelfPermission(ApplicationContext,Manifest.Permission.ReadExternalStorage) != Permission.Granted))
+            if(CheckPermissionLibrary())
             {
-                if ((ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.WriteExternalStorage)) 
-                    && (ActivityCompat.ShouldShowRequestPermissionRationale(this,Manifest.Permission.ReadExternalStorage)))
-                {
-
-                }
-                else
-                {
-                    ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage }, REQUEST_PERMISSIONS);
-                }
+                FillAllPhotosFromGallery();
             }
             else
             {
-                FillAllPhotosFromGallery();
+                RequestPermissionLibrary();
+            }
+        }
+
+        protected override void OnActivityResult(int requestCode, [GeneratedEnum] Result resultCode, Intent data)
+        {
+            base.OnActivityResult(requestCode, resultCode, data);
+            switch (requestCode)
+            {
+                case REQUEST_CAMERA_CAPTURE:
+                    if(resultCode == Result.Ok)
+                    {
+                        Console.WriteLine(mCurrentPhotoPath);
+                        var result = new List<ImageSet>()
+                        {
+                            new ImageSet(){
+                                Path = mCurrentPhotoPath
+                            }
+                        };
+                        MessagingCenter.Send<GalleryPickerActivity, List<ImageSet>>(this, "ReturnImage", result);
+                        Finish();
+                    }
+                    break;
+                default:
+                    break;
             }
         }
 
@@ -94,25 +114,89 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             base.OnRequestPermissionsResult(requestCode, permissions, grantResults);
             switch (requestCode)
             {
-                case REQUEST_PERMISSIONS:
+                case REQUEST_PERMISSIONS_LIBRARY:
+                    for (int i = 0; i < grantResults.Length; i++)
                     {
-                        for (int i = 0; i < grantResults.Length; i++)
+                        if (grantResults.Length > 0 && grantResults[i] == Permission.Granted)
                         {
-                            if (grantResults.Length > 0 && grantResults[i] == Permission.Granted)
-                            {
-                                FillAllPhotosFromGallery();
-                            }
-                            else
-                            {
-                                Toast.MakeText(this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", ToastLength.Long).Show();
-                            }
+                            FillAllPhotosFromGallery();
+                        }
+                        else
+                        {
+                            Toast.MakeText(this, "The app was not allowed to read or write to your storage. Hence, it cannot function properly. Please consider granting it this permission", ToastLength.Long).Show();
                         }
                     }
                     break;
             }
         }
 
-        public List<GalleryDirectory> FillAllPhotosFromGallery()
+        private bool CheckPermissionLibrary()
+        {
+            if((ContextCompat.CheckSelfPermission(ApplicationContext, Manifest.Permission.WriteExternalStorage) != Permission.Granted) && (ContextCompat.CheckSelfPermission(ApplicationContext, Manifest.Permission.ReadExternalStorage) != Permission.Granted))
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void RequestPermissionLibrary()
+        {
+            if ((ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.WriteExternalStorage)) 
+                && (ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.ReadExternalStorage))
+                    && (ActivityCompat.ShouldShowRequestPermissionRationale(this, Manifest.Permission.Camera)))
+            {
+                //show explain
+            }
+            else
+            {
+                ActivityCompat.RequestPermissions(this, new string[] { Manifest.Permission.WriteExternalStorage, Manifest.Permission.ReadExternalStorage, Manifest.Permission.Camera }, REQUEST_PERMISSIONS_LIBRARY);
+            }
+        }
+
+        private void OpenCameraCapture()
+        {
+            Intent takePictureIntent = new Intent(MediaStore.ActionImageCapture);
+            if (takePictureIntent.ResolveActivity(PackageManager) != null)
+            {
+                Java.IO.File photoFile = null;
+                try
+                {
+                    photoFile = createImageFile();
+                }
+                catch (IOException ex)
+                {
+                }
+                if (photoFile != null)
+                {
+                    Android.Net.Uri photoURI = FileProvider.GetUriForFile(this,PackageName,photoFile);
+                    takePictureIntent.PutExtra(MediaStore.ExtraOutput, photoURI);
+                    StartActivityForResult(takePictureIntent, REQUEST_CAMERA_CAPTURE);
+                }
+            }
+        }
+
+        string mCurrentPhotoPath;
+        private Java.IO.File createImageFile()
+        {
+            // Create an image file name
+            string timeStamp = new SimpleDateFormat("yyyyMMdd_HHmmss").Format(new Java.Util.Date());
+            string imageFileName = "JPEG_" + timeStamp + "_";
+            Java.IO.File storageDir = GetExternalFilesDir(Android.OS.Environment.DirectoryPictures);
+            Java.IO.File image = Java.IO.File.CreateTempFile(
+                imageFileName,  /* prefix */
+                ".jpg",         /* suffix */
+                storageDir      /* directory */
+            );
+
+            // Save a file: path for use with ACTION_VIEW intents
+            mCurrentPhotoPath = image.AbsolutePath;
+            return image;
+        }
+
+        private List<GalleryDirectory> FillAllPhotosFromGallery()
         {
             galleryDirectories.Clear();
 
@@ -150,7 +234,6 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                         FlagDirectory = false;
                     }
                 }
-
 
                 if (FlagDirectory)
                 {
@@ -201,11 +284,23 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             }
             catch (System.Exception ex)
             {
-
+                Console.WriteLine(ex.StackTrace);
             }
         }
 
         public void IF_CameraSelected(int pos)
+        {
+            if(CheckPermissionLibrary())
+            {
+                OpenCameraCapture();
+            }
+            else
+            {
+                RequestPermissionLibrary();
+            }
+        }
+
+        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource)
         {
         }
     }

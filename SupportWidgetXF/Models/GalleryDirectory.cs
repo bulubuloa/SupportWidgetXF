@@ -1,13 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using SupportWidgetXF.Models.Widgets;
+using Xamarin.Forms;
 
 namespace SupportWidgetXF.Models
 {
     public class ImageSet
     {
+        public ImageSource SourceXF { set; get; }
         public string Path { set; get; }
         public bool Checked { set; get; }
+        public bool Cloud { set; get; }
 
         public ImageSet()
         {

@@ -216,37 +216,56 @@ namespace DemoWidget.ViewModels
             }
         }
 
+        private bool IsPath = true;
+
         public void IF_PickedResult(List<ImageSet> result)
         {
-            
-            foreach (var item in result)
+
+            if(IsPath)
             {
-                if (!string.IsNullOrEmpty(item.Path))
+                foreach (var item in result)
                 {
                     ImageItemsSet.Add(item.Path);
                 }
+            }
+            else
+            {
+                foreach (var item in result)
+                {
+                    ImageItems.Add(item.SourceXF);
+                }
+            }
+
+            //foreach (var item in result)
+            //{
+            //    ImageItems.Add(item.SourceXF);
+
+            //    //if (!string.IsNullOrEmpty(item.Path))
+            //    //{
+            //    //    ImageItemsSet.Add(item.Path);
+            //    //}
                
 
-                //Task.Run(() =>
-                //{
-                //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
-                //    var imageSource = ImageSource.FromStream(() => stream);
-                //    ImageItems.Add(imageSource);
+            //    //Task.Run(() =>
+            //    //{
+            //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
+            //    //    var imageSource = ImageSource.FromStream(() => stream);
+            //    //    ImageItems.Add(imageSource);
 
-                //    //stream.Flush();
-                //    //stream.Dispose();
-                //    //Xamarin.Forms.Device.BeginInvokeOnMainThread(delegate {
-                //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
+            //    //    //stream.Flush();
+            //    //    //stream.Dispose();
+            //    //    //Xamarin.Forms.Device.BeginInvokeOnMainThread(delegate {
+            //    //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
 
-                //    //});
-                //    //using (var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path))
-                //    //{
-                //    //    var imageSource = ImageSource.FromStream(() => stream);
+            //    //    //});
+            //    //    //using (var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path))
+            //    //    //{
+            //    //    //    var imageSource = ImageSource.FromStream(() => stream);
 
-                //    //    ImageItems.Add(ImageSource.FromStream());
-                //    //}
-                //});
-            }
+            //    //    //    ImageItems.Add(ImageSource.FromStream());
+            //    //    //}
+            //    //});
+            //}
         }
 
         //public Task<ImageSource> GetStreamFromSingleImage(string filePath)

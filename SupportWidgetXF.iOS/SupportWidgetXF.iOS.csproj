@@ -62,6 +62,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="MBProgressHUD">
+      <HintPath>..\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -129,6 +132,7 @@
     <Compile Include="Renderers\GalleryPickerSupport\UIImageExtensions.cs" />
     <Compile Include="Renderers\GalleryPickerSupport\NSDataStream.cs" />
     <Compile Include="Renderers\GalleryPicker\SupportRadioCheckiOS.cs" />
+    <Compile Include="Renderers\GalleryPicker\NaviExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

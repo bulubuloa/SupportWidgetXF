@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
+using MBProgressHUD;
 using Photos;
 using SupportWidgetXF.Widgets.Interface;
 using UIKit;
@@ -26,10 +27,13 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public PHAsset Image { set; get; }
         public bool Checked { set; get; }
         public string Path { set; get; }
+        public bool FromCloud { set; get; }
+        public ImageSource SourceXF { set; get; }
 
         public PhotoSetNative()
         {
             Checked = false;
+            FromCloud = true;
         }
     }
 
@@ -49,6 +53,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         private UIView DialogView, CoverView;
         protected bool FlagShow = false;
         private int CurrentParent = -1;
+
+        MTMBProgressHUD mTMBProgressHUD;
 
         private void InitializeLayout()
         {
@@ -136,6 +142,9 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             ButtonSpinner.TouchUpInside += (sender, e) => {
                 ShowData();
             };
+
+            mTMBProgressHUD = new MTMBProgressHUD(this.View);
+            View.AddSubview(mTMBProgressHUD);
         }
 
         public GalleryPickerController()
@@ -267,6 +276,28 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             collectionView.ReloadData();
         }
 
+        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource)
+        {
+            var item = galleryDirectories[CurrentParent].Images[positionImage];
+            item.Checked = !item.Checked;
+            collectionView.ReloadData();
+
+            if(imageSource!=null)
+            {
+                item.SourceXF = imageSource;
+            }
+
+            var count = GetCurrentSelected().Count;
+            if (count > 0)
+            {
+                ButtonDone.SetTitle("Done (" + count + ")", UIControlState.Normal);
+            }
+            else
+            {
+                ButtonDone.SetTitle("Done", UIControlState.Normal);
+            }
+        }
+
         public void IF_ImageSelected(int positionDirectory, int positionImage)
         {
             var item = galleryDirectories[CurrentParent].Images[positionImage];
@@ -275,7 +306,13 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
             if(item.Checked)
             {
-                item.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
+                var options = new PHContentEditingInputRequestOptions()
+                {
+                    NetworkAccessAllowed = true,
+                };
+                options.ProgressHandler = HandlePHProgressHandler;
+
+                item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
                 {
                     if (contentEditingInput != null)
                     {
@@ -293,7 +330,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 item.Path = null;
             }
 
-
             var count = GetCurrentSelected().Count;
             if (count > 0)
             {
@@ -305,9 +341,23 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             }
         }
 
+        void HandlePHProgressHandler(double progress, ref bool stop)
+        {
+            Console.WriteLine("Downloaded : "+progress);
+        }
+
+
         public void IF_CameraSelected(int pos)
         {
+            //open camera
+            DismissModalViewController(true);
 
+            UIImagePickerController uIImagePickerController = new UIImagePickerController();
+            uIImagePickerController.SourceType = UIImagePickerControllerSourceType.Camera;
+            uIImagePickerController.FinishedPickingImage += (sender, e) => {
+
+            };
+            NaviExtensions.OpenController(uIImagePickerController);   
         }
 
         private List<PhotoSetNative> GetCurrentSelected()

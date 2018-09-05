@@ -9,6 +9,11 @@ namespace SupportWidgetXF.Droid
 {
     public class IFileHelperExtended : IFileHelper
     {
+        public void IF_GetImageSourceFilePath(ImageSource imageSource, string filePath)
+        {
+            throw new NotImplementedException();
+        }
+
         public string IF_GetLocalFilePath(string filename)
         {
             string path = Environment.GetFolderPath(Environment.SpecialFolder.Personal);

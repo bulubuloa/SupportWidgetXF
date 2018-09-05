@@ -4,6 +4,7 @@ using Foundation;
 using Photos;
 using SupportWidgetXF.Widgets.Interface;
 using UIKit;
+using Xamarin.Forms;
 
 namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 {
@@ -74,17 +75,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
                 PHImageManager.DefaultManager.RequestImageForAsset(pHAsset.Image, Bounds.Size, PHImageContentMode.AspectFit, options,(result, info) => {
                     imgIcon.Image = result;
-                    try
-                    {
-                        if (info != null && info["PHImageFileURLKey"] != null)
-                        {
-                            Console.WriteLine(info["PHImageFileURLKey"].ToString());
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-
-                    }
                 });
 
                 //pHAsset.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
@@ -98,7 +88,13 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 if (ActionClick == null)
                 {
                     ActionClick = delegate {
-                        action.IF_ImageSelected(0, (int)CheckBox.Tag);
+                        if(imgIcon.Image!=null)
+                        {
+                            using(var stream = imgIcon.Image.AsJPEG().AsStream())
+                                action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => stream));
+                        }
+                        else
+                            action.IF_ImageSelected(0, (int)CheckBox.Tag);
                     };
                     CheckBox.TouchUpInside += (sender, e) =>
                     {

@@ -1,6 +1,19 @@
-<?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0" package="com.hqdevteam.DemoWidget">
+<?xml version="1.0" encoding="utf-8" ?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          android:versionCode="1"
+          android:versionName="1.0"
+          package="com.hqdevteam.DemoWidget">
+    
     <uses-sdk android:minSdkVersion="19" android:targetSdkVersion="27" />
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application android:label="DemoWidget.Android">
+
+        <provider android:authorities="com.hqdevteam.DemoWidget"
+                  android:exported="false"
+                  android:grantUriPermissions="true"
+                  android:name="android.support.v4.content.FileProvider">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
     </application>
 </manifest>
