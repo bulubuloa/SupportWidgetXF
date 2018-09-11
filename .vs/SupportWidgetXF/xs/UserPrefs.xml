@@ -1,56 +1,20 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.Droid/SupportWidgetXFSetup.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget.Android/MainActivity.cs">
     <Files>
-      <File FileName="SupportWidgetXF.Droid/Renderers/GalleryPicker/GalleryPickerActivity.cs" Line="29" Column="35" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="227" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="189" Column="34" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportTabbedPageRenderer.cs" Line="16" Column="43" />
-      <File FileName="SupportWidgetXF/Controllers/API/APIServiceAES.cs" Line="24" Column="65" />
-      <File FileName="SupportWidgetXF.iOS/SupportWidgetXFSetup.cs" Line="17" Column="2" />
-      <File FileName="SupportWidgetXF.Droid/SupportWidgetXFSetup.cs" Line="20" Column="2" />
-      <File FileName="SupportWidgetXF/Controllers/API/IAPIService.cs" Line="12" Column="33" NotebookId="1" />
-      <File FileName="SupportWidgetXF/Models/API/Request/AESRequestBaseModel.cs" Line="9" Column="46" NotebookId="1" />
-      <File FileName="SupportWidgetXF/Utils.cs" Line="9" Column="46" NotebookId="1" />
+      <File FileName="DemoWidget.Android/MainActivity.cs" Line="23" Column="34" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
+            <Node name="DemoAPP" expanded="True">
+              <Node name="DemoWidget.Android" expanded="True">
+                <Node name="MainActivity.cs" selected="True" />
+              </Node>
+            </Node>
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Dependencies" expanded="True">
-                  <Node name="PackageDependencies" expanded="True" />
-                </Node>
-                <Node name="Controllers" expanded="True">
-                  <Node name="API" expanded="True" />
-                  <Node name="HttpClient" expanded="True" />
-                  <Node name="Validations" expanded="True" />
-                </Node>
-                <Node name="DependencyService" expanded="True" />
-                <Node name="Models" expanded="True">
-                  <Node name="API" expanded="True">
-                    <Node name="Request" expanded="True" />
-                  </Node>
-                </Node>
-                <Node name="Navigation" expanded="True" />
-                <Node name="ViewModels" expanded="True" />
-                <Node name="Widgets" expanded="True" />
-              </Node>
-              <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="AutoComplete" expanded="True" />
-                  <Node name="DropCombo" expanded="True" />
-                  <Node name="GalleryPicker" expanded="True" />
-                </Node>
-                <Node name="Resources" expanded="True">
-                  <Node name="drawable" expanded="True" />
-                </Node>
-                <Node name="SupportWidgetXFSetup.cs" selected="True" />
-              </Node>
-              <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Packages" expanded="True" />
-                <Node name="Renderers" expanded="True" />
-              </Node>
+              <Node name="SupportWidgetXF" expanded="True" />
+              <Node name="SupportWidgetXF.Droid" expanded="True" />
             </Node>
           </Node>
         </State>

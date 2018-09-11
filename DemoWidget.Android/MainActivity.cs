@@ -20,7 +20,7 @@ namespace DemoWidget.Droid
             base.OnCreate(bundle);
 
             global::Xamarin.Forms.Forms.Init(this, bundle);
-            SupportWidgetXFSetup.Initialize(this);
+            SupportWidgetXFSetup.Initialize(this,bundle);
 
             CachedImageRenderer.Init(true);
 
