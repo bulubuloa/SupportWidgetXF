@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using MBProgressHUD;
 using Photos;
@@ -33,45 +34,48 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                     var xxx = new ImageSet();
                     xxx.Checked = item.Checked;
                     xxx.Path = item.Path;
-                    xxx.SourceXF = item.SourceXF;
-                    itemResult.Add(xxx);
+                    //xxx.SourceXF = item.SourceXF;
 
-                    //if(string.IsNullOrEmpty(xxx.Path))
-                    //{
-                    //    item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
-                    //    {
-                    //        if (contentEditingInput != null)
-                    //        {
-                    //            xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
-                    //            itemResult.Add(xxx);
-                    //        }
+                    if(string.IsNullOrEmpty(xxx.Path))
+                    {
+                        item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
+                        {
+                            if (contentEditingInput != null)
+                            {
+                                xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                                itemResult.Add(xxx);
+                            }
 
-                    //        Count += 1;
-                    //        if (Count == arg2.Count)
-                    //            galleryPickerResultListener.IF_PickedResult(itemResult);
-                    //    });
-                    //}
-                    //else
-                    //{
-                    //    itemResult.Add(xxx);
+                            Count += 1;
+                            if (Count == arg2.Count)
+                                galleryPickerResultListener.IF_PickedResult(itemResult);
+                        });
+                    }
+                    else
+                    {
+                        itemResult.Add(xxx);
 
-                    //    Count += 1;
-                    //    if (Count == arg2.Count)
-                    //        galleryPickerResultListener.IF_PickedResult(itemResult);
-                    //}
+                        Count += 1;
+                        if (Count == arg2.Count)
+                            galleryPickerResultListener.IF_PickedResult(itemResult);
+                    }
                 }
-
-                galleryPickerResultListener.IF_PickedResult(itemResult);
             });
         }
 
         public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener)
         {
-
             galleryPickerResultListener = pickerResultListener;
             NaviExtensions.OpenController(new GalleryPickerController());
         }
 
-       
+        public byte[] ToByteArray(Stream stream)
+        {
+            stream.Position = 0;
+            byte[] buffer = new byte[stream.Length];
+            for (int totalBytesCopied = 0; totalBytesCopied < stream.Length;)
+                totalBytesCopied += stream.Read(buffer, totalBytesCopied, Convert.ToInt32(stream.Length) - totalBytesCopied);
+            return buffer;
+        }
     }
 }

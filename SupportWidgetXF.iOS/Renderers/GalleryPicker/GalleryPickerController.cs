@@ -346,7 +346,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             Console.WriteLine("Downloaded : "+progress);
         }
 
-
         public void IF_CameraSelected(int pos)
         {
             //open camera

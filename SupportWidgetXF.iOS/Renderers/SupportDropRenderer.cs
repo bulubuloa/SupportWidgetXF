@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using CoreGraphics;
-using Foundation;
 using SupportWidgetXF.iOS.Renderers.DropCombo;
 using SupportWidgetXF.Models.Widgets;
 using SupportWidgetXF.Widgets;
@@ -156,7 +155,7 @@ namespace SupportWidgetXF.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(SupportViewBase.TextProperty.PropertyName))
             {
-                if (textField != null)
+                if (textField != null && !textField.Text.Equals(SupportView.Text))
                 {
                     textField.Text = SupportView.Text;
                 }

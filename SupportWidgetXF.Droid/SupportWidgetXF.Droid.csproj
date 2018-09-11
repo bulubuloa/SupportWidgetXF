@@ -148,6 +148,7 @@
     <Compile Include="Renderers\GalleryPicker\GalleryPickerActivity.cs" />
     <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
+    <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -176,6 +177,7 @@
     <AndroidResource Include="Resources\drawable\selector_check.xml" />
     <AndroidResource Include="Resources\drawable\border_background.xml" />
     <AndroidResource Include="Resources\drawable-xhdpi\camera.png" />
+    <AndroidResource Include="Resources\drawable\shadowclonenavigation_top.xml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

@@ -73,7 +73,7 @@ namespace SupportWidgetXF.Droid.Renderers.AutoComplete
             }
             else if (e.PropertyName.Equals(nameof(SupportViewBase.Text)))
             {
-                if (OriginalView != null)
+                if (OriginalView != null && !OriginalView.Text.Equals(SupportView.Text))
                 {
                     OriginalView.SetText(SupportView.Text, false);
                 }

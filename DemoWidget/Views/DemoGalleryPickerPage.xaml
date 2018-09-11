@@ -23,18 +23,40 @@
                                          BackgroundColor="Purple"
                                          Orientation="Vertical"
                                          Spacing="0">
-
                                 <ffimageloading:CachedImage x:Name="Image"
                                        WidthRequest="100"
                                        HeightRequest="100"
                                        Aspect="AspectFit"
-                                       Source="{Binding .}" />
-
+                                       Source="{Binding .}" ></ffimageloading:CachedImage>
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            
+            <!--<ListView HorizontalOptions="FillAndExpand"
+                      VerticalOptions="FillAndExpand"
+                      BackgroundColor="Silver"
+                      HasUnevenRows="true"
+                      ItemsSource="{Binding ImageItems}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout WidthRequest="100"
+                                         HeightRequest="100"
+                                         BackgroundColor="Purple"
+                                         Orientation="Vertical"
+                                         Spacing="0">
+                                <Image x:Name="Image"
+                                       WidthRequest="100"
+                                       HeightRequest="100"
+                                       Aspect="AspectFit"
+                                       Source="{Binding .}" ></Image>
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>-->
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

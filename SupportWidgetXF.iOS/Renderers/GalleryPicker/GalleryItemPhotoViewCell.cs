@@ -88,13 +88,14 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 if (ActionClick == null)
                 {
                     ActionClick = delegate {
-                        if(imgIcon.Image!=null)
-                        {
-                            using(var stream = imgIcon.Image.AsJPEG().AsStream())
-                                action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => stream));
-                        }
-                        else
-                            action.IF_ImageSelected(0, (int)CheckBox.Tag);
+                        action.IF_ImageSelected(0, (int)CheckBox.Tag);
+                        //if (imgIcon.Image!=null)
+                        //{
+                        //    using(var stream = imgIcon.Image.AsJPEG().AsStream())
+                        //        action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => stream));
+                        //}
+                        //else
+                            //action.IF_ImageSelected(0, (int)CheckBox.Tag);
                     };
                     CheckBox.TouchUpInside += (sender, e) =>
                     {

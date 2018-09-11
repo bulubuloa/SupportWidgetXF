@@ -133,6 +133,7 @@
     <Compile Include="Renderers\GalleryPickerSupport\NSDataStream.cs" />
     <Compile Include="Renderers\GalleryPicker\SupportRadioCheckiOS.cs" />
     <Compile Include="Renderers\GalleryPicker\NaviExtensions.cs" />
+    <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
