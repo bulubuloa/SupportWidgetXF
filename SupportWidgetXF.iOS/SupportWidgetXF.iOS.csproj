@@ -145,6 +145,10 @@
     <Compile Include="Renderers\GalleryPicker\SupportRadioCheckiOS.cs" />
     <Compile Include="Renderers\GalleryPicker\NaviExtensions.cs" />
     <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
+    <Compile Include="XFCameraController.cs" />
+    <Compile Include="XFCameraController.designer.cs">
+      <DependentUpon>XFCameraController.cs</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
@@ -162,6 +166,7 @@
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemFullTextIcon.xib" />
     <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryItemPhotoViewCell.xib" />
     <InterfaceDefinition Include="Renderers\GalleryPicker\GalleryDirectoryViewCell.xib" />
+    <InterfaceDefinition Include="UtilStoryboard.storyboard" />
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\sort_down%403x.png" />
@@ -173,6 +178,10 @@
     <BundleResource Include="Resources\camera%403x.png" />
     <BundleResource Include="Resources\nonchecked%403x.png" />
     <BundleResource Include="Resources\checked%403x.png" />
+    <BundleResource Include="Resources\capture_camera%402x.png" />
+    <BundleResource Include="Resources\switch_camera%403x.png" />
+    <BundleResource Include="Resources\flash_off%403x.png" />
+    <BundleResource Include="Resources\flash_on%403x.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

@@ -10,6 +10,10 @@
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding PickerCommand}"
                     Text="Gallery Picker" />
+            <Button HeightRequest="50"
+                    HorizontalOptions="FillAndExpand"
+                    Command="{Binding CameraCommand}"
+                    Text="Camera Picker" />
             <ListView HorizontalOptions="FillAndExpand"
                       VerticalOptions="FillAndExpand"
                       BackgroundColor="Silver"

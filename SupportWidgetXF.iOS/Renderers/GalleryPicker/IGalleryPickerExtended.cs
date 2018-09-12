@@ -63,6 +63,14 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             });
         }
 
+        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener)
+        {
+            galleryPickerResultListener = pickerResultListener;
+            UIStoryboard storyboard = UIStoryboard.FromName("UtilStoryboard", null);
+            XFCameraController controller = (XFCameraController)storyboard.InstantiateViewController("XFCameraController");
+            NaviExtensions.OpenController(controller);
+        }
+
         public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener)
         {
             galleryPickerResultListener = pickerResultListener;

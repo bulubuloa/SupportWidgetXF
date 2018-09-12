@@ -1,35 +1,49 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget.Android/MainActivity.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
     <Files>
-      <File FileName="DemoWidget.Android/MainActivity.cs" Line="23" Column="34" />
+      <File FileName="SupportWidgetXF/DependencyService/IGalleryPicker.cs" Line="16" Column="2" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="353" Column="58" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" Line="73" Column="9" NotebookId="1" />
+      <File FileName="DemoWidget/Views/DemoGalleryPickerPage.xaml" Line="15" Column="52" NotebookId="1" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="1" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="DemoAPP" expanded="True">
-              <Node name="DemoWidget.Android" expanded="True">
-                <Node name="MainActivity.cs" selected="True" />
+              <Node name="DemoWidget" expanded="True">
+                <Node name="ViewModels" expanded="True">
+                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
+                </Node>
+                <Node name="Views" expanded="True" />
               </Node>
+              <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True" />
-              <Node name="SupportWidgetXF.Droid" expanded="True" />
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="DependencyService" expanded="True" />
+              </Node>
+              <Node name="SupportWidgetXF.iOS" expanded="True">
+                <Node name="Renderers" expanded="True">
+                  <Node name="GalleryPicker" expanded="True" />
+                </Node>
+                <Node name="Resources" expanded="True" />
+                <Node name="XFCameraController.cs" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/QuachHoang/Projects/SupportWidgetXF/DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" relfile="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" line="227" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.E5AZCY489464" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.bacd535954e069cb541d979bfee0213ea979867e" automaticSigning="False" />
 </Properties>

@@ -135,6 +135,13 @@ namespace DemoWidget.ViewModels
             DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this);
         }
 
+        public ICommand CameraCommand => new Command(OnCameraCommand);
+        private void OnCameraCommand()
+        {
+            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this);
+        }
+
+
         public ICommand AddItemToSourceCommand => new Command(OnAddItemToSourceCommand);
         private void OnAddItemToSourceCommand()
         {

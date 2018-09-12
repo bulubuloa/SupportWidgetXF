@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="405">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Camera Controller-->
+        <scene sceneID="404">
+            <objects>
+                <viewController storyboardIdentifier="XFCameraController" id="405" customClass="XFCameraController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="402"/>
+                        <viewControllerLayoutGuide type="bottom" id="403"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="406">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="409" userLabel="cameraView" misplaced="YES">
+                                <rect key="frame" x="0.0" y="146" width="375" height="521"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UpW-wd-Mws" userLabel="bttCapture">
+                                <rect key="frame" x="157.5" y="587" width="60" height="60"/>
+                                <constraints>
+                                    <constraint id="2476" firstAttribute="width" constant="60"/>
+                                    <constraint id="2477" firstAttribute="height" constant="60"/>
+                                </constraints>
+                            </button>
+                            <view contentMode="scaleToFill" id="1022" translatesAutoresizingMaskIntoConstraints="NO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                                <color key="backgroundColor" colorSpace="calibratedWhite" white="0.333333333333333" alpha="1"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1486" translatesAutoresizingMaskIntoConstraints="NO">
+                                        <rect key="frame" x="10" y="28" width="22" height="22"/>
+                                        <state key="normal" image="arrow_left.png"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1554" translatesAutoresizingMaskIntoConstraints="NO">
+                                        <rect key="frame" x="285" y="20" width="30" height="30"/>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="1573" translatesAutoresizingMaskIntoConstraints="NO">
+                                        <rect key="frame" x="335" y="20" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint id="2448" firstAttribute="width" constant="30"/>
+                                        </constraints>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint id="1459" firstAttribute="height" constant="60"/>
+                                    <constraint id="1488" firstItem="1486" firstAttribute="leading" secondItem="1022" secondAttribute="leading" constant="10"/>
+                                    <constraint id="1594" firstAttribute="trailing" secondItem="1573" secondAttribute="trailing" constant="10"/>
+                                    <constraint id="2016" firstItem="1554" firstAttribute="centerY" secondItem="1573" secondAttribute="centerY"/>
+                                    <constraint id="2017" firstItem="1573" firstAttribute="leading" secondItem="1554" secondAttribute="trailing" constant="20"/>
+                                    <constraint id="2018" firstItem="1554" firstAttribute="height" secondItem="1573" secondAttribute="height"/>
+                                    <constraint id="2019" firstItem="1554" firstAttribute="width" secondItem="1573" secondAttribute="width"/>
+                                    <constraint id="2912" firstAttribute="bottom" secondItem="1486" secondAttribute="bottom" constant="10"/>
+                                    <constraint id="2913" firstAttribute="bottom" secondItem="1573" secondAttribute="bottom" constant="10"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="409" firstAttribute="top" secondItem="406" secondAttribute="top" id="410"/>
+                            <constraint firstAttribute="trailing" secondItem="409" secondAttribute="trailing" id="411"/>
+                            <constraint firstItem="409" firstAttribute="leading" secondItem="406" secondAttribute="leading" id="412"/>
+                            <constraint firstAttribute="bottom" secondItem="409" secondAttribute="bottom" id="413"/>
+                            <constraint id="806" firstItem="409" firstAttribute="bottom" secondItem="UpW-wd-Mws" secondAttribute="bottom" constant="20"/>
+                            <constraint id="807" firstItem="UpW-wd-Mws" firstAttribute="centerX" secondItem="409" secondAttribute="centerX"/>
+                            <constraint id="1032" firstItem="1022" firstAttribute="top" secondItem="406" secondAttribute="top"/>
+                            <constraint id="1033" firstItem="1022" firstAttribute="leading" secondItem="406" secondAttribute="leading"/>
+                            <constraint id="1034" firstAttribute="trailing" secondItem="1022" secondAttribute="trailing"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="cameraView" destination="409" id="name-outlet-409"/>
+                        <outlet property="bttCapture" destination="UpW-wd-Mws" id="name-outlet-UpW-wd-Mws"/>
+                        <outlet property="ViewTop" destination="1022" id="name-outlet-1022"/>
+                        <outlet property="bttBack" destination="1486" id="name-outlet-1486"/>
+                        <outlet property="bttFlash" destination="1554" id="name-outlet-1554"/>
+                        <outlet property="bttSwitch" destination="1573" id="name-outlet-1573"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="407" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="18.4" y="25.63718"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="arrow_left.png" width="21.333334" height="21.333334"/>
+    </resources>
+</document>

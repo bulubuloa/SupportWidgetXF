@@ -348,15 +348,9 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         public void IF_CameraSelected(int pos)
         {
-            //open camera
-            DismissModalViewController(true);
-
-            UIImagePickerController uIImagePickerController = new UIImagePickerController();
-            uIImagePickerController.SourceType = UIImagePickerControllerSourceType.Camera;
-            uIImagePickerController.FinishedPickingImage += (sender, e) => {
-
-            };
-            NaviExtensions.OpenController(uIImagePickerController);   
+            UIStoryboard storyboard = UIStoryboard.FromName("UtilStoryboard", null);
+            XFCameraController controller = (XFCameraController)storyboard.InstantiateViewController("XFCameraController");
+            PresentModalViewController(controller, true);
         }
 
         private List<PhotoSetNative> GetCurrentSelected()
