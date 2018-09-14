@@ -29,6 +29,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public string Path { set; get; }
         public bool FromCloud { set; get; }
         public ImageSource SourceXF { set; get; }
+        public byte[] Stream { set; get; }
 
         public PhotoSetNative()
         {
@@ -135,7 +136,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
             ButtonDone.TouchUpInside += (object sender, EventArgs e) => 
             {
-                MessagingCenter.Send<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImage", GetCurrentSelected());
+                MessagingCenter.Send<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImageGallery", GetCurrentSelected());
                 DismissModalViewController(true);
             };
 
@@ -276,7 +277,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             collectionView.ReloadData();
         }
 
-        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource)
+        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource, byte[] stream)
         {
             var item = galleryDirectories[CurrentParent].Images[positionImage];
             item.Checked = !item.Checked;
@@ -286,7 +287,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             {
                 item.SourceXF = imageSource;
             }
-
+            item.Stream = stream;
             var count = GetCurrentSelected().Count;
             if (count > 0)
             {

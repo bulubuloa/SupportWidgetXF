@@ -1,9 +1,12 @@
 using AVFoundation;
 using Foundation;
+using SupportWidgetXF.iOS.Renderers.GalleryPicker;
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Threading.Tasks;
 using UIKit;
+using Xamarin.Forms;
 
 namespace SupportWidgetXF.iOS
 {
@@ -159,6 +162,15 @@ namespace SupportWidgetXF.iOS
             var jpegImageAsNsData = AVCaptureStillImageOutput.JpegStillToNSData(sampleBuffer);
             var jpegAsByteArray = jpegImageAsNsData.ToArray();
 
+            MessagingCenter.Send<XFCameraController, List<PhotoSetNative>>(this, "ReturnImageCamera", new List<PhotoSetNative>(){
+                new PhotoSetNative()
+                {
+                    Checked = true,
+                    Stream = jpegAsByteArray,
+                    SourceXF = ImageSource.FromStream(()=>new System.IO.MemoryStream(jpegAsByteArray))
+                }
+            });
+            DismissModalViewController(true);
         }
 
         void ConfigureCameraForDevice(AVCaptureDevice device)

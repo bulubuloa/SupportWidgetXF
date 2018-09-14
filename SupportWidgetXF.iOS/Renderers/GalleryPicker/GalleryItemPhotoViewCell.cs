@@ -5,6 +5,7 @@ using Photos;
 using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 using Xamarin.Forms;
+using SupportWidgetXF.Models;
 
 namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 {
@@ -88,7 +89,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 if (ActionClick == null)
                 {
                     ActionClick = delegate {
-                        action.IF_ImageSelected(0, (int)CheckBox.Tag);
+                        var stream = imgIcon.Image.AsJPEG().AsStream().ToByteArray();
+                        action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => new System.IO.MemoryStream(stream)),stream);
                         //if (imgIcon.Image!=null)
                         //{
                         //    using(var stream = imgIcon.Image.AsJPEG().AsStream())

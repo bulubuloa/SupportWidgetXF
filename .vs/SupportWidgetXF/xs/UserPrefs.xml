@@ -1,11 +1,23 @@
 ﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF/Encrypt/AESEncrypt.cs">
     <Files>
-      <File FileName="SupportWidgetXF/DependencyService/IGalleryPicker.cs" Line="16" Column="2" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="353" Column="58" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" Line="73" Column="9" NotebookId="1" />
-      <File FileName="DemoWidget/Views/DemoGalleryPickerPage.xaml" Line="15" Column="52" NotebookId="1" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/IGalleryPickerExtended.cs" Line="35" Column="48" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryPickerController.cs" Line="290" Column="34" />
+      <File FileName="SupportWidgetXF/Models/GalleryDirectory.cs" Line="16" Column="40" />
+      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/GalleryItemPhotoViewCell.cs" Line="97" Column="119" />
+      <File FileName="SupportWidgetXF/Models/StreamExtensions.cs" Line="4" Column="26" />
+      <File FileName="SupportWidgetXF/Controllers/API/APIServiceAES.cs" Line="69" Column="19" />
+      <File FileName="SupportWidgetXF/Widgets/Interface/IGalleryPickerSelected.cs" Line="11" Column="6" />
+      <File FileName="SupportWidgetXF/Encrypt/IAESEncrypt.cs" Line="9" Column="40" />
+      <File FileName="SupportWidgetXF/Models/API/Request/AESRequestBaseModel.cs" Line="9" Column="46" />
+      <File FileName="SupportWidgetXF.iOS/XFCameraController.cs" Line="152" Column="44" NotebookId="1" />
+      <File FileName="DemoWidget/Views/DemoGalleryPickerPage.xaml" Line="26" Column="47" NotebookId="1" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="266" Column="32" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Models/API/Request/AESBlankRequest.cs" Line="4" Column="55" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Models/API/Response/AESBlankResponse.cs" Line="4" Column="34" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Encrypt/RijndaelHelper.cs" Line="123" Column="2" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Encrypt/EncryptHelper.cs" Line="153" Column="32" NotebookId="1" />
+      <File FileName="SupportWidgetXF/Encrypt/AESEncrypt.cs" Line="4" Column="28" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -13,23 +25,33 @@
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="DemoAPP" expanded="True">
               <Node name="DemoWidget" expanded="True">
-                <Node name="ViewModels" expanded="True">
-                  <Node name="DemoAutoCompletePageViewModel.cs" selected="True" />
-                </Node>
+                <Node name="ViewModels" expanded="True" />
                 <Node name="Views" expanded="True" />
               </Node>
-              <Node name="DemoWidget.iOS" expanded="True" />
             </Node>
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Controllers" expanded="True">
+                  <Node name="API" expanded="True" />
+                </Node>
                 <Node name="DependencyService" expanded="True" />
+                <Node name="Encrypt" expanded="True">
+                  <Node name="AESEncrypt.cs" selected="True" />
+                </Node>
+                <Node name="Models" expanded="True">
+                  <Node name="API" expanded="True">
+                    <Node name="Request" expanded="True" />
+                    <Node name="Response" expanded="True" />
+                  </Node>
+                </Node>
+                <Node name="Widgets" expanded="True">
+                  <Node name="Interface" expanded="True" />
+                </Node>
               </Node>
               <Node name="SupportWidgetXF.iOS" expanded="True">
                 <Node name="Renderers" expanded="True">
                   <Node name="GalleryPicker" expanded="True" />
                 </Node>
-                <Node name="Resources" expanded="True" />
-                <Node name="XFCameraController.cs" expanded="True" />
               </Node>
             </Node>
           </Node>

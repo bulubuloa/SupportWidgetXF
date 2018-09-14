@@ -5,8 +5,11 @@ using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using SupportWidgetXF.Controllers.API;
 using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.Models;
+using SupportWidgetXF.Models.API.Request;
+using SupportWidgetXF.Models.API.Response;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -223,7 +226,7 @@ namespace DemoWidget.ViewModels
             }
         }
 
-        private bool IsPath = true;
+        private bool IsPath = false;
 
         public void IF_PickedResult(List<ImageSet> result)
         {
@@ -240,45 +243,34 @@ namespace DemoWidget.ViewModels
                 foreach (var item in result)
                 {
                     ImageItems.Add(item.SourceXF);
+                    Task.Delay(1000).ContinueWith(delegate
+                    {
+                        UploadPhotoDemo(item);
+                    });
                 }
             }
-
-            //foreach (var item in result)
-            //{
-            //    ImageItems.Add(item.SourceXF);
-
-            //    //if (!string.IsNullOrEmpty(item.Path))
-            //    //{
-            //    //    ImageItemsSet.Add(item.Path);
-            //    //}
-               
-
-            //    //Task.Run(() =>
-            //    //{
-            //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
-            //    //    var imageSource = ImageSource.FromStream(() => stream);
-            //    //    ImageItems.Add(imageSource);
-
-            //    //    //stream.Flush();
-            //    //    //stream.Dispose();
-            //    //    //Xamarin.Forms.Device.BeginInvokeOnMainThread(delegate {
-            //    //    //    var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path);
-
-            //    //    //});
-            //    //    //using (var stream = DependencyService.Get<IFileHelper>().IF_GetStreamFilePath(item.Path))
-            //    //    //{
-            //    //    //    var imageSource = ImageSource.FromStream(() => stream);
-
-            //    //    //    ImageItems.Add(ImageSource.FromStream());
-            //    //    //}
-            //    //});
-            //}
         }
 
-        //public Task<ImageSource> GetStreamFromSingleImage(string filePath)
-        //{
-        //    Task.FromResult
-        //}
+        public class Req_UpImage : AESRequestBaseModel
+        {
+            public string Type { set; get; }
+            public string Name { set; get; }
+            public int InstructionId { set; get; }
+            public string Data { set; get; }
+        }
+
+        private async void UploadPhotoDemo(ImageSet imageSource)
+        {
+            var para = new Req_UpImage();
+            para.Type = "Floor";
+            para.Name = "huhu";
+            para.InstructionId = 111;
+            para.Data = Convert.ToBase64String(imageSource.Stream);
+            string token = "52DGB6821oG0WE7wfufmGBGkNaK5YYu2PQXxKBl7k6+mfVriFYOp11FO1tHVZPfQytn/QVetQOx6LYIXlIGgxUJOcFOhq7EpobLNmRIg39Un2i1aSAZ4RiPe2tg3Di789RpVxwRdTE79pLwy+zl/eeMhaheXQxWz/XrVbZWtoK+ANVowmsFGTyR0ZHaF76x37CEJtxjQIvLozkVmLEZE7vO74v5hB5SHjwFKZnQfOI";
+            string url = "https://172.16.10.138/jll/api/v1/PostInspectionImage?accessToken="+token;
+            APIServiceAES aPIService = new APIServiceAES();
+            var response = await aPIService.RequestPostAsync<AESBlankResponse>(url, para, token);
+        }
 
         public DemoAutoCompletePageViewModel()
         {

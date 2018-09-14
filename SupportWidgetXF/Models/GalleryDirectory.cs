@@ -12,6 +12,9 @@ namespace SupportWidgetXF.Models
         public bool Checked { set; get; }
         public bool Cloud { set; get; }
 
+        public byte[] Stream { set; get; }
+        public string Url { set; get; }
+
         public ImageSet()
         {
             Checked = false;

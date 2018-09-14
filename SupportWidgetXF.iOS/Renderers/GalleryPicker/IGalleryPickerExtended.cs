@@ -19,7 +19,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         public IGalleryPickerExtended()
         {
-            MessagingCenter.Subscribe<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImage", (arg1, arg2) => {
+            MessagingCenter.Subscribe<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImageGallery", (arg1, arg2) => {
                
                 var itemResult = new List<ImageSet>();
 
@@ -34,32 +34,56 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                     var xxx = new ImageSet();
                     xxx.Checked = item.Checked;
                     xxx.Path = item.Path;
-                    //xxx.SourceXF = item.SourceXF;
+                    xxx.SourceXF = item.SourceXF;
+                    xxx.Stream = item.Stream;
+                    itemResult.Add(xxx);
 
-                    if(string.IsNullOrEmpty(xxx.Path))
-                    {
-                        item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
-                        {
-                            if (contentEditingInput != null)
-                            {
-                                xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
-                                itemResult.Add(xxx);
-                            }
+                    //if(string.IsNullOrEmpty(xxx.Path))
+                    //{
+                    //    item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
+                    //    {
+                    //        if (contentEditingInput != null)
+                    //        {
+                    //            xxx.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                    //            itemResult.Add(xxx);
+                    //        }
 
-                            Count += 1;
-                            if (Count == arg2.Count)
-                                galleryPickerResultListener.IF_PickedResult(itemResult);
-                        });
-                    }
-                    else
-                    {
-                        itemResult.Add(xxx);
+                    //        Count += 1;
+                    //        if (Count == arg2.Count)
+                    //            galleryPickerResultListener.IF_PickedResult(itemResult);
+                    //    });
+                    //}
+                    //else
+                    //{
+                    //    itemResult.Add(xxx);
 
-                        Count += 1;
-                        if (Count == arg2.Count)
-                            galleryPickerResultListener.IF_PickedResult(itemResult);
-                    }
+                    //    Count += 1;
+                    //    if (Count == arg2.Count)
+                    //        galleryPickerResultListener.IF_PickedResult(itemResult);
+                    //}
                 }
+                galleryPickerResultListener.IF_PickedResult(itemResult);
+            });
+
+            MessagingCenter.Subscribe<XFCameraController, List<PhotoSetNative>>(this, "ReturnImageCamera", (arg1, arg2) => {
+
+                var itemResult = new List<ImageSet>();
+
+                var options = new PHContentEditingInputRequestOptions()
+                {
+                    NetworkAccessAllowed = true,
+                };
+
+                foreach (var item in arg2)
+                {
+                    var xxx = new ImageSet();
+                    xxx.Checked = item.Checked;
+                    xxx.Path = item.Path;
+                    xxx.SourceXF = item.SourceXF;
+                    xxx.Stream = item.Stream;
+                    itemResult.Add(xxx);
+                }
+                galleryPickerResultListener.IF_PickedResult(itemResult);
             });
         }
 

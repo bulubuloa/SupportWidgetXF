@@ -14,53 +14,61 @@
                     HorizontalOptions="FillAndExpand"
                     Command="{Binding CameraCommand}"
                     Text="Camera Picker" />
-            <ListView HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand"
-                      BackgroundColor="Silver"
-                      HasUnevenRows="true"
-                      ItemsSource="{Binding ImageItemsSet}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout WidthRequest="100"
-                                         HeightRequest="100"
-                                         BackgroundColor="Purple"
-                                         Orientation="Vertical"
-                                         Spacing="0">
-                                <ffimageloading:CachedImage x:Name="Image"
-                                       WidthRequest="100"
-                                       HeightRequest="100"
-                                       Aspect="AspectFit"
-                                       Source="{Binding .}" ></ffimageloading:CachedImage>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>
-            
-            <!--<ListView HorizontalOptions="FillAndExpand"
-                      VerticalOptions="FillAndExpand"
-                      BackgroundColor="Silver"
-                      HasUnevenRows="true"
-                      ItemsSource="{Binding ImageItems}">
-                <ListView.ItemTemplate>
-                    <DataTemplate>
-                        <ViewCell>
-                            <StackLayout WidthRequest="100"
-                                         HeightRequest="100"
-                                         BackgroundColor="Purple"
-                                         Orientation="Vertical"
-                                         Spacing="0">
-                                <Image x:Name="Image"
-                                       WidthRequest="100"
-                                       HeightRequest="100"
-                                       Aspect="AspectFit"
-                                       Source="{Binding .}" ></Image>
-                            </StackLayout>
-                        </ViewCell>
-                    </DataTemplate>
-                </ListView.ItemTemplate>
-            </ListView>-->
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <ListView Grid.Column="0"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          BackgroundColor="Silver"
+                          HasUnevenRows="true"
+                          ItemsSource="{Binding ImageItemsSet}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout WidthRequest="100"
+                                             HeightRequest="100"
+                                             BackgroundColor="Purple"
+                                             Orientation="Vertical"
+                                             Spacing="0">
+                                    <ffimageloading:CachedImage x:Name="Image"
+                                                                WidthRequest="100"
+                                                                HeightRequest="100"
+                                                                Aspect="AspectFit"
+                                                                Source="{Binding .}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
+                <ListView Grid.Column="1"
+                          HorizontalOptions="FillAndExpand"
+                          VerticalOptions="FillAndExpand"
+                          BackgroundColor="Silver"
+                          HasUnevenRows="true"
+                          ItemsSource="{Binding ImageItems}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout WidthRequest="100"
+                                             HeightRequest="100"
+                                             BackgroundColor="Green"
+                                             Orientation="Vertical"
+                                             Spacing="0">
+                                    <Image x:Name="Image"
+                                           WidthRequest="100"
+                                           HeightRequest="100"
+                                           Aspect="AspectFit"
+                                           Source="{Binding .}" />
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
