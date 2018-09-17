@@ -14,6 +14,7 @@ namespace SupportWidgetXF.Models
 
         public byte[] Stream { set; get; }
         public string Url { set; get; }
+        public string OriginalRaw { set; get; }
 
         public ImageSet()
         {

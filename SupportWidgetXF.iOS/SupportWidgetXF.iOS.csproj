@@ -149,6 +149,7 @@
     <Compile Include="XFCameraController.designer.cs">
       <DependentUpon>XFCameraController.cs</DependentUpon>
     </Compile>
+    <Compile Include="Renderers\GalleryPicker\UIImageExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

@@ -12,5 +12,6 @@ namespace SupportWidgetXF.DependencyService
     {
         void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener);
         void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener);
+        void IF_SyncPhotoFromCloud(IGalleryPickerResultListener galleryPickerResultListener, ImageSet imageSet);
     }
 }

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
@@ -283,7 +284,36 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             item.Checked = !item.Checked;
             collectionView.ReloadData();
 
-            if(imageSource!=null)
+            if (item.Checked)
+            {
+                var options = new PHContentEditingInputRequestOptions()
+                {
+                };
+
+                item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
+                {
+                    var Key = new NSString("PHContentEditingInputResultIsInCloudKey");
+                    if (requestStatusInfo.ContainsKey(Key))
+                    {
+                        var valueOfKey = requestStatusInfo.ObjectForKey(Key);
+                        if(valueOfKey.ToString().Equals("1"))
+                        {
+                            item.FromCloud = true;
+                        }
+                        else
+                        {
+                            item.FromCloud = false;
+                            item.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                        }
+                    }
+                });
+            }
+            else
+            {
+                item.Path = null;
+            }
+
+            if (imageSource!=null)
             {
                 item.SourceXF = imageSource;
             }

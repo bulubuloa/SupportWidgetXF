@@ -76,6 +76,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
                 PHImageManager.DefaultManager.RequestImageForAsset(pHAsset.Image, Bounds.Size, PHImageContentMode.AspectFit, options,(result, info) => {
                     imgIcon.Image = result;
+
                 });
 
                 //pHAsset.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>

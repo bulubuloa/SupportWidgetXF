@@ -1,4 +1,9 @@
 ﻿using System;
+using System.IO;
+using System.Security.Cryptography;
+using System.Text;
+using System.Text.RegularExpressions;
+
 namespace SupportWidgetXF.Encrypt
 {
     public sealed class EncryptHelper

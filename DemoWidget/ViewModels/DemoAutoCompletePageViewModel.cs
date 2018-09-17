@@ -245,7 +245,8 @@ namespace DemoWidget.ViewModels
                     ImageItems.Add(item.SourceXF);
                     Task.Delay(1000).ContinueWith(delegate
                     {
-                        UploadPhotoDemo(item);
+                        DependencyService.Get<IGalleryPicker>().IF_SyncPhotoFromCloud(this,item);
+                        //UploadPhotoDemo(item);
                     });
                 }
             }
