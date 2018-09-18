@@ -29,7 +29,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         }
 
         private Action ActionClick;
-        public void BindDataToCell(PhotoSetNative pHAsset, IGalleryPickerSelected action, int index, bool IsCamera)
+        public void BindDataToCell(PhotoSetNative photoSetNative, IGalleryPickerSelected action, int index, bool IsCamera)
         {
             imgIcon.ClipsToBounds = true;
             bttClick.Hidden = false;
@@ -56,10 +56,10 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             {
                 imgIcon.ContentMode = UIViewContentMode.ScaleAspectFill;
                 CheckBox.Hidden = false;
-                CheckBox.Checked = pHAsset.Checked;
+                CheckBox.Checked = photoSetNative.galleryImageXF.Checked;
                 CheckBox.Tag = index;
 
-                if(pHAsset.Checked)
+                if(photoSetNative.galleryImageXF.Checked)
                 {
                     bttClick.BackgroundColor = UIColor.DarkGray.ColorWithAlpha(0.5f);
                 }
@@ -74,31 +74,16 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                     DeliveryMode = PHImageRequestOptionsDeliveryMode.FastFormat
                 };
 
-                PHImageManager.DefaultManager.RequestImageForAsset(pHAsset.Image, Bounds.Size, PHImageContentMode.AspectFit, options,(result, info) => {
+                PHImageManager.DefaultManager.RequestImageForAsset(photoSetNative.Image, Bounds.Size, PHImageContentMode.AspectFit, options,(result, info) => {
                     imgIcon.Image = result;
-
                 });
 
-                //pHAsset.Image.RequestContentEditingInput(new PHContentEditingInputRequestOptions(), (contentEditingInput, requestStatusInfo) =>
-                //{
-                //    if (contentEditingInput != null)
-                //    {
-                //        Console.WriteLine(contentEditingInput.FullSizeImageUrl.ToString());
-                //    }
-                //});
 
                 if (ActionClick == null)
                 {
                     ActionClick = delegate {
                         var stream = imgIcon.Image.AsJPEG().AsStream().ToByteArray();
-                        action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => new System.IO.MemoryStream(stream)),stream);
-                        //if (imgIcon.Image!=null)
-                        //{
-                        //    using(var stream = imgIcon.Image.AsJPEG().AsStream())
-                        //        action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => stream));
-                        //}
-                        //else
-                            //action.IF_ImageSelected(0, (int)CheckBox.Tag);
+                        action.IF_ImageSelected(0, (int)CheckBox.Tag, ImageSource.FromStream(() => new System.IO.MemoryStream(stream)),null);
                     };
                     CheckBox.TouchUpInside += (sender, e) =>
                     {

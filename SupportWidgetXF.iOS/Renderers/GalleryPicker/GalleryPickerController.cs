@@ -6,6 +6,7 @@ using CoreGraphics;
 using Foundation;
 using MBProgressHUD;
 using Photos;
+using SupportWidgetXF.Models;
 using SupportWidgetXF.Widgets.Interface;
 using UIKit;
 using Xamarin.Forms;
@@ -26,16 +27,19 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
     public class PhotoSetNative
     {
         public PHAsset Image { set; get; }
-        public bool Checked { set; get; }
-        public string Path { set; get; }
-        public bool FromCloud { set; get; }
-        public ImageSource SourceXF { set; get; }
-        public byte[] Stream { set; get; }
+        public GalleryImageXF galleryImageXF { set; get; }
+
+        //public bool Checked { set; get; }
+        //public string Path { set; get; }
+        //public bool FromCloud { set; get; }
+        //public ImageSource SourceXF { set; get; }
+        //public byte[] Stream { set; get; }
 
         public PhotoSetNative()
         {
-            Checked = false;
-            FromCloud = true;
+            galleryImageXF = new GalleryImageXF();
+            galleryImageXF.Checked = false;
+            galleryImageXF.CloudStorage = true;
         }
     }
 
@@ -110,8 +114,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 FooterReferenceSize = new CoreGraphics.CGSize(View.Frame.Width, 150) 
             }; 
             collectionView.RegisterNibForCell(UINib.FromName("GalleryItemPhotoViewCell", NSBundle.MainBundle), "GalleryItemPhotoViewCell"); 
-            //collectionView.RegisterClassForSupplementaryView(typeof(FooterLoading), UICollectionElementKindSection.Footer, new NSString("Header")); 
-            //collectionView.Delegate = new CVDelegate(controller, this);
             collectionView.DataSource = galleryCollectionSource; 
             collectionView.SetCollectionViewLayout(layout, true);
 
@@ -137,7 +139,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
             ButtonDone.TouchUpInside += (object sender, EventArgs e) => 
             {
-                MessagingCenter.Send<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImageGallery", GetCurrentSelected());
+                MessagingCenter.Send<GalleryPickerController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromGallery, GetCurrentSelected());
                 DismissModalViewController(true);
             };
 
@@ -240,13 +242,16 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                             var colec = new GalleryNative()
                             {
                                 Collection = itemRaw,
-                                Images = items.Select(obj => new PhotoSetNative()
-                                {
-                                    Image = obj,
-                                    Path = obj.LocalIdentifier
-                                }).ToList()
                             };
-                            colec.Images.Insert(0, new PhotoSetNative());
+                            colec.Images.Add(new PhotoSetNative());
+                           
+                            foreach (var item in items)
+                            {
+                                var newPhoto = new PhotoSetNative();
+                                newPhoto.galleryImageXF.OriginalPath = item.LocalIdentifier;
+                                newPhoto.Image = item;
+                                colec.Images.Add(newPhoto);
+                            }
                             galleryDirectories.Add(colec);
                         }
                     }
@@ -281,10 +286,10 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource, byte[] stream)
         {
             var item = galleryDirectories[CurrentParent].Images[positionImage];
-            item.Checked = !item.Checked;
+            item.galleryImageXF.Checked = !item.galleryImageXF.Checked;
             collectionView.ReloadData();
 
-            if (item.Checked)
+            if (item.galleryImageXF.Checked)
             {
                 var options = new PHContentEditingInputRequestOptions()
                 {
@@ -298,26 +303,30 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                         var valueOfKey = requestStatusInfo.ObjectForKey(Key);
                         if(valueOfKey.ToString().Equals("1"))
                         {
-                            item.FromCloud = true;
+                            item.galleryImageXF.CloudStorage = true;
                         }
                         else
                         {
-                            item.FromCloud = false;
-                            item.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
+                            item.galleryImageXF.CloudStorage = false;
+                            //item.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
                         }
                     }
                 });
             }
             else
             {
-                item.Path = null;
+                item.galleryImageXF.OriginalPath = null;
             }
 
             if (imageSource!=null)
             {
-                item.SourceXF = imageSource;
+                item.galleryImageXF.ImageSourceXF = imageSource;
             }
-            item.Stream = stream;
+            if(stream!=null)
+            {
+                item.galleryImageXF.ImageRawData = stream;
+            }
+
             var count = GetCurrentSelected().Count;
             if (count > 0)
             {
@@ -329,54 +338,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             }
         }
 
-        public void IF_ImageSelected(int positionDirectory, int positionImage)
-        {
-            var item = galleryDirectories[CurrentParent].Images[positionImage];
-            item.Checked = !item.Checked;
-            collectionView.ReloadData();
-
-            if(item.Checked)
-            {
-                var options = new PHContentEditingInputRequestOptions()
-                {
-                    NetworkAccessAllowed = true,
-                };
-                options.ProgressHandler = HandlePHProgressHandler;
-
-                item.Image.RequestContentEditingInput(options, (contentEditingInput, requestStatusInfo) =>
-                {
-                    if (contentEditingInput != null)
-                    {
-                        item.Path = contentEditingInput.FullSizeImageUrl.ToString().Substring(7);
-                        Console.WriteLine(item.Path);
-                    }
-                    else
-                    {
-                        Console.WriteLine("N/A");
-                    }
-                });
-            }
-            else
-            {
-                item.Path = null;
-            }
-
-            var count = GetCurrentSelected().Count;
-            if (count > 0)
-            {
-                ButtonDone.SetTitle("Done (" + count + ")",UIControlState.Normal);
-            }
-            else
-            {
-                ButtonDone.SetTitle("Done", UIControlState.Normal);
-            }
-        }
-
-        void HandlePHProgressHandler(double progress, ref bool stop)
-        {
-            Console.WriteLine("Downloaded : "+progress);
-        }
-
         public void IF_CameraSelected(int pos)
         {
             UIStoryboard storyboard = UIStoryboard.FromName("UtilStoryboard", null);
@@ -386,7 +347,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         private List<PhotoSetNative> GetCurrentSelected()
         {
-            var result = galleryDirectories.SelectMany(directory => directory.Images).Where(Image => Image.Checked).ToList();
+            var result = galleryDirectories.SelectMany(directory => directory.Images).Where(Image => Image.galleryImageXF.Checked).ToList();
             return result;
         }
     }

@@ -1,5 +1,6 @@
 using AVFoundation;
 using Foundation;
+using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.iOS.Renderers.GalleryPicker;
 using System;
 using System.Collections.Generic;
@@ -18,8 +19,11 @@ namespace SupportWidgetXF.iOS
         AVCaptureVideoPreviewLayer videoPreviewLayer;
         bool FlashOn = false;
 
+        public SyncPhotoOptions syncPhotoOptions { set; get; }
+
         public XFCameraController (IntPtr handle) : base (handle)
         {
+            syncPhotoOptions = new SyncPhotoOptions();
         }
 
         public override async void ViewDidLoad()
@@ -160,15 +164,18 @@ namespace SupportWidgetXF.iOS
             var sampleBuffer = await stillImageOutput.CaptureStillImageTaskAsync(videoConnection);
 
             var jpegImageAsNsData = AVCaptureStillImageOutput.JpegStillToNSData(sampleBuffer);
-            var jpegAsByteArray = jpegImageAsNsData.ToArray();
 
-            MessagingCenter.Send<XFCameraController, List<PhotoSetNative>>(this, "ReturnImageCamera", new List<PhotoSetNative>(){
-                new PhotoSetNative()
-                {
-                    Checked = true,
-                    Stream = jpegAsByteArray,
-                    SourceXF = ImageSource.FromStream(()=>new System.IO.MemoryStream(jpegAsByteArray))
-                }
+            var image = UIKit.UIImage.LoadFromData(jpegImageAsNsData).ResizeImage(syncPhotoOptions);
+            var jpegAsByteArray = image.AsJPEG(syncPhotoOptions.Quality).ToArray();
+
+            var result = new PhotoSetNative();
+            result.galleryImageXF.Checked = true;
+            result.galleryImageXF.ImageRawData = jpegAsByteArray;
+            result.galleryImageXF.AsyncStatus = Models.ImageAsyncStatus.InLocal;
+            result.galleryImageXF.ImageSourceXF = ImageSource.FromStream(() => new System.IO.MemoryStream(jpegAsByteArray));
+
+            MessagingCenter.Send<XFCameraController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromCamera, new List<PhotoSetNative>(){
+                result
             });
             DismissModalViewController(true);
         }

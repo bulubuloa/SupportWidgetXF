@@ -33,6 +33,7 @@
     <Folder Include="ViewModels\" />
     <Folder Include="Controllers\LocalDatabase\" />
     <Folder Include="Encrypt\" />
+    <Folder Include="Extensions\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Widgets\SupportAutoCompleteAsync.cs" />

@@ -5,20 +5,98 @@ using Xamarin.Forms;
 
 namespace SupportWidgetXF.Models
 {
-    public class ImageSet
+    public enum ImageAsyncStatus
     {
-        public ImageSource SourceXF { set; get; }
-        public string Path { set; get; }
-        public bool Checked { set; get; }
-        public bool Cloud { set; get; }
+        InCloud, InLocal, SyncFromCloud, Uploading, Uploaded, SyncCloudError, UploadError
+    }
 
-        public byte[] Stream { set; get; }
-        public string Url { set; get; }
-        public string OriginalRaw { set; get; }
+    public class GalleryImageXF : BindableObject
+    {
+        private ImageSource _ImageSourceXF;
+        public ImageSource ImageSourceXF 
+        { 
+            set 
+            {
+                _ImageSourceXF = value;
+                OnPropertyChanged();
+            }
+            get => _ImageSourceXF;
+        }
 
-        public ImageSet()
+        private bool _Checked;
+        public bool Checked
+        {
+            set
+            {
+                _Checked = value;
+                OnPropertyChanged();
+            }
+            get => _Checked;
+        }
+
+        private byte[] _ImageRawData;
+        public byte[] ImageRawData
+        { 
+            set
+            {
+                _ImageRawData = value;
+                OnPropertyChanged();
+            }
+            get => _ImageRawData;
+        }
+
+        private bool _CloudStorage;
+        public bool CloudStorage
+        {
+            set
+            {
+                _CloudStorage = value;
+                OnPropertyChanged();
+                if (_CloudStorage)
+                    AsyncStatus = ImageAsyncStatus.InCloud;
+                else
+                    AsyncStatus = ImageAsyncStatus.InLocal;
+            }
+            get => _CloudStorage;
+        }
+
+        private string _OriginalPath;
+        public string OriginalPath
+        {
+            set
+            {
+                _OriginalPath = value;
+                OnPropertyChanged();
+            }
+            get => _OriginalPath;
+        }
+
+        private string _UrlUploaded;
+        public string UrlUploaded
+        {
+            set
+            {
+                _UrlUploaded = value;
+                OnPropertyChanged();
+            }
+            get => _UrlUploaded;
+        }
+
+        private ImageAsyncStatus _AsyncStatus;
+        public ImageAsyncStatus AsyncStatus
+        {
+            set
+            {
+                _AsyncStatus = value;
+                OnPropertyChanged();
+            }
+            get => _AsyncStatus;
+        }
+
+        public GalleryImageXF()
         {
             Checked = false;
+            AsyncStatus = ImageAsyncStatus.InLocal;
         }
     }
 
@@ -26,11 +104,11 @@ namespace SupportWidgetXF.Models
     {
         public string Name { set; get; }
 
-        public List<ImageSet> Images { set; get; }
+        public List<GalleryImageXF> Images { set; get; }
 
         public GalleryDirectory()
         {
-            Images = new List<ImageSet>();
+            Images = new List<GalleryImageXF>();
         }
 
         public string IF_GetTitle()

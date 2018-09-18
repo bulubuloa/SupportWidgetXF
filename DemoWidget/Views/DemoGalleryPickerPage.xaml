@@ -62,7 +62,7 @@
                                            WidthRequest="100"
                                            HeightRequest="100"
                                            Aspect="AspectFit"
-                                           Source="{Binding .}" />
+                                           Source="{Binding ImageSourceXF}" />
                                 </StackLayout>
                             </ViewCell>
                         </DataTemplate>

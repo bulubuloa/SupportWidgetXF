@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.IO;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -9,7 +8,6 @@ using SupportWidgetXF.Controllers.API;
 using SupportWidgetXF.DependencyService;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.API.Request;
-using SupportWidgetXF.Models.API.Response;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -135,13 +133,13 @@ namespace DemoWidget.ViewModels
         public ICommand PickerCommand => new Command(OnPickerCommand);
         private void OnPickerCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this);
+            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this,new SyncPhotoOptions());
         }
 
         public ICommand CameraCommand => new Command(OnCameraCommand);
         private void OnCameraCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this);
+            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this, new SyncPhotoOptions());
         }
 
 
@@ -166,7 +164,6 @@ namespace DemoWidget.ViewModels
             Task.Delay(2000).ContinueWith(delegate
             {
                 //get something from API
-
                 var newResult = new List<IAutoDropItem>();
                 newResult.Add(new YourClass("New Item 1", "New Item - DC Universe", "dc"));
                 newResult.Add(new YourClass("New Item 2", "New Item - DC Universe", "dc"));
@@ -215,8 +212,8 @@ namespace DemoWidget.ViewModels
             }
         }
 
-        private ObservableCollection<ImageSource> _ImageItems;
-        public ObservableCollection<ImageSource> ImageItems
+        private ObservableCollection<GalleryImageXF> _ImageItems;
+        public ObservableCollection<GalleryImageXF> ImageItems
         {
             get => _ImageItems;
             set
@@ -225,30 +222,33 @@ namespace DemoWidget.ViewModels
                 OnPropertyChanged();
             }
         }
-
-        private bool IsPath = false;
-
-        public void IF_PickedResult(List<ImageSet> result)
+        
+        public void IF_PickedResult(List<GalleryImageXF> result)
         {
+            foreach (var item in result)
+            {
+                ImageItems.Add(item);
+                
+                Task.Delay(200).ContinueWith(async (arg) => {
 
-            if(IsPath)
-            {
-                foreach (var item in result)
-                {
-                    ImageItemsSet.Add(item.Path);
-                }
-            }
-            else
-            {
-                foreach (var item in result)
-                {
-                    ImageItems.Add(item.SourceXF);
-                    Task.Delay(1000).ContinueWith(delegate
+                    if(item.ImageRawData==null)
                     {
-                        DependencyService.Get<IGalleryPicker>().IF_SyncPhotoFromCloud(this,item);
-                        //UploadPhotoDemo(item);
-                    });
-                }
+                        item.AsyncStatus = ImageAsyncStatus.SyncFromCloud;
+                        var resultX = await DependencyService.Get<IGalleryPicker>().IF_SyncPhotoFromCloud(this, item, new SyncPhotoOptions());
+
+                        item.AsyncStatus = ImageAsyncStatus.Uploading;
+                        //var newStream = resultX.ImageRawData.ToArray();
+                        await new APIServiceAES().UploadImageAsync(new System.IO.MemoryStream(item.ImageRawData), item.OriginalPath + ".JPEG");
+
+                        item.AsyncStatus = ImageAsyncStatus.Uploaded;
+                    }
+                    else
+                    {
+                        item.AsyncStatus = ImageAsyncStatus.Uploading;
+                        await new APIServiceAES().UploadImageAsync(new System.IO.MemoryStream(item.ImageRawData), item.OriginalPath + ".JPEG");
+                        item.AsyncStatus = ImageAsyncStatus.Uploaded;
+                    }
+                });
             }
         }
 
@@ -260,22 +260,9 @@ namespace DemoWidget.ViewModels
             public string Data { set; get; }
         }
 
-        private async void UploadPhotoDemo(ImageSet imageSource)
-        {
-            var para = new Req_UpImage();
-            para.Type = "Floor";
-            para.Name = "huhu";
-            para.InstructionId = 111;
-            para.Data = Convert.ToBase64String(imageSource.Stream);
-            string token = "52DGB6821oG0WE7wfufmGBGkNaK5YYu2PQXxKBl7k6+mfVriFYOp11FO1tHVZPfQytn/QVetQOx6LYIXlIGgxUJOcFOhq7EpobLNmRIg39Un2i1aSAZ4RiPe2tg3Di789RpVxwRdTE79pLwy+zl/eeMhaheXQxWz/XrVbZWtoK+ANVowmsFGTyR0ZHaF76x37CEJtxjQIvLozkVmLEZE7vO74v5hB5SHjwFKZnQfOI";
-            string url = "https://172.16.10.138/jll/api/v1/PostInspectionImage?accessToken="+token;
-            APIServiceAES aPIService = new APIServiceAES();
-            var response = await aPIService.RequestPostAsync<AESBlankResponse>(url, para, token);
-        }
-
         public DemoAutoCompletePageViewModel()
         {
-            ImageItems = new ObservableCollection<ImageSource>();
+            ImageItems = new ObservableCollection<GalleryImageXF>();
             ImageItemsSet = new ObservableCollection<string>();
 
             ItemDemo = new List<IAutoDropItem>();

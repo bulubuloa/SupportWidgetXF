@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Foundation;
 using Newtonsoft.Json;
 using Photos;
@@ -32,42 +32,36 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 MissingMemberHandling = MissingMemberHandling.Ignore
             };
 
-            MessagingCenter.Subscribe<GalleryPickerController, List<PhotoSetNative>>(this, "ReturnImageGallery", (arg1, arg2) => {
-               
-                var itemResult = new List<ImageSet>();
-
+            MessagingCenter.Subscribe<GalleryPickerController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromGallery, (arg1, arg2) => {
+                var itemResult = new List<GalleryImageXF>();
                 foreach (var item in arg2)
                 {
-                    var xxx = new ImageSet();
-                    xxx.Checked = item.Checked;
-                    xxx.Path = item.Path;
-                    xxx.SourceXF = item.SourceXF;
-                    xxx.Stream = item.Stream;
-                    xxx.Cloud = item.FromCloud;
-                    xxx.OriginalRaw = item.Image.LocalIdentifier;
-                    itemResult.Add(xxx);
+                    //var resultForms = new GalleryImageXF();
+                    //resultForms.ImageSourceXF = item.SourceXF;
+                    //resultForms.Checked = item.Checked;
+                    //resultForms.CloudStorage = item.FromCloud;
+                    //resultForms.OriginalPath = item.Image.LocalIdentifier;
+                    itemResult.Add(item.galleryImageXF);
                 }
                 galleryPickerResultListener.IF_PickedResult(itemResult);
             });
 
-            MessagingCenter.Subscribe<XFCameraController, List<PhotoSetNative>>(this, "ReturnImageCamera", (arg1, arg2) => {
-
-                var itemResult = new List<ImageSet>();
-
+            MessagingCenter.Subscribe<XFCameraController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromCamera, (arg1, arg2) => {
+                var itemResult = new List<GalleryImageXF>();
                 foreach (var item in arg2)
                 {
-                    var xxx = new ImageSet();
-                    xxx.Checked = item.Checked;
-                    xxx.Path = item.Path;
-                    xxx.SourceXF = item.SourceXF;
-                    xxx.Stream = item.Stream;
-                    itemResult.Add(xxx);
+                    //var resultForms = new GalleryImageXF();
+                    //resultForms.Checked = item.Checked;
+                    //resultForms.CloudStorage = false;
+                    //resultForms.ImageRawData = item.Stream;
+                    //resultForms.ImageSourceXF = item.SourceXF;
+                    itemResult.Add(item.galleryImageXF);
                 }
                 galleryPickerResultListener.IF_PickedResult(itemResult);
             });
         }
 
-        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener)
+        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
         {
             galleryPickerResultListener = pickerResultListener;
             UIStoryboard storyboard = UIStoryboard.FromName("UtilStoryboard", null);
@@ -75,63 +69,65 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             NaviExtensions.OpenController(controller);
         }
 
-        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener)
+        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
         {
             galleryPickerResultListener = pickerResultListener;
             NaviExtensions.OpenController(new GalleryPickerController());
         }
 
-        public void IF_SyncPhotoFromCloud(IGalleryPickerResultListener galleryPickerResultListener, ImageSet imageSet)
+        public async Task<GalleryImageXF> IF_SyncPhotoFromCloud(IGalleryPickerResultListener galleryPickerResultListener, GalleryImageXF imageSet, SyncPhotoOptions options)
         {
             try
             {
-                Debug.WriteLine(imageSet.OriginalRaw);
+                bool FinishSync = false;
+
+                Debug.WriteLine(imageSet.OriginalPath);
 
                 var sortOptions = new PHFetchOptions();
                 sortOptions.SortDescriptors = new NSSortDescriptor[] { new NSSortDescriptor("creationDate", false) };
 
-                // var item = JsonConvert.DeserializeObject<PHAsset>(imageSet.OriginalRaw, jsonSerializerSettings);
-                var xx = PHAsset.FetchAssetsUsingLocalIdentifiers(new string[] { imageSet.OriginalRaw }, sortOptions).Cast<PHAsset>().FirstOrDefault();
-                if(xx!=null)
+                var FeechPhotoByIdentifiers = PHAsset.FetchAssetsUsingLocalIdentifiers(
+                    new string[] { imageSet.OriginalPath }, 
+                    sortOptions).Cast<PHAsset>().FirstOrDefault();
+
+                if(FeechPhotoByIdentifiers != null)
                 {
-                    var options = new PHImageRequestOptions()
+                    var requestOptions = new PHImageRequestOptions()
                     {
                         NetworkAccessAllowed = true,
                         DeliveryMode = PHImageRequestOptionsDeliveryMode.HighQualityFormat,
+                        ResizeMode = PHImageRequestOptionsResizeMode.None,
                     };
 
-                    options.ProgressHandler += Options_ProgressHandler;
+                    var requestSize = new CoreGraphics.CGSize(options.Width, options.Height);
+                    requestSize = PHImageManager.MaximumSize;
 
-                    PHImageManager.DefaultManager.RequestImageForAsset(xx, new CoreGraphics.CGSize(1280,960),PHImageContentMode.AspectFit, options,(result, info) => {
-                        Debug.WriteLine(result.Size);
-                        if(result.Size.Width>1280)
+                    PHImageManager.DefaultManager.RequestImageForAsset(FeechPhotoByIdentifiers, requestSize, PHImageContentMode.AspectFit, requestOptions, (result, info) => {
+                        if(result!=null)
                         {
-                            var newImage = result.ResizeImage();
-                            Debug.WriteLine(newImage.Size);
+                            var newImage = result.ResizeImage(options);
+                            imageSet.ImageRawData = newImage.AsJPEG(options.Quality).ToArray();
                         }
+                        FinishSync = true;
                     });
+
+                    do
+                    {
+                        if (FinishSync)
+                        {
+                            return imageSet;
+                        }
+                        await Task.Delay(1000);
+                    } while (!FinishSync);
                 }
+
+                return imageSet;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine(ex.StackTrace);
+                return imageSet;
             }
-        }
-
-        void Options_ProgressHandler(double progress, NSError error, out bool stopX, NSDictionary info)
-        {
-
-        }
-
-       
-
-        public byte[] ToByteArray(Stream stream)
-        {
-            stream.Position = 0;
-            byte[] buffer = new byte[stream.Length];
-            for (int totalBytesCopied = 0; totalBytesCopied < stream.Length;)
-                totalBytesCopied += stream.Read(buffer, totalBytesCopied, Convert.ToInt32(stream.Length) - totalBytesCopied);
-            return buffer;
         }
     }
 }

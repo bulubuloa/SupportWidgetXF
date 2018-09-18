@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using SupportWidgetXF.Models.API.Request;
 
@@ -15,5 +16,6 @@ namespace SupportWidgetXF.Controllers.API
         Task<TResponse> RequesGetAsync<TResponse>(string url, AESRequestBaseModel param, string token = "");
         Task<TResponse> RequesPutAsync<TResponse>(string url, AESRequestBaseModel param, string token = "");
         Task<TResponse> RequestAsync<TResponse>(RequestMethod requestMethod, string url, AESRequestBaseModel param, string token = "");
+        Task<bool> UploadImageAsync(Stream image, string fileName);
     }
 }
