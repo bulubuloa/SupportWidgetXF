@@ -18,7 +18,8 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         {
             public ImageView imageView;
             public CheckBox checkBox;
-            public Button button, buttonClick;
+            public Button buttonCheckbox, buttonClick;
+            public LinearLayout cover;
         }
 
         private Context context;
@@ -57,11 +58,12 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                 convertView = LayoutInflater.From(context).Inflate(Resource.Layout.adapter_photosfolder, null);
                 viewHolder.imageView = convertView.FindViewById<ImageView>(Resource.Id.iv_image);
                 viewHolder.checkBox = convertView.FindViewById<CheckBox>(Resource.Id.checkBox);
-                viewHolder.button = convertView.FindViewById<Button>(Resource.Id.buttoCheckbox);
+                viewHolder.buttonCheckbox = convertView.FindViewById<Button>(Resource.Id.buttoCheckbox);
                 viewHolder.buttonClick = convertView.FindViewById<Button>(Resource.Id.buttonClick);
+                viewHolder.cover = convertView.FindViewById<LinearLayout>(Resource.Id.cover);
 
-                viewHolder.button.Click += (object sender, EventArgs e) => {
-                    IGalleryPickerSelected.IF_ImageSelected(Position, position);
+                viewHolder.buttonCheckbox.Click += (object sender, EventArgs e) => {
+                    IGalleryPickerSelected.IF_ImageSelected(Position, position,null,null);
                 };
                 viewHolder.buttonClick.Click += (object sender, EventArgs e) => {
                     IGalleryPickerSelected.IF_CameraSelected(position);
@@ -75,15 +77,23 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
             var item = galleryDirectories[Position].Images[position];
 
-            if(string.IsNullOrEmpty(item.Path))
+            viewHolder.buttonClick.SetBackgroundColor(Android.Graphics.Color.Transparent);
+            viewHolder.buttonCheckbox.SetBackgroundColor(Android.Graphics.Color.Transparent);
+
+            if (string.IsNullOrEmpty(item.OriginalPath))
             {
                 viewHolder.imageView.SetImageResource(Resource.Drawable.camera);
                 viewHolder.checkBox.Visibility = ViewStates.Gone;
-                viewHolder.buttonClick.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                viewHolder.buttonCheckbox.Visibility = ViewStates.Gone;
+                viewHolder.buttonClick.Visibility = ViewStates.Visible;
             }
             else
             {
-                Glide.With(context).Load(item.Path)
+                viewHolder.checkBox.Visibility = ViewStates.Visible;
+                viewHolder.buttonCheckbox.Visibility = ViewStates.Visible;
+                viewHolder.buttonClick.Visibility = ViewStates.Gone;
+
+                Glide.With(context).Load(item.OriginalPath)
                  .Apply(RequestOptions
                         .DiskCacheStrategyOf(DiskCacheStrategy.All)
                         .SkipMemoryCache(false)
@@ -91,12 +101,13 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                         .OptionalCenterCrop())
                  .Thumbnail(0.1f)
                  .Into(viewHolder.imageView);
-                viewHolder.checkBox.Visibility = ViewStates.Visible;
+               
                 viewHolder.checkBox.Checked = item.Checked;
+
                 if (item.Checked)
-                    viewHolder.buttonClick.SetBackgroundResource(Resource.Color.colorWi);
+                    viewHolder.cover.SetBackgroundResource(Resource.Color.colorWi);
                 else
-                    viewHolder.buttonClick.SetBackgroundColor(Android.Graphics.Color.Transparent);
+                    viewHolder.cover.SetBackgroundColor(Android.Graphics.Color.Transparent);
             }
 
             return convertView;

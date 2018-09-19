@@ -2,11 +2,13 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using Android;
 using Android.App;
 using Android.Content;
 using Android.Content.PM;
 using Android.Database;
+using Android.Graphics;
 using Android.OS;
 using Android.Provider;
 using Android.Runtime;
@@ -38,7 +40,8 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         const int REQUEST_PERMISSIONS_LIBRARY = 100;
         const int REQUEST_CAMERA_CAPTURE = 102;
 
-        private List<ImageSet> GetImageSetSelected()
+
+        private List<GalleryImageXF> GetImageSetSelected()
         {
             return galleryDirectories.SelectMany(directory => directory.Images).Where(Image => Image.Checked).ToList();
         }
@@ -61,7 +64,7 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             galleryDirectoryAdapter = new GalleryDirectoryAdapter(this, galleryDirectories);
             spinner.Adapter = galleryDirectoryAdapter;
             spinner.ItemSelected += (sender, e) => {
-                galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, spinner.SelectedItemPosition,this);
+                galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, spinner.SelectedItemPosition, this);
                 gridView.Adapter = galleryImageAdapter;
             };
 
@@ -71,17 +74,25 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
 
             bttDone.Click += (object sender, System.EventArgs e) => {
-                MessagingCenter.Send<GalleryPickerActivity,List<ImageSet>>(this, "ReturnImage", GetImageSetSelected());
+                MessagingCenter.Send<GalleryPickerActivity, List<GalleryImageXF>>(this, Utils.SubscribeImageFromGallery, GetImageSetSelected());
                 Finish();
             };
 
-            if(CheckPermissionLibrary())
+            var stringComeFrom = Intent.GetStringExtra(Utils.SubscribeImageFromCamera) ?? Utils.SubscribeImageFromGallery;
+            if(stringComeFrom.Equals(Utils.SubscribeImageFromCamera))
             {
-                FillAllPhotosFromGallery();
+                IF_CameraSelected(0);
             }
             else
             {
-                RequestPermissionLibrary();
+                if (CheckPermissionLibrary())
+                {
+                    FillAllPhotosFromGallery();
+                }
+                else
+                {
+                    RequestPermissionLibrary();
+                }
             }
         }
 
@@ -94,13 +105,32 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                     if(resultCode == Result.Ok)
                     {
                         Console.WriteLine(mCurrentPhotoPath);
-                        var result = new List<ImageSet>()
-                        {
-                            new ImageSet(){
-                                Path = mCurrentPhotoPath
+
+                        Task.Delay(100).ContinueWith((arg) => {
+                            var item = new GalleryImageXF()
+                            {
+                                OriginalPath = mCurrentPhotoPath
+                            };
+                            var bitmap = item.OriginalPath.GetOriginalBitmapFromPath(new DependencyService.SyncPhotoOptions()
+                            {
+                                Width = 300,
+                                Height = 300
+                            });
+                            using (var streamBitmap = new MemoryStream())
+                            {
+                                bitmap.Compress(Bitmap.CompressFormat.Jpeg,80, streamBitmap);
+                                item.ImageSourceXF = ImageSource.FromStream(() => new MemoryStream(streamBitmap.ToArray().ToArray()));
+                                bitmap.Recycle();
                             }
-                        };
-                        MessagingCenter.Send<GalleryPickerActivity, List<ImageSet>>(this, "ReturnImage", result);
+
+                            var result = new List<GalleryImageXF>()
+                            {
+                                item
+                            };
+                            MessagingCenter.Send<GalleryPickerActivity, List<GalleryImageXF>>(this, Utils.SubscribeImageFromGallery, result);
+
+                        });
+
                         Finish();
                     }
                     break;
@@ -237,16 +267,16 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
                 if (FlagDirectory)
                 {
-                    var imageSets = new List<ImageSet>();
+                    var imageSets = new List<GalleryImageXF>();
                     imageSets.AddRange(galleriesRaw[PositionDirectory].Images);
-                    imageSets.Add(new ImageSet(){Path = absolutePathOfImage });
+                    imageSets.Add(new GalleryImageXF(){OriginalPath = absolutePathOfImage });
 
                     galleriesRaw[PositionDirectory].Images = (imageSets);
                 }
                 else
                 {
-                    var imageSets = new List<ImageSet>();
-                    imageSets.Add(new ImageSet() { Path = absolutePathOfImage });
+                    var imageSets = new List<GalleryImageXF>();
+                    imageSets.Add(new GalleryImageXF() { OriginalPath = absolutePathOfImage });
 
                     var galleryDirectory = new GalleryDirectory();
                     galleryDirectory.Name = (cursor.GetString(columnDirectoryIndex));
@@ -257,35 +287,9 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             }
 
             galleryDirectories.AddRange(galleriesRaw.Where(obj => obj.Images.Count > 0).OrderBy(obj=>obj.Name));
-            galleryDirectories.ForEach(obj => obj.Images.Insert(0, new ImageSet()));
+            galleryDirectories.ForEach(obj => obj.Images.Insert(0, new GalleryImageXF()));
             galleryDirectoryAdapter.NotifyDataSetChanged();
             return galleryDirectories;
-        }
-
-        public void IF_ImageSelected(int positionDirectory, int positionImage)
-        {
-            try
-            {
-                var item = galleryDirectories[positionDirectory].Images[positionImage];
-                item.Checked = !item.Checked;
-
-                if (galleryImageAdapter != null)
-                    galleryImageAdapter.NotifyDataSetChanged();
-
-                var count = GetImageSetSelected().Count;
-                if(count>0)
-                {
-                    bttDone.Text = "Done (" + count + ")";
-                }
-                else
-                {
-                    bttDone.Text = "Done";
-                }
-            }
-            catch (System.Exception ex)
-            {
-                Console.WriteLine(ex.StackTrace);
-            }
         }
 
         public void IF_CameraSelected(int pos)
@@ -300,8 +304,51 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             }
         }
 
-        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource)
+        public void IF_ImageSelected(int positionDirectory, int positionImage, ImageSource imageSource, byte[] stream)
         {
+            try
+            {
+                var item = galleryDirectories[positionDirectory].Images[positionImage];
+                item.Checked = !item.Checked;
+
+                if(item.Checked)
+                {
+                    Task.Delay(100).ContinueWith((arg) => {
+                        var bitmap = item.OriginalPath.GetOriginalBitmapFromPath(new DependencyService.SyncPhotoOptions()
+                        {
+                            Width = 300,
+                            Height = 300
+                        });
+                        using (var streamBitmap = new MemoryStream())
+                        {
+                            bitmap.Compress(Bitmap.CompressFormat.Jpeg,80, streamBitmap);
+                            item.ImageSourceXF = ImageSource.FromStream(() => new MemoryStream(streamBitmap.ToArray().ToArray()) );
+                            bitmap.Recycle();
+                        }
+                    });
+                }
+                else
+                {
+                    item.ImageSourceXF = null;
+                }
+
+                if (galleryImageAdapter != null)
+                    galleryImageAdapter.NotifyDataSetChanged();
+
+                var count = GetImageSetSelected().Count;
+                if (count > 0)
+                {
+                    bttDone.Text = "Done (" + count + ")";
+                }
+                else
+                {
+                    bttDone.Text = "Done";
+                }
+            }
+            catch (System.Exception ex)
+            {
+                Console.WriteLine(ex.StackTrace);
+            }
         }
     }
 }

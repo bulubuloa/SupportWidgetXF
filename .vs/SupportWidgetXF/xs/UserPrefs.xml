@@ -1,58 +1,12 @@
-﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
-  <MonoDevelop.Ide.Workbench>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="SupportWidgetXF" expanded="True">
-            <Node name="DemoAPP" expanded="True">
-              <Node name="DemoWidget" expanded="True">
-                <Node name="ViewModels" expanded="True" />
-                <Node name="Views" expanded="True" />
-              </Node>
-              <Node name="DemoWidget.iOS" expanded="True" />
-            </Node>
-            <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Controllers" expanded="True">
-                  <Node name="API" expanded="True" />
-                  <Node name="HttpClient" expanded="True" />
-                </Node>
-                <Node name="DependencyService" expanded="True" />
-                <Node name="Encrypt" expanded="True" />
-                <Node name="Extensions" expanded="True" />
-                <Node name="Models" expanded="True">
-                  <Node name="API" expanded="True">
-                    <Node name="Request" expanded="True" />
-                    <Node name="Response" expanded="True" />
-                  </Node>
-                </Node>
-                <Node name="Widgets" expanded="True">
-                  <Node name="GalleryPicker" expanded="True" />
-                  <Node name="Interface" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="SupportWidgetXF.Droid" expanded="True" />
-              <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="GalleryPicker" expanded="True">
-                    <Node name="IGalleryPickerExtended.cs" selected="True" />
-                  </Node>
-                  <Node name="GalleryPickerSupport" expanded="True" />
-                </Node>
-              </Node>
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
-  </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhone" />
+﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.E5AZCY489464" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.bacd535954e069cb541d979bfee0213ea979867e" automaticSigning="False" />
 </Properties>

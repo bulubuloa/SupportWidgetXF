@@ -14,6 +14,15 @@
             android:layout_height="match_parent"
             android:layout_gravity="center"
             android:id="@+id/iv_image"/>
+        <LinearLayout
+            android:id="@+id/cover"
+            android:background="@android:color/transparent"
+            android:layout_alignLeft="@+id/iv_image"
+            android:layout_alignRight="@+id/iv_image"
+            android:layout_alignBottom="@+id/iv_image"
+            android:layout_alignTop="@+id/iv_image"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"/>
         <Button
             android:background="@android:color/transparent"
             android:layout_alignLeft="@+id/iv_image"

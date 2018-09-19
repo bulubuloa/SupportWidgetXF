@@ -163,6 +163,7 @@
     <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
     <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
+    <Compile Include="Renderers\GalleryPicker\BitmapExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
