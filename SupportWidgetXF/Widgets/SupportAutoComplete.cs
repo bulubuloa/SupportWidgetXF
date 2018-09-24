@@ -90,6 +90,7 @@ namespace SupportWidgetXF.Widgets
         public void SendOnTextChanged(string text)
         {
             OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
+            Text = text;
         }
 
         public void SendOnReturnKeyClicked()

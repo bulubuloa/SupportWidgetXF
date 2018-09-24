@@ -37,11 +37,17 @@ namespace SupportWidgetXF.Droid.Renderers.AutoComplete
             OriginalView.Hint = SupportView.Placeholder;
             OriginalView.RequestFocusFromTouch();
             OriginalView.FocusChange += OriginalView_FocusChange;
+            OriginalView.TextChanged += OriginalView_TextChanged;
             OriginalView.InitlizeReturnKey(SupportView.ReturnType);
             OriginalView.EditorAction += (sender, ev) =>
             {
                 SupportView.SendOnReturnKeyClicked();
             };
+        }
+
+        void OriginalView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
+        {
+            SupportView.SendOnTextChanged(e.Text.ToString());
         }
 
         void OriginalView_FocusChange(object sender, FocusChangeEventArgs e)
