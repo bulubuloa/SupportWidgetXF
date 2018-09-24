@@ -47,8 +47,11 @@ namespace SupportWidgetXF.iOS.Renderers
         public virtual void IF_ItemSelectd(int position)
         {
             ShowData();
-            var text = SupportItemList[position].IF_GetTitle();
-            SupportView.Text = text;
+            if (position >= 0 && position < SupportItemList.Count)
+            {
+                var text = SupportItemList[position].IF_GetTitle();
+                SupportView.Text = text;
+            }
         }
 
         public virtual void OnInitializeTextField()

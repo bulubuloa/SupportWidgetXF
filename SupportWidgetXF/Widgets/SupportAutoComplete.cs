@@ -47,6 +47,13 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(InvalidCornerColorProperty, value);
         }
 
+        public static readonly BindableProperty PlaceHolderColorProperty = BindableProperty.Create("PlaceHolderColor", typeof(Color), typeof(SupportAutoComplete), Color.Gray);
+        public Color PlaceHolderColor
+        {
+            get => (Color)GetValue(PlaceHolderColorProperty);
+            set => SetValue(PlaceHolderColorProperty, value);
+        }
+
         public static readonly BindableProperty IsValidProperty = BindableProperty.Create("IsValid", typeof(bool), typeof(SupportAutoComplete), true);
         public bool IsValid
         {

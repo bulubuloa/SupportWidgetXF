@@ -1,12 +1,22 @@
-﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench />
+﻿<Properties StartupConfiguration="{4DC62E1E-F071-4147-9EFD-78D5D06D5E0A}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF/Models/Widgets/AutoDropItem.cs">
+    <Files>
+      <File FileName="DemoWidget.Android/MainActivity.cs" Line="23" Column="58" />
+      <File FileName="DemoWidget.iOS/AppDelegate.cs" Line="28" Column="51" />
+      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="45" Column="67" />
+      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="13" Column="42" />
+      <File FileName="SupportWidgetXF/Widgets/SupportViewBase.cs" Line="7" Column="18" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="77" Column="35" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="6" Column="90" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="81" Column="64" />
+      <File FileName="SupportWidgetXF/Models/Widgets/AutoDropItem.cs" Line="4" Column="30" />
+    </Files>
+  </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.bacd535954e069cb541d979bfee0213ea979867e" automaticSigning="False" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
 </Properties>

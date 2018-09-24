@@ -58,6 +58,16 @@ namespace SupportWidgetXF.iOS.Renderers
             }
         }
 
+        public override void SyncItemSource()
+        {
+            base.SyncItemSource();
+            if(textField!=null && SupportView!=null && SupportItemList!=null && SupportItemList.Count>0)
+            {
+                if(SupportView.ItemSelectedPosition >= 0 && SupportView.ItemSelectedPosition < SupportItemList.Count)
+                    textField.Text = SupportItemList[SupportView.ItemSelectedPosition].IF_GetTitle();
+            }
+        }
+
         protected override void OnSetNativeControl()
         {
             SetNativeControl(tapView);

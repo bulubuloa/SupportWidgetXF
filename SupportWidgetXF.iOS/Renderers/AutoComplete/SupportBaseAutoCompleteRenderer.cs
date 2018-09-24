@@ -23,7 +23,7 @@ namespace SupportWidgetXF.iOS.Renderers.AutoComplete
             if (text != null && text.Length > 1 && SupportView.ItemsSource != null)
             {
                 var key = text.ToLower();
-                var result = SupportView.ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key) || x.IF_GetDescription().ToLower().Contains(key)).Take(30);
+                var result = SupportView.ItemsSource.ToList().Where(x => x.IF_GetTitle().ToLower().Contains(key)).Take(30);
                 SupportItemList.AddRange(result);
 
                 var Count = SupportItemList.Count;
@@ -40,11 +40,19 @@ namespace SupportWidgetXF.iOS.Renderers.AutoComplete
             }
         }
 
+        protected virtual void OnInitializePlaceHolderTextField()
+        {
+            if(textField!=null)
+            {
+                textField.AttributedPlaceholder = new NSAttributedString(SupportView.Placeholder, font: UIFont.FromName(SupportView.FontFamily, size: (float)SupportView.FontSize), foregroundColor: SupportView.PlaceHolderColor.ToUIColor());
+                textField.Placeholder = SupportView.Placeholder;
+            }
+        }
+
         public override void OnInitializeTextField()
         {
             base.OnInitializeTextField();
-            textField.AttributedPlaceholder = new NSAttributedString(SupportView.Placeholder, font: UIFont.FromName(SupportView.FontFamily, size: (float)SupportView.FontSize));
-            textField.Placeholder = SupportView.Placeholder;
+            OnInitializePlaceHolderTextField();
             textField.LeftView = new UIView(new CGRect(0, 0, SupportView.PaddingInside, 0));
             textField.LeftViewMode = UITextFieldViewMode.Always;
 
@@ -85,6 +93,10 @@ namespace SupportWidgetXF.iOS.Renderers.AutoComplete
             if (e.PropertyName.Equals(SupportAutoComplete.CurrentCornerColorProperty.PropertyName))
             {
                 textField.Layer.BorderColor = SupportView.CurrentCornerColor.ToCGColor();
+            }
+            else if (e.PropertyName.Equals(SupportAutoComplete.PlaceHolderColorProperty.PropertyName))
+            {
+                OnInitializePlaceHolderTextField();
             }
         }
     }

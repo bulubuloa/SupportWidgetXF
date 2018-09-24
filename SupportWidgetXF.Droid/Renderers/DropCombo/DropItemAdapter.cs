@@ -37,7 +37,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             if (dropItemAdapter.originalData != null && dropItemAdapter.originalData.Any())
             {
                 var key = constraint.ToString().ToLower();
-                results.AddRange(dropItemAdapter.originalData.Where(drop => drop.IF_GetTitle().ToLower().Contains(key) || drop.IF_GetDescription().ToLower().Contains(key)));
+                results.AddRange(dropItemAdapter.originalData.Where(drop => drop.IF_GetTitle().ToLower().Contains(key)));
             }
 
             returnObj.Values = FromArray(results.Select(r => r.ToJavaObject()).ToArray());
