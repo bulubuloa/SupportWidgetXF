@@ -76,6 +76,12 @@
     <Reference Include="Rg.Plugins.Popup.IOS">
       <HintPath>..\packages\Rg.Plugins.Popup.1.1.4.168\lib\Xamarin.IOS\Rg.Plugins.Popup.IOS.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps.iOS">
+      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -85,6 +91,7 @@
     <Folder Include="Renderers\AutoComplete\Multi\" />
     <Folder Include="Renderers\GalleryPicker\" />
     <Folder Include="Renderers\GalleryPickerSupport\" />
+    <Folder Include="Renderers\MapView\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -151,6 +158,8 @@
     </Compile>
     <Compile Include="Renderers\GalleryPicker\UIImageExtensions.cs" />
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
+    <Compile Include="Renderers\SupportMapViewRenderer.cs" />
+    <Compile Include="Renderers\MapView\CustomMKAnnotationView.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
