@@ -67,14 +67,14 @@ namespace SupportWidgetXF.iOS.Renderers
                     Control.Layer.BorderColor = supportEntry.CurrentCornerColor.ToCGColor();
                 }
             }
-            else if (e.PropertyName.Equals(nameof(SupportEntry.CursorPosition)))
-            {
-                if (supportEntry != null)
-                {
-                    var positionToSet = Control.GetPosition(Control.BeginningOfDocument, supportEntry.CursorPosition);
-                    Control.SelectedTextRange = Control.GetTextRange(positionToSet, positionToSet);
-                }
-            }
+            //else if (e.PropertyName.Equals(nameof(SupportEntry.CursorPosition)))
+            //{
+            //    if (supportEntry != null)
+            //    {
+            //        var positionToSet = Control.GetPosition(Control.BeginningOfDocument, supportEntry.CursorPosition);
+            //        Control.SelectedTextRange = Control.GetTextRange(positionToSet, positionToSet);
+            //    }
+            //}
         }
 
         private void InitilizeDrawableInsideView(string icon, SupportEntryDrawableInsideAligment aligment)
