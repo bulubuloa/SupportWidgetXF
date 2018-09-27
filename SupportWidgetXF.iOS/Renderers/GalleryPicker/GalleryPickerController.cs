@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
 using CoreGraphics;
 using Foundation;
@@ -51,7 +50,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         private GalleryDirectorySource galleryDirectorySource;
         private List<GalleryNative> galleryDirectories = new List<GalleryNative>();
-       
+
         private GalleryCollectionSource galleryCollectionSource;
         private List<PhotoSetNative> assets = new List<PhotoSetNative>();
 
@@ -66,10 +65,10 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         {
             var color = UIColor.FromRGB(64, 64, 64);
             View.BackgroundColor = color;
-            FixView = new UIView(new CGRect(0,20,View.Bounds.Width,View.Bounds.Height-20));
+            FixView = new UIView(new CGRect(0, 20, View.Bounds.Width, View.Bounds.Height - 20));
             View.AddSubview(FixView);
 
-            ViewTop = new UIView(new CGRect(0,0, FixView.Bounds.Width,45));
+            ViewTop = new UIView(new CGRect(0, 0, FixView.Bounds.Width, 45));
             ViewTop.BackgroundColor = UIColor.Clear;
             ViewTop.Layer.MasksToBounds = false;
             ViewTop.Layer.ShadowOpacity = 1f;
@@ -78,7 +77,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             ViewTop.Layer.CornerRadius = 0;
 
             ButttonBack = new UIButton(new CGRect(0, 8, 50, 30));
-            ButttonBack.SetImage(UIImage.FromBundle("arrow_left").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal),UIControlState.Normal);
+            ButttonBack.SetImage(UIImage.FromBundle("arrow_left").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal), UIControlState.Normal);
             ViewTop.AddSubview(ButttonBack);
 
             ButtonSpinner = new UIButton(new CGRect((FixView.Frame.Width - 150) / 2, 8, 150, 30));
@@ -92,38 +91,38 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             var arrow = new UIImageView();
             arrow.ContentMode = UIViewContentMode.ScaleAspectFit;
             arrow.Image = UIImage.FromBundle("sort_down_white").ImageWithRenderingMode(UIImageRenderingMode.AlwaysOriginal);
-            arrow.Frame = new CGRect(ButtonSpinner.Frame.X+ButtonSpinner.Frame.Width-15,ButtonSpinner.Frame.Y+8,  12, 12);
+            arrow.Frame = new CGRect(ButtonSpinner.Frame.X + ButtonSpinner.Frame.Width - 15, ButtonSpinner.Frame.Y + 8, 12, 12);
 
             ViewTop.AddSubview(ButtonSpinner);
             ViewTop.AddSubview(arrow);
 
             collectionView = new UICollectionView(new CGRect(0, 45, FixView.Bounds.Width, FixView.Bounds.Height - 45), new UICollectionViewFlowLayout());
             collectionView.BackgroundColor = UIColor.White;
-            galleryCollectionSource = new GalleryCollectionSource(assets,this);
+            galleryCollectionSource = new GalleryCollectionSource(assets, this);
 
             var NumOfColumns = 3;
             var Spacing = 2;
-            var SceenWidth = (View.Frame.Width-(NumOfColumns - 1)*Spacing) / NumOfColumns;
+            var SceenWidth = (View.Frame.Width - (NumOfColumns - 1) * Spacing) / NumOfColumns;
 
-            var layout = new UICollectionViewFlowLayout 
-            { 
-                MinimumInteritemSpacing = Spacing, 
-                MinimumLineSpacing = Spacing, 
-                ScrollDirection = UICollectionViewScrollDirection.Vertical, 
-                ItemSize = new CoreGraphics.CGSize(SceenWidth, SceenWidth), 
-                FooterReferenceSize = new CoreGraphics.CGSize(View.Frame.Width, 150) 
-            }; 
-            collectionView.RegisterNibForCell(UINib.FromName("GalleryItemPhotoViewCell", NSBundle.MainBundle), "GalleryItemPhotoViewCell"); 
-            collectionView.DataSource = galleryCollectionSource; 
+            var layout = new UICollectionViewFlowLayout
+            {
+                MinimumInteritemSpacing = Spacing,
+                MinimumLineSpacing = Spacing,
+                ScrollDirection = UICollectionViewScrollDirection.Vertical,
+                ItemSize = new CoreGraphics.CGSize(SceenWidth, SceenWidth),
+                FooterReferenceSize = new CoreGraphics.CGSize(View.Frame.Width, 150)
+            };
+            collectionView.RegisterNibForCell(UINib.FromName("GalleryItemPhotoViewCell", NSBundle.MainBundle), "GalleryItemPhotoViewCell");
+            collectionView.DataSource = galleryCollectionSource;
             collectionView.SetCollectionViewLayout(layout, true);
 
             FixView.AddSubview(collectionView);
             FixView.AddSubview(ViewTop);
 
-            ViewBottom = new UIView(new CGRect(0, FixView.Bounds.Height-45, FixView.Bounds.Width, 45));
+            ViewBottom = new UIView(new CGRect(0, FixView.Bounds.Height - 45, FixView.Bounds.Width, 45));
             ViewBottom.BackgroundColor = color.ColorWithAlpha(0.7f);
 
-            ButtonDone = new UIButton(new CGRect(ViewBottom.Frame.Width - 110,8, 100, 30));
+            ButtonDone = new UIButton(new CGRect(ViewBottom.Frame.Width - 110, 8, 100, 30));
             ButtonDone.Layer.BackgroundColor = UIColor.FromRGB(42, 131, 193).CGColor;
             ButtonDone.Layer.CornerRadius = 12;
             ButtonDone.SetTitle("Done", UIControlState.Normal);
@@ -132,18 +131,19 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
             FixView.AddSubview(ViewBottom);
 
-            ButttonBack.TouchUpInside += (object sender, EventArgs e) => 
+            ButttonBack.TouchUpInside += (object sender, EventArgs e) =>
             {
                 DismissViewController(true, null);
             };
 
-            ButtonDone.TouchUpInside += (object sender, EventArgs e) => 
+            ButtonDone.TouchUpInside += (object sender, EventArgs e) =>
             {
                 MessagingCenter.Send<GalleryPickerController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromGallery, GetCurrentSelected());
                 DismissModalViewController(true);
             };
 
-            ButtonSpinner.TouchUpInside += (sender, e) => {
+            ButtonSpinner.TouchUpInside += (sender, e) =>
+            {
                 ShowData();
             };
 
@@ -169,7 +169,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             CoverView.BackgroundColor = UIColor.FromRGB(64, 64, 64).ColorWithAlpha(0.95f);
             CoverView.AddGestureRecognizer(new UITapGestureRecognizer(() => { ShowData(); }));
 
-            DialogView = new UIView(new CGRect(10, (FixView.Bounds.Height-400)/2, FixView.Bounds.Width - 20, 400));
+            DialogView = new UIView(new CGRect(10, (FixView.Bounds.Height - 400) / 2, FixView.Bounds.Width - 20, 400));
             DialogView.Layer.CornerRadius = 9;
             DialogView.Layer.BackgroundColor = UIColor.White.CGColor;
 
@@ -177,7 +177,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             tableView.RowHeight = UITableView.AutomaticDimension;
             tableView.EstimatedRowHeight = 50f;
             tableView.AutoresizingMask = UIViewAutoresizing.All;
-            tableView.Frame = new CGRect(10,10, DialogView.Frame.Width-20, DialogView.Frame.Height-20);
+            tableView.Frame = new CGRect(10, 10, DialogView.Frame.Width - 20, DialogView.Frame.Height - 20);
             tableView.SeparatorColor = UIColor.Clear;
             tableView.BackgroundColor = UIColor.Clear;
 
@@ -196,7 +196,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 UIView.Animate(0.2, () =>
                 {
                     FixView.AddSubview(CoverView);
-                }, delegate {
+                }, delegate
+                {
 
                 });
             }
@@ -206,7 +207,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             }
         }
 
-       
+
         public virtual void HideData()
         {
             if (CoverView != null)
@@ -215,10 +216,11 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
         private void FeetchAddPhotos()
         {
-            PHPhotoLibrary.RequestAuthorization(status => {
+            PHPhotoLibrary.RequestAuthorization(status =>
+            {
                 if (status != PHAuthorizationStatus.Authorized)
                     return;
-                
+
                 var galleryTemp = new List<PHAssetCollection>();
 
                 var allAlbums = PHAssetCollection.FetchAssetCollections(PHAssetCollectionType.Album, PHAssetCollectionSubtype.Any, null).Cast<PHAssetCollection>();
@@ -229,7 +231,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
                 var gallerySort = galleryTemp.OrderBy(obj => obj.LocalizedTitle);
 
-                NSOperationQueue.MainQueue.AddOperation(() => {
+                NSOperationQueue.MainQueue.AddOperation(() =>
+                {
                     foreach (var itemRaw in gallerySort)
                     {
                         var sortOptions = new PHFetchOptions();
@@ -244,7 +247,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                                 Collection = itemRaw,
                             };
                             colec.Images.Add(new PhotoSetNative());
-                           
+
                             foreach (var item in items)
                             {
                                 var newPhoto = new PhotoSetNative();
@@ -258,7 +261,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
 
                     tableView.ReloadData();
 
-                    if(galleryDirectories.Count>0)
+                    if (galleryDirectories.Count > 0)
                     {
                         CurrentParent = 0;
                         IF_ItemSelectd(CurrentParent);
@@ -276,7 +279,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
             assets.Clear();
             var xx = galleryDirectories[position];
 
-            ButtonSpinner.SetTitle(xx.Collection.LocalizedTitle,UIControlState.Normal);
+            ButtonSpinner.SetTitle(xx.Collection.LocalizedTitle, UIControlState.Normal);
 
             assets.AddRange(xx.Images);
 
@@ -301,7 +304,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                     if (requestStatusInfo.ContainsKey(Key))
                     {
                         var valueOfKey = requestStatusInfo.ObjectForKey(Key);
-                        if(valueOfKey.ToString().Equals("1"))
+                        if (valueOfKey.ToString().Equals("1"))
                         {
                             item.galleryImageXF.CloudStorage = true;
                         }
@@ -318,11 +321,11 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 item.galleryImageXF.OriginalPath = null;
             }
 
-            if (imageSource!=null)
+            if (imageSource != null)
             {
                 item.galleryImageXF.ImageSourceXF = imageSource;
             }
-            if(stream!=null)
+            if (stream != null)
             {
                 item.galleryImageXF.ImageRawData = stream;
             }
