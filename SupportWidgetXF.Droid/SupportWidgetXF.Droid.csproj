@@ -164,6 +164,8 @@
     <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
     <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
     <Compile Include="Renderers\GalleryPicker\BitmapExtensions.cs" />
+    <Compile Include="Renderers\SupportFrameRenderer.cs" />
+    <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -203,7 +205,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
-      <Project>{8524987B-85B1-45A2-BEEF-BE5492CA629B}</Project>
+      <Project>{180ED0C7-6037-4166-833C-1E2B67F43A7E}</Project>
       <Name>SupportWidgetXF</Name>
     </ProjectReference>
   </ItemGroup>

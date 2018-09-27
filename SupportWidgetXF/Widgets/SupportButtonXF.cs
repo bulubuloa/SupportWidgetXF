@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using SupportWidgetXF.DependencyService;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
@@ -55,15 +56,15 @@ namespace SupportWidgetXF.Widgets
         {
             ButtonTitleLabel = new Label()
             {
-                Text = ButtonTitle,
-                TextColor = SupButtonTitleColor,
+                Text = TitleText,
+                TextColor = TitleColor,
                 FontSize = TitleFontSize,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand
             };
             ButtonImage = new Image()
             {
-                Source = ButtonIcon,
+                Source = IconSource,
                 HeightRequest = IconSize,
                 WidthRequest = IconSize,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
@@ -72,12 +73,12 @@ namespace SupportWidgetXF.Widgets
 
             StackInside = new StackLayout()
             {
-                Spacing = IconTitleSpacing,
+                Spacing = IconAndTitleSpacing,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand
             };
 
-            switch (IconTitlePostion)
+            switch (IconAndTitleArrange)
             {
                 case IconTitlePostionEnum.IconTop:
                     StackInside.Orientation = StackOrientation.Vertical;
@@ -105,47 +106,72 @@ namespace SupportWidgetXF.Widgets
             ButtonFrame.Content = StackInside;
         }
 
-        public static readonly Xamarin.Forms.BindableProperty IconTitlePostionProperty = Xamarin.Forms.BindableProperty.Create("IconTitlePostion", typeof(IconTitlePostionEnum), typeof(SupportButtonXF), IconTitlePostionEnum.IconLeft);
-        public IconTitlePostionEnum IconTitlePostion
+        public static readonly Xamarin.Forms.BindableProperty IconAndTitleArrangeProperty = Xamarin.Forms.BindableProperty.Create("IconAndTitleArrange", typeof(IconTitlePostionEnum), typeof(SupportButtonXF), IconTitlePostionEnum.IconLeft);
+        public IconTitlePostionEnum IconAndTitleArrange
         {
-            get => (IconTitlePostionEnum)GetValue(IconTitlePostionProperty);
-            set => SetValue(IconTitlePostionProperty, value);
+            get => (IconTitlePostionEnum)GetValue(IconAndTitleArrangeProperty);
+            set => SetValue(IconAndTitleArrangeProperty, value);
+        }
+        public static readonly Xamarin.Forms.BindableProperty IconAndTitleSpacingProperty = Xamarin.Forms.BindableProperty.Create("IconAndTitleSpacing", typeof(int), typeof(SupportButtonXF), 0);
+        public int IconAndTitleSpacing
+        {
+            get => (int)GetValue(IconAndTitleSpacingProperty);
+            set => SetValue(IconAndTitleSpacingProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty ButtonTitleProperty = Xamarin.Forms.BindableProperty.Create("ButtonTitle", typeof(string), typeof(SupportButtonXF), "");
-        public string ButtonTitle
+        public static readonly Xamarin.Forms.BindableProperty TitleTextProperty = Xamarin.Forms.BindableProperty.Create("TitleText", typeof(string), typeof(SupportButtonXF), "");
+        public string TitleText
         {
-            get => (string)GetValue(ButtonTitleProperty);
-            set => SetValue(ButtonTitleProperty, value);
+            get => (string)GetValue(TitleTextProperty);
+            set => SetValue(TitleTextProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty ButtonIconProperty = Xamarin.Forms.BindableProperty.Create("ButtonIcon", typeof(string), typeof(SupportButtonXF), "");
-        public string ButtonIcon
+        public static readonly Xamarin.Forms.BindableProperty TitleColorProperty = Xamarin.Forms.BindableProperty.Create("TitleColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
+        public Color TitleColor
         {
-            get => (string)GetValue(ButtonIconProperty);
-            set => SetValue(ButtonIconProperty, value);
+            get => (Color)GetValue(TitleColorProperty);
+            set => SetValue(TitleColorProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty SupButtonBackgroundColorProperty = Xamarin.Forms.BindableProperty.Create("SupButtonBackgroundColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
-        public Color SupButtonBackgroundColor
+        public static readonly Xamarin.Forms.BindableProperty TitleFontSizeProperty = Xamarin.Forms.BindableProperty.Create("TitleFontSize", typeof(double), typeof(SupportButtonXF), 12d);
+        public double TitleFontSize
         {
-            get => (Color)GetValue(SupButtonBackgroundColorProperty);
-            set => SetValue(SupButtonBackgroundColorProperty, value);
+            get => (double)GetValue(TitleFontSizeProperty);
+            set => SetValue(TitleFontSizeProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty SupButtonTitleColorProperty = Xamarin.Forms.BindableProperty.Create("SupButtonTitleColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
-        public Color SupButtonTitleColor
+        public static readonly BindableProperty FontFamilyProperty = BindableProperty.Create("FontFamily", typeof(string), typeof(SupportViewBase), Xamarin.Forms.DependencyService.Get<IFont>().IF_GetDefaultFontFamily());
+        public string FontFamily
         {
-            get => (Color)GetValue(SupButtonTitleColorProperty);
-            set => SetValue(SupButtonTitleColorProperty, value);
+            get { return (string)GetValue(FontFamilyProperty); }
+            set { SetValue(FontFamilyProperty, value); }
         }
 
-        public static readonly Xamarin.Forms.BindableProperty IconTitleSpacingProperty = Xamarin.Forms.BindableProperty.Create("IconTitleSpacing", typeof(int), typeof(SupportButtonXF), 0);
-        public int IconTitleSpacing
+
+        public static readonly Xamarin.Forms.BindableProperty IconSourceProperty = Xamarin.Forms.BindableProperty.Create("IconSource", typeof(string), typeof(SupportButtonXF), "");
+        public string IconSource
         {
-            get => (int)GetValue(IconTitleSpacingProperty);
-            set => SetValue(IconTitleSpacingProperty, value);
+            get => (string)GetValue(IconSourceProperty);
+            set => SetValue(IconSourceProperty, value);
         }
+
+        public static readonly Xamarin.Forms.BindableProperty IconSizeProperty = Xamarin.Forms.BindableProperty.Create("IconSize", typeof(int), typeof(SupportButtonXF), 15);
+        public int IconSize
+        {
+            get => (int)GetValue(IconSizeProperty);
+            set => SetValue(IconSizeProperty, value);
+        }
+
+
+
+        public static readonly Xamarin.Forms.BindableProperty FrameBackgroundColorProperty = Xamarin.Forms.BindableProperty.Create("FrameBackgroundColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
+        public Color FrameBackgroundColor
+        {
+            get => (Color)GetValue(FrameBackgroundColorProperty);
+            set => SetValue(FrameBackgroundColorProperty, value);
+        }
+
+
 
         public static readonly Xamarin.Forms.BindableProperty CornerRadiusProperty = Xamarin.Forms.BindableProperty.Create("CornerRadius", typeof(int), typeof(SupportButtonXF), 0);
         public int CornerRadius
@@ -159,20 +185,6 @@ namespace SupportWidgetXF.Widgets
         {
             get => (int)GetValue(CornerWidthProperty);
             set => SetValue(CornerWidthProperty, value);
-        }
-
-        public static readonly Xamarin.Forms.BindableProperty IconSizeProperty = Xamarin.Forms.BindableProperty.Create("IconSize", typeof(int), typeof(SupportButtonXF), 15);
-        public int IconSize
-        {
-            get => (int)GetValue(IconSizeProperty);
-            set => SetValue(IconSizeProperty, value);
-        }
-
-        public static readonly Xamarin.Forms.BindableProperty TitleFontSizeProperty = Xamarin.Forms.BindableProperty.Create("TitleFontSize", typeof(int), typeof(SupportButtonXF), 12);
-        public int TitleFontSize
-        {
-            get => (int)GetValue(TitleFontSizeProperty);
-            set => SetValue(TitleFontSizeProperty, value);
         }
 
         public static readonly Xamarin.Forms.BindableProperty CornerColorProperty = Xamarin.Forms.BindableProperty.Create("CornerColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
@@ -205,11 +217,11 @@ namespace SupportWidgetXF.Widgets
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)
         {
             base.OnPropertyChanged(propertyName);
-            if (propertyName.Equals(ButtonTitleProperty.PropertyName))
+            if (propertyName.Equals(TitleTextProperty.PropertyName))
             {
                 if (ButtonTitleLabel != null)
                 {
-                    ButtonTitleLabel.Text = ButtonTitle;
+                    ButtonTitleLabel.Text = TitleText;
                 }
                 else
                 {
@@ -227,44 +239,55 @@ namespace SupportWidgetXF.Widgets
                     InitializeArrange();
                 }
             }
-            else if (propertyName.Equals(ButtonIconProperty.PropertyName))
+            else if (propertyName.Equals(IconSourceProperty.PropertyName))
             {
                 if (ButtonImage != null)
                 {
-                    ButtonImage.Source = ButtonIcon;
+                    ButtonImage.Source = IconSource;
                 }
                 else
                 {
                     InitializeArrange();
                 }
             }
-            else if (propertyName.Equals(IconTitleSpacingProperty.PropertyName))
+            else if (propertyName.Equals(IconAndTitleArrangeProperty.PropertyName))
             {
                 if (StackInside != null)
                 {
-                    StackInside.Spacing = IconTitleSpacing;
+                    StackInside.Orientation = (IconAndTitleArrange == IconTitlePostionEnum.IconLeft || IconAndTitleArrange == IconTitlePostionEnum.IconRight) ? StackOrientation.Horizontal : StackOrientation.Vertical;
                 }
                 else
                 {
                     InitializeArrange();
                 }
             }
-            else if (propertyName.Equals(SupButtonTitleColorProperty.PropertyName))
+            else if (propertyName.Equals(IconAndTitleSpacingProperty.PropertyName))
+            {
+                if (StackInside != null)
+                {
+                    StackInside.Spacing = IconAndTitleSpacing;
+                }
+                else
+                {
+                    InitializeArrange();
+                }
+            }
+            else if (propertyName.Equals(TitleColorProperty.PropertyName))
             {
                 if (ButtonTitleLabel != null)
                 {
-                    ButtonTitleLabel.TextColor = SupButtonTitleColor;
+                    ButtonTitleLabel.TextColor = TitleColor;
                 }
                 else
                 {
                     InitializeArrange();
                 }
             }
-            else if (propertyName.Equals(SupButtonBackgroundColorProperty.PropertyName))
+            else if (propertyName.Equals(FrameBackgroundColorProperty.PropertyName))
             {
                 if (ButtonFrame != null)
                 {
-                    ButtonFrame.BackgroundColor = SupButtonBackgroundColor;
+                    ButtonFrame.BackgroundColor = FrameBackgroundColor;
                 }
                 else
                 {
@@ -282,6 +305,7 @@ namespace SupportWidgetXF.Widgets
                     InitializeArrange();
                 }
             }
+
             else if (propertyName.Equals(CornerColorProperty.PropertyName))
             {
                 if (ButtonFrame != null)

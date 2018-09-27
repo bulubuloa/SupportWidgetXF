@@ -5,6 +5,7 @@ using Android.OS;
 using SupportWidgetXF.Droid.Renderers.DropCombo;
 using SupportWidgetXF.Widgets;
 using Xamarin.Forms.Platform.Android;
+using static Android.Views.View;
 
 namespace SupportWidgetXF.Droid.Renderers.AutoComplete
 {
@@ -35,7 +36,11 @@ namespace SupportWidgetXF.Droid.Renderers.AutoComplete
             OriginalView.TextAlignment = Android.Views.TextAlignment.Center;
             OriginalView.Typeface = SpecAndroid.CreateTypeface(Context, SupportView.FontFamily.Split('#')[0]);
             OriginalView.Hint = SupportView.Placeholder;
+
+            OriginalView.Focusable = true;
+            OriginalView.FocusableInTouchMode = true;
             OriginalView.RequestFocusFromTouch();
+
             OriginalView.FocusChange += OriginalView_FocusChange;
             OriginalView.TextChanged += OriginalView_TextChanged;
             OriginalView.InitlizeReturnKey(SupportView.ReturnType);
@@ -47,7 +52,7 @@ namespace SupportWidgetXF.Droid.Renderers.AutoComplete
 
         void OriginalView_TextChanged(object sender, Android.Text.TextChangedEventArgs e)
         {
-            SupportView.SendOnTextChanged(e.Text.ToString());
+            SupportView.SendOnTextChanged(OriginalView.Text);
         }
 
         void OriginalView_FocusChange(object sender, FocusChangeEventArgs e)

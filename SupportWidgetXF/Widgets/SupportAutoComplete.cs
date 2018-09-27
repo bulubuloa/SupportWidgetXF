@@ -89,8 +89,23 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnTextChanged(string text)
         {
+            if(string.IsNullOrEmpty(text))
+            {
+                //nothing
+                text = "";
+            }
+            else
+            {
+                if (string.IsNullOrEmpty(Text) || !Text.Equals(text))
+                {
+                    Text = text;
+                }
+                else
+                {
+                    text = "";
+                }
+            }
             OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
-            Text = text;
         }
 
         public void SendOnReturnKeyClicked()
