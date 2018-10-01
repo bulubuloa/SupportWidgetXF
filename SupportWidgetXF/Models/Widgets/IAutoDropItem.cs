@@ -8,7 +8,6 @@ namespace SupportWidgetXF.Models.Widgets
         string IF_GetIcon();
         Action IF_GetAction();
         bool IF_GetChecked();
-
         void IF_SetChecked(bool _Checked);
     }
 }

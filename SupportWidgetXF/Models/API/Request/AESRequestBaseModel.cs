@@ -8,6 +8,9 @@ namespace SupportWidgetXF.Models.API.Request
 {
     public abstract class AESRequestBaseModel : BaseModel
     {
+        [JsonIgnore]
+        public string accessToken { set; get; }
+
         public virtual string Get_GetParamsRequest()
         {
             List<string> listItems = new List<string>();

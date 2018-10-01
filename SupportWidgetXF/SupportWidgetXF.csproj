@@ -41,5 +41,6 @@
     <Compile Remove="Widgets\SupportActionMenuRenderer.cs" />
     <Compile Remove="Class1.cs" />
     <Compile Remove="Util.cs" />
+    <Compile Remove="Extensions\TranslateExtension.cs" />
   </ItemGroup>
 </Project>

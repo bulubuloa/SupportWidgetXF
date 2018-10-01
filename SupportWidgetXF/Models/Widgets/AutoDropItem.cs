@@ -26,17 +26,17 @@ namespace SupportWidgetXF.Models.Widgets
             return Title;
         }
 
-        public Action IF_GetAction()
+        public virtual Action IF_GetAction()
         {
             return null;
         }
 
-        public bool IF_GetChecked()
+        public virtual bool IF_GetChecked()
         {
             throw new NotImplementedException();
         }
 
-        public void IF_SetChecked(bool _Checked)
+        public virtual void IF_SetChecked(bool _Checked)
         {
             throw new NotImplementedException();
         }

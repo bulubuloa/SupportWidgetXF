@@ -29,6 +29,16 @@ namespace SupportWidgetXF.Behaviors
                 var textChanged = value as ObjectEventArgs;
                 return textChanged;
             }
+            else if(value is ValueChangedEventArgs)
+            {
+                var valueChanged = value as ValueChangedEventArgs;
+                return valueChanged;
+            }
+            else if (value is ItemVisibilityEventArgs)
+            {
+                var eventArgs = value as ItemVisibilityEventArgs;
+                return eventArgs.Item;
+            }
             throw new NotImplementedException();
         }
 

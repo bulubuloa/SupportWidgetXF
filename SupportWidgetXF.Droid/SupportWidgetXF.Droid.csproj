@@ -147,6 +147,12 @@
     <Reference Include="Xamarin.Forms.Maps">
       <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
     </Reference>
+    <Reference Include="Plugin.Multilingual.Abstractions">
+      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\MonoAndroid10\Plugin.Multilingual.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Multilingual">
+      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\MonoAndroid10\Plugin.Multilingual.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Resources\Resource.designer.cs" />
@@ -190,6 +196,7 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="packages.config" />
+    <None Include="Helpers\TranslateExtension.txt" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\values\Strings.xml" />
@@ -228,7 +235,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
-      <Project>{180ED0C7-6037-4166-833C-1E2B67F43A7E}</Project>
+      <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
       <Name>SupportWidgetXF</Name>
     </ProjectReference>
   </ItemGroup>

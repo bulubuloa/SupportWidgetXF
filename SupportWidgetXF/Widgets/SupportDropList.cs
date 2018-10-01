@@ -49,6 +49,10 @@ namespace SupportWidgetXF.Widgets
         {
             ChangeSelectionValue(position);
             OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
+            if(IsAllowMultiSelect)
+            {
+                SendOnMultiItemSelected(GetItemPositionSelected());
+            }
         }
 
         public void SendOnMultiItemSelected(IEnumerable<int> position)
@@ -64,6 +68,19 @@ namespace SupportWidgetXF.Widgets
         /*
          * Private process
          */
+        private IEnumerable<int> GetItemPositionSelected()
+        {
+            var result = new List<int>();
+            var items = ItemsSource.ToList();
+            for (int i = 0; i < items.Count; i++)
+            {
+                var xx = items[i];
+                if (xx.IF_GetChecked())
+                    result.Add(i);
+            }
+            return result;
+        }
+
         private void ChangeSelectionValue(int position)
         {
             var items = ItemsSource.ToList();
