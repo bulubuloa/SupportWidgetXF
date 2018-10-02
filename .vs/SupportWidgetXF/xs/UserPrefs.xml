@@ -7,10 +7,27 @@
       <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="13" Column="42" />
       <File FileName="SupportWidgetXF/Widgets/SupportViewBase.cs" Line="7" Column="18" />
       <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="77" Column="35" />
-      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="6" Column="90" />
-      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="81" Column="64" />
+      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="87" Column="15" />
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="81" Column="1" />
       <File FileName="SupportWidgetXF/Models/Widgets/AutoDropItem.cs" Line="4" Column="30" />
     </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SupportWidgetXF" expanded="True">
+            <Node name="Library" expanded="True">
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Models" expanded="True">
+                  <Node name="Widgets" expanded="True">
+                    <Node name="AutoDropItem.cs" selected="True" />
+                  </Node>
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
