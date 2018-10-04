@@ -19,7 +19,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
     {
         IGalleryPickerResultListener galleryPickerResultListener;
         JsonSerializerSettings jsonSerializerSettings;
-        bool stopX = false;
+        int CodeRequest;
 
         public IGalleryPickerExtended()
         {
@@ -36,41 +36,33 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 var itemResult = new List<GalleryImageXF>();
                 foreach (var item in arg2)
                 {
-                    //var resultForms = new GalleryImageXF();
-                    //resultForms.ImageSourceXF = item.SourceXF;
-                    //resultForms.Checked = item.Checked;
-                    //resultForms.CloudStorage = item.FromCloud;
-                    //resultForms.OriginalPath = item.Image.LocalIdentifier;
                     itemResult.Add(item.galleryImageXF);
                 }
-                galleryPickerResultListener.IF_PickedResult(itemResult);
+                galleryPickerResultListener.IF_PickedResult(itemResult,CodeRequest);
             });
 
             MessagingCenter.Subscribe<XFCameraController, List<PhotoSetNative>>(this, Utils.SubscribeImageFromCamera, (arg1, arg2) => {
                 var itemResult = new List<GalleryImageXF>();
                 foreach (var item in arg2)
                 {
-                    //var resultForms = new GalleryImageXF();
-                    //resultForms.Checked = item.Checked;
-                    //resultForms.CloudStorage = false;
-                    //resultForms.ImageRawData = item.Stream;
-                    //resultForms.ImageSourceXF = item.SourceXF;
                     itemResult.Add(item.galleryImageXF);
                 }
-                galleryPickerResultListener.IF_PickedResult(itemResult);
+                galleryPickerResultListener.IF_PickedResult(itemResult,CodeRequest);
             });
         }
 
-        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
+        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int _CodeRequest)
         {
+            CodeRequest = _CodeRequest;
             galleryPickerResultListener = pickerResultListener;
             UIStoryboard storyboard = UIStoryboard.FromName("UtilStoryboard", null);
             XFCameraController controller = (XFCameraController)storyboard.InstantiateViewController("XFCameraController");
             NaviExtensions.OpenController(controller);
         }
 
-        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
+        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int _CodeRequest)
         {
+            CodeRequest = _CodeRequest;
             galleryPickerResultListener = pickerResultListener;
             NaviExtensions.OpenController(new GalleryPickerController());
         }
