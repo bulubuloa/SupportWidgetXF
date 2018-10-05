@@ -20,13 +20,13 @@ namespace SupportWidgetXF.DependencyService
 
     public interface IGalleryPickerResultListener
     {
-        void IF_PickedResult(List<GalleryImageXF> result);
+        void IF_PickedResult(List<GalleryImageXF> result,int _CodeRequest);
     }
 
     public interface IGalleryPicker
     {
-        void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options);
-        void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options);
+        void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int CodeRequest);
+        void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int CodeRequest);
         Task<GalleryImageXF> IF_SyncPhotoFromCloud(IGalleryPickerResultListener galleryPickerResultListener, GalleryImageXF imageSet, SyncPhotoOptions options);
     }
 }
