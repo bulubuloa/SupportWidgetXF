@@ -32,7 +32,7 @@ namespace SupportWidgetXF.Widgets
             ButtonFrame = new Frame()
             {
                 BackgroundColor = Color.Transparent,
-                HasShadow = false,
+                HasShadow = true,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Padding = 0,

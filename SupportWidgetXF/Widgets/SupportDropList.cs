@@ -47,7 +47,11 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnItemSelected(int position)
         {
+            if (ItemSelectedPosition != position)
+                ItemSelectedPosition = position;
+
             ChangeSelectionValue(position);
+
             OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
             if(IsAllowMultiSelect)
             {

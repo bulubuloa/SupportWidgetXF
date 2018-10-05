@@ -16,13 +16,7 @@
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Models" expanded="True">
-                  <Node name="Widgets" expanded="True">
-                    <Node name="AutoDropItem.cs" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="SupportWidgetXF.iOS" selected="True" />
             </Node>
           </Node>
         </State>
