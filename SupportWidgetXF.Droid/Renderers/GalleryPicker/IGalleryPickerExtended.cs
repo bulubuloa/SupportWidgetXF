@@ -15,24 +15,27 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
     public class IGalleryPickerExtended : DependencyService.IGalleryPicker
     {
         IGalleryPickerResultListener galleryPickerResultListener;
+        int CodeRequest;
 
         public IGalleryPickerExtended()
         {
             MessagingCenter.Subscribe<GalleryPickerActivity,List<GalleryImageXF>>(this, Utils.SubscribeImageFromGallery,(arg1,arg2) => {
-                galleryPickerResultListener.IF_PickedResult(arg2);
+                galleryPickerResultListener.IF_PickedResult(arg2,CodeRequest);
             });
         }
 
-        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
+        public void IF_OpenCamera(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int _CodeRequest)
         {
+            CodeRequest = _CodeRequest;
             galleryPickerResultListener = pickerResultListener;
             var pickerIntent = new Intent(SupportWidgetXFSetup.Activity, typeof(GalleryPickerActivity));
             pickerIntent.PutExtra(Utils.SubscribeImageFromCamera, Utils.SubscribeImageFromCamera);
             SupportWidgetXFSetup.Activity.StartActivity(pickerIntent);
         }
 
-        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options)
+        public void IF_OpenGallery(IGalleryPickerResultListener pickerResultListener, SyncPhotoOptions options, int _CodeRequest)
         {
+            CodeRequest = _CodeRequest;
             galleryPickerResultListener = pickerResultListener;
             var pickerIntent = new Intent(SupportWidgetXFSetup.Activity, typeof(GalleryPickerActivity));
             SupportWidgetXFSetup.Activity.StartActivity(pickerIntent);
