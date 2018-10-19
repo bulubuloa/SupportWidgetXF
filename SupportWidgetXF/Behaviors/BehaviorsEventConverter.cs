@@ -39,6 +39,14 @@ namespace SupportWidgetXF.Behaviors
                 var eventArgs = value as ItemVisibilityEventArgs;
                 return eventArgs.Item;
             }
+            else if (value is BooleanEventArgs)
+            {
+                return parameter;
+            }
+            else
+            {
+                return value;
+            }
             throw new NotImplementedException();
         }
 

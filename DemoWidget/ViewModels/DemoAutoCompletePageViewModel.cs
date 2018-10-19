@@ -133,13 +133,13 @@ namespace DemoWidget.ViewModels
         public ICommand PickerCommand => new Command(OnPickerCommand);
         private void OnPickerCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this,new SyncPhotoOptions());
+            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this,new SyncPhotoOptions(),1);
         }
 
         public ICommand CameraCommand => new Command(OnCameraCommand);
         private void OnCameraCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this, new SyncPhotoOptions());
+            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this, new SyncPhotoOptions(),2);
         }
 
 
@@ -222,16 +222,16 @@ namespace DemoWidget.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public void IF_PickedResult(List<GalleryImageXF> result)
+      
+        public void IF_PickedResult(List<GalleryImageXF> result, int _CodeRequest)
         {
             foreach (var item in result)
             {
                 ImageItems.Add(item);
-                
+
                 Task.Delay(200).ContinueWith(async (arg) => {
 
-                    if(item.ImageRawData==null)
+                    if (item.ImageRawData == null)
                     {
                         item.AsyncStatus = ImageAsyncStatus.SyncFromCloud;
                         var resultX = await DependencyService.Get<IGalleryPicker>().IF_SyncPhotoFromCloud(this, item, new SyncPhotoOptions());

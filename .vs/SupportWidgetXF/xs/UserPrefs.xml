@@ -1,27 +1,9 @@
-﻿<Properties StartupConfiguration="{4DC62E1E-F071-4147-9EFD-78D5D06D5E0A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF/Models/Widgets/AutoDropItem.cs">
+﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
     <Files>
-      <File FileName="DemoWidget.Android/MainActivity.cs" Line="23" Column="58" />
-      <File FileName="DemoWidget.iOS/AppDelegate.cs" Line="28" Column="51" />
-      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="45" Column="67" />
-      <File FileName="SupportWidgetXF/Widgets/SupportViewDrop.cs" Line="13" Column="42" />
-      <File FileName="SupportWidgetXF/Widgets/SupportViewBase.cs" Line="7" Column="18" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="77" Column="35" />
-      <File FileName="DemoWidget/Views/DemoAutoCompletePage.xaml" Line="87" Column="15" />
-      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="81" Column="1" />
-      <File FileName="SupportWidgetXF/Models/Widgets/AutoDropItem.cs" Line="4" Column="30" />
+      <File FileName="DemoWidget.Android/Properties/AndroidManifest.xml" Line="17" Column="20" />
+      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="250" Column="22" />
     </Files>
-    <Pads>
-      <Pad Id="ProjectPad">
-        <State name="__root__">
-          <Node name="SupportWidgetXF" expanded="True">
-            <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF.iOS" selected="True" />
-            </Node>
-          </Node>
-        </State>
-      </Pad>
-    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -29,5 +11,6 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
 </Properties>

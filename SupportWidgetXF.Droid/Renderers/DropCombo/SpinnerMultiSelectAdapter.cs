@@ -66,18 +66,18 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
                 if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.TitleWithDescription)
                 {
                     convertView = LayoutInflater.From(mContext).Inflate(Resource.Layout.layout_title_and_description, parent, false);
-                    holder.txtDescription = convertView.FindViewById<TextView>(Resource.Id.txtDescription);
+                    //holder.txtDescription = convertView.FindViewById<TextView>(Resource.Id.txtDescription);
                 }
                 else if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.IconAndTitle)
                 {
                     convertView = LayoutInflater.From(mContext).Inflate(Resource.Layout.layout_title_and_icon, parent, false);
-                    holder.imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgIcon);
+                    //holder.imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgIcon);
                 }
                 else if (ConfigStyle.DropMode == SupportAutoCompleteDropMode.FullTextAndIcon)
                 {
                     convertView = LayoutInflater.From(mContext).Inflate(Resource.Layout.layout_full_text_and_icon, parent, false);
-                    holder.txtDescription = convertView.FindViewById<TextView>(Resource.Id.txtDescription);
-                    holder.imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgIcon);
+                    //holder.txtDescription = convertView.FindViewById<TextView>(Resource.Id.txtDescription);
+                    //holder.imgIcon = convertView.FindViewById<ImageView>(Resource.Id.imgIcon);
                 }
                 else
                 {
@@ -98,11 +98,11 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             }
 
             holder.txtTitle.Text = string.Join(", ", items.Where(Xamarin => Xamarin.IF_GetChecked()).Select(ita => ita.IF_GetTitle()));
+
             holder.checkBox.Tag = (position);
             holder.sort_down.Visibility = ViewStates.Visible;
-            holder.txtDescription.Visibility = ViewStates.Gone;
             holder.checkBox.Visibility = ViewStates.Gone;
-            holder.imgIcon.Visibility = ViewStates.Gone;
+            //holder.imgIcon.Visibility = ViewStates.Gone;
             holder.bttClick.Visibility = ViewStates.Gone;
 
             if (Build.VERSION.SdkInt < BuildVersionCodes.JellyBean)

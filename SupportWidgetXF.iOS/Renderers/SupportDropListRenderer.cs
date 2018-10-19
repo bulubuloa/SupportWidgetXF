@@ -82,9 +82,13 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public override void IF_ItemSelectd(int position)
         {
-            if(!SupportView.IsAllowMultiSelect)
+            if (!SupportView.IsAllowMultiSelect)
                 base.IF_ItemSelectd(position);
-            SupportView.SendOnItemSelected(position);
+
+            if (position != SupportView.ItemSelectedPosition)
+            {
+                SupportView.SendOnItemSelected(position);
+            }
         }
 
         public override void ShowSubviewAt(CGRect rect, UIView subView, Action didFinishAnimation)
@@ -119,7 +123,7 @@ namespace SupportWidgetXF.iOS.Renderers
             if (e.PropertyName.Equals(SupportDropList.ItemSelectedPositionProperty.PropertyName))
             {
                 var position = SupportView.ItemSelectedPosition;
-                if(position>=0 && position<SupportItemList.Count)
+                if(position >= 0 && position < SupportItemList.Count)
                 {
                     FlagShow = true;
                     IF_ItemSelectd(position);

@@ -14,6 +14,7 @@ using Android.Provider;
 using Android.Runtime;
 using Android.Support.V4.App;
 using Android.Support.V4.Content;
+using Android.Util;
 using Android.Widget;
 using Java.Text;
 using SupportWidgetXF.Models;
@@ -31,8 +32,9 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
         private GridView gridView;
         private GalleryImageAdapter galleryImageAdapter;
 
-        private Spinner spinner;
-        private GalleryDirectoryAdapter galleryDirectoryAdapter;
+        private Android.Widget.Button buttonSpinner;
+        //private GalleryDirectoryAdapter galleryDirectoryAdapter;
+
 
         private Android.Widget.Button bttDone;
         private ImageButton bttBack;
@@ -57,21 +59,24 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             galleryDirectories = new List<GalleryDirectory>();
 
             gridView = (GridView)FindViewById(Resource.Id.gridView);
-            spinner = (Spinner)FindViewById(Resource.Id.spinnerGallery);
+            buttonSpinner = (Android.Widget.Button)FindViewById(Resource.Id.bttSpinner);
             bttBack = (Android.Widget.ImageButton)FindViewById(Resource.Id.bttBack);
             bttDone = (Android.Widget.Button)FindViewById(Resource.Id.bttDone);
 
-            galleryDirectoryAdapter = new GalleryDirectoryAdapter(this, galleryDirectories);
-            spinner.Adapter = galleryDirectoryAdapter;
-            spinner.ItemSelected += (sender, e) => {
-                galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, spinner.SelectedItemPosition, this);
-                gridView.Adapter = galleryImageAdapter;
+            //galleryDirectoryAdapter = new GalleryDirectoryAdapter(this, galleryDirectories);
+            //spinner.Adapter = galleryDirectoryAdapter;
+            //spinner.ItemSelected += (sender, e) => {
+            //    galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, spinner.SelectedItemPosition, this);
+            //    gridView.Adapter = galleryImageAdapter;
+            //};
+
+            buttonSpinner.Click += (object sender, EventArgs e) => {
+                ShowDialogGallery();
             };
 
             bttBack.Click += (object sender, System.EventArgs e) => {
                 Finish();
             };
-
 
             bttDone.Click += (object sender, System.EventArgs e) => {
                 MessagingCenter.Send<GalleryPickerActivity, List<GalleryImageXF>>(this, Utils.SubscribeImageFromGallery, GetImageSetSelected());
@@ -128,7 +133,6 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
                                 item
                             };
                             MessagingCenter.Send<GalleryPickerActivity, List<GalleryImageXF>>(this, Utils.SubscribeImageFromGallery, result);
-
                         });
 
                         Finish();
@@ -288,7 +292,10 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
             galleryDirectories.AddRange(galleriesRaw.Where(obj => obj.Images.Count > 0).OrderBy(obj=>obj.Name));
             galleryDirectories.ForEach(obj => obj.Images.Insert(0, new GalleryImageXF()));
-            galleryDirectoryAdapter.NotifyDataSetChanged();
+            //galleryDirectoryAdapter.NotifyDataSetChanged();
+
+            SyncGalleryItem(0);
+
             return galleryDirectories;
         }
 
@@ -348,6 +355,45 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
             catch (System.Exception ex)
             {
                 Console.WriteLine(ex.StackTrace);
+            }
+        }
+
+        private void ShowDialogGallery()
+        {
+            var layoutInflater = (Android.Views.LayoutInflater)this.GetSystemService(Context.LayoutInflaterService);
+            var promptView = layoutInflater.Inflate(Resource.Layout.dialog_directories, null);
+            var alertDialogBuilder = new AlertDialog.Builder(this);
+            alertDialogBuilder.SetView(promptView);
+
+            var dialog = alertDialogBuilder.Create();
+            dialog.Window.ClearFlags(Android.Views.WindowManagerFlags.BlurBehind);
+            dialog.SetCanceledOnTouchOutside(true);
+            dialog.SetCancelable(true);
+
+            var listView = promptView.FindViewById<Android.Widget.ListView>(Resource.Id.listView);
+            var adapter = new GalleryDirectoryNewAdapter(this, galleryDirectories);
+            listView.Adapter = adapter;
+
+            listView.ItemClick += (sender, e) => {
+                SyncGalleryItem(e.Position);
+                dialog.Dismiss();
+            };
+            dialog.Show();
+        }
+
+        private void SyncGalleryItem(int position)
+        {
+            try
+            {
+                var itemSelect = galleryDirectories[position];
+                buttonSpinner.Text = itemSelect.IF_GetTitle();
+
+                galleryImageAdapter = new GalleryImageAdapter(this, galleryDirectories, position, this);
+                gridView.Adapter = galleryImageAdapter;
+            }
+            catch (Exception ex)
+            {
+                Log.Error("", ex.StackTrace);
             }
         }
     }

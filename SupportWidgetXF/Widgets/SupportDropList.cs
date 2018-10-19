@@ -50,6 +50,7 @@ namespace SupportWidgetXF.Widgets
             if (ItemSelectedPosition != position)
                 ItemSelectedPosition = position;
 
+
             ChangeSelectionValue(position);
 
             OnItemSelected?.Invoke(this, new IntegerEventArgs(position));

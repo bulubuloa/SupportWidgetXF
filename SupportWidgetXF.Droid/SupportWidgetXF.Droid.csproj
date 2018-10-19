@@ -192,6 +192,7 @@
     <Compile Include="Renderers\SupportFrameRenderer.cs" />
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
     <Compile Include="Renderers\SupportMapViewRenderer.cs" />
+    <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -225,6 +226,8 @@
     <AndroidResource Include="Resources\drawable-xhdpi\icon_map_pin.png" />
     <AndroidResource Include="Resources\layout\MapInfoWindow.axml" />
     <AndroidResource Include="Resources\drawable-xhdpi\ren2own_logo_map.png" />
+    <AndroidResource Include="Resources\layout\dialog_directories.axml" />
+    <AndroidResource Include="Resources\layout\layout_directory.axml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Renderers\" />

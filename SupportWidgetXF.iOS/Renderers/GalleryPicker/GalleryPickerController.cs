@@ -29,12 +29,6 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
         public PHAsset Image { set; get; }
         public GalleryImageXF galleryImageXF { set; get; }
 
-        //public bool Checked { set; get; }
-        //public string Path { set; get; }
-        //public bool FromCloud { set; get; }
-        //public ImageSource SourceXF { set; get; }
-        //public byte[] Stream { set; get; }
-
         public PhotoSetNative()
         {
             galleryImageXF = new GalleryImageXF();
@@ -143,7 +137,8 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 DismissModalViewController(true);
             };
 
-            ButtonSpinner.TouchUpInside += (sender, e) => {
+            ButtonSpinner.TouchUpInside += (sender, e) =>
+            {
                 ShowData();
             };
 
