@@ -1,23 +1,18 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF/Widgets/SupportDropList.cs">
+    <Files>
+      <File FileName="SupportWidgetXF/Widgets/SupportAutoComplete.cs" Line="84" Column="9" />
+      <File FileName="SupportWidgetXF/Widgets/SupportDropList.cs" Line="51" Column="10" NotebookId="1" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="Library" expanded="True">
               <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Models" expanded="True">
-                  <Node name="Widgets" expanded="True" />
+                <Node name="Widgets" expanded="True">
+                  <Node name="SupportDropList.cs" selected="True" />
                 </Node>
-                <Node name="Widgets" expanded="True" />
-              </Node>
-              <Node name="SupportWidgetXF.Droid" expanded="True">
-                <Node name="Renderers" expanded="True">
-                  <Node name="DropCombo" expanded="True" />
-                </Node>
-              </Node>
-              <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Renderers" expanded="True" />
               </Node>
             </Node>
           </Node>
