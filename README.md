@@ -19,10 +19,15 @@ Setup for Android project (add to MainActivity before LoadApplication)
  - SupportResultList **(Complete)**
  - SupportDropList **(Complete)**
  - SupportEntry **(Complete)**
- - SupportButton
- - SupportActionMenu
- - SupportBindableStackLayout
- - SupportSearchView
+ - SupportButton  **(Complete)**
+ - SupportActionMenu  **(Complete)**
+ - SupportBindableStackLayout  **(Complete)**
+ - SupportFlowLayout  **(Complete)**
+ - SupportSearchView  **(Complete)**
+ - SupportShadowView  **(Complete)**
+ - SupportGradientView  **(Complete)**
+ - SupportMapView  **(Complete)**
+ - SupportRadioButton  **(Complete)**
   
 <table>
 	<tr>
