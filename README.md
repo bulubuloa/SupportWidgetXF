@@ -58,6 +58,6 @@ Setup for Android project (add to MainActivity before LoadApplication)
 				<li>Autocomplete source from API</li>
 			</ul>
 		</td>
-		<td><img src="https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_droplist.gif" width="376" height="590" /></td>
+		<td><img src="https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_droplist.gif" width="300" height="472" /></td>
 	</tr>
 </table>
