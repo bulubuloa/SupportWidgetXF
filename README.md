@@ -47,4 +47,18 @@ Setup for Android project (add to MainActivity before LoadApplication)
 		</td>
 		<td><img src="https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_autocomplete.gif" width="324" height="639" /></td>
 	</tr>
+	
+	<tr>
+		<td>
+			<b>SupportDropList</b> with 4 row templates: support binding Itemsource, multi select
+			<ul>
+				<li>Single Title</li>
+				<li>Title With Description</li>
+				<li>Icon with Title</li>
+				<lip>FullText with Icon</li>
+				<li>Autocomplete source from API</li>
+			</ul>
+		</td>
+		<td><img src="https://github.com/bulubuloa/SupportWidgetXF/blob/master/ScreenShots/demo_droplist.gif" width="376" height="590" /></td>
+	</tr>
 </table>
