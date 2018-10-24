@@ -184,6 +184,12 @@ namespace DemoWidget.ViewModels
             
         }
 
+        public ICommand TestOnMultiItemSelectedCommand => new Command<MultiIntegerEventArgs>(OnTestOnMultiItemSelectedCommand);
+        private void OnTestOnMultiItemSelectedCommand(MultiIntegerEventArgs eventArgs)
+        {
+
+        }
+
         private int _ItemSelectedPosition;
         public int ItemSelectedPosition
         {
@@ -222,7 +228,14 @@ namespace DemoWidget.ViewModels
                 OnPropertyChanged();
             }
         }
-      
+
+        public ICommand TestOnItemSelectedCommand => new Command<IntegerEventArgs>(OnTestOnItemSelectedCommand);
+        private void OnTestOnItemSelectedCommand(IntegerEventArgs position)
+        {
+
+        }
+
+
         public void IF_PickedResult(List<GalleryImageXF> result, int _CodeRequest)
         {
             foreach (var item in result)

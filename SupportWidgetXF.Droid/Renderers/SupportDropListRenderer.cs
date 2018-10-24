@@ -67,10 +67,13 @@ namespace SupportWidgetXF.Droid.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(SupportDropList.ItemSelectedPositionProperty.PropertyName))
             {
-                var position = SupportView.ItemSelectedPosition;
-                if (position >= 0 && position < SupportItemList.Count)
+                if (!SupportView.IsAllowMultiSelect)
                 {
-                    OriginalView.SetSelection(position);
+                    var position = SupportView.ItemSelectedPosition;
+                    if (position >= 0 && position < SupportItemList.Count)
+                    {
+                        OriginalView.SetSelection(position);
+                    }
                 }
             }
         }

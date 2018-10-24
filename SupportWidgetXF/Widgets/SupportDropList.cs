@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
@@ -40,6 +41,24 @@ namespace SupportWidgetXF.Widgets
 
 
         /*
+         * Command
+         */
+        public static readonly BindableProperty OnItemSelectedCommandProperty = BindableProperty.Create("OnItemSelectedCommand", typeof(ICommand), typeof(SupportDropList), null);
+        public ICommand OnItemSelectedCommand
+        {
+            get { return (ICommand)GetValue(OnItemSelectedCommandProperty); }
+            set { SetValue(OnItemSelectedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty OnMultiItemSelectedCommandProperty = BindableProperty.Create("OnMultiItemSelectedCommand", typeof(ICommand), typeof(SupportDropList), null);
+        public ICommand OnMultiItemSelectedCommand
+        {
+            get { return (ICommand)GetValue(OnMultiItemSelectedCommandProperty); }
+            set { SetValue(OnMultiItemSelectedCommandProperty, value); }
+        }
+
+
+        /*
          * Event
          */
         public event EventHandler<IntegerEventArgs> OnItemSelected;
@@ -50,11 +69,14 @@ namespace SupportWidgetXF.Widgets
             if (ItemSelectedPosition != position)
                 ItemSelectedPosition = position;
 
-
             ChangeSelectionValue(position);
 
-            OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
-            if(IsAllowMultiSelect)
+            var paramete = new IntegerEventArgs(position);
+            OnItemSelected?.Invoke(this, paramete);
+            if (OnItemSelectedCommand != null)
+                OnItemSelectedCommand.Execute(paramete);
+
+            if (IsAllowMultiSelect)
             {
                 SendOnMultiItemSelected(GetItemPositionSelected());
             }
@@ -62,7 +84,10 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnMultiItemSelected(IEnumerable<int> position)
         {
-            OnMultiItemSelected?.Invoke(this, new MultiIntegerEventArgs(position));
+            var paramete = new MultiIntegerEventArgs(position);
+            OnMultiItemSelected?.Invoke(this, paramete);
+            if (OnMultiItemSelectedCommand != null)
+                OnMultiItemSelectedCommand.Execute(paramete);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

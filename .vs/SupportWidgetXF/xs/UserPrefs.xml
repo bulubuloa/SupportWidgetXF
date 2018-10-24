@@ -1,9 +1,29 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs">
-    <Files>
-      <File FileName="DemoWidget.Android/Properties/AndroidManifest.xml" Line="17" Column="20" />
-      <File FileName="DemoWidget/ViewModels/DemoAutoCompletePageViewModel.cs" Line="250" Column="22" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="SupportWidgetXF" expanded="True">
+            <Node name="Library" expanded="True">
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Models" expanded="True">
+                  <Node name="Widgets" expanded="True" />
+                </Node>
+                <Node name="Widgets" expanded="True" />
+              </Node>
+              <Node name="SupportWidgetXF.Droid" expanded="True">
+                <Node name="Renderers" expanded="True">
+                  <Node name="DropCombo" expanded="True" />
+                </Node>
+              </Node>
+              <Node name="SupportWidgetXF.iOS" expanded="True">
+                <Node name="Renderers" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
@@ -11,6 +31,7 @@
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.E5AZCY489464" />
   <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>

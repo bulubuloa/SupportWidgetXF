@@ -11,31 +11,30 @@
     </ContentPage.Resources>
     <ContentPage.Content>
         <StackLayout Orientation="Vertical" Padding="10">
-            <Label Margin="0,20,0,0" Text="DropList" />
-            <!--<widget:SupportDropList HeightRequest="40"
+            <Label Margin="0,20,0,0" Text="Drop List Multi Select" />
+            <widget:SupportDropList HeightRequest="40"
                                     HorizontalOptions="FillAndExpand"
                                     CornerColor="Green"
                                     CornerRadius="5"
                                     CornerWidth="1"
-                                    DropMode="FullTextAndIcon"
+                                    DropMode="IconAndTitle"
                                     IsAllowMultiSelect="true"
+                                    OnMultiItemSelectedCommand="{Binding TestOnMultiItemSelectedCommand}"
+                                    ItemsSource="{Binding ItemDemo}">
+            </widget:SupportDropList>
+            
+            <Label Margin="0,20,0,0" Text="Drop List Single Select" />
+            <widget:SupportDropList HeightRequest="40"
+                                    HorizontalOptions="FillAndExpand"
+                                    CornerColor="Silver"
+                                    CornerRadius="0"
+                                    CornerWidth="1"
+                                    DropMode="FullTextAndIcon"
+                                    IsAllowMultiSelect="false"
+                                    OnItemSelectedCommand="{Binding TestOnItemSelectedCommand}"
                                     ItemSelectedPosition="{Binding ItemSelectedPosition}"
                                     ItemsSource="{Binding ItemDemo}">
-                <widget:SupportDropList.Behaviors>
-                    <behaviors:EventToCommandBehavior Command="{Binding TestOnItemSelected}"
-                                                      EventArgsConverter="{StaticResource BehaviorsEventConverter}"
-                                                      EventName="OnItemSelected" />
-                </widget:SupportDropList.Behaviors>
-            </widget:SupportDropList>-->
-            <widget:SupportActionMenu
-                Text="XXX"
-                ItemsSource="{Binding ItemDemo}"
-                HeightRequest="40"
-                HorizontalOptions="FillAndExpand">
-                
-            </widget:SupportActionMenu>
-            
-            <Button Command="{Binding SetPositionCommand}" Text="Set Position" />
+            </widget:SupportDropList>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

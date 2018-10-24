@@ -82,12 +82,22 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public override void IF_ItemSelectd(int position)
         {
+            /*
+             * Call to parent to show/hide data
+             */
             if (!SupportView.IsAllowMultiSelect)
                 base.IF_ItemSelectd(position);
 
-            if (position != SupportView.ItemSelectedPosition)
+            if(SupportView.IsAllowMultiSelect)
             {
                 SupportView.SendOnItemSelected(position);
+            }
+            else
+            {
+                if (position != SupportView.ItemSelectedPosition)
+                {
+                    SupportView.SendOnItemSelected(position);
+                }
             }
         }
 
@@ -122,11 +132,14 @@ namespace SupportWidgetXF.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(SupportDropList.ItemSelectedPositionProperty.PropertyName))
             {
-                var position = SupportView.ItemSelectedPosition;
-                if(position >= 0 && position < SupportItemList.Count)
+                if(!SupportView.IsAllowMultiSelect)
                 {
-                    FlagShow = true;
-                    IF_ItemSelectd(position);
+                    var position = SupportView.ItemSelectedPosition;
+                    if (position >= 0 && position < SupportItemList.Count)
+                    {
+                        FlagShow = true;
+                        IF_ItemSelectd(position);
+                    }
                 }
             }
         }
