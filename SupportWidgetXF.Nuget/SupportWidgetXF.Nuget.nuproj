@@ -7,7 +7,7 @@
     <ProjectGuid>{D17EC992-BF78-4BFE-AACB-2E1A38A499F8}</ProjectGuid>
     <Description>SupportWidgetXF</Description>
     <PackageId>SupportWidgetXF</PackageId>
-    <PackageVersion>1.0.1</PackageVersion>
+    <PackageVersion>1.2.0</PackageVersion>
     <Authors>QuachHoang</Authors>
     <DevelopmentDependency>false</DevelopmentDependency>
     <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
@@ -16,6 +16,15 @@
     <UsePartialTypes>false</UsePartialTypes>
     <AssemblyName>SupportWidgetXF.Nuget</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <Owners>QuachHoang</Owners>
+    <Copyright>HoangQuach@2018
+
+</Copyright>
+    <PackageTags>Xamarin, XamarinForms, XF, Xamarin.Android, Xamarin.iOS, Widget, CustomRenderer</PackageTags>
+    <Title>SupportWidgetXF</Title>
+    <Summary>SupportWidget is a open source project that aims to provide a powerful and cross platform set of controls and helpers tailored to work with Xamarin Forms.</Summary>
+    <PackageProjectUrl>https://github.com/bulubuloa/SupportWidgetXF</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/bulubuloa/SupportWidgetXF</PackageLicenseUrl>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -27,11 +36,6 @@
     <OutputPath>bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
   </PropertyGroup>
-  <ItemGroup>
-    <None Include="readme.txt">
-      <IncludeInPackage>true</IncludeInPackage>
-    </None>
-  </ItemGroup>
   <ItemGroup>
     <PackageReference Include="NuGet.Build.Packaging">
       <Version>0.2.0</Version>

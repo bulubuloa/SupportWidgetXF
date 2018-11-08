@@ -166,6 +166,8 @@
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
     <Compile Include="Renderers\SupportMapViewRenderer.cs" />
     <Compile Include="Renderers\MapView\CustomMKAnnotationView.cs" />
+    <Compile Include="Renderers\SupportFrameRenderer.cs" />
+    <Compile Include="Renderers\SupportButtonXFRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">

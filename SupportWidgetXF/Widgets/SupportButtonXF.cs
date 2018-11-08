@@ -16,7 +16,7 @@ namespace SupportWidgetXF.Widgets
         private Label ButtonTitleLabel;
         private Image ButtonImage;
         private SupportButton ButtonBehide;
-        private Frame ButtonFrame;
+        private SupportFrame ButtonFrame;
         private StackLayout StackInside;
 
         private void Initialize()
@@ -29,7 +29,7 @@ namespace SupportWidgetXF.Widgets
             {
                 Height = new GridLength(1, GridUnitType.Star)
             });
-            ButtonFrame = new Frame()
+            ButtonFrame = new SupportFrame()
             {
                 BackgroundColor = Color.Transparent,
                 HasShadow = true,
@@ -60,7 +60,8 @@ namespace SupportWidgetXF.Widgets
                 TextColor = TitleColor,
                 FontSize = TitleFontSize,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center
             };
             ButtonImage = new Image()
             {
