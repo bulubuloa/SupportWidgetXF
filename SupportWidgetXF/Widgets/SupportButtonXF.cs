@@ -61,7 +61,8 @@ namespace SupportWidgetXF.Widgets
                 FontSize = TitleFontSize,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
                 HorizontalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalTextAlignment = TextAlignment.Center
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontFamily = FontFamily
             };
             ButtonImage = new Image()
             {
@@ -293,7 +294,7 @@ namespace SupportWidgetXF.Widgets
             {
                 if (ButtonFrame != null)
                 {
-                    ButtonFrame.BackgroundColor = FrameBackgroundColor;
+                    ButtonFrame.FrameBackgroundColor = FrameBackgroundColor;
                 }
                 else
                 {
@@ -311,7 +312,17 @@ namespace SupportWidgetXF.Widgets
                     InitializeArrange();
                 }
             }
-
+            else if (propertyName.Equals(FontFamilyProperty.PropertyName))
+            {
+                if (ButtonTitleLabel != null)
+                {
+                    ButtonTitleLabel.FontFamily = FontFamily;
+                }
+                else
+                {
+                    InitializeArrange();
+                }
+            }
             else if (propertyName.Equals(CornerColorProperty.PropertyName))
             {
                 if (ButtonFrame != null)

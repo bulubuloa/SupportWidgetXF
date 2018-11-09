@@ -189,7 +189,6 @@
     <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
     <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
     <Compile Include="Renderers\GalleryPicker\BitmapExtensions.cs" />
-    <Compile Include="Renderers\SupportFrameRenderer.cs" />
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
     <Compile Include="Renderers\SupportMapViewRenderer.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />

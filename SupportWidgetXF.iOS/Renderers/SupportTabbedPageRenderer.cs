@@ -35,7 +35,7 @@ namespace SupportWidgetXF.iOS.Renderers
             if(TabBar!=null && supportTabbedPage.IsShadow)
             {
                 TabBar.Layer.MasksToBounds = false;
-                TabBar.Layer.ShadowOpacity = 1f;
+                TabBar.Layer.ShadowOpacity = 0.3f;
                 TabBar.Layer.ShadowOffset = new CGSize(0, -2);
                 TabBar.Layer.ShadowColor = UIColor.Gray.CGColor;
                 TabBar.Layer.CornerRadius = 0;
