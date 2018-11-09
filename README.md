@@ -2,6 +2,8 @@
 # Xamarin Forms Custom Control
 I create this package to sharing all custom controls renderer i know, it help you get a better result with xamarin
 
+Available on NuGet: [![NuGet](https://img.shields.io/badge/nuget%20supportwidgetxf-v1.2.0-blue.svg)](https://www.nuget.org/packages/SupportWidgetXF/)
+
 Add assembly references
 
     xmlns:ultimateChart="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF"
