@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using CoreGraphics;
 using SupportWidgetXF.iOS.Renderers;
 using SupportWidgetXF.Widgets;
@@ -15,6 +16,30 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public SupportTabbedPageRenderer()
         {
+        }
+
+        public override void ViewWillAppear(bool animated)
+        {
+            base.ViewWillAppear(animated);
+            if(supportTabbedPage!=null)
+            {
+                if (supportTabbedPage.TitleAndIconLayout == TabbedIconTitleArrange.Full)
+                {
+
+                }
+                else if (supportTabbedPage.TitleAndIconLayout == TabbedIconTitleArrange.OnlyIcon)
+                {
+                    if (TabBar.Items != null)
+                    {
+                        foreach (var item in TabBar.Items)
+                        {
+                            item.Title = null;
+                            item.ImageInsets = new UIEdgeInsets(7, 0, -7, 0);
+                        }
+                    }
+                }
+            }
+
         }
 
         protected override void OnElementChanged(VisualElementChangedEventArgs e)

@@ -4,6 +4,11 @@ using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
 {
+    public enum TabbedIconTitleArrange
+    {
+        Full, OnlyIcon
+    }
+
     public class SupportTabbedPage : TabbedPage
     {
         public static readonly BindableProperty IsShadowProperty = BindableProperty.Create("IsShadow", typeof(bool), typeof(SupportTabbedPage), false);
@@ -11,6 +16,13 @@ namespace SupportWidgetXF.Widgets
         {
             get => (bool)GetValue(IsShadowProperty);
             set => SetValue(IsShadowProperty, value);
+        }
+
+        public static readonly BindableProperty TitleAndIconLayoutProperty = BindableProperty.Create("TitleAndIconLayout", typeof(TabbedIconTitleArrange), typeof(SupportTabbedPage), TabbedIconTitleArrange.Full);
+        public TabbedIconTitleArrange TitleAndIconLayout
+        {
+            get => (TabbedIconTitleArrange)GetValue(TitleAndIconLayoutProperty);
+            set => SetValue(TitleAndIconLayoutProperty, value);
         }
 
         public static readonly BindableProperty PageSelectedPositionProperty = BindableProperty.Create("PageSelectedPosition", typeof(int), typeof(SupportTabbedPage), 0);
