@@ -30,6 +30,7 @@ Setup for Android project (add to MainActivity before LoadApplication)
  - SupportGradientView  **(Complete)**
  - SupportMapView  **(Complete)**
  - SupportRadioButton  **(Complete)**
+ - SupportCalendarView  **(Complete)**
   
 <table>
 	<tr>
