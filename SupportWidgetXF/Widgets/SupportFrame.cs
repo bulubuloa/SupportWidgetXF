@@ -10,12 +10,22 @@ namespace SupportWidgetXF.Widgets
         public Color FrameBackgroundColor
         {
             get => (Color)GetValue(FrameBackgroundColorProperty);
-            set => SetValue(FrameBackgroundColorProperty, value);
+            set
+            {
+                SetValue(FrameBackgroundColorProperty, value);
+                if (Device.RuntimePlatform == Device.Android)
+                {
+                    BackgroundColor = FrameBackgroundColor;
+                }
+            }
         }
 
         public SupportFrame()
         {
-            BackgroundColor = Color.Transparent;
+            if (Device.RuntimePlatform == Device.Android)
+            {
+                BackgroundColor = FrameBackgroundColor;
+            }
         }
     }
 }

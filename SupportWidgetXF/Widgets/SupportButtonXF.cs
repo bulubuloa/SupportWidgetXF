@@ -15,7 +15,7 @@ namespace SupportWidgetXF.Widgets
     {
         private Label ButtonTitleLabel;
         private Image ButtonImage;
-        private SupportButton ButtonBehide;
+        private TapGestureRecognizer tapGestureRecognizer;
         private SupportFrame ButtonFrame;
         private StackLayout StackInside;
 
@@ -29,9 +29,10 @@ namespace SupportWidgetXF.Widgets
             {
                 Height = new GridLength(1, GridUnitType.Star)
             });
+
             ButtonFrame = new SupportFrame()
             {
-                HasShadow = true,
+                HasShadow = Shadow,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Padding = 0,
@@ -46,20 +47,19 @@ namespace SupportWidgetXF.Widgets
                 ButtonFrame.BackgroundColor = FrameBackgroundColor;
             }
 
-            ButtonBehide = new SupportButton()
-            {
-                BackgroundColor = Color.Transparent,
-                VerticalOptions = LayoutOptions.FillAndExpand,
-                HorizontalOptions = LayoutOptions.FillAndExpand,
-                Command = ClickedCommand,
-                CommandParameter = CommandParameter
-            };
+
             ButtonTitleLabel = new Label();
             ButtonImage = new Image();
-            Children.Add(ButtonFrame, 0, 1, 0, 1);
-            Children.Add(ButtonBehide, 0, 1, 0, 1);
 
-            BackgroundColor = Color.Transparent;
+            Children.Clear();
+            Children.Add(ButtonFrame);
+
+            tapGestureRecognizer = new TapGestureRecognizer();
+            tapGestureRecognizer.Tapped += (sender, e) => {
+                ClickedCommand?.Execute(CommandParameter);
+            };
+            GestureRecognizers.Clear();
+            GestureRecognizers.Add(tapGestureRecognizer);
         }
 
         private void InitializeArrange()
@@ -228,6 +228,7 @@ namespace SupportWidgetXF.Widgets
 
         public SupportButtonXF()
         {
+            BackgroundColor = Color.Transparent;
             Initialize();
             InitializeArrange();
         }
@@ -314,20 +315,12 @@ namespace SupportWidgetXF.Widgets
                         ButtonFrame.BackgroundColor = FrameBackgroundColor;
                     }
                 }
-                else
-                {
-                    InitializeArrange();
-                }
             }
             else if (propertyName.Equals(CornerRadiusProperty.PropertyName))
             {
                 if (ButtonFrame != null)
                 {
                     ButtonFrame.CornerRadius = CornerRadius;
-                }
-                else
-                {
-                    InitializeArrange();
                 }
             }
             else if (propertyName.Equals(FontFamilyProperty.PropertyName))
@@ -377,17 +370,17 @@ namespace SupportWidgetXF.Widgets
             }
             else if (propertyName.Equals(ClickedCommandProperty.PropertyName))
             {
-                if (ButtonBehide != null)
-                {
-                    ButtonBehide.Command = ClickedCommand;
-                }
+                tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += (sender, e) => {
+                    ClickedCommand?.Execute(CommandParameter);
+                };
             }
             else if (propertyName.Equals(CommandParameterProperty.PropertyName))
             {
-                if (ButtonBehide != null)
-                {
-                    ButtonBehide.CommandParameter = CommandParameter;
-                }
+                tapGestureRecognizer = new TapGestureRecognizer();
+                tapGestureRecognizer.Tapped += (sender, e) => {
+                    ClickedCommand?.Execute(CommandParameter);
+                };
             }
         }
     }
