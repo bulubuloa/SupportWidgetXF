@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Newtonsoft.Json;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
 
@@ -7,12 +8,14 @@ namespace SupportWidgetXF.Models
 {
     public enum ImageAsyncStatus
     {
-        InCloud, InLocal, SyncFromCloud, Uploading, Uploaded, SyncCloudError, UploadError
+        InCloud, InLocal, SyncFromCloud, Uploading, Uploaded, SyncCloudError, UploadError, Dowloading
     }
 
     public class GalleryImageXF : BindableObject
     {
+        [JsonIgnore]
         private ImageSource _ImageSourceXF;
+        [JsonIgnore]
         public ImageSource ImageSourceXF 
         { 
             set 
@@ -21,6 +24,17 @@ namespace SupportWidgetXF.Models
                 OnPropertyChanged();
             }
             get => _ImageSourceXF;
+        }
+
+        private decimal? _InspectionImageId;
+        public decimal? InspectionImageId
+        {
+            set
+            {
+                _InspectionImageId = value;
+                OnPropertyChanged();
+            }
+            get => _InspectionImageId;
         }
 
         private bool _Checked;
@@ -34,7 +48,9 @@ namespace SupportWidgetXF.Models
             get => _Checked;
         }
 
+        [JsonIgnore]
         private byte[] _ImageRawData;
+        [JsonIgnore]
         public byte[] ImageRawData
         { 
             set
@@ -82,7 +98,20 @@ namespace SupportWidgetXF.Models
             get => _UrlUploaded;
         }
 
+        private string _Name;
+        public string Name
+        {
+            set
+            {
+                _Name = value;
+                OnPropertyChanged();
+            }
+            get => _Name;
+        }
+
+        [JsonIgnore]
         private ImageAsyncStatus _AsyncStatus;
+        [JsonIgnore]
         public ImageAsyncStatus AsyncStatus
         {
             set

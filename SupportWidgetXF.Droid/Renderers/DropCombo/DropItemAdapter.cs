@@ -118,8 +118,7 @@ namespace SupportWidgetXF.Droid.Renderers.DropCombo
             txtTitle = convertView.FindViewById<TextView>(Resource.Id.txtTitle);
             txtSeperator = convertView.FindViewById<TextView>(Resource.Id.txtSeperator);
             bttClick = convertView.FindViewById<Button>(Resource.Id.bttClick);
-
-           
+                       
 
             txtTitle.Text = item.IF_GetTitle();
             if(txtDescription!=null)

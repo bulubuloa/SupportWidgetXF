@@ -77,6 +77,18 @@
     <Reference Include="MBProgressHUD">
       <HintPath>..\..\OneGlobal\packages\mbprogresshud.0.9.2.0\lib\Xamarin.iOS\MBProgressHUD.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Forms.Maps">
+      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\Xamarin.iOS10\Xamarin.Forms.Maps.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.Forms.Maps.iOS">
+      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\Xamarin.iOS10\Xamarin.Forms.Maps.iOS.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Multilingual.Abstractions">
+      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\Xamarin.iOS10\Plugin.Multilingual.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Multilingual">
+      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\Xamarin.iOS10\Plugin.Multilingual.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\" />
@@ -86,6 +98,7 @@
     <Folder Include="Renderers\AutoComplete\Multi\" />
     <Folder Include="Renderers\GalleryPicker\" />
     <Folder Include="Renderers\GalleryPickerSupport\" />
+    <Folder Include="Renderers\MapView\" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -152,15 +165,24 @@
     </Compile>
     <Compile Include="Renderers\GalleryPicker\UIImageExtensions.cs" />
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
+    <Compile Include="Renderers\SupportMapViewRenderer.cs" />
+    <Compile Include="Renderers\MapView\CustomMKAnnotationView.cs" />
+    <Compile Include="Renderers\SupportFrameRenderer.cs" />
+    <Compile Include="Renderers\SupportButtonXFRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
+<<<<<<< HEAD
       <Project>{F41832DF-9893-4ECA-B584-E4D7FCF5C903}</Project>
+=======
+      <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
+>>>>>>> master
       <Name>SupportWidgetXF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <None Include="Helpers\TranslateExtension.txt" />
   </ItemGroup>
   <ItemGroup>
     <InterfaceDefinition Include="Renderers\DropCombo\DropItemSingleTitle.xib" />

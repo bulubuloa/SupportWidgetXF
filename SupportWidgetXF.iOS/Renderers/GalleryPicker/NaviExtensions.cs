@@ -39,6 +39,7 @@ namespace SupportWidgetXF.iOS.Renderers.GalleryPicker
                 //ndelegate.Popover = popover = new UIPopoverController(picker);
                 //ndelegate.Popover.Delegate = new MediaPickerPopoverDelegate(ndelegate, picker);
                 //ndelegate.DisplayPopover();
+                viewController.PresentModalViewController(openController, true);
             }
             else
             {

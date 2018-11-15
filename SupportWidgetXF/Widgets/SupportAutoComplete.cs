@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Runtime.CompilerServices;
+using System.Windows.Input;
 using SupportWidgetXF.Models;
 using SupportWidgetXF.Models.Widgets;
 using Xamarin.Forms;
@@ -78,6 +79,30 @@ namespace SupportWidgetXF.Widgets
          * Function
          */
 
+        /*
+         * Command
+         */
+        public static readonly BindableProperty OnItemSelectedCommandProperty = BindableProperty.Create("OnItemSelectedCommand", typeof(ICommand), typeof(SupportAutoComplete), null);
+        public ICommand OnItemSelectedCommand
+        {
+            get { return (ICommand)GetValue(OnItemSelectedCommandProperty); }
+            set { SetValue(OnItemSelectedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty OnTextChangedCommandProperty = BindableProperty.Create("OnTextChangedCommand", typeof(ICommand), typeof(SupportAutoComplete), null);
+        public ICommand OnTextChangedCommand
+        {
+            get { return (ICommand)GetValue(OnTextChangedCommandProperty); }
+            set { SetValue(OnTextChangedCommandProperty, value); }
+        }
+
+        public static readonly BindableProperty OnTextFocusedCommandProperty = BindableProperty.Create("OnTextFocusedCommand", typeof(ICommand), typeof(SupportAutoComplete), null);
+        public ICommand OnTextFocusedCommand
+        {
+            get { return (ICommand)GetValue(OnTextFocusedCommandProperty); }
+            set { SetValue(OnTextFocusedCommandProperty, value); }
+        }
+
 
         /*
          * Event
@@ -105,7 +130,9 @@ namespace SupportWidgetXF.Widgets
                     text = "";
                 }
             }
-            OnTextChanged?.Invoke(this, new TextChangedEventArgs(text, text));
+            var paramete = new TextChangedEventArgs(text, text);
+            OnTextChanged?.Invoke(this, paramete);
+            OnTextChangedCommand?.Execute(paramete);
         }
 
         public void SendOnReturnKeyClicked()
@@ -116,14 +143,19 @@ namespace SupportWidgetXF.Widgets
 
         public void SendOnItemSelected(int position)
         {
-            OnItemSelected?.Invoke(this, new IntegerEventArgs(position));
+            var paramete = new IntegerEventArgs(position);
+            OnItemSelected?.Invoke(this, paramete);
+            OnItemSelectedCommand?.Execute(paramete);
         }
 
         public void SendOnTextFocused(bool hasFocus)
         {
             IsFocus = hasFocus;
             CurrentCornerColor = IsFocus ? FocusCornerColor : CornerColor;
-            OnTextFocused?.Invoke(this, new FocusEventArgs(this,hasFocus));
+
+            var paramete = new FocusEventArgs(this, hasFocus);
+            OnTextFocused?.Invoke(this, paramete);
+            OnTextFocusedCommand?.Execute(paramete);
         }
 
         protected override void OnPropertyChanged([CallerMemberName] string propertyName = null)

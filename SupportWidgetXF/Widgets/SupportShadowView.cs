@@ -10,7 +10,7 @@ namespace SupportWidgetXF.Widgets
 
     public class SupportShadowView : StackLayout
     {
-        public static readonly BindableProperty ShadowDirectionProperty = BindableProperty.Create("ShadowDirection", typeof(SupportShadowView), typeof(SupportShadowView), ShadowDirectionEnum.Bottom);
+        public static readonly BindableProperty ShadowDirectionProperty = BindableProperty.Create("ShadowDirection", typeof(ShadowDirectionEnum), typeof(SupportShadowView), ShadowDirectionEnum.Bottom);
         public ShadowDirectionEnum ShadowDirection
         {
             get => (ShadowDirectionEnum)GetValue(ShadowDirectionProperty);

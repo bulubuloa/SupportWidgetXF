@@ -32,7 +32,7 @@ namespace SupportWidgetXF.iOS.Renderers
                         Layer.MasksToBounds = false;
                         Layer.ShadowOpacity = 1f;
                         Layer.ShadowOffset = new CGSize(0, -2);
-                        Layer.ShadowColor = UIColor.FromRGB(217, 217, 217).CGColor;
+                        Layer.ShadowColor = UIColor.Gray.ColorWithAlpha(0.7f).CGColor;
                         Layer.CornerRadius = 0;
                     }
                 }

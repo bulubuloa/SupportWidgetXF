@@ -38,7 +38,7 @@ namespace SupportWidgetXF.Droid.Renderers
                     supportTabbedPage = Element as SupportTabbedPage;
 
                     OnInitializeNavigationBottomControl();
-                    InitializeShadow();
+                    InitializeModify();
                 }
             }
         }
@@ -72,23 +72,33 @@ namespace SupportWidgetXF.Droid.Renderers
             }
         }
 
-        protected virtual void InitializeShadow()
+        protected virtual void InitializeModify()
         {
             try
             {
                 if (bottomNavigationView != null && supportTabbedPage.IsShadow)
                 {
-                    if (relativeLayout != null)
+                    if(supportTabbedPage.IsShadow)
                     {
-                        var background = new LinearLayout(SupportWidgetXFSetup.Activity);
-                        background.SetBackgroundResource(Resource.Drawable.shadowclonenavigation_top);
-                        background.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent)
+                        if (relativeLayout != null)
                         {
-                            Height = 7
-                        };
-                        relativeLayout.AddView(background);
-                        var param = background.LayoutParameters as Android.Widget.RelativeLayout.LayoutParams;
-                        param.AddRule(LayoutRules.Above, bottomNavigationView.Id);
+                            var background = new LinearLayout(SupportWidgetXFSetup.Activity);
+                            background.SetBackgroundResource(Resource.Drawable.shadowclonenavigation_top);
+                            background.LayoutParameters = new LayoutParams(LayoutParams.MatchParent, LayoutParams.WrapContent)
+                            {
+                                Height = 7
+                            };
+                            relativeLayout.AddView(background);
+                            var param = background.LayoutParameters as Android.Widget.RelativeLayout.LayoutParams;
+                            param.AddRule(LayoutRules.Above, bottomNavigationView.Id);
+                        }
+                    }
+                    if(supportTabbedPage.TitleAndIconLayout == TabbedIconTitleArrange.OnlyIcon)
+                    {
+                        var scale = Resources.DisplayMetrics.Density;
+                        var paddingDp = 9;
+                        var dpAsPixels = (int)(paddingDp * scale + 0.5f);
+                        bottomNavigationView.SetPadding(bottomNavigationView.PaddingLeft, dpAsPixels, bottomNavigationView.PaddingRight, bottomNavigationView.PaddingBottom);
                     }
                 }
             }

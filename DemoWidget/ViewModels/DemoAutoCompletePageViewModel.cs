@@ -133,13 +133,13 @@ namespace DemoWidget.ViewModels
         public ICommand PickerCommand => new Command(OnPickerCommand);
         private void OnPickerCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this,new SyncPhotoOptions());
+            DependencyService.Get<IGalleryPicker>().IF_OpenGallery(this,new SyncPhotoOptions(),1);
         }
 
         public ICommand CameraCommand => new Command(OnCameraCommand);
         private void OnCameraCommand()
         {
-            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this, new SyncPhotoOptions());
+            DependencyService.Get<IGalleryPicker>().IF_OpenCamera(this, new SyncPhotoOptions(),2);
         }
 
 
@@ -184,6 +184,12 @@ namespace DemoWidget.ViewModels
             
         }
 
+        public ICommand TestOnMultiItemSelectedCommand => new Command<MultiIntegerEventArgs>(OnTestOnMultiItemSelectedCommand);
+        private void OnTestOnMultiItemSelectedCommand(MultiIntegerEventArgs eventArgs)
+        {
+
+        }
+
         private int _ItemSelectedPosition;
         public int ItemSelectedPosition
         {
@@ -222,16 +228,23 @@ namespace DemoWidget.ViewModels
                 OnPropertyChanged();
             }
         }
-        
-        public void IF_PickedResult(List<GalleryImageXF> result)
+
+        public ICommand TestOnItemSelectedCommand => new Command<IntegerEventArgs>(OnTestOnItemSelectedCommand);
+        private void OnTestOnItemSelectedCommand(IntegerEventArgs position)
+        {
+
+        }
+
+
+        public void IF_PickedResult(List<GalleryImageXF> result, int _CodeRequest)
         {
             foreach (var item in result)
             {
                 ImageItems.Add(item);
-                
+
                 Task.Delay(200).ContinueWith(async (arg) => {
 
-                    if(item.ImageRawData==null)
+                    if (item.ImageRawData == null)
                     {
                         item.AsyncStatus = ImageAsyncStatus.SyncFromCloud;
                         var resultX = await DependencyService.Get<IGalleryPicker>().IF_SyncPhotoFromCloud(this, item, new SyncPhotoOptions());

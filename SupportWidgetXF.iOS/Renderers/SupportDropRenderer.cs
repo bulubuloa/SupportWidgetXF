@@ -31,6 +31,7 @@ namespace SupportWidgetXF.iOS.Renderers
             {
                 SupportItemList.AddRange(SupportView.ItemsSource.ToList());
             }
+            NotifyAdapterChanged();
         }
 
         public virtual void NotifyAdapterChanged()

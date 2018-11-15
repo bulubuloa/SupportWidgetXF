@@ -12,6 +12,8 @@ namespace SupportWidgetXF.Droid.Renderers
 {
     public class SupportDatePickerRenderer : DatePickerRenderer
     {
+        private SupportDatePicker supportDatePicker;
+
         public SupportDatePickerRenderer(Context context) : base(context)
         {
         }
@@ -23,10 +25,10 @@ namespace SupportWidgetXF.Droid.Renderers
             {
                 if (Element is SupportDatePicker)
                 {
-                    var datePicker = Element as SupportDatePicker;
+                    supportDatePicker = Element as SupportDatePicker;
                     GradientDrawable gd = new GradientDrawable();
-                    gd.SetCornerRadius((float)datePicker.CornerRadius);
-                    gd.SetStroke((int)datePicker.CornerWidth, datePicker.CornerColor.ToAndroid());
+                    gd.SetCornerRadius((float)supportDatePicker.CornerRadius);
+                    gd.SetStroke((int)supportDatePicker.CornerWidth, supportDatePicker.CornerColor.ToAndroid());
                     Control.SetBackground(gd);
                     Control.Gravity = GravityFlags.CenterVertical;
                     Control.SetPadding(10, 0, 0, 0);

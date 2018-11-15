@@ -17,13 +17,21 @@
             android:background="@android:color/transparent"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
-        <Spinner
-            android:layout_centerInParent="true"
-            android:background="@null"
-            android:id="@+id/spinnerGallery"
-            android:layout_gravity="center_vertical|center_horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+        <Button android:background="@drawable/border_background"
+                android:id="@+id/bttSpinner"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:layout_height="35dp"
+                android:textAllCaps="false"
+                android:layout_width="220dp"
+                android:textColor="@android:color/white"
+                android:textSize="12sp" />
+        <ImageView android:layout_alignRight="@+id/bttSpinner"
+                   android:layout_centerVertical="true"
+                   android:layout_height="12dp"
+                   android:layout_width="12dp"
+                   android:layout_marginRight="5dp"
+                   android:src="@drawable/sort_down" />
     </RelativeLayout>
     <GridView
         android:layout_below="@+id/topLayout"

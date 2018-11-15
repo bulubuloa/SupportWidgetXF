@@ -16,7 +16,7 @@ namespace SupportWidgetXF.Widgets
         private Label ButtonTitleLabel;
         private Image ButtonImage;
         private SupportButton ButtonBehide;
-        private Frame ButtonFrame;
+        private SupportFrame ButtonFrame;
         private StackLayout StackInside;
 
         private void Initialize()
@@ -29,10 +29,10 @@ namespace SupportWidgetXF.Widgets
             {
                 Height = new GridLength(1, GridUnitType.Star)
             });
-            ButtonFrame = new Frame()
+            ButtonFrame = new SupportFrame()
             {
                 BackgroundColor = Color.Transparent,
-                HasShadow = false,
+                HasShadow = true,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Padding = 0,
@@ -60,7 +60,9 @@ namespace SupportWidgetXF.Widgets
                 TextColor = TitleColor,
                 FontSize = TitleFontSize,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                HorizontalTextAlignment = TextAlignment.Center,
+                FontFamily = FontFamily
             };
             ButtonImage = new Image()
             {
@@ -103,6 +105,7 @@ namespace SupportWidgetXF.Widgets
                 default:
                     break;
             }
+            ButtonFrame.HasShadow = Shadow;
             ButtonFrame.Content = StackInside;
         }
 
@@ -162,8 +165,6 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(IconSizeProperty, value);
         }
 
-
-
         public static readonly Xamarin.Forms.BindableProperty FrameBackgroundColorProperty = Xamarin.Forms.BindableProperty.Create("FrameBackgroundColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
         public Color FrameBackgroundColor
         {
@@ -171,6 +172,12 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(FrameBackgroundColorProperty, value);
         }
 
+        public static readonly Xamarin.Forms.BindableProperty ShadowProperty = Xamarin.Forms.BindableProperty.Create("Shadow", typeof(bool), typeof(SupportButtonXF), false);
+        public bool Shadow
+        {
+            get => (bool)GetValue(ShadowProperty);
+            set => SetValue(ShadowProperty, value);
+        }
 
 
         public static readonly Xamarin.Forms.BindableProperty CornerRadiusProperty = Xamarin.Forms.BindableProperty.Create("CornerRadius", typeof(int), typeof(SupportButtonXF), 0);
@@ -287,7 +294,7 @@ namespace SupportWidgetXF.Widgets
             {
                 if (ButtonFrame != null)
                 {
-                    ButtonFrame.BackgroundColor = FrameBackgroundColor;
+                    ButtonFrame.FrameBackgroundColor = FrameBackgroundColor;
                 }
                 else
                 {
@@ -305,12 +312,33 @@ namespace SupportWidgetXF.Widgets
                     InitializeArrange();
                 }
             }
-
+            else if (propertyName.Equals(FontFamilyProperty.PropertyName))
+            {
+                if (ButtonTitleLabel != null)
+                {
+                    ButtonTitleLabel.FontFamily = FontFamily;
+                }
+                else
+                {
+                    InitializeArrange();
+                }
+            }
             else if (propertyName.Equals(CornerColorProperty.PropertyName))
             {
                 if (ButtonFrame != null)
                 {
                     ButtonFrame.BorderColor = CornerColor;
+                }
+                else
+                {
+                    InitializeArrange();
+                }
+            }
+            else if (propertyName.Equals(ShadowProperty.PropertyName))
+            {
+                if (ButtonFrame != null)
+                {
+                    ButtonFrame.HasShadow = Shadow;
                 }
                 else
                 {
