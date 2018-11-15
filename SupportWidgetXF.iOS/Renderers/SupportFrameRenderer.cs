@@ -34,6 +34,7 @@ namespace SupportWidgetXF.iOS.Renderers
             else
                 Layer.BackgroundColor = UIColor.White.CGColor;
 
+
             if (Element.HasShadow)
             {
                 Layer.ShadowRadius = 5;

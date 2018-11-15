@@ -31,13 +31,21 @@ namespace SupportWidgetXF.Widgets
             });
             ButtonFrame = new SupportFrame()
             {
-                BackgroundColor = Color.Transparent,
                 HasShadow = true,
                 VerticalOptions = LayoutOptions.FillAndExpand,
                 HorizontalOptions = LayoutOptions.FillAndExpand,
                 Padding = 0,
-                CornerRadius = 0
+                CornerRadius = CornerRadius
             };
+            if(Device.RuntimePlatform == Device.iOS)
+            {
+                ButtonFrame.BackgroundColor = Color.Transparent;
+            }
+            else if(Device.RuntimePlatform == Device.Android)
+            {
+                ButtonFrame.BackgroundColor = FrameBackgroundColor;
+            }
+
             ButtonBehide = new SupportButton()
             {
                 BackgroundColor = Color.Transparent,
@@ -50,6 +58,8 @@ namespace SupportWidgetXF.Widgets
             ButtonImage = new Image();
             Children.Add(ButtonFrame, 0, 1, 0, 1);
             Children.Add(ButtonBehide, 0, 1, 0, 1);
+
+            BackgroundColor = Color.Transparent;
         }
 
         private void InitializeArrange()
@@ -77,7 +87,8 @@ namespace SupportWidgetXF.Widgets
             {
                 Spacing = IconAndTitleSpacing,
                 VerticalOptions = LayoutOptions.CenterAndExpand,
-                HorizontalOptions = LayoutOptions.CenterAndExpand
+                HorizontalOptions = LayoutOptions.CenterAndExpand,
+                BackgroundColor = Color.Transparent
             };
 
             switch (IconAndTitleArrange)
@@ -165,14 +176,14 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(IconSizeProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty FrameBackgroundColorProperty = Xamarin.Forms.BindableProperty.Create("FrameBackgroundColor", typeof(Color), typeof(SupportButtonXF), Color.Transparent);
+        public static readonly Xamarin.Forms.BindableProperty FrameBackgroundColorProperty = Xamarin.Forms.BindableProperty.Create("FrameBackgroundColor", typeof(Color), typeof(SupportButtonXF), Color.White);
         public Color FrameBackgroundColor
         {
             get => (Color)GetValue(FrameBackgroundColorProperty);
             set => SetValue(FrameBackgroundColorProperty, value);
         }
 
-        public static readonly Xamarin.Forms.BindableProperty ShadowProperty = Xamarin.Forms.BindableProperty.Create("Shadow", typeof(bool), typeof(SupportButtonXF), false);
+        public static readonly Xamarin.Forms.BindableProperty ShadowProperty = Xamarin.Forms.BindableProperty.Create("Shadow", typeof(bool), typeof(SupportButtonXF), true);
         public bool Shadow
         {
             get => (bool)GetValue(ShadowProperty);
@@ -294,7 +305,14 @@ namespace SupportWidgetXF.Widgets
             {
                 if (ButtonFrame != null)
                 {
-                    ButtonFrame.FrameBackgroundColor = FrameBackgroundColor;
+                    if (Device.RuntimePlatform == Device.iOS)
+                    {
+                        ButtonFrame.FrameBackgroundColor = FrameBackgroundColor;
+                    }
+                    else if (Device.RuntimePlatform == Device.Android)
+                    {
+                        ButtonFrame.BackgroundColor = FrameBackgroundColor;
+                    }
                 }
                 else
                 {

@@ -176,7 +176,6 @@
     <Compile Include="Renderers\SupportDatePickerRenderer.cs" />
     <Compile Include="Renderers\SupportEditorRenderer.cs" />
     <Compile Include="Renderers\SupportButtonRenderer.cs" />
-    <Compile Include="Renderers\SupportButtonXF.cs" />
     <Compile Include="Renderers\AutoComplete\SupportAutoCompleteRenderer.cs" />
     <Compile Include="Renderers\AutoComplete\SupportSearchResultListRenderer.cs" />
     <Compile Include="Renderers\AutoComplete\SupportBaseAutoCompleteRenderer.cs" />
@@ -192,6 +191,7 @@
     <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
     <Compile Include="Renderers\SupportMapViewRenderer.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />
+    <Compile Include="Renderers\SupportFrameRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

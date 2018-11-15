@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
 namespace SupportWidgetXF.Widgets
@@ -12,5 +13,9 @@ namespace SupportWidgetXF.Widgets
             set => SetValue(FrameBackgroundColorProperty, value);
         }
 
+        public SupportFrame()
+        {
+            BackgroundColor = Color.Transparent;
+        }
     }
 }
