@@ -1,29 +1,24 @@
-﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
+﻿<Properties StartupConfiguration="{F83F2953-BE38-4E3C-97A2-8ACB0CF17A15}|Default">
   <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
+            <Node name="DemoAPP" expanded="True" />
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF" expanded="True">
-                <Node name="Controllers" expanded="True">
-                  <Node name="API" expanded="True">
-                    <Node name="IAPIServiceOGPS.cs" selected="True" />
-                  </Node>
-                </Node>
-              </Node>
+              <Node name="SupportWidgetXF.Nuget" selected="True" />
             </Node>
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
-  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
+  <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.6377D2E3-7D25-4989-9EB6-0BF871C458FD" />
 </Properties>
