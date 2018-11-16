@@ -4,7 +4,7 @@ using SupportWidgetXF.Models.API.Request;
 
 namespace SupportWidgetXF.Controllers.API
 {
-    public interface IAPIServiceOGPS
+    public interface IAPIServiceOGPS : IAPIService
     {
         Task<TResponse> RequestAsyncWithCredential<TResponse>(RequestMethod requestMethod, string url, AESRequestBaseModel param, string apiUsername, string apiPassword);
     }
