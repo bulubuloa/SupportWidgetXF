@@ -105,13 +105,13 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public virtual void HideData()
         {
-            if(tableView!=null)
+            if (tableView != null)
                 tableView.RemoveFromSuperview();
         }
 
         public UIWindow GetCurrentWindow(UIView view)
         {
-            if (view.Superview is UIWindow) 
+            if (view.Superview is UIWindow)
                 return (UIWindow)view.Superview;
             else return GetCurrentWindow(view.Superview);
         }
@@ -176,8 +176,7 @@ namespace SupportWidgetXF.iOS.Renderers
 
         protected override void Dispose(bool disposing)
         {
-            if (disposing && tableView != null)
-                HideData();
+            if (disposing && tableView != null) HideData();
             base.Dispose(disposing);
         }
     }

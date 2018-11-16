@@ -1,294 +1,252 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-<<<<<<< HEAD
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props')" />
-=======
-  <Import Project="..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props" Condition="Exists('..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props')" />
->>>>>>> master
-  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
-  <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props')" />
-  <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4DC62E1E-F071-4147-9EFD-78D5D06D5E0A}</ProjectGuid>
-    <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
-    <OutputType>Library</OutputType>
-    <RootNamespace>SupportWidgetXF.Droid</RootNamespace>
-    <AssemblyName>SupportWidgetXF.Droid</AssemblyName>
-    <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-    <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
-    <AndroidResgenClass>Resource</AndroidResgenClass>
-    <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
-    <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
-    <DefineConstants>DEBUG;</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidLinkMode>None</AndroidLinkMode>
-    <JavaMaximumHeapSize></JavaMaximumHeapSize>
-    <IntermediateOutputPath></IntermediateOutputPath>
-    <MandroidI18n></MandroidI18n>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <AndroidManagedSymbols>true</AndroidManagedSymbols>
-    <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
-    <JavaMaximumHeapSize></JavaMaximumHeapSize>
-    <AndroidKeyStore></AndroidKeyStore>
-    <AndroidFastDeploymentType></AndroidFastDeploymentType>
-  </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="System" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Core" />
-    <Reference Include="Mono.Android" />
-    <Reference Include="System.Net.Http" />
-    <Reference Include="System.IO.Compression" />
-    <Reference Include="Autofac">
-      <HintPath>..\..\OneGlobal\packages\Autofac.4.8.1\lib\netstandard1.1\Autofac.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\OneGlobal\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Annotations">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Annotations.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Annotations.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Compat">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.UI">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.UI.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Core.Utils">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.Utils.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Media.Compat">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Media.Compat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Fragment">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Fragment.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Fragment.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v4">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v4.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Vector.Drawable">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.AppCompat">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.CardView">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Transition">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Transition.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Transition.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.Palette">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.Palette.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.Design">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Design.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
-    </Reference>
-    <Reference Include="Rg.Plugins.Popup">
-      <HintPath>..\..\OneGlobal\packages\Rg.Plugins.Popup.1.1.4.168\lib\MonoAndroid\Rg.Plugins.Popup.dll</HintPath>
-    </Reference>
-    <Reference Include="Rg.Plugins.Popup.Droid">
-      <HintPath>..\..\OneGlobal\packages\Rg.Plugins.Popup.1.1.4.168\lib\MonoAndroid\Rg.Plugins.Popup.Droid.dll</HintPath>
-    </Reference>
-    <Reference Include="FormsViewGroup">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Core">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform.Android">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Platform">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Xaml">
-      <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
-    </Reference>
-    <Reference Include="Glide">
-      <HintPath>..\..\OneGlobal\packages\Glide.Xamarin.4.1.1\lib\MonoAndroid10\Glide.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Basement">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Basement.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Tasks">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Base">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Base.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Base.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.GooglePlayServices.Maps">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Maps.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Maps.Android">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Maps.Android.dll</HintPath>
-    </Reference>
-    <Reference Include="Xamarin.Forms.Maps">
-      <HintPath>..\..\Rent2Own\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Multilingual.Abstractions">
-      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\MonoAndroid10\Plugin.Multilingual.Abstractions.dll</HintPath>
-    </Reference>
-    <Reference Include="Plugin.Multilingual">
-      <HintPath>..\..\VMSInspections\packages\Plugin.Multilingual.1.0.2\lib\MonoAndroid10\Plugin.Multilingual.dll</HintPath>
-    </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Resources\Resource.designer.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Renderers\ViewExtensions.cs" />
-    <Compile Include="Renderers\DropCombo\DropItemAdapter.cs" />
-    <Compile Include="ObjectExtensions.cs" />
-    <Compile Include="SupportWidgetXFSetup.cs" />
-    <Compile Include="Renderers\DropCombo\DropItemAdapterAsync.cs" />
-    <Compile Include="Renderers\DropCombo\InstantAutoComplete.cs" />
-    <Compile Include="Renderers\SupportEntryRenderer.cs" />
-    <Compile Include="Renderers\SupportActionMenuRenderer.cs" />
-    <Compile Include="iFontExtend.cs" />
-    <Compile Include="SpecAndroid.cs" />
-    <Compile Include="Renderers\SupportDropListRenderer.cs" />
-    <Compile Include="Renderers\DropCombo\SpinnerAdapter.cs" />
-    <Compile Include="Renderers\DropCombo\SpinnerMultiSelectAdapter.cs" />
-    <Compile Include="Renderers\SupportShadowViewRenderer.cs" />
-    <Compile Include="IFileHelperExtended.cs" />
-    <Compile Include="IPushLocalNotificationExtended.cs" />
-    <Compile Include="Renderers\SupportDatePickerRenderer.cs" />
-    <Compile Include="Renderers\SupportEditorRenderer.cs" />
-    <Compile Include="Renderers\SupportButtonRenderer.cs" />
-    <Compile Include="Renderers\SupportButtonXF.cs" />
-    <Compile Include="Renderers\AutoComplete\SupportAutoCompleteRenderer.cs" />
-    <Compile Include="Renderers\AutoComplete\SupportSearchResultListRenderer.cs" />
-    <Compile Include="Renderers\AutoComplete\SupportBaseAutoCompleteRenderer.cs" />
-    <Compile Include="Renderers\AutoComplete\SupportAutoCompleteMultiValueRenderer.cs" />
-    <Compile Include="Renderers\SupportDropRenderer.cs" />
-    <Compile Include="Renderers\GalleryPicker\GalleryDirectoryAdapter.cs" />
-    <Compile Include="Renderers\GalleryPicker\GalleryImageAdapter.cs" />
-    <Compile Include="Renderers\GalleryPicker\GalleryPickerActivity.cs" />
-    <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
-    <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
-    <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
-    <Compile Include="Renderers\GalleryPicker\BitmapExtensions.cs" />
-    <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
-    <Compile Include="Renderers\SupportMapViewRenderer.cs" />
-    <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Resources\AboutResources.txt" />
-    <None Include="packages.config" />
-    <None Include="Helpers\TranslateExtension.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <AndroidResource Include="Resources\values\Strings.xml" />
-    <AndroidResource Include="Resources\layout\layout_single_title.axml" />
-    <AndroidResource Include="Resources\layout\layout_title_and_description.axml" />
-    <AndroidResource Include="Resources\layout\layout_title_and_icon.axml" />
-    <AndroidResource Include="Resources\layout\layout_full_text_and_icon.axml" />
-    <AndroidResource Include="Resources\values\attrs.xml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\sort_down.png" />
-    <AndroidResource Include="Resources\drawable\shadowclone.xml" />
-    <AndroidResource Include="Resources\drawable\shadowclonenavigation_bottom.xml" />
-    <AndroidResource Include="Resources\layout\adapter_photosfolder.axml" />
-    <AndroidResource Include="Resources\layout\activity_gallery_picker.axml" />
-    <AndroidResource Include="Resources\layout\layout_single_title_normal.axml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_left.png" />
-    <AndroidResource Include="Resources\drawable\background_button.xml" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\arrow_down.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\sort_down_white.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\nonchecked.png" />
-    <AndroidResource Include="Resources\drawable-xxhdpi\checked.png" />
-    <AndroidResource Include="Resources\values\colors.xml" />
-    <AndroidResource Include="Resources\drawable\selector_check.xml" />
-    <AndroidResource Include="Resources\drawable\border_background.xml" />
-    <AndroidResource Include="Resources\drawable-xhdpi\camera.png" />
-    <AndroidResource Include="Resources\drawable\shadowclonenavigation_top.xml" />
-    <AndroidResource Include="Resources\drawable-xhdpi\icon_map_pin.png" />
-    <AndroidResource Include="Resources\layout\MapInfoWindow.axml" />
-    <AndroidResource Include="Resources\drawable-xhdpi\ren2own_logo_map.png" />
-    <AndroidResource Include="Resources\layout\dialog_directories.axml" />
-    <AndroidResource Include="Resources\layout\layout_directory.axml" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Renderers\" />
-    <Folder Include="Resources\layout\" />
-    <Folder Include="Renderers\DropCombo\" />
-    <Folder Include="Renderers\AutoComplete\" />
-    <Folder Include="Renderers\GalleryPicker\" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
-<<<<<<< HEAD
-      <Project>{F41832DF-9893-4ECA-B584-E4D7FCF5C903}</Project>
-=======
-      <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
->>>>>>> master
-      <Name>SupportWidgetXF</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
-  <Import Project="..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Media.Compat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Media.Compat.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Fragment.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Fragment.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Fragment.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Fragment.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Transition.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Transition.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v4.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v4.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v4.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v4.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.Palette.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.Palette.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Design.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Design.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Design.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Design.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.targets" Condition="Exists('..\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.targets')" />
-  <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />
-  <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets')" />
-  <Import Project="..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets" Condition="Exists('..\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets')" />
-<<<<<<< HEAD
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Design.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Design.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Design.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Design.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.UI.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Core.Utils.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Media.Compat.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Media.Compat.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Fragment.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Fragment.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Fragment.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Fragment.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v4.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v4.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v4.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v4.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.CardView.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.Transition.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.Transition.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.Transition.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.Palette.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.Palette.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.targets')" />
-  <Import Project="..\..\OneGlobal\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.targets" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\build\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.targets')" />
-=======
-  <Import Project="..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets" Condition="Exists('..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.targets')" />
-  <Import Project="..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets" Condition="Exists('..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Basement.targets')" />
-  <Import Project="..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets" Condition="Exists('..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.targets')" />
-  <Import Project="..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets" Condition="Exists('..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Base.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Base.targets')" />
-  <Import Project="..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets" Condition="Exists('..\..\Rent2Own\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\build\MonoAndroid70\Xamarin.GooglePlayServices.Maps.targets')" />
->>>>>>> master
+    <Import Project="..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props')" />
+    <Import Project="..\..\OneGlobal\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props')" />
+    <Import Project="..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\..\OneGlobal\packages\Xamarin.Forms.3.2.0.839982\build\netstandard2.0\Xamarin.Forms.props')" />
+    <Import Project="..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props" Condition="Exists('..\..\Rent2Own\packages\Xamarin.Build.Download.0.4.2\build\Xamarin.Build.Download.props')" />
+    <Import Project="..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props" Condition="Exists('..\packages\NuGet.Build.Packaging.0.2.2\build\NuGet.Build.Packaging.props')" />
+    <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.props')" />
+    <PropertyGroup>
+        <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+        <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+        <ProjectGuid>{4DC62E1E-F071-4147-9EFD-78D5D06D5E0A}</ProjectGuid>
+        <ProjectTypeGuids>{EFBA0AD7-5A72-4C68-AF49-83D382785DCF};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+        <OutputType>Library</OutputType>
+        <RootNamespace>SupportWidgetXF.Droid</RootNamespace>
+        <AssemblyName>SupportWidgetXF.Droid</AssemblyName>
+        <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
+        <AndroidResgenFile>Resources\Resource.designer.cs</AndroidResgenFile>
+        <AndroidResgenClass>Resource</AndroidResgenClass>
+        <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
+        <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
+        <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>full</DebugType>
+        <Optimize>false</Optimize>
+        <OutputPath>bin\Debug</OutputPath>
+        <DefineConstants>DEBUG;</DefineConstants>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AndroidLinkMode>None</AndroidLinkMode>
+        <JavaMaximumHeapSize>
+        </JavaMaximumHeapSize>
+        <IntermediateOutputPath>
+        </IntermediateOutputPath>
+        <MandroidI18n>
+        </MandroidI18n>
+    </PropertyGroup>
+    <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+        <DebugSymbols>true</DebugSymbols>
+        <DebugType>pdbonly</DebugType>
+        <Optimize>true</Optimize>
+        <OutputPath>bin\Release</OutputPath>
+        <ErrorReport>prompt</ErrorReport>
+        <WarningLevel>4</WarningLevel>
+        <AndroidManagedSymbols>true</AndroidManagedSymbols>
+        <AndroidUseSharedRuntime>false</AndroidUseSharedRuntime>
+        <JavaMaximumHeapSize>
+        </JavaMaximumHeapSize>
+        <AndroidKeyStore>
+        </AndroidKeyStore>
+        <AndroidFastDeploymentType>
+        </AndroidFastDeploymentType>
+    </PropertyGroup>
+    <ItemGroup>
+        <Reference Include="System" />
+        <Reference Include="System.Xml" />
+        <Reference Include="System.Core" />
+        <Reference Include="Mono.Android" />
+        <Reference Include="System.Net.Http" />
+        <Reference Include="System.IO.Compression" />
+        <Reference Include="Autofac">
+            <HintPath>..\..\OneGlobal\packages\Autofac.4.8.1\lib\netstandard1.1\Autofac.dll</HintPath>
+        </Reference>
+        <Reference Include="Newtonsoft.Json">
+            <HintPath>..\..\OneGlobal\packages\Newtonsoft.Json.11.0.2\lib\netstandard2.0\Newtonsoft.Json.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Annotations">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Annotations.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Annotations.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Compat">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Compat.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Core.UI">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Core.UI.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.UI.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Core.Utils">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Core.Utils.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Core.Utils.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Media.Compat">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Media.Compat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Media.Compat.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Fragment">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Fragment.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Fragment.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v4">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v4.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v4.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Vector.Drawable">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Vector.Drawable.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Animated.Vector.Drawable">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Animated.Vector.Drawable.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Animated.Vector.Drawable.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v7.AppCompat">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.AppCompat.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.AppCompat.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v7.CardView">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.CardView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.CardView.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Transition">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Transition.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Transition.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v7.Palette">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.Palette.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.Palette.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v7.RecyclerView">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.RecyclerView.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.RecyclerView.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.Design">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.Design.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.Design.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Android.Support.v7.MediaRouter">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Android.Support.v7.MediaRouter.25.4.0.2\lib\MonoAndroid70\Xamarin.Android.Support.v7.MediaRouter.dll</HintPath>
+        </Reference>
+        <Reference Include="Glide">
+            <HintPath>..\..\OneGlobal\packages\Glide.Xamarin.4.1.1\lib\MonoAndroid10\Glide.dll</HintPath>
+        </Reference>
+        <Reference Include="FormsViewGroup">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Core">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Core.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Platform.Android">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Platform.Android.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Platform">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Platform.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Xaml">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Xaml.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.GooglePlayServices.Basement">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.GooglePlayServices.Basement.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Basement.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.GooglePlayServices.Tasks">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.GooglePlayServices.Tasks.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Tasks.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.GooglePlayServices.Base">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.GooglePlayServices.Base.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Base.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.GooglePlayServices.Maps">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.GooglePlayServices.Maps.42.1021.1\lib\MonoAndroid70\Xamarin.GooglePlayServices.Maps.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Maps.Android">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Maps.Android.dll</HintPath>
+        </Reference>
+        <Reference Include="Xamarin.Forms.Maps">
+            <HintPath>..\..\OneGlobal\packages\Xamarin.Forms.Maps.3.1.0.697729\lib\MonoAndroid10\Xamarin.Forms.Maps.dll</HintPath>
+        </Reference>
+        <Reference Include="Rg.Plugins.Popup">
+            <HintPath>..\..\OneGlobal\packages\Rg.Plugins.Popup.1.1.4.168\lib\MonoAndroid\Rg.Plugins.Popup.dll</HintPath>
+        </Reference>
+        <Reference Include="Rg.Plugins.Popup.Droid">
+            <HintPath>..\..\OneGlobal\packages\Rg.Plugins.Popup.1.1.4.168\lib\MonoAndroid\Rg.Plugins.Popup.Droid.dll</HintPath>
+        </Reference>
+    </ItemGroup>
+    <ItemGroup>
+        <Compile Include="Resources\Resource.designer.cs" />
+        <Compile Include="Properties\AssemblyInfo.cs" />
+        <Compile Include="Renderers\ViewExtensions.cs" />
+        <Compile Include="Renderers\DropCombo\DropItemAdapter.cs" />
+        <Compile Include="ObjectExtensions.cs" />
+        <Compile Include="SupportWidgetXFSetup.cs" />
+        <Compile Include="Renderers\DropCombo\DropItemAdapterAsync.cs" />
+        <Compile Include="Renderers\DropCombo\InstantAutoComplete.cs" />
+        <Compile Include="Renderers\SupportEntryRenderer.cs" />
+        <Compile Include="Renderers\SupportActionMenuRenderer.cs" />
+        <Compile Include="iFontExtend.cs" />
+        <Compile Include="SpecAndroid.cs" />
+        <Compile Include="Renderers\SupportDropListRenderer.cs" />
+        <Compile Include="Renderers\DropCombo\SpinnerAdapter.cs" />
+        <Compile Include="Renderers\DropCombo\SpinnerMultiSelectAdapter.cs" />
+        <Compile Include="Renderers\SupportShadowViewRenderer.cs" />
+        <Compile Include="IFileHelperExtended.cs" />
+        <Compile Include="IPushLocalNotificationExtended.cs" />
+        <Compile Include="Renderers\SupportDatePickerRenderer.cs" />
+        <Compile Include="Renderers\SupportEditorRenderer.cs" />
+        <Compile Include="Renderers\SupportButtonRenderer.cs" />
+        <Compile Include="Renderers\SupportButtonXF.cs" />
+        <Compile Include="Renderers\AutoComplete\SupportAutoCompleteRenderer.cs" />
+        <Compile Include="Renderers\AutoComplete\SupportSearchResultListRenderer.cs" />
+        <Compile Include="Renderers\AutoComplete\SupportBaseAutoCompleteRenderer.cs" />
+        <Compile Include="Renderers\AutoComplete\SupportAutoCompleteMultiValueRenderer.cs" />
+        <Compile Include="Renderers\SupportDropRenderer.cs" />
+        <Compile Include="Renderers\GalleryPicker\GalleryDirectoryAdapter.cs" />
+        <Compile Include="Renderers\GalleryPicker\GalleryImageAdapter.cs" />
+        <Compile Include="Renderers\GalleryPicker\GalleryPickerActivity.cs" />
+        <Compile Include="Renderers\GalleryPicker\IGalleryPickerExtended.cs" />
+        <Compile Include="Renderers\GalleryPicker\GalleryItemSquare.cs" />
+        <Compile Include="Renderers\SupportTabbedPageRenderer.cs" />
+        <Compile Include="Renderers\GalleryPicker\BitmapExtensions.cs" />
+        <Compile Include="Renderers\SupportGradientViewRenderer.cs" />
+        <Compile Include="Renderers\SupportMapViewRenderer.cs" />
+        <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />
+    </ItemGroup>
+    <ItemGroup>
+        <None Include="Resources\AboutResources.txt" />
+        <None Include="packages.config" />
+        <None Include="Helpers\TranslateExtension.txt" />
+    </ItemGroup>
+    <ItemGroup>
+        <AndroidResource Include="Resources\values\Strings.xml" />
+        <AndroidResource Include="Resources\layout\layout_single_title.axml" />
+        <AndroidResource Include="Resources\layout\layout_title_and_description.axml" />
+        <AndroidResource Include="Resources\layout\layout_title_and_icon.axml" />
+        <AndroidResource Include="Resources\layout\layout_full_text_and_icon.axml" />
+        <AndroidResource Include="Resources\values\attrs.xml" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\sort_down.png" />
+        <AndroidResource Include="Resources\drawable\shadowclone.xml" />
+        <AndroidResource Include="Resources\drawable\shadowclonenavigation_bottom.xml" />
+        <AndroidResource Include="Resources\layout\adapter_photosfolder.axml" />
+        <AndroidResource Include="Resources\layout\activity_gallery_picker.axml" />
+        <AndroidResource Include="Resources\layout\layout_single_title_normal.axml" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\arrow_left.png" />
+        <AndroidResource Include="Resources\drawable\background_button.xml" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\arrow_down.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\sort_down_white.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\nonchecked.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\checked.png" />
+        <AndroidResource Include="Resources\values\colors.xml" />
+        <AndroidResource Include="Resources\drawable\selector_check.xml" />
+        <AndroidResource Include="Resources\drawable\border_background.xml" />
+        <AndroidResource Include="Resources\drawable-xhdpi\camera.png" />
+        <AndroidResource Include="Resources\drawable\shadowclonenavigation_top.xml" />
+        <AndroidResource Include="Resources\drawable-xhdpi\icon_map_pin.png" />
+        <AndroidResource Include="Resources\layout\MapInfoWindow.axml" />
+        <AndroidResource Include="Resources\drawable-xhdpi\ren2own_logo_map.png" />
+        <AndroidResource Include="Resources\layout\dialog_directories.axml" />
+        <AndroidResource Include="Resources\layout\layout_directory.axml" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\checkbox.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\checkbox-on.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\radio.png" />
+        <AndroidResource Include="Resources\drawable-xxhdpi\radio-on.png" />
+    </ItemGroup>
+    <ItemGroup>
+        <Folder Include="Renderers\" />
+        <Folder Include="Resources\layout\" />
+        <Folder Include="Renderers\DropCombo\" />
+        <Folder Include="Renderers\AutoComplete\" />
+        <Folder Include="Renderers\GalleryPicker\" />
+    </ItemGroup>
+    <ItemGroup>
+        <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
+            <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
+            <Name>SupportWidgetXF</Name>
+        </ProjectReference>
+    </ItemGroup>
+    <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
