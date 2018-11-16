@@ -61,6 +61,11 @@ namespace SupportWidgetXF.iOS.Renderers
             textField.Frame = this.Frame;
             textField.Layer.CornerRadius = (float)SupportView.CornerRadius;
             textField.Layer.BorderWidth = (float)SupportView.CornerWidth;
+
+            textField.Layer.BackgroundColor = SupportView.BackgroundColor.ToCGColor();
+            //textField.BackgroundColor = UIColor.Clear;
+            SupportView.BackgroundColor = Xamarin.Forms.Color.Transparent;
+
             textField.Layer.BorderColor = SupportView.CornerColor.ToCGColor();
             textField.Font = UIFont.FromName(SupportView.FontFamily, (float)SupportView.FontSize);
             textField.Text = SupportView.Text;
