@@ -168,12 +168,7 @@
     <Compile Include="Renderers\MapView\CustomMKAnnotationView.cs" />
     <Compile Include="Renderers\SupportFrameRenderer.cs" />
     <Compile Include="Renderers\SupportButtonXFRenderer.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
-      <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
-      <Name>SupportWidgetXF</Name>
-    </ProjectReference>
+    <Compile Include="Renderers\SupportNavigationPageWidgetRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -202,6 +197,12 @@
     <BundleResource Include="Resources\switch_camera%403x.png" />
     <BundleResource Include="Resources\flash_off%403x.png" />
     <BundleResource Include="Resources\flash_on%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
+      <Project>{7059E0FD-2599-4009-A8CF-AE78C780A3B1}</Project>
+      <Name>SupportWidgetXF</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets" Condition="Exists('..\packages\Xamarin.Forms.3.1.0.697729\build\netstandard2.0\Xamarin.Forms.targets')" />

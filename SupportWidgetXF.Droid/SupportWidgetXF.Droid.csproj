@@ -192,6 +192,7 @@
     <Compile Include="Renderers\SupportMapViewRenderer.cs" />
     <Compile Include="Renderers\GalleryPicker\GalleryDirectoryNewAdapter.cs" />
     <Compile Include="Renderers\SupportFrameRenderer.cs" />
+    <Compile Include="Renderers\SupportNavigationPageWidgetRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
