@@ -42,6 +42,7 @@
     <Compile Remove="Class1.cs" />
     <Compile Remove="Util.cs" />
     <Compile Remove="Extensions\TranslateExtension.cs" />
+    <Compile Remove="Converters\EventArg\IntegerEventArgs.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Remove="Controllers\API\APIServiceOneGlobal.xml" />
