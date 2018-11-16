@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using Xamarin.Forms;
 
@@ -47,13 +48,14 @@ namespace SupportWidgetXF.Widgets
             else 
             { 
                 _format = Format; 
-                Format = "Pick..."; 
+                Format = "././."; 
             }
         }
         protected override void OnBindingContextChanged()
         {
             base.OnBindingContextChanged();
             UpdateDate();
+           
         }
 
         protected override void OnPropertyChanged(string propertyName = null)
