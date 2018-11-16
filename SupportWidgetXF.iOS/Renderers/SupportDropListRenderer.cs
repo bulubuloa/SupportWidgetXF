@@ -40,7 +40,7 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public override void OnInitializeTableSource()
         {
-            dropSource = new DropItemSource(SupportItemList, SupportView, HeightOfRow, this,SupportView.IsAllowMultiSelect);
+            dropSource = new DropItemSource(SupportItemList, SupportView, HeightOfRow, this, SupportView.IsAllowMultiSelect);
             tableView.Source = dropSource;
         }
 
@@ -61,9 +61,9 @@ namespace SupportWidgetXF.iOS.Renderers
         public override void SyncItemSource()
         {
             base.SyncItemSource();
-            if(textField!=null && SupportView!=null && SupportItemList!=null && SupportItemList.Count>0)
+            if (textField != null && SupportView != null && SupportItemList != null && SupportItemList.Count > 0)
             {
-                if(SupportView.ItemSelectedPosition >= 0 && SupportView.ItemSelectedPosition < SupportItemList.Count)
+                if (SupportView.ItemSelectedPosition >= 0 && SupportView.ItemSelectedPosition < SupportItemList.Count)
                     textField.Text = SupportItemList[SupportView.ItemSelectedPosition].IF_GetTitle();
             }
         }
@@ -75,8 +75,8 @@ namespace SupportWidgetXF.iOS.Renderers
 
         public override void HideData()
         {
-            base.HideData();  
-            if(coverView!=null)
+            base.HideData();
+            if (coverView != null)
                 coverView.RemoveFromSuperview();
         }
 
@@ -88,7 +88,7 @@ namespace SupportWidgetXF.iOS.Renderers
             if (!SupportView.IsAllowMultiSelect)
                 base.IF_ItemSelectd(position);
 
-            if(SupportView.IsAllowMultiSelect)
+            if (SupportView.IsAllowMultiSelect)
             {
                 SupportView.SendOnItemSelected(position);
             }
@@ -115,7 +115,7 @@ namespace SupportWidgetXF.iOS.Renderers
 
             float height = HeightOfRow * SupportItemList.Count;
             var y = rect.Y + textField.Frame.Height + 2;
-            if (height > rect.Height / 2) 
+            if (height > rect.Height / 2)
                 height = (float)rect.Height / 2;
 
             subView.Frame = new CGRect(rect.X, y, rect.Width, 0);
@@ -132,7 +132,7 @@ namespace SupportWidgetXF.iOS.Renderers
             base.OnElementPropertyChanged(sender, e);
             if (e.PropertyName.Equals(SupportDropList.ItemSelectedPositionProperty.PropertyName))
             {
-                if(!SupportView.IsAllowMultiSelect)
+                if (!SupportView.IsAllowMultiSelect)
                 {
                     var position = SupportView.ItemSelectedPosition;
                     if (position >= 0 && position < SupportItemList.Count)
