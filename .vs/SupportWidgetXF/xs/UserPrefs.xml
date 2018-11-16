@@ -1,25 +1,21 @@
 ﻿<Properties StartupConfiguration="{43030126-25D4-4F24-8A14-43420733C604}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SupportWidgetXF.iOS/SupportWidgetXFSetup.cs">
-    <Files>
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropListRenderer.cs" Line="122" Column="38" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/SupportDropRenderer.cs" Line="112" Column="24" />
-      <File FileName="SupportWidgetXF.iOS/iFontExtend.cs" Line="6" Column="29" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/UIViewExtensions.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/UIImageExtensions.cs" Line="1" Column="1" />
-      <File FileName="SupportWidgetXF.iOS/Renderers/GalleryPicker/NaviExtensions.cs" Line="11" Column="13" />
-      <File FileName="SupportWidgetXF.iOS/SupportWidgetXFSetup.cs" Line="15" Column="10" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="SupportWidgetXF" expanded="True">
             <Node name="Library" expanded="True">
-              <Node name="SupportWidgetXF.iOS" expanded="True">
-                <Node name="Renderers" expanded="True">
+              <Node name="SupportWidgetXF" expanded="True">
+                <Node name="Encrypt" expanded="True" />
+                <Node name="Models" expanded="True" />
+                <Node name="Navigation" expanded="True" />
+                <Node name="ViewModels" expanded="True" />
+                <Node name="Widgets" expanded="True">
                   <Node name="GalleryPicker" expanded="True" />
                 </Node>
-                <Node name="SupportWidgetXFSetup.cs" selected="True" />
               </Node>
+              <Node name="SupportWidgetXF.Droid" expanded="True" selected="True" />
+              <Node name="SupportWidgetXF.iOS" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -33,6 +29,5 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.Android PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
-  <MonoDevelop.Ide.ItemProperties.Library.SupportWidgetXF.Droid AndroidDesignerPreferredDevice="Nexus 4" PreferredExecutionTarget="Android.Android_Accelerated_Nougat" />
   <MonoDevelop.Ide.ItemProperties.DemoAPP.DemoWidget.iOS PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.3E1706BF-323D-427B-A7B0-D4465227F3F9" />
 </Properties>
