@@ -11,30 +11,43 @@ namespace SupportWidgetXF.Converters
         {
             if (value is TextChangedEventArgs)
             {
-                var xxx = parameter ?? "xxx";
-                var textChanged = value as TextChangedEventArgs;
-                return textChanged;
+                var textChangedEventArgs = value as TextChangedEventArgs;
+                return textChangedEventArgs;
             }
             else if (value is FocusEventArgs)
             {
-                var xxx = parameter ?? "xxx";
-                var textChanged = value as FocusEventArgs;
-                return textChanged;
+                var focusEventArgs = value as FocusEventArgs;
+                return focusEventArgs;
+            }
+            else if (value is IntegerEventArgs)
+            {
+                var integerEventArgs = value as IntegerEventArgs;
+                return integerEventArgs.IntegerValue;
+            }
+            else if (value is SelectedItemChangedEventArgs)
+            {
+                var selectedItemChangedEventArgs = value as SelectedItemChangedEventArgs;
+                return selectedItemChangedEventArgs;
             }
             else if (value is ItemVisibilityEventArgs)
             {
-                var eventArgs = value as ItemVisibilityEventArgs;
-                return eventArgs.Item;
+                var itemVisibilityEventArgs = value as ItemVisibilityEventArgs;
+                return itemVisibilityEventArgs.Item;
+            }
+            else if (value is ObjectEventArgs)
+            {
+                var objectEventArgs = value as ObjectEventArgs;
+                return objectEventArgs.Item;
             }
             else if (value is ItemTappedEventArgs)
             {
                 var evet = value as ItemTappedEventArgs;
                 return evet.Item;
             }
-            else if (value is ObjectEventArgs)
+            else if (value is EventArgs)
             {
-                var objectEventArgs = value as ObjectEventArgs;
-                return objectEventArgs.Item;
+                var eventArgs = value as System.EventArgs;
+                return eventArgs;
             }
 
             return null;

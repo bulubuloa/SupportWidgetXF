@@ -5,6 +5,7 @@ namespace SupportWidgetXF.Models.API.Response
     {
         public string Version { get; set; }
         public string Message { get; set; }
+        public string ErrorMessage { get; set; }
         public int StatusCode { set; get; }
 
         public AESResponseBaseModel()
