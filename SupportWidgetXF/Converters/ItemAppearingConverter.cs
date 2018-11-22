@@ -46,7 +46,7 @@ namespace SupportWidgetXF.Converters
             }
             else if (value is EventArgs)
             {
-                var eventArgs = value as System.EventArgs;
+                var eventArgs = value as EventArgs;
                 return eventArgs;
             }
 

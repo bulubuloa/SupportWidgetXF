@@ -12,7 +12,7 @@ using Xamarin.Forms.Platform.Android;
 
 namespace SupportWidgetXF.Droid.Renderers
 {
-    public class SupportDropRenderer<TSupport,TOrignal> : ViewRenderer<TSupport, Android.Views.View>,IDropItemSelected where TSupport : SupportViewDrop where TOrignal : Android.Views.View
+    public class SupportDropRenderer<TSupport, TOrignal> : ViewRenderer<TSupport, Android.Views.View>, IDropItemSelected where TSupport : SupportViewDrop where TOrignal : Android.Views.View
     {
         protected TSupport SupportView;
         protected TOrignal OriginalView;
@@ -22,12 +22,12 @@ namespace SupportWidgetXF.Droid.Renderers
 
         public SupportDropRenderer(Context context) : base(context)
         {
-            
+
         }
 
         protected virtual void OnInitializeAdapter()
         {
-            
+
         }
 
         protected virtual void SyncItemSource()
@@ -47,7 +47,7 @@ namespace SupportWidgetXF.Droid.Renderers
 
         protected virtual void OnInitializeOriginalView()
         {
-            
+
         }
 
         protected virtual void OnInitializeBorderView()
@@ -93,7 +93,7 @@ namespace SupportWidgetXF.Droid.Renderers
 
         public virtual void IF_ItemSelectd(int position)
         {
-            
+
         }
     }
 }

@@ -62,9 +62,9 @@ namespace SupportWidgetXF.Widgets
 
     public class ImageNameHelper
     {
-        public const string Icon_Checkbox_Checked = "checkbox-on";
+        public const string Icon_Checkbox_Checked = "checkbox_on";
         public const string Icon_Checkbox_UnChecked = "checkbox";
-        public const string Icon_Radio_Checked = "radio-on";
+        public const string Icon_Radio_Checked = "radio_on";
         public const string Icon_Radio_UnChecked = "radio";
     }
 }
