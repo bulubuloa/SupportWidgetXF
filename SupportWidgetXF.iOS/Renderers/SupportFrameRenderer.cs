@@ -1,4 +1,4 @@
-﻿using System;
+﻿using System.ComponentModel;
 using System.Drawing;
 using CoreGraphics;
 using SupportWidgetXF.iOS.Renderers;
@@ -23,6 +23,15 @@ namespace SupportWidgetXF.iOS.Renderers
                 {
                     supportFrame = Element as SupportFrame;
                 }
+            }
+        }
+
+        protected override void OnElementPropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            base.OnElementPropertyChanged(sender, e);
+            if (e.PropertyName.Equals(SupportFrame.FrameBackgroundColorProperty.PropertyName))
+            {
+                Layer.BackgroundColor = supportFrame.FrameBackgroundColor.ToCGColor();
             }
         }
 
