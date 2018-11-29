@@ -7,7 +7,7 @@ I create this package to sharing all custom controls renderer i know, it help yo
 
 Add assembly references
 
-    xmlns:ultimateChart="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF"
+    xmlns:widgets="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF"
 
 Setup for iOS project (add to AppDelegate before LoadApplication)
 
