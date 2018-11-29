@@ -170,6 +170,7 @@
     <Compile Include="Renderers\SupportFrameRenderer.cs" />
     <Compile Include="Renderers\SupportButtonXFRenderer.cs" />
     <Compile Include="Renderers\SupportNavigationPageWidgetRenderer.cs" />
+    <Compile Include="Renderers\SupportHtmlLabelRenderer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SupportWidgetXF\SupportWidgetXF.csproj">
