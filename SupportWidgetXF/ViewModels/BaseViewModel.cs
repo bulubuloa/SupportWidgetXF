@@ -67,6 +67,18 @@ namespace SupportWidgetXF.ViewModels
             set
             {
                 _isBusy = value;
+                IsNotBusy = !_isBusy;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isNotBusy;
+        public bool IsNotBusy
+        {
+            get => _isNotBusy;
+            set
+            {
+                _isNotBusy = value;
                 OnPropertyChanged();
             }
         }
