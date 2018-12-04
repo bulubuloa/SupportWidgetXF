@@ -37,7 +37,7 @@ namespace SupportWidgetXF.Droid.Renderers.GalleryPicker
 
 
         private Android.Widget.Button bttDone;
-        private ImageButton bttBack;
+        private Android.Widget.ImageButton bttBack;
 
         const int REQUEST_PERMISSIONS_LIBRARY = 100;
         const int REQUEST_CAMERA_CAPTURE = 102;
