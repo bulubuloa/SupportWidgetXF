@@ -11,11 +11,12 @@ Add assembly references
 
 Setup for iOS project (add to AppDelegate before LoadApplication)
 
-    SupportWidgetXFSetup.Initialize();
+    SupportWidgetXFSetup.Initialize(this);
 
 Setup for Android project (add to MainActivity before LoadApplication)
 
-    SupportWidgetXFSetup.Initialize(this);
+    SupportWidgetXFSetup.Initialize(this, bundle);
+    
 ## Support Widget Package
 
  - SupportAutoComplete **(Complete)**
