@@ -2,19 +2,21 @@
 # Xamarin Forms Custom Control
 I create this package to sharing all custom controls renderer i know, it help you get a better result with xamarin
 
-Available on NuGet: [![NuGet](https://img.shields.io/badge/nuget%20supportwidgetxf-v1.2.0-blue.svg)](https://www.nuget.org/packages/SupportWidgetXF/)
+### Available on NuGet: 
+![Build status](https://ci.appveyor.com/api/projects/status/7g3sppml9ewumr9i/branch/master?svg=true) [![NuGet Badge](https://buildstats.info/nuget/SupportWidgetXF)](https://www.nuget.org/packages/SupportWidgetXF/)
 
 Add assembly references
 
-    xmlns:ultimateChart="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF"
+    xmlns:widgets="clr-namespace:SupportWidgetXF.Widgets;assembly=SupportWidgetXF"
 
 Setup for iOS project (add to AppDelegate before LoadApplication)
 
-    SupportWidgetXFSetup.Initialize();
+    SupportWidgetXFSetup.Initialize(this);
 
 Setup for Android project (add to MainActivity before LoadApplication)
 
-    SupportWidgetXFSetup.Initialize(this);
+    SupportWidgetXFSetup.Initialize(this, bundle);
+    
 ## Support Widget Package
 
  - SupportAutoComplete **(Complete)**
